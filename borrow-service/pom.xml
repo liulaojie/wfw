@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>abistudy</artifactId>
-	<packaging>war</packaging>
+	<artifactId>borrow-service</artifactId>
+	<packaging>jar</packaging>
 	<groupId>com.esen</groupId>
 	<version>1.1.1</version>
 
@@ -12,20 +12,26 @@
 		<version>1.5.1-SNAPSHOT</version>
 	</parent>
 
-	<modules>
-		<module>book-api</module>
-		<module>book-service</module>
-		<module>book-web</module>
-		<module>borrow-api</module>
-		<module>borrow-service</module>
-		<module>borrow-web</module>
-	</modules>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>borrow-api</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>emicroservice</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- 资源管理器 -->
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>esetup-web</artifactId>
+		</dependency>
 	</dependencies>
 
 	<repositories>
