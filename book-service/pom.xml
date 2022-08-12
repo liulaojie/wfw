@@ -7,8 +7,8 @@
 
 	<parent>
 		<groupId>com.esen</groupId>
-		<artifactId>eparent</artifactId>
-		<version>1.5.1-SNAPSHOT</version>
+		<artifactId>abistudy</artifactId>
+		<version>1.1.1</version>
 	</parent>
 
 	<properties>
