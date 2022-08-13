@@ -3,6 +3,8 @@ package com.esen.borrow.web;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.esen.eservice.EsenApplication;
+
 /**
  * 图书管理web工程启动类
  * @author chenlan
@@ -12,7 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BorrowWebApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BorrowWebApplication.class, args);
+		SpringApplication.run(EsenApplication.class, args);
 	}
 
 }

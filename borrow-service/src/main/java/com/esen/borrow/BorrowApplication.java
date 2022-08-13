@@ -3,6 +3,8 @@ package com.esen.borrow;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.esen.eservice.EsenApplication;
+
 /**
  * 图书管理服务
  * @author chenlan
@@ -11,6 +13,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = { "com.esen"})
 public class BorrowApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(BorrowApplication.class, args);
+		SpringApplication.run(EsenApplication.class, args);
 	}
 }
