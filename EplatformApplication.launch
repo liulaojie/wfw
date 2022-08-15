@@ -11,5 +11,5 @@
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.esen.eplatform.EplatformApplication"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="eplatform"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Desen.ecore.workdir=C:/develop/workdir/abistudy&#13;&#10;-Dcom.esen.productid=abi&#13;&#10;-Dspring.cloud.nacos.discovery.enabled=true&#13;&#10;-Deureka.client.enabled=false&#13;&#10;-Dcom.esen.deploy.mode=microservice&#13;&#10;-Dcom.esen.feign.loadbalance.enabled=true&#13;&#10;-Dcom.esen.sys.enableservice=true&#13;&#10;-Dspring.redis.host=127.0.0.1&#13;&#10;-Dspring.redis.port=6379&#13;&#10;-Dspring.redis.password=&#13;&#10;-Xmx800m"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Desen.ecore.workdir=C:\develop\workdir\wfw&#13;&#10;-Dcom.esen.productid=abi&#13;&#10;-Dspring.cloud.nacos.discovery.enabled=true&#13;&#10;-Deureka.client.enabled=false&#13;&#10;-Dcom.esen.deploy.mode=microservice&#13;&#10;-Dcom.esen.feign.loadbalance.enabled=true&#13;&#10;-Dcom.esen.sys.enableservice=true&#13;&#10;-Dspring.redis.host=127.0.0.1&#13;&#10;-Dspring.redis.port=6379&#13;&#10;-Dspring.redis.password=&#13;&#10;-Xmx800m"/>
 </launchConfiguration>
