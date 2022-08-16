@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:ebi-evoice-api:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-evoice-api/1.5.1-SNAPSHOT/ebi-evoice-api-1.5.1-20211227.083941-11.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-evoice-api/1.5.1-SNAPSHOT/ebi-evoice-api-1.5.1-20211227.083941-11-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-evoice-api/1.5.1-SNAPSHOT/ebi-evoice-api-1.5.1-20211227.083941-11-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

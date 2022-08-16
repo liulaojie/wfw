@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:emainframe:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/emainframe/1.5.1-SNAPSHOT/emainframe-1.5.1-20220803.092228-82.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/emainframe/1.5.1-SNAPSHOT/emainframe-1.5.1-20220803.092228-82-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/emainframe/1.5.1-SNAPSHOT/emainframe-1.5.1-20220803.092228-82-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

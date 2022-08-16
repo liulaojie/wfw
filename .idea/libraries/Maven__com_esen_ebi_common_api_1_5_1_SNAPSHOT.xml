@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:ebi-common-api:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-common-api/1.5.1-SNAPSHOT/ebi-common-api-1.5.1-20220113.091600-13.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-common-api/1.5.1-SNAPSHOT/ebi-common-api-1.5.1-20220113.091600-13-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-common-api/1.5.1-SNAPSHOT/ebi-common-api-1.5.1-20220113.091600-13-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

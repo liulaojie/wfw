@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:eui:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eui/1.5.1-SNAPSHOT/eui-1.5.1-20220815.075534-372.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eui/1.5.1-SNAPSHOT/eui-1.5.1-20220815.075534-372-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eui/1.5.1-SNAPSHOT/eui-1.5.1-20220815.075534-372-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

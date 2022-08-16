@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:eutil:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eutil/1.5.1-SNAPSHOT/eutil-1.5.1-20220811.021941-77.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eutil/1.5.1-SNAPSHOT/eutil-1.5.1-20220811.021941-77-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eutil/1.5.1-SNAPSHOT/eutil-1.5.1-20220811.021941-77-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

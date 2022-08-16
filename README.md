@@ -54,7 +54,7 @@ nacos下载地址 http://home.esensoft.com/edoc/doc/os/down.do?rid=EDOC$22$85366
 启动下面的服务。注意下面这些XXApplication启动前均需配置JVM参数，形如
 
 ```properties
--Desen.ecore.workdir=C:/develop/workdir/abistudy
+-Desen.ecore.workdir=D:\esendev\workdir\abi551
 -Dcom.esen.productid=abi
 -Dspring.cloud.nacos.discovery.enabled=true
 -Deureka.client.enabled=false

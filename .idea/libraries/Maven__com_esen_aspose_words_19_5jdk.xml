@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:aspose-words:19.5jdk">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/aspose-words/19.5jdk/aspose-words-19.5jdk.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/aspose-words/19.5jdk/aspose-words-19.5jdk-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/aspose-words/19.5jdk/aspose-words-19.5jdk-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

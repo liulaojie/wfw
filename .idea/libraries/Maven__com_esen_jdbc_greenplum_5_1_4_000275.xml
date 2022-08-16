@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen.jdbc:greenplum:5.1.4.000275">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/jdbc/greenplum/5.1.4.000275/greenplum-5.1.4.000275.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/jdbc/greenplum/5.1.4.000275/greenplum-5.1.4.000275-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/jdbc/greenplum/5.1.4.000275/greenplum-5.1.4.000275-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

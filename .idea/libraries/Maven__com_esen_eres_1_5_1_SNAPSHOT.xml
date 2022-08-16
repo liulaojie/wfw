@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:eres:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eres/1.5.1-SNAPSHOT/eres-1.5.1-20220803.035625-55.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eres/1.5.1-SNAPSHOT/eres-1.5.1-20220803.035625-55-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eres/1.5.1-SNAPSHOT/eres-1.5.1-20220803.035625-55-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

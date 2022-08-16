@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:eschedule-client:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eschedule-client/1.5.1-SNAPSHOT/eschedule-client-1.5.1-20220805.064137-32.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eschedule-client/1.5.1-SNAPSHOT/eschedule-client-1.5.1-20220805.064137-32-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eschedule-client/1.5.1-SNAPSHOT/eschedule-client-1.5.1-20220805.064137-32-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:edi-monitor-api:4.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-monitor-api/4.5.1-SNAPSHOT/edi-monitor-api-4.5.1-20220527.030500-5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-monitor-api/4.5.1-SNAPSHOT/edi-monitor-api-4.5.1-20220527.030500-5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-monitor-api/4.5.1-SNAPSHOT/edi-monitor-api-4.5.1-20220527.030500-5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

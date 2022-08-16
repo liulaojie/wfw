@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:eask-index-api:5.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eask-index-api/5.5.1-SNAPSHOT/eask-index-api-5.5.1-20220804.094034-28.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eask-index-api/5.5.1-SNAPSHOT/eask-index-api-5.5.1-20220804.094034-28-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eask-index-api/5.5.1-SNAPSHOT/eask-index-api-5.5.1-20220804.094034-28-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

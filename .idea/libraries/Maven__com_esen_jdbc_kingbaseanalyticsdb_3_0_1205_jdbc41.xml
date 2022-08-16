@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen.jdbc:kingbaseanalyticsdb:3.0-1205.jdbc41">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/jdbc/kingbaseanalyticsdb/3.0-1205.jdbc41/kingbaseanalyticsdb-3.0-1205.jdbc41.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/jdbc/kingbaseanalyticsdb/3.0-1205.jdbc41/kingbaseanalyticsdb-3.0-1205.jdbc41-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/jdbc/kingbaseanalyticsdb/3.0-1205.jdbc41/kingbaseanalyticsdb-3.0-1205.jdbc41-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

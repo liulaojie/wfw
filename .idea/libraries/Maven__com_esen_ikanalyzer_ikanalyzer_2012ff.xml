@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen.ikanalyzer:ikanalyzer:2012ff">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ikanalyzer/ikanalyzer/2012ff/ikanalyzer-2012ff.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ikanalyzer/ikanalyzer/2012ff/ikanalyzer-2012ff-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ikanalyzer/ikanalyzer/2012ff/ikanalyzer-2012ff-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

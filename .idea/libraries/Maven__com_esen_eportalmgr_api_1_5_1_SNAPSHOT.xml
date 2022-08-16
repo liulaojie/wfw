@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:eportalmgr-api:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eportalmgr-api/1.5.1-SNAPSHOT/eportalmgr-api-1.5.1-20211020.071437-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eportalmgr-api/1.5.1-SNAPSHOT/eportalmgr-api-1.5.1-20211020.071437-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eportalmgr-api/1.5.1-SNAPSHOT/eportalmgr-api-1.5.1-20211020.071437-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

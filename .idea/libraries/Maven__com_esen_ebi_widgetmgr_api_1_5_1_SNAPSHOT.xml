@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:ebi-widgetmgr-api:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-widgetmgr-api/1.5.1-SNAPSHOT/ebi-widgetmgr-api-1.5.1-20220811.063629-25.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-widgetmgr-api/1.5.1-SNAPSHOT/ebi-widgetmgr-api-1.5.1-20220811.063629-25-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-widgetmgr-api/1.5.1-SNAPSHOT/ebi-widgetmgr-api-1.5.1-20220811.063629-25-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

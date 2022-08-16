@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:edi-flumeclient-api:4.4.3-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-flumeclient-api/4.4.3-SNAPSHOT/edi-flumeclient-api-4.4.3-20220324.072340-4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-flumeclient-api/4.4.3-SNAPSHOT/edi-flumeclient-api-4.4.3-20220324.072340-4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-flumeclient-api/4.4.3-SNAPSHOT/edi-flumeclient-api-4.4.3-20220324.072340-4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

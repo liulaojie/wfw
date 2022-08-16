@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen.informix:ifxjdbcx:4.10.JC4G1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/informix/ifxjdbcx/4.10.JC4G1/ifxjdbcx-4.10.JC4G1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/informix/ifxjdbcx/4.10.JC4G1/ifxjdbcx-4.10.JC4G1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/informix/ifxjdbcx/4.10.JC4G1/ifxjdbcx-4.10.JC4G1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

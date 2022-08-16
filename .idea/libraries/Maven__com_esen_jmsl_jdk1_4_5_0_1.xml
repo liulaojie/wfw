@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:jmsl-jdk1.4:5.0.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/jmsl-jdk1.4/5.0.1/jmsl-jdk1.4-5.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/jmsl-jdk1.4/5.0.1/jmsl-jdk1.4-5.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/jmsl-jdk1.4/5.0.1/jmsl-jdk1.4-5.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

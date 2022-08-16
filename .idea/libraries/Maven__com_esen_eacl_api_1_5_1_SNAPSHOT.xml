@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:eacl-api:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eacl-api/1.5.1-SNAPSHOT/eacl-api-1.5.1-20220812.073425-151.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eacl-api/1.5.1-SNAPSHOT/eacl-api-1.5.1-20220812.073425-151-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eacl-api/1.5.1-SNAPSHOT/eacl-api-1.5.1-20220812.073425-151-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

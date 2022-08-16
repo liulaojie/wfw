@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:eask-model-api:5.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eask-model-api/5.5.1-SNAPSHOT/eask-model-api-5.5.1-20220617.095535-27.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eask-model-api/5.5.1-SNAPSHOT/eask-model-api-5.5.1-20220617.095535-27-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eask-model-api/5.5.1-SNAPSHOT/eask-model-api-5.5.1-20220617.095535-27-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

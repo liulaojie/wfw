@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:emessage-api:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/emessage-api/1.5.1-SNAPSHOT/emessage-api-1.5.1-20220507.030037-7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/emessage-api/1.5.1-SNAPSHOT/emessage-api-1.5.1-20220507.030037-7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/emessage-api/1.5.1-SNAPSHOT/emessage-api-1.5.1-20220507.030037-7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

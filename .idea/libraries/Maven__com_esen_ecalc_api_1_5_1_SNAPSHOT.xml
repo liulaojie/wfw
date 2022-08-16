@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:ecalc-api:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecalc-api/1.5.1-SNAPSHOT/ecalc-api-1.5.1-20220617.111444-27.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecalc-api/1.5.1-SNAPSHOT/ecalc-api-1.5.1-20220617.111444-27-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecalc-api/1.5.1-SNAPSHOT/ecalc-api-1.5.1-20220617.111444-27-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

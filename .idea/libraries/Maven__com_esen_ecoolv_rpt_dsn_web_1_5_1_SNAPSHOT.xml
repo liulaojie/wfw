@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:ecoolv-rpt-dsn-web:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecoolv-rpt-dsn-web/1.5.1-SNAPSHOT/ecoolv-rpt-dsn-web-1.5.1-20220815.101334-64.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecoolv-rpt-dsn-web/1.5.1-SNAPSHOT/ecoolv-rpt-dsn-web-1.5.1-20220815.101334-64-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecoolv-rpt-dsn-web/1.5.1-SNAPSHOT/ecoolv-rpt-dsn-web-1.5.1-20220815.101334-64-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

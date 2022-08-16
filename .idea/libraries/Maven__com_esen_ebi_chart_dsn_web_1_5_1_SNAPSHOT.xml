@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:ebi-chart-dsn-web:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-chart-dsn-web/1.5.1-SNAPSHOT/ebi-chart-dsn-web-1.5.1-20220815.075648-250.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-chart-dsn-web/1.5.1-SNAPSHOT/ebi-chart-dsn-web-1.5.1-20220815.075648-250-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-chart-dsn-web/1.5.1-SNAPSHOT/ebi-chart-dsn-web-1.5.1-20220815.075648-250-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

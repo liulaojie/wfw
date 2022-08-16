@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:wdb-service:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/wdb-service/1.5.1-SNAPSHOT/wdb-service-1.5.1-20220708.023946-8.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/wdb-service/1.5.1-SNAPSHOT/wdb-service-1.5.1-20220708.023946-8-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/wdb-service/1.5.1-SNAPSHOT/wdb-service-1.5.1-20220708.023946-8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

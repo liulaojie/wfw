@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:ebackuprestore-web:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebackuprestore-web/1.5.1-SNAPSHOT/ebackuprestore-web-1.5.1-20220803.083127-21.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebackuprestore-web/1.5.1-SNAPSHOT/ebackuprestore-web-1.5.1-20220803.083127-21-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebackuprestore-web/1.5.1-SNAPSHOT/ebackuprestore-web-1.5.1-20220803.083127-21-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

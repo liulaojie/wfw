@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:ebi-rpttpl-dsn-api:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-rpttpl-dsn-api/1.5.1-SNAPSHOT/ebi-rpttpl-dsn-api-1.5.1-20220722.094727-9.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-rpttpl-dsn-api/1.5.1-SNAPSHOT/ebi-rpttpl-dsn-api-1.5.1-20220722.094727-9-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-rpttpl-dsn-api/1.5.1-SNAPSHOT/ebi-rpttpl-dsn-api-1.5.1-20220722.094727-9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

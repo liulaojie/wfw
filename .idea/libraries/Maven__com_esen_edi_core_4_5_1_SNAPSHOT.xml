@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:edi-core:4.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-core/4.5.1-SNAPSHOT/edi-core-4.5.1-20220812.094735-81.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-core/4.5.1-SNAPSHOT/edi-core-4.5.1-20220812.094735-81-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-core/4.5.1-SNAPSHOT/edi-core-4.5.1-20220812.094735-81-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

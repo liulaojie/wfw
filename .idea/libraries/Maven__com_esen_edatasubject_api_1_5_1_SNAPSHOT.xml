@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:edatasubject-api:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasubject-api/1.5.1-SNAPSHOT/edatasubject-api-1.5.1-20220805.020931-80.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasubject-api/1.5.1-SNAPSHOT/edatasubject-api-1.5.1-20220805.020931-80-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasubject-api/1.5.1-SNAPSHOT/edatasubject-api-1.5.1-20220805.020931-80-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

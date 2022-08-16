@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:etenant-client:1.5.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/etenant-client/1.5.1-SNAPSHOT/etenant-client-1.5.1-20220713.092537-7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/etenant-client/1.5.1-SNAPSHOT/etenant-client-1.5.1-20220713.092537-7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/etenant-client/1.5.1-SNAPSHOT/etenant-client-1.5.1-20220713.092537-7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
