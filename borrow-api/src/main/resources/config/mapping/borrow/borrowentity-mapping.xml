@@ -1,34 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- (*) 表示必须定义  -->
 <mapping>
-    <!--
-        <entity>: 定义一个实体对象
-        name(*): 实体ID
-        table(*): 实体对应的数据库表名
-        bean(*): 实体对应的javabean对象
-    -->
-    <entity name="Borrow" table="{VERSIONID}_BOOK" bean="com.esen.borrow.api.entity.BorrowEntity">
-        <properties>
-            <!--
-                <property>: 定义实体对象的一个属性
-                name(*): javabean中对应的属性名，javabean中必须提供该属性get、set方法
-                field: 数据库对应的字段名，如果不定义默认与java的属性名保持一致
-                nullale：是否允许为空
-                unique: 是否唯一
-                length：字段长度，原始类型 (*)String、int、double必须定义
-                pk: 是否为主键，(*)每个数据库表中必须要求有一个PK属性
-                type: 数据类型，可以使用的类型有：
-                    I 表示整型
-                    L 表示布尔类型
-                    C 表示字符串类型
-                    P 表示日期时间类型
-                    M 表示字符型大对象
-                    X 表示二进制类型
-                scale: 浮点型的小数位数
-                autoinc: 是否为自增长字段 @加一种类型，自增长类型，和pk不一样，只能用整型的。
 
-                具体有哪些type可以配，可在ORMUtil.java中可看到相关定义，解析细节在EntityInfoParser.java中。如果 xml 中有设置，以 xml为准；如果没有，以 javabean 为准
-            -->
+    <entity name="Borrow" table="stu11_BOOK_HISTORY" bean="com.esen.borrow.api.entity.BorrowEntity">
+        <properties>
+
             <property name="id" field="ID_" caption="唯一字段" unique="true" length="32" pk="true" />
             <property name="person" field="PERSON_" caption="借阅者姓名"  nullable="true" length="32" />
             <property name="bid" field="BID_" caption="书籍唯一字段" nullable="true" length="32" />

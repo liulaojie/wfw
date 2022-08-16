@@ -15,7 +15,7 @@ import com.esen.eutil.util.exp.Expression;
  * @since 20220816
  */
 
-@ApplicationRepository
+@ApplicationRepository(path = "/config/mapping/borrow/borrowentity-mapping.xml")
 public class BorrowRepository extends AbstractRepository<BorrowEntity> {
 		/**
 		 * person的所有借阅记录数
