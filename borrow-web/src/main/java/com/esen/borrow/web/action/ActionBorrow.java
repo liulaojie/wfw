@@ -5,6 +5,7 @@ import com.esen.ejdbc.params.PageRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,10 +29,10 @@ public class ActionBorrow {
 				return "study/borrow/list";
 		}
 
-		@RequestMapping("/test")
+		@RequestMapping(value = "/test",method = RequestMethod.GET)
 		@ResponseBody
 		public int getTotalCountByBid(String person){
-				return borrowService.getTotalCountByBid("张三");
+				return borrowService.getTotalCountByBid(person);
 		}
 
 }
