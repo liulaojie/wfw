@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen.wonderdb:wonderdb-api:1.2.4-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/wonderdb/wonderdb-api/1.2.4-SNAPSHOT/wonderdb-api-1.2.4-20210715.050644-199.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/wonderdb/wonderdb-api/1.2.4-SNAPSHOT/wonderdb-api-1.2.4-20210715.050644-199-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/wonderdb/wonderdb-api/1.2.4-SNAPSHOT/wonderdb-api-1.2.4-20210715.050644-199-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

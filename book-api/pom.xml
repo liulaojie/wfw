@@ -16,6 +16,15 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>eorm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>ecore</artifactId>
+			<version>1.2.6-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<repositories>

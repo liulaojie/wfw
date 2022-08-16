@@ -16,6 +16,10 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>eorm</artifactId>
+		</dependency>
 	</dependencies>
 
 	<repositories>
