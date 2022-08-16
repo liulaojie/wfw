@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EclipseCodeFormatterProjectSettings">
+    <option name="selectedGlobalProfile">
+      <Settings>
+        <option name="formatter" value="ECLIPSE" />
+        <option name="id" value="1660288399407" />
+        <option name="name" value="new" />
+        <option name="pathToConfigFileJava" value="$PROJECT_DIR$/../../esendev/esen_checks_v20121219.xml" />
+      </Settings>
+    </option>
+  </component>
+</project>

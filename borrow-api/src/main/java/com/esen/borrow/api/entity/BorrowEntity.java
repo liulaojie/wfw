@@ -2,10 +2,11 @@ package com.esen.borrow.api.entity;
 
 
 import com.esen.eorm.entity.IdEntityImpl;
+import com.esen.eorm.entity.RootEntity;
 
 import java.util.Calendar;
 
-public class BorrowEntity extends IdEntityImpl  {
+public class BorrowEntity extends RootEntity {
 		/**
 		 * 序列号
 		 */

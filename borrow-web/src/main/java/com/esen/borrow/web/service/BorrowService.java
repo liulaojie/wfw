@@ -33,7 +33,7 @@ public class BorrowService  extends AbstractService<BorrowEntity> {
 		 * @param person 借阅人的姓名
 		 * @return 借阅的总数
 		 */
-		public int getTotalCountByBid(String person){
+		public int getTotalCountByPerson(String person){
 				return borrowRepository.getTotalCountByPerson(person);
 		}
 		/**
