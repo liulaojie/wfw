@@ -4,7 +4,8 @@ package com.esen.borrow.api.entity;
 import com.esen.eorm.entity.IdEntityImpl;
 import com.esen.eorm.entity.RootEntity;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
+
 
 public class BorrowEntity extends RootEntity {
 		/**
@@ -26,11 +27,11 @@ public class BorrowEntity extends RootEntity {
 		/**
 		 * 借阅时间
 		 */
-		private Calendar fromdate;
+		private Timestamp fromdate;
 		/**
 		 * 归还时间
 		 */
-		private Calendar todate;
+		private Timestamp todate;
 
 		public String getId() {
 				return id;
@@ -56,19 +57,19 @@ public class BorrowEntity extends RootEntity {
 				this.bid = bid;
 		}
 
-		public Calendar getFromdate() {
+		public Timestamp getFromdate() {
 				return fromdate;
 		}
 
-		public void setFromdate(Calendar fromdate) {
+		public void setFromdate(Timestamp fromdate) {
 				this.fromdate = fromdate;
 		}
 
-		public Calendar getTodate() {
+		public Timestamp getTodate() {
 				return todate;
 		}
 
-		public void setTodate(Calendar todate) {
+		public void setTodate(Timestamp todate) {
 				this.todate = todate;
 		}
 }

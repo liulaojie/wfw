@@ -8,7 +8,7 @@
             <property name="person" field="PERSON_" caption="借阅者姓名"  nullable="true" length="32" />
             <property name="bid" field="BID_" caption="书籍唯一字段" nullable="true" length="32" />
             <property name="fromdate" field="FROMDATE_" caption="借阅时间" nullable="true"  />
-            <property name="todate" field="TODATE_" caption="归还时间（空表示暂未归还）" nullable="true" />
+            <property name="todate" field="TODATE_" caption="归还时间（空表示暂未归还）"  nullable="true" />
         </properties>
 
     </entity>

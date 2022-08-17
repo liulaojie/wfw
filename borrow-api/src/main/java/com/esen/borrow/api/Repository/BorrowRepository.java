@@ -1,4 +1,4 @@
-package com.esen.borrow.api.dao;
+package com.esen.borrow.api.Repository;
 
 import com.esen.borrow.api.entity.BorrowEntity;
 import com.esen.ejdbc.jdbc.orm.Query;
@@ -11,7 +11,7 @@ import com.esen.eutil.util.exp.Expression;
  * 借阅的DAO层
  * 负责数据库的增删改查。
  *
- * @author 刘傲杰
+ * @author liuaj
  * @since 20220816
  */
 
