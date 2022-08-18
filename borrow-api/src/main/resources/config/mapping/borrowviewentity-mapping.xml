@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapping>
-    <entity name="BorrowViewEntity"  table="STU11_BORROW"  bean="com.esen.borrow.api.entity.BorrowViewEntity">
+    <entity name="BorrowViewEntity"  table="{VERSIONID}_V_BORROW"  bean="com.esen.borrow.api.entity.BorrowViewEntity">
         <properties>
             <property name="id" field="id_" caption="唯一字段" unique="true" length="32" pk="true" />
             <property name="person" field="person_" caption="借阅者姓名"  nullable="true" length="32" />

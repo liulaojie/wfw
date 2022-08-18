@@ -26,6 +26,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="borrow-api" />
+    <orderEntry type="module" module-name="book-api" />
     <orderEntry type="library" name="Maven: com.esen:eorm:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.esen:ecache:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.github.ben-manes.caffeine:caffeine:2.8.8" level="project" />

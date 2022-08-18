@@ -27,6 +27,50 @@
 		<!-- 资源管理器 -->
 		<dependency>
 			<groupId>com.esen</groupId>
+			<artifactId>evfs-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>eschedule-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>evfs-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>eacl-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>edatasource-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>edatasubject-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>edim-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>elog-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>eschedule-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>esysmgr-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>eanalysemgr-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
 			<artifactId>esetup-web</artifactId>
 		</dependency>
 	</dependencies>

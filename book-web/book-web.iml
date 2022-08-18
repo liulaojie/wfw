@@ -217,19 +217,8 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.javassist:javassist:3.21.0-GA" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: io.prometheus:simpleclient:0.5.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.alibaba.spring:spring-context-support:1.0.10" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:esetup-web:1.5.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:elog-api:1.5.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:efeign:1.5.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava:30.1-jre" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20140107" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:eacl-api:1.5.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:etenant-api:1.5.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:eservice:1.5.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:manjusaka:1.5.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt:0.9.1" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:emainframe:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:evfs-client:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:evfs-api:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.esen:eutil:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.apache.servicemix.bundles:org.apache.servicemix.bundles.dom4j:2.1.3_1" level="project" />
     <orderEntry type="library" name="Maven: com.sun.activation:javax.activation:1.2.0" level="project" />
@@ -252,8 +241,8 @@
     <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.9.6" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.2" level="project" />
     <orderEntry type="library" name="Maven: jfree:jcommon:1.0.12" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20140107" level="project" />
     <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.3.3" level="project" />
-    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: commons-digester:commons-digester:2.1" level="project" />
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.4" level="project" />
     <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.31" level="project" />
@@ -280,17 +269,100 @@
     <orderEntry type="library" name="Maven: xml-resolver:xml-resolver:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.fusesource:sigar:1.6.4" level="project" />
     <orderEntry type="library" name="Maven: com.hp.hpl.sparta:pinyin4j:2.5.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:30.1-jre" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />
     <orderEntry type="library" name="Maven: com.esotericsoftware:kryo:3.0.3" level="project" />
     <orderEntry type="library" name="Maven: com.esotericsoftware:reflectasm:1.10.1" level="project" />
     <orderEntry type="library" name="Maven: com.esotericsoftware:minlog:1.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox:2.0.25" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:fontbox:2.0.25" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:eweb:1.5.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:evfs-api:1.5.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:ethreadpool:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:efeign:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eservice:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:manjusaka:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eschedule-api:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.esen:eres-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:ethreadpool:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.esen:esysconfig:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:elog-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:evfs-web:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.esen:eui:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:emainframe:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eweb:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:esysmgr-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eshare-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-configuration2:2.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-text:1.8" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eacl-web:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eacl-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:etenant-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt:0.9.1" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edatasource-web:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edatasource-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edi-edatasource-web:4.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edi-edatasource-api:4.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.jcraft:jsch:0.1.54" level="project" />
+    <orderEntry type="library" name="Maven: commons-net:commons-net:3.6" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edi-base:4.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edi-core:4.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: io.github.openfeign:feign-jackson:10.12" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.kafka:kafka-clients:3.0.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.luben:zstd-jni:1.5.0-2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.lz4:lz4-java:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xerial.snappy:snappy-java:1.1.8.1" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:easset-datasource-web:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:easset-datasource-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edatasubject-web:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edatasubject-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:wdb-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:log4j-over-slf4j:1.7.36" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edim-web:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edim-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:elog-web:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eschedule-web:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:ebackuprestore-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-ant:2.5.14" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.ant:ant-junit:1.9.15" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.ant:ant-antlr:1.9.15" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-cli-commons:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-cli-picocli:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: info.picocli:picocli:4.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-console:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-datetime:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-docgenerator:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: com.thoughtworks.qdox:qdox:1.12.1" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-groovydoc:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-groovysh:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-jmx:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-json:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-jsr223:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-macro:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-nio:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-servlet:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-sql:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-swing:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-templates:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-test:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-test-junit5:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-api:5.6.3" level="project" />
+    <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-launcher:1.6.3" level="project" />
+    <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-engine:1.6.3" level="project" />
+    <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.6.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.6.3" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-testng:2.5.14" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.testng:testng:6.13.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.beust:jcommander:1.72" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-xml:2.5.14" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:esysmgr-web:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eshare-web:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eanalysemgr-web:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eanalysemgr-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:ecalc-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:esetup-web:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.3.12.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.3.12.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.20" level="project" />
