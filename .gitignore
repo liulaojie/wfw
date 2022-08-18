@@ -3,3 +3,5 @@
 /log/
 /target/
 /workdir_IS_UNDEFINED/
+.idea
+*.iml
