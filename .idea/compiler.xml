@@ -32,13 +32,13 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="abi-web" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
       <module name="abistudy" options="" />
-      <module name="book-api" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
-      <module name="book-service" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
-      <module name="book-web" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
-      <module name="borrow-api" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
-      <module name="borrow-service" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
-      <module name="borrow-web" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
-      <module name="eplatform" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
+      <module name="book-api" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
+      <module name="book-service" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
+      <module name="book-web" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
+      <module name="borrow-api" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
+      <module name="borrow-service" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
+      <module name="borrow-web" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
+      <module name="eplatform" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
     </option>
   </component>
 </project>

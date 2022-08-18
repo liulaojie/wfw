@@ -11,7 +11,7 @@ import com.esen.book.api.repository.BookTypeRepository;
 
 import com.esen.borrow.api.entity.BorrowViewEntity;
 
-import com.esen.ecore.commons.BeanNames;
+
 import com.esen.ejdbc.jdbc.ConnectFactoryManager;
 import com.esen.ejdbc.jdbc.dialect.DbDefiner;
 import com.esen.ejdbc.jdbc.dialect.Dialect;
@@ -46,6 +46,8 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 		private BookTypeRepository btrep;
 		@Autowired
 		private BookCategoryRepository bcrep;
+		@Autowired
+		private ConnectFactoryManager connFactoryManager;
 		/**
 		 * person的所有借阅记录数
 		 * @param person 借阅人的姓名
@@ -56,24 +58,22 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 				return query.query(new Expression("person = ?"),null,person).calcTotalCount();
 		}
 
-		@Autowired
-		@Qualifier(BeanNames.ConnectFactoryManager)
-		private ConnectFactoryManager connFactoryManager;
 		/**
 		 * 生成视图
 		 * {@inheritDoc}
 		 */
 		public void repairTable() {
+				EntityInfo<BorrowViewEntity> bvEntity = bhrep.getEntityInfo();
 				DbDefiner dbf = connFactoryManager.getDefaultConnectionFactory().getDbDefiner();
 				String viewName = getViewName();
 				try {
 						Connection conn = connFactoryManager.getDefaultConnection();
 						try {
-							boolean ve = dbf.viewExists(conn, null, "{VERSIONID}_V_BORROW");
+							boolean ve = dbf.viewExists(conn, null, bvEntity.getTable());
 								if (ve) {
-										dbf.dropView(conn,null, "{VERSIONID}_V_BORROW");
+										dbf.dropView(conn,null, bvEntity.getTable());
 								}
-								dbf.createView(conn, null,"{VERSIONID}_V_BORROW", null, getViewSql());
+								dbf.createView(conn, null,bvEntity.getTable(), null, getViewSql());
 						} finally {
 								conn.close();
 						}
@@ -114,18 +114,10 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 				return str.toString();
 		}
 
-		public void throwViewNoSupportMethodException() {
-				ExceptionHandler.throwRuntimeException("com.esen.emeta.base.metaviewrepository.view.method.error",
-								"视图Repository不支持该方法调用");
-		}
 
 		public String getViewName() {
 				return this.getEntityInfo().getTable();
 		}
-
-	protected Dialect getDialect() {
-		return connFactoryManager.getDefaultConnectionFactory().getDialect();
-	}
 
 		@Override
 		protected String getCurrentLoginId() {

@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:edataprocess-api:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edataprocess-api/1.5.1-SNAPSHOT/edataprocess-api-1.5.1-20220121.015404-5.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edataprocess-api/1.5.1-SNAPSHOT/edataprocess-api-1.5.1-20220818.071938-6.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edataprocess-api/1.5.1-SNAPSHOT/edataprocess-api-1.5.1-20220121.015404-5-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edataprocess-api/1.5.1-SNAPSHOT/edataprocess-api-1.5.1-20220818.071938-6-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edataprocess-api/1.5.1-SNAPSHOT/edataprocess-api-1.5.1-20220121.015404-5-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edataprocess-api/1.5.1-SNAPSHOT/edataprocess-api-1.5.1-20220818.071938-6-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

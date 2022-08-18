@@ -9,7 +9,6 @@
             <property name="caption" field="CAPTION_" caption="书籍名称" nullable="true" length="200" />
             <property name="desc" field="DESC_" caption="描述" nullable="true" length="500" />
 
-
         </properties>
 
     </entity>

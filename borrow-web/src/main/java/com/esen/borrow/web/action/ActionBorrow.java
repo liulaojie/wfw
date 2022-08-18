@@ -37,7 +37,7 @@ public class ActionBorrow {
 		@ResponseBody
 		public int  getTotalCountByPerson1(String person){
 				System.out.println(person);
-				return borrowService.getTotalCountByPerson(person);
+				return borrowService.getHistoryTotalCountByPerson(person);
 		}
 		/**
 		 * 对于这个方法的描述

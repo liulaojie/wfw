@@ -12,10 +12,8 @@
     <file url="file://$PROJECT_DIR$/borrow-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/borrow-web/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/borrow-web/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../../study/test/wfw/abi-web/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../../study/test/wfw/abi-web/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../../study/test/wfw/eplatform/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../../study/test/wfw/eplatform/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eplatform/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eplatform/src/main/resources" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

@@ -68,26 +68,6 @@
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.1" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:druid:1.1.10" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:ecore:1.2.6-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.wonderdb:wonderdb-api:1.2.4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: org.roaringbitmap:RoaringBitmap:0.8.6" level="project" />
-    <orderEntry type="library" name="Maven: org.roaringbitmap:shims:0.8.6" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.wonderdb:wonderdb-impl:1.2.4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.8-1" level="project" />
-    <orderEntry type="library" name="Maven: joda-time:joda-time:2.10.6" level="project" />
-    <orderEntry type="library" name="Maven: io.github.kostaskougios:cloning:1.10.3" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:6.2.1" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm-util:6.2.1" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:6.2.1" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.14" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.14" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:elutil:1.1.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.crypto.provider:sunjec:1.0" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:econsole:1.1.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:ecluster-api:1.2.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.microsoft.ews-java-api:ews-java-api:2.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security.oauth:spring-security-oauth2:2.0.18.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:aspose-words:19.5jdk" level="project" />
     <orderEntry type="library" name="Maven: com.esen:eutil:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.apache.servicemix.bundles:org.apache.servicemix.bundles.dom4j:2.1.3_1" level="project" />
     <orderEntry type="library" name="Maven: com.sun.activation:javax.activation:1.2.0" level="project" />
@@ -202,6 +182,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.netflix.netflix-commons:netflix-eventbus:0.3.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.netflix.netflix-commons:netflix-infix:0.3.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-jxpath:commons-jxpath:1.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: joda-time:joda-time:2.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.antlr:antlr-runtime:3.4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.antlr:stringtemplate:3.2.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: antlr:antlr:2.7.7" level="project" />
@@ -282,6 +263,7 @@
     <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.72.Final" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-cache:2.3.12.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.esen:manjusaka:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.14" level="project" />
     <orderEntry type="library" name="Maven: com.esen:esysconfig:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.esen:eweb:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.esen:ethreadpool:1.5.1-SNAPSHOT" level="project" />

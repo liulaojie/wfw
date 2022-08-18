@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../../study/test/wfw/abi-web/abi-web.iml" filepath="$PROJECT_DIR$/../../study/test/wfw/abi-web/abi-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/abistudy.iml" filepath="$PROJECT_DIR$/abistudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/book-api/book-api.iml" filepath="$PROJECT_DIR$/book-api/book-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/book-service/book-service.iml" filepath="$PROJECT_DIR$/book-service/book-service.iml" />
@@ -10,7 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/borrow-api/borrow-api.iml" filepath="$PROJECT_DIR$/borrow-api/borrow-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/borrow-service/borrow-service.iml" filepath="$PROJECT_DIR$/borrow-service/borrow-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/borrow-web/borrow-web.iml" filepath="$PROJECT_DIR$/borrow-web/borrow-web.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../study/test/wfw/eplatform/eplatform.iml" filepath="$PROJECT_DIR$/../../study/test/wfw/eplatform/eplatform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eplatform/eplatform.iml" filepath="$PROJECT_DIR$/eplatform/eplatform.iml" />
     </modules>
   </component>
 </project>

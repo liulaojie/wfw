@@ -113,5 +113,10 @@
 			<groupId>com.esen</groupId>
 			<artifactId>etenant-service</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>eservice</artifactId>
+			<version>1.5.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>

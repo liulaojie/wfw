@@ -7,7 +7,7 @@ import com.esen.eorm.annotation.ApplicationRepository;
 import com.esen.eorm.repository.AbstractRepository;
 import com.esen.eutil.util.exp.Expression;
 
-@ApplicationRepository
+@ApplicationRepository(path = "/config/mapping/bookhistoryentity-mapping.xml")
 public class BookHistoryRepository extends AbstractRepository {
 
 		/**
