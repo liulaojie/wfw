@@ -18,6 +18,7 @@
 		<module>borrow-api</module>
 		<module>borrow-service</module>
 		<module>borrow-web</module>
+		<module>eplatform</module>
 	</modules>
 
 	<properties>
