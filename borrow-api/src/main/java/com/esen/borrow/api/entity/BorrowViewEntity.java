@@ -1,13 +1,13 @@
 package com.esen.borrow.api.entity;
 
 
-import com.esen.eorm.entity.IdEntityImpl;
 import com.esen.eorm.entity.RootEntity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 
-public class BorrowEntity extends RootEntity {
+public class BorrowViewEntity extends RootEntity  implements Serializable {
 		/**
 		 * 序列号
 		 */
@@ -21,9 +21,9 @@ public class BorrowEntity extends RootEntity {
 		 */
 		private String person;
 		/**
-		 * 书籍的ID
+		 * 书籍名
 		 */
-		private String bid;
+		private String book;
 		/**
 		 * 借阅时间
 		 */
@@ -32,11 +32,25 @@ public class BorrowEntity extends RootEntity {
 		 * 归还时间
 		 */
 		private Timestamp todate;
+		/**
+		 * 书籍小类
+		 */
+		private String scaption;
+		/**
+		 * 书籍大类
+		 */
+		private String bcaption;
 
+		public static long getSerialVersionUID() {
+				return serialVersionUID;
+		}
+
+		@Override
 		public String getId() {
 				return id;
 		}
 
+		@Override
 		public void setId(String id) {
 				this.id = id;
 		}
@@ -49,12 +63,12 @@ public class BorrowEntity extends RootEntity {
 				this.person = person;
 		}
 
-		public String getBid() {
-				return bid;
+		public String getBook() {
+				return book;
 		}
 
-		public void setBid(String bid) {
-				this.bid = bid;
+		public void setBook(String book) {
+				this.book = book;
 		}
 
 		public Timestamp getFromdate() {
@@ -71,5 +85,21 @@ public class BorrowEntity extends RootEntity {
 
 		public void setTodate(Timestamp todate) {
 				this.todate = todate;
+		}
+
+		public String getScaption() {
+				return scaption;
+		}
+
+		public void setScaption(String scaption) {
+				this.scaption = scaption;
+		}
+
+		public String getBcaption() {
+				return bcaption;
+		}
+
+		public void setBcaption(String bcaption) {
+				this.bcaption = bcaption;
 		}
 }

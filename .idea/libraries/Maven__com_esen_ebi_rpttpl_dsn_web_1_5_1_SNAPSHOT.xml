@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:ebi-rpttpl-dsn-web:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-rpttpl-dsn-web/1.5.1-SNAPSHOT/ebi-rpttpl-dsn-web-1.5.1-20220815.113623-73.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-rpttpl-dsn-web/1.5.1-SNAPSHOT/ebi-rpttpl-dsn-web-1.5.1-20220817.055942-77.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-rpttpl-dsn-web/1.5.1-SNAPSHOT/ebi-rpttpl-dsn-web-1.5.1-20220815.113623-73-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-rpttpl-dsn-web/1.5.1-SNAPSHOT/ebi-rpttpl-dsn-web-1.5.1-20220817.055942-77-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-rpttpl-dsn-web/1.5.1-SNAPSHOT/ebi-rpttpl-dsn-web-1.5.1-20220815.113623-73-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-rpttpl-dsn-web/1.5.1-SNAPSHOT/ebi-rpttpl-dsn-web-1.5.1-20220817.055942-77-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

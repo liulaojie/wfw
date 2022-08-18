@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:eask-kg-web:5.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eask-kg-web/5.5.1-SNAPSHOT/eask-kg-web-5.5.1-20220815.020449-111.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eask-kg-web/5.5.1-SNAPSHOT/eask-kg-web-5.5.1-20220817.095136-112.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eask-kg-web/5.5.1-SNAPSHOT/eask-kg-web-5.5.1-20220815.020449-111-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eask-kg-web/5.5.1-SNAPSHOT/eask-kg-web-5.5.1-20220817.095136-112-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eask-kg-web/5.5.1-SNAPSHOT/eask-kg-web-5.5.1-20220815.020449-111-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eask-kg-web/5.5.1-SNAPSHOT/eask-kg-web-5.5.1-20220817.095136-112-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

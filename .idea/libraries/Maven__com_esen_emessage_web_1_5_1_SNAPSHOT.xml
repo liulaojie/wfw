@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:emessage-web:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/emessage-web/1.5.1-SNAPSHOT/emessage-web-1.5.1-20220727.063154-12.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/emessage-web/1.5.1-SNAPSHOT/emessage-web-1.5.1-20220817.022531-13.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/emessage-web/1.5.1-SNAPSHOT/emessage-web-1.5.1-20220727.063154-12-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/emessage-web/1.5.1-SNAPSHOT/emessage-web-1.5.1-20220817.022531-13-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/emessage-web/1.5.1-SNAPSHOT/emessage-web-1.5.1-20220727.063154-12-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/emessage-web/1.5.1-SNAPSHOT/emessage-web-1.5.1-20220817.022531-13-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

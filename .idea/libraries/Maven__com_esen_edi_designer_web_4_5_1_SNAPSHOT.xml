@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:edi-designer-web:4.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-designer-web/4.5.1-SNAPSHOT/edi-designer-web-4.5.1-20220815.031958-139.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-designer-web/4.5.1-SNAPSHOT/edi-designer-web-4.5.1-20220817.111043-140.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-designer-web/4.5.1-SNAPSHOT/edi-designer-web-4.5.1-20220815.031958-139-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-designer-web/4.5.1-SNAPSHOT/edi-designer-web-4.5.1-20220817.111043-140-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-designer-web/4.5.1-SNAPSHOT/edi-designer-web-4.5.1-20220815.031958-139-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-designer-web/4.5.1-SNAPSHOT/edi-designer-web-4.5.1-20220817.111043-140-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

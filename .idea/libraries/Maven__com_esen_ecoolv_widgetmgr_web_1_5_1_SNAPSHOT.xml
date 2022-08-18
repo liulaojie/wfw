@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:ecoolv-widgetmgr-web:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecoolv-widgetmgr-web/1.5.1-SNAPSHOT/ecoolv-widgetmgr-web-1.5.1-20220815.080355-42.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecoolv-widgetmgr-web/1.5.1-SNAPSHOT/ecoolv-widgetmgr-web-1.5.1-20220817.102930-43.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecoolv-widgetmgr-web/1.5.1-SNAPSHOT/ecoolv-widgetmgr-web-1.5.1-20220815.080355-42-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecoolv-widgetmgr-web/1.5.1-SNAPSHOT/ecoolv-widgetmgr-web-1.5.1-20220817.102930-43-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecoolv-widgetmgr-web/1.5.1-SNAPSHOT/ecoolv-widgetmgr-web-1.5.1-20220815.080355-42-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecoolv-widgetmgr-web/1.5.1-SNAPSHOT/ecoolv-widgetmgr-web-1.5.1-20220817.102930-43-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

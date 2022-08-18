@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
+    <facet type="web" name="Web">
+      <configuration>
+        <webroots />
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -16,6 +26,67 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.20" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:5.3.20" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:5.3.20" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:ejdbc:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: net.sf:log4jdbc4:1.2" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:db2jcc4_for10_5:4.16.53" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:db2jcc_license_cu_for10_5:4.16.53" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.27" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:dm:Dm8JdbcDriver18-8.1.1.156" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:sybase-jconn2:5.5" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:sybase-jconn3:6.0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:sybase-jtds3:6.0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:kingbasejdbc4:7.1.2" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:kingbaseanalyticsdb:3.0-1205.jdbc41" level="project" />
+    <orderEntry type="library" name="Maven: com.oracle:ojdbc8:12.2.0.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:sqlserverdriver_sqljdbc:4.0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:sqlserverdriver_jtds:1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.9" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:gbase-connector-java:8.3.81.53-build55.2.1" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:nzjdbc:6.0.5" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:postgresql:42.2.23" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc.essbase11:ess_es_server:11.1.2" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc.essbase11:ess_japi:11.1.2" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:terajdbc4:14.0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:tdgssconfig:14.0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:vertica-jdbc:9.2.0-0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.informix:ifxjdbc:4.10.JC4G1" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.informix:ifxjdbcx:4.10.JC4G1" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:ArteryBaseJdbcDriver:3.6.2.jre6" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.timesten:timestenjdbc:5" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:hana:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:inspur-jdbc:11" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:kylin-jdbc:3.1.2" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:oscarJDBC:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:jdbct4:2.5.0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:greenplum:5.1.4.000275" level="project" />
+    <orderEntry type="library" name="Maven: com.h2database:h2:2.0.206" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.jdbc:linkoopdb-jdbc-java6:2.1.0" level="project" />
+    <orderEntry type="library" name="Maven: ru.yandex.clickhouse:clickhouse-jdbc:0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.5.13" level="project" />
+    <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:druid:1.1.10" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:ecore:1.2.6-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.wonderdb:wonderdb-api:1.2.4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.roaringbitmap:RoaringBitmap:0.8.6" level="project" />
+    <orderEntry type="library" name="Maven: org.roaringbitmap:shims:0.8.6" level="project" />
+    <orderEntry type="library" name="Maven: com.esen.wonderdb:wonderdb-impl:1.2.4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.8-1" level="project" />
+    <orderEntry type="library" name="Maven: joda-time:joda-time:2.10.6" level="project" />
+    <orderEntry type="library" name="Maven: io.github.kostaskougios:cloning:1.10.3" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:6.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-util:6.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:6.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.14" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.14" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:elutil:1.1.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.crypto.provider:sunjec:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:econsole:1.1.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:ecluster-api:1.2.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.microsoft.ews-java-api:ews-java-api:2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security.oauth:spring-security-oauth2:2.0.18.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:aspose-words:19.5jdk" level="project" />
     <orderEntry type="library" name="Maven: com.esen:eutil:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.apache.servicemix.bundles:org.apache.servicemix.bundles.dom4j:2.1.3_1" level="project" />
     <orderEntry type="library" name="Maven: com.sun.activation:javax.activation:1.2.0" level="project" />
@@ -130,7 +201,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.netflix.netflix-commons:netflix-eventbus:0.3.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.netflix.netflix-commons:netflix-infix:0.3.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-jxpath:commons-jxpath:1.3" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: joda-time:joda-time:2.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.antlr:antlr-runtime:3.4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.antlr:stringtemplate:3.2.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: antlr:antlr:2.7.7" level="project" />
@@ -191,47 +261,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.20" level="project" />
     <orderEntry type="library" name="Maven: cglib:cglib:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm:7.1" level="project" />
-    <orderEntry type="library" name="Maven: com.esen:ejdbc:1.5.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: net.sf:log4jdbc4:1.2" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:db2jcc4_for10_5:4.16.53" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:db2jcc_license_cu_for10_5:4.16.53" level="project" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.27" level="project" />
-    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.8.0" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:dm:Dm8JdbcDriver18-8.1.1.156" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:sybase-jconn2:5.5" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:sybase-jconn3:6.0" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:sybase-jtds3:6.0" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:kingbasejdbc4:7.1.2" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:kingbaseanalyticsdb:3.0-1205.jdbc41" level="project" />
-    <orderEntry type="library" name="Maven: com.oracle:ojdbc8:12.2.0.1.0" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:sqlserverdriver_sqljdbc:4.0" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:sqlserverdriver_jtds:1.2" level="project" />
-    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.9" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:gbase-connector-java:8.3.81.53-build55.2.1" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:nzjdbc:6.0.5" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:postgresql:42.2.23" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc.essbase11:ess_es_server:11.1.2" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc.essbase11:ess_japi:11.1.2" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:terajdbc4:14.0" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:tdgssconfig:14.0" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:vertica-jdbc:9.2.0-0" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.informix:ifxjdbc:4.10.JC4G1" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.informix:ifxjdbcx:4.10.JC4G1" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:ArteryBaseJdbcDriver:3.6.2.jre6" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.timesten:timestenjdbc:5" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:hana:1.0" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:inspur-jdbc:11" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:kylin-jdbc:3.1.2" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:oscarJDBC:1.0" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:jdbct4:2.5.0" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:greenplum:5.1.4.000275" level="project" />
-    <orderEntry type="library" name="Maven: com.h2database:h2:2.0.206" level="project" />
-    <orderEntry type="library" name="Maven: com.esen.jdbc:linkoopdb-jdbc-java6:2.1.0" level="project" />
-    <orderEntry type="library" name="Maven: ru.yandex.clickhouse:clickhouse-jdbc:0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.5.13" level="project" />
-    <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.1" level="project" />
-    <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba:druid:1.1.10" level="project" />
     <orderEntry type="library" name="Maven: com.esen:evfs-api:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.esen:efeign:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.esen:ecache:1.5.1-SNAPSHOT" level="project" />
@@ -252,7 +281,6 @@
     <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.72.Final" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-cache:2.3.12.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.esen:manjusaka:1.5.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.14" level="project" />
     <orderEntry type="library" name="Maven: com.esen:esysconfig:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.esen:eweb:1.5.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.esen:ethreadpool:1.5.1-SNAPSHOT" level="project" />

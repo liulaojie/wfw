@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:ewonderpage-web:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ewonderpage-web/1.5.1-SNAPSHOT/ewonderpage-web-1.5.1-20220816.021038-102.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ewonderpage-web/1.5.1-SNAPSHOT/ewonderpage-web-1.5.1-20220817.083839-106.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ewonderpage-web/1.5.1-SNAPSHOT/ewonderpage-web-1.5.1-20220816.021038-102-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ewonderpage-web/1.5.1-SNAPSHOT/ewonderpage-web-1.5.1-20220817.083839-106-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ewonderpage-web/1.5.1-SNAPSHOT/ewonderpage-web-1.5.1-20220816.021038-102-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ewonderpage-web/1.5.1-SNAPSHOT/ewonderpage-web-1.5.1-20220817.083839-106-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

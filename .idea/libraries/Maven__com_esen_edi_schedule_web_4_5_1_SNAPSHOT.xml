@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:edi-schedule-web:4.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-schedule-web/4.5.1-SNAPSHOT/edi-schedule-web-4.5.1-20220811.101154-79.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-schedule-web/4.5.1-SNAPSHOT/edi-schedule-web-4.5.1-20220817.110901-80.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-schedule-web/4.5.1-SNAPSHOT/edi-schedule-web-4.5.1-20220811.101154-79-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-schedule-web/4.5.1-SNAPSHOT/edi-schedule-web-4.5.1-20220817.110901-80-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-schedule-web/4.5.1-SNAPSHOT/edi-schedule-web-4.5.1-20220811.101154-79-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edi-schedule-web/4.5.1-SNAPSHOT/edi-schedule-web-4.5.1-20220817.110901-80-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

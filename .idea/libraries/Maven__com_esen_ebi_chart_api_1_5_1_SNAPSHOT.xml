@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:ebi-chart-api:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-chart-api/1.5.1-SNAPSHOT/ebi-chart-api-1.5.1-20220715.013736-27.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-chart-api/1.5.1-SNAPSHOT/ebi-chart-api-1.5.1-20220816.085131-28.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-chart-api/1.5.1-SNAPSHOT/ebi-chart-api-1.5.1-20220715.013736-27-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-chart-api/1.5.1-SNAPSHOT/ebi-chart-api-1.5.1-20220816.085131-28-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-chart-api/1.5.1-SNAPSHOT/ebi-chart-api-1.5.1-20220715.013736-27-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebi-chart-api/1.5.1-SNAPSHOT/ebi-chart-api-1.5.1-20220816.085131-28-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -1,9 +1,10 @@
 package com.esen.borrow.api.Repository;
 
-import com.esen.borrow.api.entity.BorrowEntity;
+import com.esen.borrow.api.entity.BorrowViewEntity;
+import com.esen.ejdbc.jdbc.dialect.Dialect;
+import com.esen.ejdbc.jdbc.orm.EntityInfo;
 import com.esen.ejdbc.jdbc.orm.Query;
 import com.esen.eorm.annotation.ApplicationRepository;
-import com.esen.eorm.repository.AbstractRepository;
 import com.esen.eutil.util.exp.Expression;
 
 
@@ -16,14 +17,16 @@ import com.esen.eutil.util.exp.Expression;
  */
 
 @ApplicationRepository
-public class BorrowRepository extends AbstractRepository<BorrowEntity> {
+public class BorrowViewRepository extends BorrViewRepository<BorrowViewEntity> {
+
+		private BorrViewRepository borrViewRepository;
 		/**
 		 * person的所有借阅记录数
 		 * @param person 借阅人的姓名
 		 * @return
 		 */
 		public int getTotalCountByPerson(String person){
-				Query<BorrowEntity> query = getCurrentSession().createQuery(getEntityInfo().getBean(),getEntityName());
+				Query<BorrowViewEntity> query = getCurrentSession().createQuery(getEntityInfo().getBean(),getEntityName());
 				return query.query(new Expression("person = ?"),null,person).calcTotalCount();
 		}
 
@@ -34,6 +37,11 @@ public class BorrowRepository extends AbstractRepository<BorrowEntity> {
 
 		@Override
 		protected String getCurrentTenantId() {
+				return null;
+		}
+
+		@Override
+		protected String getViewSql() {
 				return null;
 		}
 }

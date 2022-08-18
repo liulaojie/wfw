@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:edatasource:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasource/1.5.1-SNAPSHOT/edatasource-1.5.1-20220812.022510-113.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasource/1.5.1-SNAPSHOT/edatasource-1.5.1-20220817.020628-114.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasource/1.5.1-SNAPSHOT/edatasource-1.5.1-20220812.022510-113-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasource/1.5.1-SNAPSHOT/edatasource-1.5.1-20220817.020628-114-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasource/1.5.1-SNAPSHOT/edatasource-1.5.1-20220812.022510-113-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasource/1.5.1-SNAPSHOT/edatasource-1.5.1-20220817.020628-114-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

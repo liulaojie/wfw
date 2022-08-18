@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+
+    <entity name="Borrow" view="stu11_BOOK" bean="com.esen.book.api.eneity.BorrowEntity">
+        <properties>
+            <property name="id" field="ID_" caption="唯一字段" unique="true" length="32" pk="true" />
+            <property name="name" field="NAME_" caption="书籍名"  nullable="true" length="200" />
+            <property name="desc" field="DESC_" caption="书籍描述" nullable="true" length="500" />
+            <property name="scaption" field="SCAPTION_" caption="书籍小类" nullable="true" length="200"  />
+            <property name="bcaption" field="BCAPTION_" caption="书籍大类"  nullable="true" length="200" />
+        </properties>
+
+    </entity>
+</mapping>
