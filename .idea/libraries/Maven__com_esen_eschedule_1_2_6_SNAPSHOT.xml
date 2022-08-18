@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:eschedule:1.2.6-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eschedule/1.2.6-SNAPSHOT/eschedule-1.2.6-20210910.020020-3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eschedule/1.2.6-SNAPSHOT/eschedule-1.2.6-20210910.020020-3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eschedule/1.2.6-SNAPSHOT/eschedule-1.2.6-20210910.020020-3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page title="ABI" rootjs="eacl/commonjs/ping.js,eacl/commonjs/serverfunc.js">
+	<items id="navigators">
+		<item id="welcome" url="abistudy/studyindex.do" title="ABI学习框架首页"></item>
+	</items>
+	<items hasDesc="true" id="esysmgr" title="系统管理">
+		<item desc="全面的系统管理，通过图形化界面配置系统对象，方便用户进行多种系统参数配置与查看。" id="sys" resid="ESYS$1$sysmgr" title="系统设置" url="esysmgr/mgrtree.do?showcrums=true"/>
+	</items>
+	<items id="buttons">
+		<items id="btn_language" hint="Language Switching" arrow="false" icon="&#xe350;" baseCss="eui-coolbar-item-mail">
+			<item id="language_zh_CN" title="简体中文" icon="&#xe0d0;" cmd="switchLangMain"/>
+			<item id="language_en" title="English" icon="&#xe0d1;" cmd="switchLangMain"/>
+		</items>
+		<items id="eusermgr" arrow="true" icon="&#xe0ca;" baseCss="eui-coolbar-item-user">
+			<item id="logout" cmd="logOut" title="退出"></item>
+		</items>
+	</items>
+</page>

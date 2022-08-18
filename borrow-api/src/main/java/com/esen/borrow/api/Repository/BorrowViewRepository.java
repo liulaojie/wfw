@@ -48,6 +48,7 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 		private BookCategoryRepository bcrep;
 		@Autowired
 		private ConnectFactoryManager connFactoryManager;
+
 		/**
 		 * person的所有借阅记录数
 		 * @param person 借阅人的姓名
@@ -63,17 +64,17 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 		 * {@inheritDoc}
 		 */
 		public void repairTable() {
-				EntityInfo<BorrowViewEntity> bvEntity = bhrep.getEntityInfo();
+
 				DbDefiner dbf = connFactoryManager.getDefaultConnectionFactory().getDbDefiner();
 				String viewName = getViewName();
 				try {
 						Connection conn = connFactoryManager.getDefaultConnection();
 						try {
-							boolean ve = dbf.viewExists(conn, null, bvEntity.getTable());
+							boolean ve = dbf.viewExists(conn, null, "ESC55_V_BORROW");
 								if (ve) {
-										dbf.dropView(conn,null, bvEntity.getTable());
+										dbf.dropView(conn,null, "ESC55_V_BORROW");
 								}
-								dbf.createView(conn, null,bvEntity.getTable(), null, getViewSql());
+								dbf.createView(conn, null,"ESC55_V_BORROW", null, getViewSql());
 						} finally {
 								conn.close();
 						}
@@ -94,9 +95,9 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 				str.append(" SELECT ");
 				str.append("bh.").append(bhEntity.getProperty("id").getFieldName()).append(" , ");
 				str.append("bh.").append(bhEntity.getProperty("person").getFieldName()).append(" , ");
-				str.append("bi.").append(bhEntity.getProperty("caption").getFieldName()).append(" AS book_, ");
-				str.append("bt.").append(bhEntity.getProperty("caption").getFieldName()).append(" AS scaption_, ");
-				str.append("bc.").append(bhEntity.getProperty("caption").getFieldName()).append(" AS bcaption_, ");
+				str.append("bi.").append(biEntity.getProperty("caption").getFieldName()).append(" AS book_, ");
+				str.append("bt.").append(btEntity.getProperty("caption").getFieldName()).append(" AS scaption_, ");
+				str.append("bc.").append(bcEntity.getProperty("caption").getFieldName()).append(" AS bcaption_, ");
 				str.append("bh.").append(bhEntity.getProperty("fromdate").getFieldName()).append("  , ");
 				str.append("bh.").append(bhEntity.getProperty("todate").getFieldName()).append(" ");
 				str.append("FROM ");
@@ -107,10 +108,10 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 				str.append("WHERE ");
 				str.append("bh.").append(bhEntity.getProperty("bid").getFieldName()).append(" = ");
 				str.append("bi.").append(biEntity.getProperty("id").getFieldName()).append(" and ");
-				str.append("bi.").append(bhEntity.getProperty("tid").getFieldName()).append(" = ");
-				str.append("bt.").append(biEntity.getProperty("id").getFieldName()).append(" and ");
-				str.append("bt.").append(bhEntity.getProperty("cid").getFieldName()).append(" = ");
-				str.append("bc.").append(biEntity.getProperty("id").getFieldName());
+				str.append("bi.").append(biEntity.getProperty("tid").getFieldName()).append(" = ");
+				str.append("bt.").append(btEntity.getProperty("id").getFieldName()).append(" and ");
+				str.append("bt.").append(btEntity.getProperty("cid").getFieldName()).append(" = ");
+				str.append("bc.").append(bcEntity.getProperty("id").getFieldName());
 				return str.toString();
 		}
 

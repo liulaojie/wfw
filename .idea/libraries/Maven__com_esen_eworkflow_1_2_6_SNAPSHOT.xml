@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:eworkflow:1.2.6-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eworkflow/1.2.6-SNAPSHOT/eworkflow-1.2.6-20210617.090051-5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eworkflow/1.2.6-SNAPSHOT/eworkflow-1.2.6-20210617.090051-5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eworkflow/1.2.6-SNAPSHOT/eworkflow-1.2.6-20210617.090051-5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

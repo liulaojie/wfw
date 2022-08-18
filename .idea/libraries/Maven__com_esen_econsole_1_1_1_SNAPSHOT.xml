@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:econsole:1.1.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/econsole/1.1.1-SNAPSHOT/econsole-1.1.1-20220414.063850-39.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/econsole/1.1.1-SNAPSHOT/econsole-1.1.1-20220414.063850-39-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/econsole/1.1.1-SNAPSHOT/econsole-1.1.1-20220414.063850-39-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

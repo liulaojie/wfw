@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:ecluster-redis:1.2.3-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecluster-redis/1.2.3-SNAPSHOT/ecluster-redis-1.2.3-20201026.055757-6.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecluster-redis/1.2.3-SNAPSHOT/ecluster-redis-1.2.3-20201026.055757-6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ecluster-redis/1.2.3-SNAPSHOT/ecluster-redis-1.2.3-20201026.055757-6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

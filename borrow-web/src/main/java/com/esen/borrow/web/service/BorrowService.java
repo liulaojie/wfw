@@ -27,7 +27,6 @@ public class BorrowService  extends AbstractService<BorrowViewEntity> {
 		@Autowired
 		protected ConnectFactoryManager connectFactoryManager;
 		@Autowired
-		@Qualifier("BorrowViewRepository")
 		protected BorrowViewRepository borrowViewRepository;
 		@Autowired
 		protected BookHistoryRepository bookHistoryRepository;

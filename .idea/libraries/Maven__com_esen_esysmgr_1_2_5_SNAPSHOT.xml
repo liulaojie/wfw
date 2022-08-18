@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:esysmgr:1.2.5-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/esysmgr/1.2.5-SNAPSHOT/esysmgr-1.2.5-20220602.041507-42.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/esysmgr/1.2.5-SNAPSHOT/esysmgr-1.2.5-20220602.041507-42-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/esysmgr/1.2.5-SNAPSHOT/esysmgr-1.2.5-20220602.041507-42-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

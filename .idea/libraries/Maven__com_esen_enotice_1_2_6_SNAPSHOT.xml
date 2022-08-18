@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esen:enotice:1.2.6-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/enotice/1.2.6-SNAPSHOT/enotice-1.2.6-20210608.100056-2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/enotice/1.2.6-SNAPSHOT/enotice-1.2.6-20210608.100056-2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/enotice/1.2.6-SNAPSHOT/enotice-1.2.6-20210608.100056-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
