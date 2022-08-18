@@ -1,10 +1,10 @@
-package com.esen.book.api.eneity;
+package com.esen.book.api.entity;
 
 import com.esen.eorm.entity.RootEntity;
 
 import java.io.Serializable;
 
-public class BookEntity extends RootEntity implements Serializable {
+public class BookViewEntity extends RootEntity implements Serializable {
 		/**
 		 * 序列号
 		 */

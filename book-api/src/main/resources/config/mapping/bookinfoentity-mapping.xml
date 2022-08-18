@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+
+    <entity name="BookInfo" table="{VERSIONID}_BOOK_INFO" bean="com.esen.book.api.entity.BookInfoEntity">
+        <properties>
+
+            <property name="id" field="ID_" caption="唯一字段" unique="true" length="32" pk="true" />
+            <property name="tid" field="TID_" caption="小类唯一字段"  nullable="true" length="32" />
+            <property name="caption" field="CAPTION_" caption="书籍名称" nullable="true" length="200" />
+            <property name="desc" field="DESC_" caption="描述" nullable="true" length="500" />
+
+
+        </properties>
+
+    </entity>
+</mapping>

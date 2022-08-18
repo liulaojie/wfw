@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapping>
 
-    <entity name="BookHistory" table="stu11_BOOK_HISTORY" bean="com.esen.borrow.api.entity.BookHistoryEntity">
+    <entity name="BookHistory" table="{VERSIONID}_BOOK_HISTORY" bean="com.esen.book.api.entity.BookHistoryEntity">
         <properties>
 
             <property name="id" field="ID_" caption="唯一字段" unique="true" length="32" pk="true" />

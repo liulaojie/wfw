@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+
+    <entity name="BookCategory" table="{VERSIONID}_BOOK_CATEGORY" bean="com.esen.book.api.entity.BookCategoryEntity">
+        <properties>
+
+            <property name="id" field="ID_" caption="唯一字段" unique="true" length="32" pk="true" />
+            <property name="caption" field="CAPTION_" caption="大类名称"  nullable="true" length="200" />
+
+           </properties>
+
+    </entity>
+</mapping>
