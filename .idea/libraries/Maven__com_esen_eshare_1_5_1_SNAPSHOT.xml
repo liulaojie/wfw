@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:eshare:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eshare/1.5.1-SNAPSHOT/eshare-1.5.1-20220817.083239-20.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eshare/1.5.1-SNAPSHOT/eshare-1.5.1-20220819.060045-21.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eshare/1.5.1-SNAPSHOT/eshare-1.5.1-20220817.083239-20-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eshare/1.5.1-SNAPSHOT/eshare-1.5.1-20220819.060045-21-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eshare/1.5.1-SNAPSHOT/eshare-1.5.1-20220817.083239-20-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eshare/1.5.1-SNAPSHOT/eshare-1.5.1-20220819.060045-21-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

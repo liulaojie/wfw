@@ -16,6 +16,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.esen</groupId>
+			<artifactId>book-api</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
 			<artifactId>borrow-api</artifactId>
 			<version>1.1.1</version>
 		</dependency>
