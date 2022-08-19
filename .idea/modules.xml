@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/abistudy.iml" filepath="$PROJECT_DIR$/abistudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/book-api/book-api.iml" filepath="$PROJECT_DIR$/book-api/book-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/book-service/book-service.iml" filepath="$PROJECT_DIR$/book-service/book-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/book-web/book-web.iml" filepath="$PROJECT_DIR$/book-web/book-web.iml" />

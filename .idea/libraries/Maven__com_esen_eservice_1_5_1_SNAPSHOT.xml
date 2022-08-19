@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:eservice:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eservice/1.5.1-SNAPSHOT/eservice-1.5.1-20220818.061935-154.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eservice/1.5.1-SNAPSHOT/eservice-1.5.1-20220818.075934-155.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eservice/1.5.1-SNAPSHOT/eservice-1.5.1-20220818.061935-154-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eservice/1.5.1-SNAPSHOT/eservice-1.5.1-20220818.075934-155-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eservice/1.5.1-SNAPSHOT/eservice-1.5.1-20220818.061935-154-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eservice/1.5.1-SNAPSHOT/eservice-1.5.1-20220818.075934-155-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

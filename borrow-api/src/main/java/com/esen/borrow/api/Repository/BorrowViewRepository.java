@@ -1,20 +1,14 @@
 package com.esen.borrow.api.Repository;
 
-import com.esen.book.api.entity.BookCategoryEntity;
-import com.esen.book.api.entity.BookHistoryEntity;
-import com.esen.book.api.entity.BookInfoEntity;
-import com.esen.book.api.entity.BookTypeEntity;
-import com.esen.book.api.repository.BookCategoryRepository;
-import com.esen.book.api.repository.BookHistoryRepository;
-import com.esen.book.api.repository.BookInfoRepository;
-import com.esen.book.api.repository.BookTypeRepository;
+import com.esen.book.api.entity.*;
+import com.esen.book.api.repository.*;
 
 import com.esen.borrow.api.entity.BorrowViewEntity;
 
 
 import com.esen.ejdbc.jdbc.ConnectFactoryManager;
 import com.esen.ejdbc.jdbc.dialect.DbDefiner;
-import com.esen.ejdbc.jdbc.dialect.Dialect;
+
 import com.esen.ejdbc.jdbc.orm.EntityInfo;
 import com.esen.ejdbc.jdbc.orm.Query;
 import com.esen.eorm.annotation.ApplicationRepository;
@@ -22,7 +16,7 @@ import com.esen.eorm.repository.AbstractRepository;
 import com.esen.eutil.util.ExceptionHandler;
 import com.esen.eutil.util.exp.Expression;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+
 
 import java.sql.Connection;
 
@@ -70,11 +64,11 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 				try {
 						Connection conn = connFactoryManager.getDefaultConnection();
 						try {
-							boolean ve = dbf.viewExists(conn, null, "ESC55_V_BORROW");
+							boolean ve = dbf.viewExists(conn, null, viewName);
 								if (ve) {
-										dbf.dropView(conn,null, "ESC55_V_BORROW");
+										dbf.dropView(conn,null, viewName);
 								}
-								dbf.createView(conn, null,"ESC55_V_BORROW", null, getViewSql());
+								dbf.createView(conn, null,viewName, null, getViewSql());
 						} finally {
 								conn.close();
 						}
