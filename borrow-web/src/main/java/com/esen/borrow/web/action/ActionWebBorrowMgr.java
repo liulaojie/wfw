@@ -25,8 +25,8 @@ import java.util.List;
  * @since 20220816
  */
 @Controller
-@RequestMapping("/study/borrow")
-public class ActionBorrow {
+@RequestMapping("/web/borrow")
+public class ActionWebBorrowMgr {
 	private static final String REPEAT = "书名重复";
 
 	/**
@@ -37,7 +37,7 @@ public class ActionBorrow {
 
 	@RequestMapping("test")
 	public String test(){
-		return "borrow/addBook";
+		return "borrow/test";
 	}
 
 	//------------------------------------------------借阅功能----------------------------------------------------------------

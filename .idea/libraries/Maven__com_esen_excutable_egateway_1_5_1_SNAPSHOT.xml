@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen.excutable:egateway:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/excutable/egateway/1.5.1-SNAPSHOT/egateway-1.5.1-20220818.051522-93.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/excutable/egateway/1.5.1-SNAPSHOT/egateway-1.5.1-20220822.033213-95.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/excutable/egateway/1.5.1-SNAPSHOT/egateway-1.5.1-20220818.051522-93-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/excutable/egateway/1.5.1-SNAPSHOT/egateway-1.5.1-20220822.033213-95-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/excutable/egateway/1.5.1-SNAPSHOT/egateway-1.5.1-20220818.051522-93-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/excutable/egateway/1.5.1-SNAPSHOT/egateway-1.5.1-20220822.033213-95-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

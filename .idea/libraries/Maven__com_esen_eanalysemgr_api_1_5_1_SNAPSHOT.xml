@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:eanalysemgr-api:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eanalysemgr-api/1.5.1-SNAPSHOT/eanalysemgr-api-1.5.1-20220818.084240-85.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eanalysemgr-api/1.5.1-SNAPSHOT/eanalysemgr-api-1.5.1-20220822.020738-86.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eanalysemgr-api/1.5.1-SNAPSHOT/eanalysemgr-api-1.5.1-20220818.084240-85-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eanalysemgr-api/1.5.1-SNAPSHOT/eanalysemgr-api-1.5.1-20220822.020738-86-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eanalysemgr-api/1.5.1-SNAPSHOT/eanalysemgr-api-1.5.1-20220818.084240-85-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eanalysemgr-api/1.5.1-SNAPSHOT/eanalysemgr-api-1.5.1-20220822.020738-86-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

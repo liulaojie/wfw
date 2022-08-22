@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:easset-datasource-api:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/easset-datasource-api/1.5.1-SNAPSHOT/easset-datasource-api-1.5.1-20220714.062652-10.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/easset-datasource-api/1.5.1-SNAPSHOT/easset-datasource-api-1.5.1-20220822.101130-11.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/easset-datasource-api/1.5.1-SNAPSHOT/easset-datasource-api-1.5.1-20220714.062652-10-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/easset-datasource-api/1.5.1-SNAPSHOT/easset-datasource-api-1.5.1-20220822.101130-11-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/easset-datasource-api/1.5.1-SNAPSHOT/easset-datasource-api-1.5.1-20220714.062652-10-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/easset-datasource-api/1.5.1-SNAPSHOT/easset-datasource-api-1.5.1-20220822.101130-11-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

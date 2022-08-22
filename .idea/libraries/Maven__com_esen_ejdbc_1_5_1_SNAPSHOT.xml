@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:ejdbc:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ejdbc/1.5.1-SNAPSHOT/ejdbc-1.5.1-20220818.112832-114.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ejdbc/1.5.1-SNAPSHOT/ejdbc-1.5.1-20220822.075239-115.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ejdbc/1.5.1-SNAPSHOT/ejdbc-1.5.1-20220818.112832-114-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ejdbc/1.5.1-SNAPSHOT/ejdbc-1.5.1-20220822.075239-115-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ejdbc/1.5.1-SNAPSHOT/ejdbc-1.5.1-20220818.112832-114-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ejdbc/1.5.1-SNAPSHOT/ejdbc-1.5.1-20220822.075239-115-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

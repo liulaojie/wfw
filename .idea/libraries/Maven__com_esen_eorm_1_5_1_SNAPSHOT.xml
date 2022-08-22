@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:eorm:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eorm/1.5.1-SNAPSHOT/eorm-1.5.1-20220817.062835-34.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eorm/1.5.1-SNAPSHOT/eorm-1.5.1-20220822.054631-35.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eorm/1.5.1-SNAPSHOT/eorm-1.5.1-20220817.062835-34-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eorm/1.5.1-SNAPSHOT/eorm-1.5.1-20220822.054631-35-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eorm/1.5.1-SNAPSHOT/eorm-1.5.1-20220817.062835-34-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eorm/1.5.1-SNAPSHOT/eorm-1.5.1-20220822.054631-35-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

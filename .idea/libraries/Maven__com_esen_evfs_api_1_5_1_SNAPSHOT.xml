@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:evfs-api:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/evfs-api/1.5.1-SNAPSHOT/evfs-api-1.5.1-20220801.020652-15.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/evfs-api/1.5.1-SNAPSHOT/evfs-api-1.5.1-20220819.092937-16.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/evfs-api/1.5.1-SNAPSHOT/evfs-api-1.5.1-20220801.020652-15-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/evfs-api/1.5.1-SNAPSHOT/evfs-api-1.5.1-20220819.092937-16-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/evfs-api/1.5.1-SNAPSHOT/evfs-api-1.5.1-20220801.020652-15-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/evfs-api/1.5.1-SNAPSHOT/evfs-api-1.5.1-20220819.092937-16-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
