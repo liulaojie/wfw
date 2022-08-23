@@ -1,5 +1,6 @@
 package com.esen.borrow.web;
 
+import com.esen.eservice.start.RunTimeConfig;
 import org.springframework.boot.SpringApplication;
 
 import com.esen.eservice.EsenApplication;
@@ -12,6 +13,7 @@ import com.esen.eservice.EsenApplication;
 public class BorrowWebApplication {
 
 	public static void main(String[] args) {
+		RunTimeConfig.setRuntime(false);
 		SpringApplication.run(EsenApplication.class, args);
 	}
 

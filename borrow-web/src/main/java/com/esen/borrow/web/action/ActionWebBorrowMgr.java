@@ -35,9 +35,9 @@ public class ActionWebBorrowMgr {
 	@Autowired
 	private BorrowService borrowService;
 
-	@RequestMapping("test")
+	@RequestMapping("index")
 	public String test(){
-		return "borrow/test";
+		return "borrow/index";
 	}
 
 	//------------------------------------------------借阅功能----------------------------------------------------------------

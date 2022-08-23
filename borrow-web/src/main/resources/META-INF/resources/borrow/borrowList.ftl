@@ -12,7 +12,7 @@
 			scaption:${borrow.scaption}
 			bcaption:${borrow.bcaption}
 			fromdate:${borrow.fromdate?string("yyyy-MM-dd HH:mm:ss ")}
-			todate:${borrow.todate?string("yyyy-MM-dd HH:mm:ss ")}<br>
+			todate:${borrow.todate!("未归还")}<br>
 		</#list>
 	</div>
 

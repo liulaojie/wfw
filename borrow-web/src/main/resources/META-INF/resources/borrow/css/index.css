@@ -1,14 +1,18 @@
 .eui-layout-container{
     margin: 8px;
 }
-.eui-layout-left-navbar{
-    padding-right:  8px;
+.etree{
+    padding:  8px;
 }
 .content{
     margin: 0px 12px;
     padding-bottom: 8px;
     border: 1px solid black;
 }
-.test{
-    border: 1px solid red;
+.body{
+    margin-top: 8px;
+    border: solid;
+}
+.left{
+    background-color: #032041;
 }
