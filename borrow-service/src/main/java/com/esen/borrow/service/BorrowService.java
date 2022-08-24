@@ -3,6 +3,7 @@ package com.esen.borrow.service;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.esen.eutil.util.StrFunc;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.esen.book.api.entity.*;
@@ -123,12 +124,13 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 	 * @param page 页面信息 bcaption(可为空) 图书大类
 	 * @return
 	 */
-	public List<BookViewEntity> bookList(PageRequest page,String bcaption){
+	public List<BookViewEntity> bookList(PageRequest page,String bcaption,String scaption){
 		PageResult<BookViewEntity> result = bookViewRepository.findAll(page);
-		if (bcaption!=null){
-			Expression expression = new Expression("bcaption=?");
-			result = bookViewRepository.findAll(page, null,expression,
-					bcaption);
+		if (bcaption!=""){
+			result = bookViewRepository.findAll(page,new Expression("bcaption=?"),new Object[]{bcaption});
+		}
+		if (scaption!=""){
+			result = bookViewRepository.findAll(page,new Expression("scaption=?"),new Object[]{scaption});
 		}
 		return result.list();
 	}

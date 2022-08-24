@@ -1,11 +1,12 @@
-define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "eui/modules/etabctrl"],
-    function (etree, uibase,epanelsplitter,etabctrl) {
+define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "eui/modules/etabctrl","eui/modules/edialog"],
+    function (etree, uibase,epanelsplitter,etabctrl,edialog) {
         "use strict";
 
         var EComponent = uibase.EComponent;
         var ETree = etree.ETree;
         var EPanelSplitter = epanelsplitter.EPanelSplitter;
         var ETabCtrl = etabctrl.ETabCtrl;
+        var EDialog = edialog.EDialog;
         /**
          * 主页构造函数
          */
@@ -73,12 +74,32 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             });
             this.treeObj.addBaseCss("left");
             this.treeObj.setOnClick(function(item){
-                var tabobj= self.tabctrlObj;
-                tabobj.add(item.userObj.caption);
-                var i = tabobj.getCount();
-                var dom = tabobj.getBodyDom(i-1);
-                dom.style.border="solid";
-                EUI.addClassName(dom,"body")
+                var userobj = item.userObj;
+                if (userobj.level!=1){
+                    var tabobj= self.tabctrlObj;
+                    tabobj.add(userobj.caption);
+                    var i = tabobj.getCount();
+                    var dom = tabobj.getBodyDom(i-1);
+                    dom.style.border="solid";
+                    EUI.addClassName(dom,"body");
+                    if (userobj.level==2&&userobj.caption=="图书管理"){
+                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
+                        strhtml +='" width="100%" height="100%"></iframe>';
+                        dom.innerHTML=strhtml;
+                    }
+                    if (userobj.level==3){
+                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
+                        strhtml +="?bcaption="+userobj.caption;
+                        strhtml +='" width="100%" height="100%"></iframe>';
+                        dom.innerHTML=strhtml;
+                    }
+                    if (userobj.level==4){
+                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
+                        strhtml +="?scaption="+userobj.caption;
+                        strhtml +='" width="100%" height="100%"></iframe>';
+                        dom.innerHTML=strhtml;
+                    }
+                }
             });
         }
 
@@ -114,9 +135,10 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 }
                 ];
                 item.loadFromArray(data2,function (item,userObj){
+                    EUI.showWaitDialog(I18N.getString("ES.COMMON.SAVING", "正在加载..."));
                         getCategoryList(item,userObj);
+                    EUI.hideWaitDialogWithComplete(1000, I18N.getString("ES.COMMON.SAVESUCCESS", "加载成功！"));
                     }
-
                 );
                 var bmgr = item.getChildItem(0);
                 bmgr.selectSelf();
@@ -141,7 +163,8 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                                 caption:obj1[i].caption,
                                 img0:"&#xe1da;",
                                 haschild:true,
-                                level:3
+                                level:3,
+                                type:"bcaption"
                             }
                         }
                         item.loadFromArray(data3,
@@ -171,11 +194,13 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                                 id: obj2[i].id,
                                 caption: obj2[i].caption,
                                 img0: "&#xe1da;",
-                                level: 4
+                                level: 4,
+                                type:"scaption"
                             }
                         }
                     }
                     item.loadFromArray(data4);
+
                 }
             })
         }

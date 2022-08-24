@@ -6,6 +6,7 @@ import com.esen.book.api.entity.BookViewEntity;
 import com.esen.borrow.api.entity.BorrowViewEntity;
 import com.esen.borrow.service.BorrowService;
 import com.esen.ejdbc.params.PageRequest;
+import com.esen.eutil.util.StrFunc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,14 @@ public class ActionWebBorrowMgr {
 	public String test(){
 		return "borrow/index";
 	}
+
+	@RequestMapping("bookmgr")
+	public String bookMgr(HttpServletRequest req,String scaption,String bcaption){
+		req.setAttribute("scaption",scaption);
+		req.setAttribute("bcaption",bcaption);
+		return "borrow/bookmgr";
+	}
+
 
 	//------------------------------------------------借阅功能----------------------------------------------------------------
 	/**
@@ -102,16 +111,17 @@ public class ActionWebBorrowMgr {
 	}
 
 	/**
-		 * 获取图书列表，可得到全部列表或根据大类获取对应的图书列表
-		 * @param bcaption bcaption(可为空) 图书大类
-		 * @return
-		 */
+	 * 获取图书列表，可得到全部列表或根据大类获取对应的图书列表
+	 * @param bcaption bcaption(可为空) 图书大类 scaption(可为空)图书小类 pageIndex 页面索引
+	 * @return
+	 */
 	@RequestMapping(value = "/bookList")
-	public String bookList(HttpServletRequest req, String bcaption) {
-		PageRequest page = new PageRequest(1, 10);
-		List<BookViewEntity> list = borrowService.bookList(page, bcaption);
-		req.setAttribute("booklist", list);
-		return "borrow/bookList";
+	@ResponseBody
+	public List<BookViewEntity> bookList
+	(HttpServletRequest req, String bcaption,String scaption,String pageIndex) {
+		PageRequest page = new PageRequest(StrFunc.str2int(pageIndex,0), 30);
+		List<BookViewEntity> list = borrowService.bookList(page, bcaption,scaption);
+		return list;
 	}
 
 	/**
