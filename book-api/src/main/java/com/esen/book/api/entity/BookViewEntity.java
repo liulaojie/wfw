@@ -4,6 +4,12 @@ import com.esen.eorm.entity.RootEntity;
 
 import java.io.Serializable;
 
+/**
+ * 图书的实体类.
+ *
+ * @author liuaj
+ * @since 20220824
+ */
 public class BookViewEntity extends RootEntity implements Serializable {
 		/**
 		 * 序列号
@@ -30,51 +36,84 @@ public class BookViewEntity extends RootEntity implements Serializable {
 		 */
 		private String bcaption;
 
-		public static long getSerialVersionUID() {
-				return serialVersionUID;
-		}
+	/**
+	 * @return the serialVersionUID
+	 */
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
 
-		@Override
-		public String getId() {
-				return id;
-		}
+	/**
+	 * @return the id
+	 */
+	@Override
+	public String getId() {
+		return id;
+	}
 
-		@Override
-		public void setId(String id) {
-				this.id = id;
-		}
+	/**
+	 * @param id to set
+	 */
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
 
-		public String getName() {
-				return name;
-		}
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
-		public void setName(String name) {
-				this.name = name;
-		}
+	/**
+	 * @param name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-		@Override
-		public String getDesc() {
-				return desc;
-		}
+	/**
+	 * @return the desc
+	 */
+	@Override
+	public String getDesc() {
+		return desc;
+	}
 
-		@Override
-		public void setDesc(String desc) {
-				this.desc = desc;
-		}
+	/**
+	 * @param desc to set
+	 */
+	@Override
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
 
-		public String getScaption() {
-				return scaption;
-		}
+	/**
+	 * @return the scaption
+	 */
+	public String getScaption() {
+		return scaption;
+	}
 
-		public void setScaption(String scaption) {
-				this.scaption = scaption;
-		}
+	/**
+	 * @param scaption to set
+	 */
+	public void setScaption(String scaption) {
+		this.scaption = scaption;
+	}
 
-		public String getBcaption() {
-				return bcaption;
-		}
+	/**
+	 * @return the bcaption
+	 */
+	public String getBcaption() {
+		return bcaption;
+	}
 
-		public void setBcaption(String bcaption) {
-				this.bcaption = bcaption;
-		}
+	/**
+	 * @param bcaption to set
+	 */
+	public void setBcaption(String bcaption) {
+		this.bcaption = bcaption;
+	}
 }

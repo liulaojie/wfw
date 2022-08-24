@@ -22,7 +22,7 @@ import java.sql.Connection;
 
 
 /**
- * 借阅的DAO层
+ * 借阅的Repository仓库
  * 负责数据库的增删改查。
  *
  * @author liuaj

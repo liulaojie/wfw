@@ -1,12 +1,10 @@
 package com.esen.borrow.web.action;
 
 import com.esen.book.api.entity.BookCategoryEntity;
-import com.esen.book.api.entity.BookHistoryEntity;
 import com.esen.book.api.entity.BookTypeEntity;
 import com.esen.book.api.entity.BookViewEntity;
-import com.esen.borrow.api.Repository.BorrowViewRepository;
 import com.esen.borrow.api.entity.BorrowViewEntity;
-import com.esen.borrow.web.service.BorrowService;
+import com.esen.borrow.service.BorrowService;
 import com.esen.ejdbc.params.PageRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.util.List;
+
 
 /**
  * 书籍管理类，负责借阅的增删改查

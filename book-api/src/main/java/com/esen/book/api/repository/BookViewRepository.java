@@ -10,7 +10,12 @@ import com.esen.eutil.util.ExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Connection;
-
+/**
+ * 图书的Repository仓库
+ *
+ * @author liuaj
+ * @since 20220824
+ */
 @ApplicationRepository
 public class BookViewRepository extends AbstractRepository<BookViewEntity> {
 

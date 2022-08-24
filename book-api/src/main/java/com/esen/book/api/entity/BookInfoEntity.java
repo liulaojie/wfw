@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 import com.esen.eorm.entity.RootEntity;
 
+/**
+ * 图书信息图书信息的实体类.
+ *
+ * @author liuaj
+ * @since 20220824
+ */
 public class BookInfoEntity extends RootEntity implements Serializable {
 		private static final long serialVersionUID = 1891369344854226667L;
 		/**
@@ -23,45 +29,72 @@ public class BookInfoEntity extends RootEntity implements Serializable {
 		 */
 		private String desc;
 
-		public static long getSerialVersionUID() {
-				return serialVersionUID;
-		}
+	/**
+	 * @return the serialVersionUID
+	 */
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
 
-		@Override
-		public String getId() {
-				return id;
-		}
+	/**
+	 * @return the id
+	 */
+	@Override
+	public String getId() {
+		return id;
+	}
 
-		@Override
-		public void setId(String id) {
-				this.id = id;
-		}
+	/**
+	 * @param id to set
+	 */
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
 
-		public String getTid() {
-				return tid;
-		}
+	/**
+	 * @return the tid
+	 */
+	public String getTid() {
+		return tid;
+	}
 
-		public void setTid(String tid) {
-				this.tid = tid;
-		}
+	/**
+	 * @param tid to set
+	 */
+	public void setTid(String tid) {
+		this.tid = tid;
+	}
 
-		@Override
-		public String getCaption() {
-				return caption;
-		}
+	/**
+	 * @return the caption
+	 */
+	@Override
+	public String getCaption() {
+		return caption;
+	}
 
-		@Override
-		public void setCaption(String caption) {
-				this.caption = caption;
-		}
+	/**
+	 * @param caption to set
+	 */
+	@Override
+	public void setCaption(String caption) {
+		this.caption = caption;
+	}
 
-		@Override
-		public String getDesc() {
-				return desc;
-		}
+	/**
+	 * @return the desc
+	 */
+	@Override
+	public String getDesc() {
+		return desc;
+	}
 
-		@Override
-		public void setDesc(String desc) {
-				this.desc = desc;
-		}
+	/**
+	 * @param desc to set
+	 */
+	@Override
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
 }

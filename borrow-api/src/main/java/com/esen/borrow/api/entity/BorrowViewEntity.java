@@ -6,7 +6,12 @@ import com.esen.eorm.entity.RootEntity;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-
+/**
+ * 借阅信息的实体类
+ *
+ * @author liuaj
+ * @since 20220824
+ */
 public class BorrowViewEntity extends RootEntity  implements Serializable {
 		/**
 		 * 序列号
@@ -41,65 +46,110 @@ public class BorrowViewEntity extends RootEntity  implements Serializable {
 		 */
 		private String bcaption;
 
-		public static long getSerialVersionUID() {
-				return serialVersionUID;
-		}
+	/**
+	 * @return the serialVersionUID
+	 */
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
 
-		@Override
-		public String getId() {
-				return id;
-		}
+	/**
+	 * @return the id
+	 */
+	@Override
+	public String getId() {
+		return id;
+	}
 
-		@Override
-		public void setId(String id) {
-				this.id = id;
-		}
+	/**
+	 * @param id to set
+	 */
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
 
-		public String getPerson() {
-				return person;
-		}
+	/**
+	 * @return the person
+	 */
+	public String getPerson() {
+		return person;
+	}
 
-		public void setPerson(String person) {
-				this.person = person;
-		}
+	/**
+	 * @param person to set
+	 */
+	public void setPerson(String person) {
+		this.person = person;
+	}
 
-		public String getBook() {
-				return book;
-		}
+	/**
+	 * @return the book
+	 */
+	public String getBook() {
+		return book;
+	}
 
-		public void setBook(String book) {
-				this.book = book;
-		}
+	/**
+	 * @param book to set
+	 */
+	public void setBook(String book) {
+		this.book = book;
+	}
 
-		public Timestamp getFromdate() {
-				return fromdate;
-		}
+	/**
+	 * @return the fromdate
+	 */
+	public Timestamp getFromdate() {
+		return fromdate;
+	}
 
-		public void setFromdate(Timestamp fromdate) {
-				this.fromdate = fromdate;
-		}
+	/**
+	 * @param fromdate to set
+	 */
+	public void setFromdate(Timestamp fromdate) {
+		this.fromdate = fromdate;
+	}
 
-		public Timestamp getTodate() {
-				return todate;
-		}
+	/**
+	 * @return the todate
+	 */
+	public Timestamp getTodate() {
+		return todate;
+	}
 
-		public void setTodate(Timestamp todate) {
-				this.todate = todate;
-		}
+	/**
+	 * @param todate to set
+	 */
+	public void setTodate(Timestamp todate) {
+		this.todate = todate;
+	}
 
-		public String getScaption() {
-				return scaption;
-		}
+	/**
+	 * @return the scaption
+	 */
+	public String getScaption() {
+		return scaption;
+	}
 
-		public void setScaption(String scaption) {
-				this.scaption = scaption;
-		}
+	/**
+	 * @param scaption to set
+	 */
+	public void setScaption(String scaption) {
+		this.scaption = scaption;
+	}
 
-		public String getBcaption() {
-				return bcaption;
-		}
+	/**
+	 * @return the bcaption
+	 */
+	public String getBcaption() {
+		return bcaption;
+	}
 
-		public void setBcaption(String bcaption) {
-				this.bcaption = bcaption;
-		}
+	/**
+	 * @param bcaption to set
+	 */
+	public void setBcaption(String bcaption) {
+		this.bcaption = bcaption;
+	}
 }

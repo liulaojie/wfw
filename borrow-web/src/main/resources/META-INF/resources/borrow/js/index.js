@@ -7,7 +7,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
         var EPanelSplitter = epanelsplitter.EPanelSplitter;
         var ETabCtrl = etabctrl.ETabCtrl;
         /**
-         * 图书列表构造函数
+         * 主页构造函数
          */
         function Index(options){
             EComponent.call(this,options);
@@ -67,6 +67,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 height: "100%",
                 baseCss: "eui-etree-btn eui-inline-block eui-float-left eui-icon eui-tree-container etree" ,
                 oncontextmenu:function (){
+                    //屏蔽系统右键
                     return false;
                 },
             });
@@ -77,6 +78,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 var i = tabobj.getCount();
                 var dom = tabobj.getBodyDom(i-1);
                 dom.style.border="solid";
+                EUI.addClassName(dom,"body")
             });
         }
 
@@ -194,12 +196,13 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
          * 销毁所持有的资源
          */
         Index.prototype.dispose = function (){
-            this.splitpaneobj.dispose();
-            this.splitpaneobj = null;
-            this.treeObj.dispose();
-            this.treeObj = null;
             this.tabctrlObj.dispose();
             this.tabctrlObj = null;
+            this.treeObj.dispose();
+            this.treeObj = null;
+            this.splitpaneobj.dispose();
+            this.splitpaneobj = null;
+
             // this.wnd = null;
             // this.doc = null;
             // this.parentElement = null;

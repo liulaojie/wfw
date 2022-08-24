@@ -5,6 +5,12 @@ import com.esen.eorm.entity.RootEntity;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+/**
+ * 图书借阅记录的实体类.
+ *
+ * @author liuaj
+ * @since 20220824
+ */
 public class BookHistoryEntity extends RootEntity implements Serializable {
 
 		private static final long serialVersionUID = -3764378326887998646L;
@@ -30,49 +36,82 @@ public class BookHistoryEntity extends RootEntity implements Serializable {
 		 */
 		private Timestamp todate;
 
-		public static long getSerialVersionUID() {
-				return serialVersionUID;
-		}
+	/**
+	 * @return the serialVersionUID
+	 */
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
 
-		@Override
-		public String getId() {
-				return id;
-		}
+	/**
+	 * @return the id
+	 */
+	@Override
+	public String getId() {
+		return id;
+	}
 
-		@Override
-		public void setId(String id) {
-				this.id = id;
-		}
+	/**
+	 * @param id to set
+	 */
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
 
-		public String getPerson() {
-				return person;
-		}
+	/**
+	 * @return the person
+	 */
+	public String getPerson() {
+		return person;
+	}
 
-		public void setPerson(String person) {
-				this.person = person;
-		}
+	/**
+	 * @param person to set
+	 */
+	public void setPerson(String person) {
+		this.person = person;
+	}
 
-		public String getBid() {
-				return bid;
-		}
+	/**
+	 * @return the bid
+	 */
+	public String getBid() {
+		return bid;
+	}
 
-		public void setBid(String bid) {
-				this.bid = bid;
-		}
+	/**
+	 * @param bid to set
+	 */
+	public void setBid(String bid) {
+		this.bid = bid;
+	}
 
-		public Timestamp getFromdate() {
-				return fromdate;
-		}
+	/**
+	 * @return the fromdate
+	 */
+	public Timestamp getFromdate() {
+		return fromdate;
+	}
 
-		public void setFromdate(Timestamp fromdate) {
-				this.fromdate = fromdate;
-		}
+	/**
+	 * @param fromdate to set
+	 */
+	public void setFromdate(Timestamp fromdate) {
+		this.fromdate = fromdate;
+	}
 
-		public Timestamp getTodate() {
-				return todate;
-		}
+	/**
+	 * @return the todate
+	 */
+	public Timestamp getTodate() {
+		return todate;
+	}
 
-		public void setTodate(Timestamp todate) {
-				this.todate = todate;
-		}
+	/**
+	 * @param todate to set
+	 */
+	public void setTodate(Timestamp todate) {
+		this.todate = todate;
+	}
 }

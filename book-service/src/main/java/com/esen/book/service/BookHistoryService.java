@@ -1,9 +1,10 @@
-package com.esen.book.web.service;
+package com.esen.book.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.esen.book.api.repository.BookHistoryRepository;
 import com.esen.eorm.annotation.ApplicationService;
 import com.esen.eorm.service.AbstractService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @ApplicationService
 public class BookHistoryService extends AbstractService {

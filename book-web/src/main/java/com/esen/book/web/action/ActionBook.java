@@ -1,6 +1,6 @@
 package com.esen.book.web.action;
 
-import com.esen.book.web.service.BookHistoryService;
+import com.esen.book.service.BookHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

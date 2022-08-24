@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 import com.esen.eorm.entity.RootEntity;
 
+/**
+ * 图书种类的实体类
+ *
+ * @author liuaj
+ * @since 20220824
+ */
 public class BookTypeEntity extends RootEntity implements Serializable {
 		private static final long serialVersionUID = 3705905178278362500L;
 		/**

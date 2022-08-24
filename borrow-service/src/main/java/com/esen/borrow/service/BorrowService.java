@@ -1,4 +1,9 @@
-package com.esen.borrow.web.service;
+package com.esen.borrow.service;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.esen.book.api.entity.*;
 import com.esen.book.api.repository.*;
@@ -11,13 +16,6 @@ import com.esen.eorm.annotation.ApplicationService;
 import com.esen.eorm.service.AbstractService;
 import com.esen.eutil.util.UNID;
 import com.esen.eutil.util.exp.Expression;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * 图书管理的SERVICE层

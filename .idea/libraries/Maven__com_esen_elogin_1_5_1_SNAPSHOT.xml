@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:elogin:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/elogin/1.5.1-SNAPSHOT/elogin-1.5.1-20220802.071348-56.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/elogin/1.5.1-SNAPSHOT/elogin-1.5.1-20220823.093446-57.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/elogin/1.5.1-SNAPSHOT/elogin-1.5.1-20220802.071348-56-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/elogin/1.5.1-SNAPSHOT/elogin-1.5.1-20220823.093446-57-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/elogin/1.5.1-SNAPSHOT/elogin-1.5.1-20220802.071348-56-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/elogin/1.5.1-SNAPSHOT/elogin-1.5.1-20220823.093446-57-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

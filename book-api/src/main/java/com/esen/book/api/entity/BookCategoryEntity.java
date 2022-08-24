@@ -4,6 +4,12 @@ import com.esen.eorm.entity.RootEntity;
 
 import java.io.Serializable;
 
+/**
+ * 图书分类的实体类 .
+ *
+ * @author liuaj
+ * @since 20220824
+ */
 public class BookCategoryEntity  extends RootEntity implements Serializable {
 		private static final long serialVersionUID = -1828049103087540393L;
 		/**
@@ -15,27 +21,42 @@ public class BookCategoryEntity  extends RootEntity implements Serializable {
 		 */
 		private String caption;
 
-		public static long getSerialVersionUID() {
-				return serialVersionUID;
-		}
+	/**
+	 * @return the serialVersionUID
+	 */
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
 
-		@Override
-		public String getId() {
-				return id;
-		}
+	/**
+	 * @return the caption
+	 */
+	@Override
+	public String getCaption() {
+		return caption;
+	}
 
-		@Override
-		public void setId(String id) {
-				this.id = id;
-		}
+	/**
+	 * @param caption to set
+	 */
+	@Override
+	public void setCaption(String caption) {
+		this.caption = caption;
+	}
 
-		@Override
-		public String getCaption() {
-				return caption;
-		}
+	/**
+	 * @return the id
+	 */
+	@Override
+	public String getId() {
+		return id;
+	}
 
-		@Override
-		public void setCaption(String caption) {
-				this.caption = caption;
-		}
+	/**
+	 * @param  id to set
+	 */
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
 }
