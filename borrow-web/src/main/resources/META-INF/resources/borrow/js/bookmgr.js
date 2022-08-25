@@ -1,5 +1,5 @@
-define(["eui/modules/uibase","eui/modules/emenu", "eui/modules/ecoolbar", "eui/modules/elist", "eui/modules/epagebar"],
-    function (uibase, emenu,ecoolbar,elist,epagebar) {
+define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/modules/epagebar"],
+    function (uibase, ecoolbar,elist,epagebar) {
 
         var EComponent = uibase.EComponent;
         var ECoolBar = ecoolbar.ECoolBar;
@@ -8,6 +8,7 @@ define(["eui/modules/uibase","eui/modules/emenu", "eui/modules/ecoolbar", "eui/m
         var pageIndex =0;
         var bcaption;
         var scaption;
+        var isadd=true;
         /**
          * 自定义分页条
          */
@@ -38,12 +39,15 @@ define(["eui/modules/uibase","eui/modules/emenu", "eui/modules/ecoolbar", "eui/m
          * 销毁所持有的资源
          */
         BookMgr.prototype.dispose = function (){
+            this.dialogObj.dispose();
+            this.dialogObj=null;
             this.coolbarObj.dispose();
             this.coolbarObj = null;
             this.listObj.dispose();
             this.listObj = null;
             this.pageBarObj.dispose();
             this.pageBarObj = null;
+
             // this.wnd = null;
             // this.doc = null;
             // this.parentElement = null;
@@ -70,7 +74,12 @@ define(["eui/modules/uibase","eui/modules/emenu", "eui/modules/ecoolbar", "eui/m
                 baseCss:"eui-coolbar-btn"
             });
             var band = this.coolbarObj.addBand("band_name1",true,true);
-            band.addButton(null,"新建图书");
+            var dom= band.addButton(null,"新建图书");
+            dom.setName("newBook");
+            dom.setOnAfterClick(function (){
+                self._showDialog();
+
+            })
         }
 
         /**
@@ -137,7 +146,7 @@ define(["eui/modules/uibase","eui/modules/emenu", "eui/modules/ecoolbar", "eui/m
                 paramobj:{
                     style:"text",
                     pageSize:30,
-                    totalCount:75,
+                    totalCount:76,
                     pageIndex:0,
                     listpage:false
                 },
@@ -149,6 +158,39 @@ define(["eui/modules/uibase","eui/modules/emenu", "eui/modules/ecoolbar", "eui/m
                     self._initData(bcaption,scaption,pageIndex);
                 }
             })
+        }
+        /**
+         * 显示对话框
+         */
+        BookMgr.prototype._showDialog = function (){
+            /**
+             * (1)对话框公用，不存在才创建对话框
+             * (2)对话框创建在rootwindow上， EUI.getRootWindow()
+             * (3)对话框的引用记录在Object01对象上 this.exportdlg
+             */
+            var self = this;
+            if(!self.bookdialog) {
+                var options = {wnd:EUI.getRootWindow(),};
+                if (!isadd){EUI.extendObj(options,{caption:"编辑图书"});}
+                var dlg = require("borrow/js/bookdialog");
+                self.bookdialog = new dlg.BookDialog(options);
+                //设置点击确定的回调函数
+                self.bookdialog.setOnok(function (){
+
+                })
+            }
+
+            self.bookdialog.showModal();
+            //设置数据
+            self.bookdialog.setValue();
+            //打开对话框
+            self.bookdialog.open();
+        }
+        /**
+         * 隐藏对话框
+         */
+        BookMgr.prototype._hideDialog = function (){
+            var self = this;
         }
         /**
          * 初始化列表中数据
