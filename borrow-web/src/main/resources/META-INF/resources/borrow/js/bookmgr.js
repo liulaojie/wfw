@@ -197,7 +197,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          */
         BookMgr.prototype._initData = function (bcaption,scaption,pageIndex){
             var self = this;
-            EUI.get({
+            EUI.post({
                 url:EUI.getContextPath()+"web/borrow/bookList.do",
                 data:{
                     bcaption:bcaption,

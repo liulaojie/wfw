@@ -6,6 +6,7 @@ import com.esen.book.api.entity.BookViewEntity;
 import com.esen.borrow.api.entity.BorrowViewEntity;
 import com.esen.borrow.service.BorrowService;
 import com.esen.ejdbc.params.PageRequest;
+import com.esen.eutil.util.JsonUtils;
 import com.esen.eutil.util.StrFunc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -92,7 +93,7 @@ public class ActionWebBorrowMgr {
 	 * @param cid 大类ID
 	 * @return
 	 */
-	@RequestMapping(value = "/typeList")
+	@RequestMapping(value = "/typeList",method = RequestMethod.POST )
 	@ResponseBody
 	public List<BookTypeEntity> typeList(String cid) {
 		return borrowService.typeList(cid);
@@ -104,7 +105,7 @@ public class ActionWebBorrowMgr {
 	 * @return
 	 * @throws
 	 */
-	@RequestMapping(value = "/categoryList")
+	@RequestMapping(value = "/categoryList",method = RequestMethod.POST)
 	@ResponseBody
 	public List<BookCategoryEntity> categoryList() {
 		return borrowService.categoryList();
@@ -115,7 +116,7 @@ public class ActionWebBorrowMgr {
 	 * @param bcaption bcaption(可为空) 图书大类 scaption(可为空)图书小类 pageIndex 页面索引
 	 * @return
 	 */
-	@RequestMapping(value = "/bookList")
+	@RequestMapping(value = "/bookList",method = RequestMethod.POST)
 	@ResponseBody
 	public List<BookViewEntity> bookList
 	(HttpServletRequest req, String bcaption,String scaption,String pageIndex) {
@@ -131,12 +132,15 @@ public class ActionWebBorrowMgr {
 	 */
 	@RequestMapping(value = "/addBook", method = RequestMethod.POST)
 	@ResponseBody
-	public String addBook(String name, String tid, String desc) {
+	public String addBook(HttpServletRequest req,String name, String tid, String desc) {
+		String msg=null;
 		if (borrowService.bookIsExists(name) == REPEAT) {
-			return "书名重复!";
+			 msg = "书名重复";
+		}else{
+			borrowService.addBook(name, tid, desc);
+			 msg = "添加成功";
 		}
-		borrowService.addBook(name, tid, desc);
-		return "添加成功！";
+		return JsonUtils.toJSONString(msg);
 	}
 	/**
 	 * 编辑书籍

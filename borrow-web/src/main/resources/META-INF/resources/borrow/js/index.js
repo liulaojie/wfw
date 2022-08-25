@@ -151,7 +151,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
         var getCategoryList = function (item,userObj){
             if (userObj.id!="booklist"){return;}
             var self = this;
-            EUI.get({
+            EUI.post({
                 url:EUI.getContextPath()+"web/borrow/categoryList.do",
                 callback:function (queryObj){
                     var obj1 = queryObj.getResponseJSON();
@@ -182,15 +182,15 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
          */
         var getTypeList = function (item,userObj){
             var self = this;
-            EUI.get({
+            EUI.post({
                 url: EUI.getContextPath() + "web/borrow/typeList.do",
                 data:{cid:userObj.id},
                 callback: function (queryObj) {
                     var obj2 = queryObj.getResponseJSON();
                     if (!!obj2) {
-                        var data4 = new Array();
+                        var data = new Array();
                         for (var i = 0; i < obj2.length; i++) {
-                            data4[i] = {
+                            data[i] = {
                                 id: obj2[i].id,
                                 caption: obj2[i].caption,
                                 img0: "&#xe1da;",
@@ -199,7 +199,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                             }
                         }
                     }
-                    item.loadFromArray(data4);
+                    item.loadFromArray(data);
 
                 }
             })
