@@ -132,22 +132,23 @@ public class ActionWebBorrowMgr {
 	 */
 	@RequestMapping(value = "/addBook", method = RequestMethod.POST)
 	@ResponseBody
-	public String addBook(HttpServletRequest req,String name, String tid, String desc) {
-		String msg=null;
+	public boolean addBook(HttpServletRequest req,String name, String tid, String desc) {
+
 		if (borrowService.bookIsExists(name) == REPEAT) {
-			 msg = "书名重复";
+			return false;
 		}else{
 			borrowService.addBook(name, tid, desc);
-			 msg = "添加成功";
+			return true;
 		}
-		return JsonUtils.toJSONString(msg);
 	}
 	/**
 	 * 编辑书籍
 	 */
 	@RequestMapping(value = "/saveBook",method = RequestMethod.POST)
-	public String saveBook(String name,String desc,String scaption,String bcaption){
-		return null;
+	@ResponseBody
+	public boolean saveBook(String id,String name,String desc,String cid,String tid){
+		borrowService.saveBook(id,name,tid,desc);
+		return true;
 	}
 
 }

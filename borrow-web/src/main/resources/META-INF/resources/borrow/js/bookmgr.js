@@ -5,10 +5,9 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         var ECoolBar = ecoolbar.ECoolBar;
         var EList= elist.EList;
         var EPageBar = epagebar.EPageBar;
-        var pageIndex =0;
-        var bcaption;
-        var scaption;
-        var isadd=true;
+        BookMgr.prototype.pageIndex =0;
+        BookMgr.prototype.bcaption;
+        BookMgr.prototype.scaption;
         /**
          * 自定义分页条
          */
@@ -24,14 +23,15 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * BookMgr的构造函数
          */
         function BookMgr(options){
+            var self = this;
             EComponent.call(this,options);
             // var options = options||{};
             // this.wnd = options["wnd"]||window;
             // this.doc = this.wnd.document;
-            bcaption=options.bcaption;
-            scaption=options.scaption
+            self.bcaption=options.bcaption;
+            self.scaption=options.scaption
             this._initUI();
-            this._initData(bcaption,scaption,pageIndex);
+            this._initData(self.bcaption,self.scaption,self.pageIndex);
         }
         EUI.extendClass(BookMgr,EComponent,"BookMgr");
 
@@ -77,7 +77,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             var dom= band.addButton(null,"新建图书");
             dom.setName("newBook");
             dom.setOnAfterClick(function (){
-                self._showDialog();
+                self._showDialog(true,null);
 
             })
         }
@@ -86,6 +86,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * 初始化基础表格
          */
         BookMgr.prototype._initList = function (){
+            var  self = this;
             this.listObj = new EList({
                 parentElement:document.getElementById("listdom"),
                 width:"100%",
@@ -128,7 +129,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                     onCellClick: function (rowdata,td,evt){
                         var target = evt.target;
                         if (target.tagName==="A"){
-                            alert(rowdata)
+                            self._showDialog(false,rowdata);
                         }
                     }
                 }
@@ -155,14 +156,15 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 showNumberClick:false,//是否显示数字点击项，默认显示
                 customSort:customSort,
                 onshowpage:function (pageIndex,pageSize){
-                    self._initData(bcaption,scaption,pageIndex);
+                    self.pageIndex = pageIndex
+                    self._initData(self.bcaption,self.scaption,pageIndex);
                 }
             })
         }
         /**
          * 显示对话框
          */
-        BookMgr.prototype._showDialog = function (){
+        BookMgr.prototype._showDialog = function (isnew,datas){
             /**
              * (1)对话框公用，不存在才创建对话框
              * (2)对话框创建在rootwindow上， EUI.getRootWindow()
@@ -171,20 +173,22 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             var self = this;
             if(!self.bookdialog) {
                 var options = {wnd:EUI.getRootWindow(),};
-                if (!isadd){EUI.extendObj(options,{caption:"编辑图书"});}
+                EUI.extendObj(options,{isnew:isnew});
                 var dlg = require("borrow/js/bookdialog");
                 self.bookdialog = new dlg.BookDialog(options);
                 //设置点击确定的回调函数
                 self.bookdialog.setOnok(function (){
-
+                    self._initData(self.bcaption,self.scaption,self.pageIndex);
                 })
             }
-
             self.bookdialog.showModal();
-            //设置数据
-            self.bookdialog.setValue();
             //打开对话框
             self.bookdialog.open();
+            //设置数据
+            if (!isnew){
+                self.bookdialog.setValue(datas);
+            }
+
         }
         /**
          * 隐藏对话框

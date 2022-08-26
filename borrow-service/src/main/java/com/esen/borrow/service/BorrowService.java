@@ -161,5 +161,22 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 		bookInfoEntity.setDesc(desc);
 		bookInfoRepository.add(bookInfoEntity);
 	}
+	/**
+	 * 修改书籍
+	 * @param name 书籍名 scaptionn 小类名称 desc 书本描述
+	 * @return
+	 */
+	public void saveBook( String id,String name,String tid,String desc){
+		BookInfoEntity bookInfoEntity = new BookInfoEntity();
+		bookInfoEntity.setId(id);
+		bookInfoEntity.setTid(tid);
+		bookInfoEntity.setCaption(name);
+		bookInfoEntity.setDesc(desc);
+		if (tid.length()==1){
+			bookInfoRepository.save(bookInfoEntity,"caption","desc");
+		}else{
+			bookInfoRepository.save(bookInfoEntity);
+		}
+	}
 
 }
