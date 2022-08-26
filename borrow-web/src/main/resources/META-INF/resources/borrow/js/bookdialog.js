@@ -98,7 +98,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             //绑定输入事件
            //  var dom = $(self.getContent()).find("#name");
            // dom.oninput = function (){
-           //     debugger;
            //     self.hideErrMsg("nametips")
            // }
             self.addBottomButtom();
