@@ -177,6 +177,7 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 		}else{
 			bookInfoRepository.save(bookInfoEntity);
 		}
+		bookViewRepository.cleanCache();
 	}
 
 }

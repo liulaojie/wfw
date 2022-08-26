@@ -7,6 +7,8 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         BookDialog.prototype.cid = null;
         BookDialog.prototype.tid = null;
         BookDialog.prototype.bid = null;
+        BookDialog.prototype.bcaption = null;
+        BookDialog.prototype.scaption = null;
         BookDialog.prototype.isnew = null;
         /**
          * BookDialog的构造函数,继承EDialog
@@ -155,6 +157,9 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 callback:function (queryObj){
                     var obj = queryObj.getResponseJSON();
                     self.bComboboxObj.setDatas(obj);
+                    if (!isNull(self.bcaption)){
+                        self.bComboboxObj.setCaption(self.bcaption,false);
+                    }
                 }
             })
 
@@ -171,7 +176,9 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 callback: function (queryObj) {
                     var obj = queryObj.getResponseJSON();
                     self.sComboboxObj.setDatas(obj);
-
+                    if (!isNull(self.scaption)){
+                        self.bComboboxObj.setCaption(self.scaption,false);
+                    }
                 }
             })
         }
@@ -186,17 +193,18 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     if (self.check()){//数据正确
                         self.save();//新建图书信息
                         self.onok;
+                        self.close();
                     }
                 }
             })
             var cancel =this.addButton("取消","",false,true,function (){
                 self.clear();
+                self.close();
 
             })
             EUI.removeClassName(cancel,"eui-btn-primary");
             //关闭对话框，清空对话框数据
             this.setOnClose(function (){
-                self.defaultCloseEvent();
                 self.clear();
             })
 
@@ -221,12 +229,10 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                         else {
                             EUI.hideWaitDialogWithComplete(0,);
                             var dom = EUI.showMessage("已存在书名为《"+self.userdata.name+"》的书籍", "提示");
-
                         }
                     }
                 })
             }else{//保存修改
-
                EUI.post({
                    url:EUI.getContextPath() + "web/borrow/saveBook.do",
                    data:self.userdata,
@@ -239,25 +245,22 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                        else {
                            EUI.hideWaitDialogWithComplete(0,);
                            var dom = EUI.showMessage("修改失败", "提示");
-
                        }
                    }
                })
             }
-
         }
-        /**
-         * 对话框默认的关闭事件
-         */
-        BookDialog.prototype.defaultCloseEvent = function (){
 
-        }
         /**
          * 点击确定后执行的回调事件
          */
         BookDialog.prototype.setOnok = function (func){
             this.onok = func;
         }
+        /**
+         * 检查是否有必填项为空
+         * @returns {boolean}
+         */
         BookDialog.prototype.check = function (){
             var  self = this;
             var flag = true;
@@ -309,9 +312,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             }
         }
         /**
-         * 点确定时，获得对话框中的数据
-         */
-        /**
          *清除弹框中的数据
          */
         BookDialog.prototype.clear = function (){
@@ -354,15 +354,16 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             //设置书名
             EUI.getChildDomByAttrib(self.getBaseDom(),"id","name",true).value=datas.name;
             //设置大类
+            self.bcaption = datas.bcaption;
             self.bComboboxObj.setCaption(datas.bcaption,false);
             //设置小类
+            self.scaption = datas.scaption;
             self.sComboboxObj.setCaption(datas.scaption,false);
             //设置描述
             EUI.getChildDomByAttrib(this.getBaseDom(),"id","desc",true).value=datas.desc;
             self.cid=0;
             self.tid=0;
         }
-
         /**
          * 判断是否为空
          */

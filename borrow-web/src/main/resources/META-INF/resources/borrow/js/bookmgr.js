@@ -39,8 +39,8 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * 销毁所持有的资源
          */
         BookMgr.prototype.dispose = function (){
-            this.dialogObj.dispose();
-            this.dialogObj=null;
+            this.bookdialog.dispose();
+            this.bookdialog=null;
             this.coolbarObj.dispose();
             this.coolbarObj = null;
             this.listObj.dispose();
@@ -189,12 +189,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 self.bookdialog.setValue(datas);
             }
 
-        }
-        /**
-         * 隐藏对话框
-         */
-        BookMgr.prototype._hideDialog = function (){
-            var self = this;
         }
         /**
          * 初始化列表中数据

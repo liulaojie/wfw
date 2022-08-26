@@ -148,7 +148,9 @@ public class ActionWebBorrowMgr {
 	@ResponseBody
 	public boolean saveBook(String id,String name,String desc,String cid,String tid){
 		borrowService.saveBook(id,name,tid,desc);
+
 		return true;
+
 	}
 
 }
