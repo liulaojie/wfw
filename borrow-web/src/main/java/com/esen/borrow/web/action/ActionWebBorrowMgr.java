@@ -37,7 +37,7 @@ public class ActionWebBorrowMgr {
 	private BorrowService borrowService;
 
 	@RequestMapping("index")
-	public String test(){
+	public String index(){
 		return "borrow/index";
 	}
 
@@ -47,6 +47,10 @@ public class ActionWebBorrowMgr {
 		req.setAttribute("bcaption",bcaption);
 		return "borrow/bookmgr";
 	}
+	@RequestMapping("borrowmgr")
+	public String borrowmgr(){
+		return "borrow/borrowmgr";
+	}
 
 
 	//------------------------------------------------借阅功能----------------------------------------------------------------
@@ -54,11 +58,18 @@ public class ActionWebBorrowMgr {
 	 * 获取借阅列表
 	 */
 	@RequestMapping(value = "/borrowList")
-	public String borrowList(HttpServletRequest req) {
-		PageRequest page = new PageRequest(1, 10);
-		List<BorrowViewEntity> list = borrowService.borrowList(page);
-		req.setAttribute("borrowlist", list);
-		return "borrow/borrowList";
+	@ResponseBody
+	public List<BorrowViewEntity> borrowList(HttpServletRequest req,String pageIndex) {
+		PageRequest page = new PageRequest(StrFunc.str2int(pageIndex,0), 30);
+		return borrowService.borrowList(page);
+	}
+	/**
+	 * 获取借阅列表
+	 */
+	@RequestMapping(value = "/borrowSize")
+	@ResponseBody
+	public int borrowSize() {
+		return borrowService.borrowSize();
 	}
 	/**
 	 *  添加借书记录
@@ -67,24 +78,23 @@ public class ActionWebBorrowMgr {
 	 */
 	@RequestMapping(value = "/addBorrow", method = RequestMethod.POST)
 	@ResponseBody
-	public String addBorrow(String person, String bid, Timestamp fromdate) {
+	public boolean addBorrow(String person, String bid, String fromdate) {
 		borrowService.addBorrow(person, bid, fromdate);
-		return "借书成功！";
+		return true;
 	}
 	/**
 	 * 更新借书记录，还书
 	 */
 	@RequestMapping(value = "/saveBorrow",method = RequestMethod.POST)
-	public String saveBorrow(BorrowViewEntity borrowViewEntity){
-		borrowService.returnBook(borrowViewEntity);
+	@ResponseBody
+	public String saveBorrow(String id, String todate){
+		borrowService.returnBook(id,todate);
 		return "还书成功";
 	}
-
-	public String deleteBorrow(BorrowViewEntity borrowViewEntity){
-		if (borrowService.deleteBorrow(borrowViewEntity)){
-			return "删除成功！";
-		}
-		return  "删除失败";
+	@RequestMapping(value = "deleteBorrow")
+	@ResponseBody
+	public boolean deleteBorrow(String id) {
+		return borrowService.deleteBorrow(id);
 	}
 
 	//------------------------------------------------图书功能----------------------------------------------------------------
@@ -123,6 +133,14 @@ public class ActionWebBorrowMgr {
 		PageRequest page = new PageRequest(StrFunc.str2int(pageIndex,0), 30);
 		List<BookViewEntity> list = borrowService.bookList(page, bcaption,scaption);
 		return list;
+	}
+	/**
+	 * 获取借阅列表
+	 */
+	@RequestMapping(value = "/bookSize")
+	@ResponseBody
+	public int bookSize() {
+		return borrowService.bookSize();
 	}
 
 	/**

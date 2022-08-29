@@ -6,8 +6,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         var EList= elist.EList;
         var EPageBar = epagebar.EPageBar;
         BookMgr.prototype.pageIndex =0;
-        BookMgr.prototype.bcaption;
-        BookMgr.prototype.scaption;
+        BookMgr.prototype.totalCount=0;
         /**
          * 自定义分页条
          */
@@ -17,7 +16,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             {id:"main",text:"第,页  共{0}页",cssText:";color:#000000;font-weight: bold;"},
             {id:"next",text:"下一页",cssText:";color:#87CEEB;font-weight: bold;"},
             {id:"last",text:"末页",cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"total",text:"每页三十条共{0}条",cssText:";color:#000000;font-weight: bold;"}
+            {id:"total",text:"每页三十条共{1}条",cssText:";color:#000000;font-weight: bold;"}
             ]
         /**
          * BookMgr的构造函数
@@ -59,7 +58,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         BookMgr.prototype._initUI = function (){
             this._initList();
             this._initCoolBar();
-            this._initPageBar();
+
         }
 
         /**
@@ -147,7 +146,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 paramobj:{
                     style:"text",
                     pageSize:30,
-                    totalCount:76,
+                    totalCount:self.totalCount,
                     pageIndex:0,
                     listpage:false
                 },
@@ -191,10 +190,11 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
 
         }
         /**
-         * 初始化列表中数据
+         * 初始数据
          */
         BookMgr.prototype._initData = function (bcaption,scaption,pageIndex){
             var self = this;
+            //初始化列表中数据
             EUI.post({
                 url:EUI.getContextPath()+"web/borrow/bookList.do",
                 data:{
@@ -209,6 +209,17 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                         for (var i=0;i<obj.length;i++){
                            self.listObj.addRow(obj[i]);
                         }
+                    }
+                }
+            })
+            //初始化分页条数据
+            EUI.post({
+                url:EUI.getContextPath()+"web/borrow/bookSize.do",
+                callback:function (queryObj){
+                    var obj = queryObj.getResponseJSON();
+                    if (!!obj){
+                        self.totalCount = obj;
+                        self._initPageBar();
                     }
                 }
             })

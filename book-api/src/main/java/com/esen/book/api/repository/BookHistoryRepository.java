@@ -16,13 +16,13 @@ import com.esen.eutil.util.exp.Expression;
 public class BookHistoryRepository extends AbstractRepository {
 
 		/**
-		 * person的所有借阅记录数
-		 * @param person 借阅人的姓名
+		 * 所有借阅记录数
+		 * @param
 		 * @return
 		 */
-		public int getTotalCountByPerson(String person){
+		public int getTotalCount(){
 				Query<BookHistoryEntity> query = getCurrentSession().createQuery(getEntityInfo().getBean(),getEntityName());
-				return query.query(new Expression("person = ?"),null,person).calcTotalCount();
+				return query.query(null,null,null).calcTotalCount();
 		}
 
 		@Override

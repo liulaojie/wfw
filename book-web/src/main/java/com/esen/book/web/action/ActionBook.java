@@ -15,7 +15,7 @@ public class ActionBook {
 
 		@RequestMapping("/test1")
 		@ResponseBody
-		public int getTotalCountByPerson(String person){
-				return bookHistoryService.getTotalCountByPerson(person);
+		public int getTotalCountByPerson(){
+				return bookHistoryService.getTotalCountByPerson();
 		}
 }

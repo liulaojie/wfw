@@ -11,7 +11,7 @@ public class BookHistoryService extends AbstractService {
 		@Autowired
 		private BookHistoryRepository bookHistoryRepository;
 
-		public int getTotalCountByPerson(String person){
-				return bookHistoryRepository.getTotalCountByPerson(person);
+		public int getTotalCountByPerson(){
+				return bookHistoryRepository.getTotalCount();
 		}
 }

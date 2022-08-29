@@ -77,7 +77,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 var userobj = item.userObj;
                 if (userobj.level!=1){
                     var tabobj= self.tabctrlObj;
-                    tabobj.add(userobj.caption);
+                    tabobj.add(userobj.caption,null,{data:{id:userobj.id}});
                     var i = tabobj.getCount();
                     var dom = tabobj.getBodyDom(i-1);
                     dom.style.border="solid";
@@ -117,6 +117,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             }];
             rootitem.loadFromArray(data1,function (item){
                 var data2 = [{
+                    uid:"booklist",
                     id: "booklist",
                     haschild:true,
                     caption: "图书管理",
@@ -128,6 +129,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                     level: 2,
                     img0:"&#xe1cd;"
                 },{
+
                     id:"analysetable",
                     caption: "分析表管理",
                     level: 2,
@@ -213,7 +215,14 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 parentElement:this.rightcontainer,
                 enableclosed:true,
                 style:"level1-mini ",
-                baseCss:"eui-layout-row-1 eui-layout-row-first body"
+                baseCss:"eui-layout-row-1 eui-layout-row-first body",
+                onswitched:function (index){
+                    var a=self.tabctrlObj.getCaption(index);
+                    var id = self.tabctrlObj.getData(index,id)
+                    var rootitem = self.treeObj.getRootItem();
+                    rootitem = rootitem.getChildItem(0);
+                    var target = rootitem.findItem(a);
+                }
             })
         }
 
