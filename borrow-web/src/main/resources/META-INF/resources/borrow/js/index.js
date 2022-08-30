@@ -75,31 +75,24 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             this.treeObj.addBaseCss("left");
             this.treeObj.setOnClick(function(item){
                 var userobj = item.userObj;
-                if (userobj.level!=1){
-                    var tabobj= self.tabctrlObj;
-                    tabobj.add(userobj.caption,null,{data:{id:userobj.id}});
-                    var i = tabobj.getCount();
-                    var dom = tabobj.getBodyDom(i-1);
-                    dom.style.border="solid";
-                    EUI.addClassName(dom,"body");
-                    if (userobj.level==2&&userobj.caption=="图书管理"){
-                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
-                        strhtml +='" width="100%" height="100%"></iframe>';
-                        dom.innerHTML=strhtml;
-                    }
-                    if (userobj.level==3){
-                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
-                        strhtml +="?bcaption="+userobj.caption;
-                        strhtml +='" width="100%" height="100%"></iframe>';
-                        dom.innerHTML=strhtml;
-                    }
-                    if (userobj.level==4){
-                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
-                        strhtml +="?scaption="+userobj.caption;
-                        strhtml +='" width="100%" height="100%"></iframe>';
-                        dom.innerHTML=strhtml;
+                var add = true;
+                var index;
+                for (var i = 0;i<self.tabctrlObj.getCount();i++){//遍历确定是否存在对应标签页
+                    if (self.tabctrlObj.getData(i,"level")==userobj.level){
+                        if (self.tabctrlObj.getData(i,"id")==userobj.id){
+                            add=false;
+                            index = i;
+                        }
                     }
                 }
+                if (add){
+                    //第一次打开新建标签页，并加载对应子项
+                    self.addtab(item,userobj);
+                }else{
+                    //存在对应标签页，跳转
+                    self.tabctrlObj.setActive(index);
+                }
+
             });
         }
 
@@ -117,7 +110,6 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             }];
             rootitem.loadFromArray(data1,function (item){
                 var data2 = [{
-                    uid:"booklist",
                     id: "booklist",
                     haschild:true,
                     caption: "图书管理",
@@ -158,9 +150,9 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 callback:function (queryObj){
                     var obj1 = queryObj.getResponseJSON();
                     if (!!obj1){
-                        var data3 = new Array();
+                        var data = new Array();
                         for (var i=0;i<obj1.length;i++){
-                            data3[i]={
+                            data[i]={
                                 id : obj1[i].id,
                                 caption:obj1[i].caption,
                                 img0:"&#xe1da;",
@@ -169,12 +161,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                                 type:"bcaption"
                             }
                         }
-                        item.loadFromArray(data3,
-                            function (item,userObj) {
-                                getTypeList(item,userObj);
-
-                            }
-                        );
+                        item.loadFromArray(data);
                     }
                 }
             })
@@ -202,7 +189,6 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                         }
                     }
                     item.loadFromArray(data);
-
                 }
             })
         }
@@ -210,20 +196,69 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
          * 初始化标签页
          */
         Index.prototype._initTabctrl =function (){
+            var self = this;
             this.tabctrlObj = new ETabCtrl({
                 wnd:this.wnd,
                 parentElement:this.rightcontainer,
                 enableclosed:true,
                 style:"level1-mini ",
                 baseCss:"eui-layout-row-1 eui-layout-row-first body",
-                onswitched:function (index){
+                onswitched:function (index){//切换标签页，对应左树高亮
                     var a=self.tabctrlObj.getCaption(index);
-                    var id = self.tabctrlObj.getData(index,id)
-                    var rootitem = self.treeObj.getRootItem();
-                    rootitem = rootitem.getChildItem(0);
-                    var target = rootitem.findItem(a);
+                    var id = self.tabctrlObj.getData(index,"id");
+                    var level = self.tabctrlObj.getData(index,"level");
+                    var item = self.treeObj.getRootItem();
+                    var child = item.getAllChildrenItems(null,true);
+                    for (var i=0;i<child.length;i++){
+                        if (child[i].userObj.level==level){//确定层级
+                            if (child[i].userObj.id==id){//确定目标
+                                self.treeObj.clearSelectedItems();
+                                child[i].selectSelf();
+                            }
+                        }
+                    }
                 }
             })
+        }
+
+        Index.prototype.addtab = function (item,userobj){
+            var self = this;
+            if (userobj.level!=1){
+                var tabobj= self.tabctrlObj;
+                tabobj.add(userobj.caption,null,{
+                    data:{
+                        id:userobj.id,
+                        level:userobj.level
+                    }
+                });
+                var i = tabobj.getCount();
+                var dom = tabobj.getBodyDom(i-1);
+                dom.style.border="solid";
+                EUI.addClassName(dom,"body");
+                if (userobj.level==2&&userobj.caption=="图书管理"){
+                    var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
+                    strhtml +='" width="100%" height="100%"></iframe>';
+                    dom.innerHTML=strhtml;
+                }
+                if (userobj.level==2&&userobj.caption=="记录查询"){
+                    var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/borrowmgr.do";
+                    strhtml +='" width="100%" height="100%"></iframe>';
+                    dom.innerHTML=strhtml;
+                }
+                if (userobj.level==3){
+                    getTypeList(item,userobj);
+                    var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
+                    strhtml +="?bcaption="+userobj.caption;
+                    strhtml +='" width="100%" height="100%"></iframe>';
+                    dom.innerHTML=strhtml;
+                }
+                if (userobj.level==4){
+                    var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
+                    strhtml +="?scaption="+userobj.caption;
+                    strhtml +='" width="100%" height="100%"></iframe>';
+                    dom.innerHTML=strhtml;
+                }
+            }
         }
 
         /**
