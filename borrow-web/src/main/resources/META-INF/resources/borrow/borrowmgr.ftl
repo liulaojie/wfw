@@ -11,9 +11,11 @@
 
 </@module.body>
 	<script type="text/javascript">
+		var scaption = '${scaption}';
 		require(["borrow/js/borrowmgr"],function (borrowmgr){
 			var borrowmgr = new borrowmgr.BorrowMgr({
 				wnd:window,
+				scaption:scaption
 			});
 			EUI.addDispose(borrowmgr,window);
 		});

@@ -44,13 +44,13 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 		private ConnectFactoryManager connFactoryManager;
 
 		/**
-		 * person的所有借阅记录数
-		 * @param person 借阅人的姓名
+		 * 这个类型的所有借阅记录数
+		 * @param scaption 小类名
 		 * @return
 		 */
-		public int getTotalCountByPerson(String person){
+		public int getTotalCountByScaption(String scaption){
 				Query<BorrowViewEntity> query = getCurrentSession().createQuery(getEntityInfo().getBean(),getEntityName());
-				return query.query(new Expression("person = ?"),null,person).calcTotalCount();
+				return query.query(new Expression("scaption = ?"),null,scaption).calcTotalCount();
 		}
 
 		/**

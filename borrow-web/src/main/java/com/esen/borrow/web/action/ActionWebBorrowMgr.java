@@ -42,13 +42,13 @@ public class ActionWebBorrowMgr {
 	}
 
 	@RequestMapping("bookmgr")
-	public String bookMgr(HttpServletRequest req,String scaption,String bcaption){
-		req.setAttribute("scaption",scaption);
+	public String bookMgr(HttpServletRequest req,String bcaption){
 		req.setAttribute("bcaption",bcaption);
 		return "borrow/bookmgr";
 	}
 	@RequestMapping("borrowmgr")
-	public String borrowmgr(){
+	public String borrowmgr(HttpServletRequest req,String scaption){
+		req.setAttribute("scaption",scaption);
 		return "borrow/borrowmgr";
 	}
 
@@ -59,17 +59,17 @@ public class ActionWebBorrowMgr {
 	 */
 	@RequestMapping(value = "/borrowList")
 	@ResponseBody
-	public List<BorrowViewEntity> borrowList(HttpServletRequest req,String pageIndex) {
+	public List<BorrowViewEntity> borrowList(HttpServletRequest req,String pageIndex,String scaption) {
 		PageRequest page = new PageRequest(StrFunc.str2int(pageIndex,0), 30);
-		return borrowService.borrowList(page);
+		return borrowService.borrowList(page,scaption);
 	}
 	/**
 	 * 获取借阅列表
 	 */
 	@RequestMapping(value = "/borrowSize")
 	@ResponseBody
-	public int borrowSize() {
-		return borrowService.borrowSize();
+	public int borrowSize( String scaption) {
+		return borrowService.borrowSize(scaption);
 	}
 	/**
 	 *  添加借书记录
@@ -87,9 +87,9 @@ public class ActionWebBorrowMgr {
 	 */
 	@RequestMapping(value = "/saveBorrow",method = RequestMethod.POST)
 	@ResponseBody
-	public String saveBorrow(String id, String todate){
+	public boolean saveBorrow(String id, String todate){
 		borrowService.returnBook(id,todate);
-		return "还书成功";
+		return true;
 	}
 	@RequestMapping(value = "deleteBorrow")
 	@ResponseBody
@@ -139,8 +139,8 @@ public class ActionWebBorrowMgr {
 	 */
 	@RequestMapping(value = "/bookSize")
 	@ResponseBody
-	public int bookSize() {
-		return borrowService.bookSize();
+	public int bookSize(String bcaption) {
+		return borrowService.bookSize(bcaption);
 	}
 
 	/**

@@ -191,7 +191,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     self.getValue()
                     if (self.check()){//数据正确
                         self.save();//新建图书信息
-                        self.onok;
                         self.close();
                     }
                 }
@@ -224,6 +223,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                         if(obj){
                             EUI.hideWaitDialogWithComplete(1000, I18N.getString("ES.COMMON.SAVESUCCESS", "添加成功"));
                             self.clear();
+                            self.onok();
                         }
                         else {
                             EUI.hideWaitDialogWithComplete(0,);
@@ -240,6 +240,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                        if(obj){
                            EUI.hideWaitDialogWithComplete(1000, I18N.getString("ES.COMMON.SAVESUCCESS", "修改成功"));
                            self.clear();
+                           self.onok();
                        }
                        else {
                            EUI.hideWaitDialogWithComplete(0,);

@@ -3,18 +3,12 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         var EDialog = edialog.EDialog;
         var eform = eform.eform;
         var EListCombobox = ecombobox.EListCombobox;
-        BorrowDialog.prototype.userdata = {};
-        BorrowDialog.prototype.cid = null;
-        BorrowDialog.prototype.tid = null;
-        BorrowDialog.prototype.bid = null;
-        BorrowDialog.prototype.bcaption = null;
-        BorrowDialog.prototype.scaption = null;
-        BorrowDialog.prototype.pageIndexnow = null;//现在所在的页数
-        BorrowDialog.prototype.pageIndexnext = null;//将要得到的页数
+        AnalyzeDialog.prototype.id = null;
+        AnalyzeDialog.prototype.data = null;
         /**
-         * BorrowDialog的构造函数,继承EDialog
+         * AnalyzeDialog的构造函数,继承EDialog
          */
-        function BorrowDialog(options){
+        function AnalyzeDialog(options){
             EDialog.call(this,options);
             // var options = options||{};
             // this.wnd = options["wnd"]||window;
@@ -22,28 +16,26 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             this._init(options);
 
         }
-        EUI.extendClass(BorrowDialog,EDialog,"BorrowDialog");
+        EUI.extendClass(AnalyzeDialog,EDialog,"AnalyzeDialog");
 
         /**
-         * 销毁BorrowDialog所持有的资源
+         * 销毁AnalyzeDialog所持有的资源
          */
-        BorrowDialog.prototype.dispose = function (){
+        AnalyzeDialog.prototype.dispose = function (){
             var self = this;
-            self.bookComboboxObj.dispose();
-            self.bookComboboxObj = null;
-            self.fromDateObj.dispose();
-            self.fromDateObj = null;
+            self.graphComboboxObj.dispose();
+            self.graphComboboxObj = null;
             EDialog.prototype.dispose.call(this);
         }
         /**
          * 初始化对话框
          */
-        BorrowDialog.prototype._init=function (options){
+        AnalyzeDialog.prototype._init=function (options){
             var self = this;
             self._options = options||{};
-            self._options["caption"] = self._options["caption"]||"新建借阅记录";
+            self._options["caption"] = self._options["caption"]||"生成分析表";
             self._options["width"] = self._options["width"]||380;
-            self._options["height"] = self._options["height"]||400;
+            self._options["height"] = self._options["height"]||200;
             EDialog.call(self,self._options);
             self.setCanResizable(false);
             self.setMaxButtonVisible(false);
@@ -52,35 +44,27 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         /**
          * 初始化UI界面
          */
-        BorrowDialog.prototype._initUI = function (){
+        AnalyzeDialog.prototype._initUI = function (){
             var self = this;
             var content = self.getContent();
             var strhtml = [];
             strhtml.push('<div class="eui-layout-container eui-padding-top-10 eui-padding-bottom-10 eui-scroll-auto">');
-            strhtml.push('<link  rel="stylesheet" type="text/css" href="../../borrow/css/borrowdialog.css">');
-            strhtml.push('  <div id = "borrowdialog-info-content">');
+            strhtml.push('<link  rel="stylesheet" type="text/css" href="../../borrow/css/analyzedialog.css">');
+            strhtml.push('  <div id = "AnalyzeDialog-info-content">');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> 借阅人：</label>');
-            strhtml.push('          <div  class="eui-input-block"><input id="person" type="text" class="eui-form-input"');
-            strhtml.push('           placeholder="请填写借阅人姓名！">');
+            strhtml.push('          <label class="eui-form-label eui-form-required"> 分析表名称：</label>');
+            strhtml.push('          <div  class="eui-input-block"><input id="name" type="text" class="eui-form-input"');
+            strhtml.push('           placeholder="请填写分析表名称不能时纯数字！">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
-            strhtml.push('                  <div class="eui-tips-container eui-error" id="persontips" ></div>');
+            strhtml.push('                  <div class="eui-tips-container eui-error" id="nametips" ></div>');
             strhtml.push('              </div>');
             strhtml.push('          </div>');
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> 书名：</label>');
-            strhtml.push('          <div class="eui-input-block" id="bookcombobox">');
+            strhtml.push('          <label class="eui-form-label eui-form-required"> 统计图类型：</label>');
+            strhtml.push('          <div class="eui-input-block" id="graphcombobox">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
-            strhtml.push('                  <div class="eui-tips-container eui-error" id="bookcomboboxtips" ></div>');
-            strhtml.push('              </div>');
-            strhtml.push('          </div>');
-            strhtml.push('      </div>');
-            strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> 借阅时间：</label>');
-            strhtml.push('          <div class="eui-input-block" id="fromdate">');
-            strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
-            strhtml.push('                  <div class="eui-tips-container eui-error" id="fromdatetips" ></div>');
+            strhtml.push('                  <div class="eui-tips-container eui-error" id="graphcomboboxtips" ></div>');
             strhtml.push('              </div>');
             strhtml.push('          </div>');
             strhtml.push('      </div>');
@@ -88,94 +72,46 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('</div>');
             content.innerHTML = strhtml.join(" ");
             self.addBottomButtom();//添加按钮
-            self._initBookList();//初始化书名列表
-            self._initFromDate();//初始化借阅时间日期搜索框
+            self._initGraphList();//初始化书名列表
         }
         /**
-         * 初始化书名列表
+         * 初始化统计图列表
          */
-        BorrowDialog.prototype._initBookList = function (){
+        AnalyzeDialog.prototype._initGraphList = function (){
             var self = this;
             var content = $(self.getContent());
-            this.bookComboboxObj  =new EListCombobox({
+            this.graphComboboxObj  =new EListCombobox({
                 wnd: this.wnd,
-                parentElement: content.find("#bookcombobox"),
+                parentElement: content.find("#graphcombobox"),
                 width:200,
                 height:"100%",
+                datas:[{caption: "第一项", value: "0"},
+                    {caption: "第二项", value: "1"},
+                    {caption: "第三项", value: "2"},
+                    {caption: "第四项", value: "3"},
+                    {caption: "第五项", value: "4"}],
                 showFilter:false,
                 showCheckAll:false,
-                placeholder:"请选择图书",
-                data$key: "id",
-                caption$key:"name",
+                placeholder:"请选择统计图类型！",
                 onclickitem:function (rowdata, td, evt, isCheck){//点击事件
-                    self.bid = rowdata.id;
-                },
-                onmoredata:function (list){//当下滑到最低端
-                    self.pageIndexnow++;
-                    //异步获得图书列表，要判断追加时机
-                    if (self.pageIndexnow==self.pageIndexnext){
-                        self.getBookList();
-                    }else{//回溯
-                        self.pageIndexnow--;
-                    }
-
+                    self.id = rowdata.value;
                 },
             });
-            self.pageIndexnow=0;
-            self.pageIndexnext=0;
-            self.getBookList();
         }
-        /**
-         *
-         * 初始化借阅时间日期选择框
-         */
-        BorrowDialog.prototype._initFromDate = function (){
-            var self = this;
-            this.fromDateObj = eform.date({
-                parentElement: EUI.getChildDomByAttrib(this.getBaseDom(),"id","fromdate",true),
-                wnd: this.wnd,
-                value:EUI.date2String(new Date(), "yyyy年mm月dd日"),
-                width:'200',
-                onclickitem:function (data, td, evt, isCheck){
-                    console.log(data);
-                }
-            })
-        }
-        /**
-         * 获取书本列表,每次获取的新列表追加到旧列表后
-         */
-        BorrowDialog.prototype.getBookList = function (){
-            var self = this;
-            var index = self.pageIndex;
-            EUI.post({
-                url:EUI.getContextPath()+"web/borrow/bookList.do",
-                data:{
-                    pageIndex:self.pageIndexnow,
-                },
-                callback:function (queryObj){
-                    var obj = queryObj.getResponseJSON();
-                    if (!!obj){
-                        self.bookComboboxObj.addOptions(obj);
-                        self.pageIndexnext++;
-                    }
-                }
-            })
-
-        }
-
         /**
          * 绑定按钮事件
          */
-        BorrowDialog.prototype.addBottomButtom = function (){
+        AnalyzeDialog.prototype.addBottomButtom = function (){
             var self = this;
             this.addButton("确定","",false,true,function (){
                 if(EUI.isFunction(self.onok)){
                     self.getValue()
                     if (self.check()){//数据正确
-                        self.save();//新建图书信息
-                        self.onok;
+                        alert("生成"+self.data.name+"的分析表，统计图类型为"+self.data.id);
+                        self.onok();
                         self.close();
                     }
+
                 }
             })
             var cancel =this.addButton("取消","",false,true,function (){
@@ -192,64 +128,43 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         }
 
         /**
-         * 新建的借阅记录
-         */
-        BorrowDialog.prototype.save = function (){
-            var self = this
-            EUI.showWaitDialog(I18N.getString("ES.COMMON.SAVING", "正在保存..."));
-            EUI.post({
-                url: EUI.getContextPath() + "web/borrow/addBorrow.do",
-                data:self.userdata,
-                callback: function (queryObj) {
-                    var obj = queryObj.getResponseJSON();
-                    if(obj){
-                        EUI.hideWaitDialogWithComplete(1000, I18N.getString("ES.COMMON.SAVESUCCESS", "添加成功"));
-                        self.clear();
-                    }
-                }
-            })
-        }
-
-        /**
          * 点击确定后执行的回调事件
          */
-        BorrowDialog.prototype.setOnok = function (func){
+        AnalyzeDialog.prototype.setOnok = function (func){
             this.onok = func;
         }
         /**
          * 检查是否有必填项为空
          * @returns {boolean}
          */
-        BorrowDialog.prototype.check = function (){
+        AnalyzeDialog.prototype.check = function (){
             var  self = this;
             var flag = true;
             //检查借阅人信息
-            if (isNull(self.userdata.person)){
-               self.showErrMsg("persontips","借阅人不能为空");
-                flag= false;
+            if (isNull(self.data.name)){
+                self.showErrMsg("nametips","分析表名称不能为空");
+                flag = false;
             }else {
-                self.hideErrMsg("persontips");
+                if (isNum(self.data.name)){
+                    self.showErrMsg("nametips","分析表名称不能全为数字");
+                    flag = false;
+                }else{
+                    self.hideErrMsg("nametips");
+                }
             }
-            //检查书本信息
-            if (self.userdata.bid==null){
-                self.showErrMsg("bookcomboboxtips","书名不能为空");
+            //检查统计图类型
+            if (self.data.id==null){
+                self.showErrMsg("graphcomboboxtips","统计图类型不能为空");
                 flag=  false;
             } else{
-                self.hideErrMsg("bookcomboboxtips");
+                self.hideErrMsg("graphcomboboxtips");
             }
-            //检查借书时间信息
-            if (self.userdata.fromdate==null){
-                self.showErrMsg("fromdatetips","借阅时间不能为空");
-                flag= false;
-            }else{
-                self.hideErrMsg("fromdatetips");
-            }
-            return flag;
+            return  flag;
         }
         /**
          * 显示错误提示信息
          */
-        BorrowDialog.prototype.showErrMsg = function (id,msg){
+        AnalyzeDialog.prototype.showErrMsg = function (id,msg){
             var self = this;
             var content = $(self.getContent());
             var dom = content.find("#"+id);//找到要显示提示信息的dom
@@ -261,7 +176,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         /**
          * 隐藏错误提示信息
          */
-        BorrowDialog.prototype.hideErrMsg = function (id){
+        AnalyzeDialog.prototype.hideErrMsg = function (id){
             var self = this;
             var content = $(self.getContent());
             var p = content.find("#"+id).parent()[0];//得到父节点
@@ -273,30 +188,23 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         /**
          *清除弹框中的数据
          */
-        BorrowDialog.prototype.clear = function (){
+        AnalyzeDialog.prototype.clear = function (){
             var self = this;
             //清除借阅人
-            EUI.getChildDomByAttrib(this.getBaseDom(),"id","person",true).value="";
+            EUI.getChildDomByAttrib(this.getBaseDom(),"id","name",true).value="";
             //清除大类
-            self.bookComboboxObj.setCaption("",false);
+            self.graphComboboxObj.setCaption("",false);
             self.bid=null;
-            //还原日期
-            EUI.getChildDomByAttrib(self.fromDateObj,"type","text",true).value=
-                EUI.date2String(new Date(), "yyyy年mm月dd日");
-            EUI.getChildDomByAttrib(self.fromDateObj,"type","hidden",true).value=
-                EUI.date2String(new Date(), "yyyymmdd");
         }
         /**
          * 得到弹框中的值
          * @returns {{name: *, tid: string, cid: string, desc: *}}
          */
-        BorrowDialog.prototype.getValue = function (){
+        AnalyzeDialog.prototype.getValue = function (){
             var self = this;
-            self.userdata = {
-                person:EUI.getChildDomByAttrib(this.getBaseDom(),"id","person",true).value,
-                bid:self.bid,
-                fromdate:EUI.getChildDomByAttrib(
-                    EUI.getChildDomByAttrib(this.getBaseDom(),"id","fromdate",true),"type","hidden",true).value,
+            self.data = {
+                name:EUI.getChildDomByAttrib(this.getBaseDom(),"id","name",true).value,
+                id:self.id,
             }
         }
         /**
@@ -309,8 +217,18 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 return false;
             }
         }
+        /**
+         * 判断是否为数字
+         */
+        var isNum = function (str){
+            if (str.match(/^\d+$/)){
+                return true;
+            }else{
+                return false;
+            }
+        }
 
         return{
-            BorrowDialog :BorrowDialog,
+            AnalyzeDialog :AnalyzeDialog,
         };
     });

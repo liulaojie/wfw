@@ -12,12 +12,11 @@
 </@module.body>
 	<script type="text/javascript">
 		var bcaption = '${bcaption}';
-		var scaption = '${scaption}';
 		require(["borrow/js/bookmgr"],function (bookmgr){
 			var bookmgr = new bookmgr.BookMgr({
 				wnd:window,
 				bcaption:bcaption,
-				scaption:scaption
+
 			});
 			EUI.addDispose(bookmgr,window);
 		});

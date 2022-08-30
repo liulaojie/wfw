@@ -82,6 +82,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                         if (self.tabctrlObj.getData(i,"id")==userobj.id){
                             add=false;
                             index = i;
+                            break;
                         }
                     }
                 }
@@ -94,6 +95,24 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 }
 
             });
+            this.treeObj.setOnExpand(function (item){//展开事件
+                var userobj = item.userObj
+                if (userobj.level==2&&userobj.caption=="图书管理"){
+                    if (!item.hasVisibleChildren()){//没导入过才会导入
+                        EUI.showWaitDialog(I18N.getString("ES.COMMON.SAVING", "正在加载..."));
+                        getCategoryList(item,userobj);
+                        EUI.hideWaitDialogWithComplete(1000, I18N.getString("ES.COMMON.SAVESUCCESS", "加载成功！"));
+                    }
+                }
+                if (userobj.level==3){
+                    if (!item.hasVisibleChildren()){//没导入过才会导入
+                        EUI.showWaitDialog(I18N.getString("ES.COMMON.SAVING", "正在加载..."));
+                        getTypeList(item,userobj);
+                        EUI.hideWaitDialogWithComplete(1000, I18N.getString("ES.COMMON.SAVESUCCESS", "加载成功！"));
+                    }
+                }
+
+            })
         }
 
         /**
@@ -114,12 +133,12 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                     haschild:true,
                     caption: "图书管理",
                     level: 2,
-                    img0:"&#xe367;"
+                    img0:"&#xee5a;"
                 },{
                     id: "borrowlist",
                     caption: "记录查询",
                     level: 2,
-                    img0:"&#xe1cd;"
+                    img0:"&#xe266;"
                 },{
 
                     id:"analysetable",
@@ -128,12 +147,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                     img0:"&#xe23d;"
                 }
                 ];
-                item.loadFromArray(data2,function (item,userObj){
-                    EUI.showWaitDialog(I18N.getString("ES.COMMON.SAVING", "正在加载..."));
-                        getCategoryList(item,userObj);
-                    EUI.hideWaitDialogWithComplete(1000, I18N.getString("ES.COMMON.SAVESUCCESS", "加载成功！"));
-                    }
-                );
+                item.loadFromArray(data2);
                 var bmgr = item.getChildItem(0);
                 bmgr.selectSelf();
                 bmgr.doClick();
@@ -182,7 +196,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                             data[i] = {
                                 id: obj2[i].id,
                                 caption: obj2[i].caption,
-                                img0: "&#xe1da;",
+                                img0: "&#xe1cf;",
                                 level: 4,
                                 type:"scaption"
                             }
@@ -214,6 +228,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                             if (child[i].userObj.id==id){//确定目标
                                 self.treeObj.clearSelectedItems();
                                 child[i].selectSelf();
+                                break;
                             }
                         }
                     }
@@ -233,7 +248,6 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 });
                 var i = tabobj.getCount();
                 var dom = tabobj.getBodyDom(i-1);
-                dom.style.border="solid";
                 EUI.addClassName(dom,"body");
                 if (userobj.level==2&&userobj.caption=="图书管理"){
                     var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
@@ -246,14 +260,13 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                     dom.innerHTML=strhtml;
                 }
                 if (userobj.level==3){
-                    getTypeList(item,userobj);
                     var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
                     strhtml +="?bcaption="+userobj.caption;
                     strhtml +='" width="100%" height="100%"></iframe>';
                     dom.innerHTML=strhtml;
                 }
                 if (userobj.level==4){
-                    var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
+                    var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/borrowmgr.do";
                     strhtml +="?scaption="+userobj.caption;
                     strhtml +='" width="100%" height="100%"></iframe>';
                     dom.innerHTML=strhtml;

@@ -7,6 +7,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         var EPageBar = epagebar.EPageBar;
         BookMgr.prototype.pageIndex =0;
         BookMgr.prototype.totalCount=0;
+        BookMgr.prototype.bcaption = null;
         /**
          * 自定义分页条
          */
@@ -28,9 +29,8 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             // this.wnd = options["wnd"]||window;
             // this.doc = this.wnd.document;
             self.bcaption=options.bcaption;
-            self.scaption=options.scaption
             this._initUI();
-            this._initData(self.bcaption,self.scaption,self.pageIndex);
+            this._initData(self.bcaption,self.pageIndex);
         }
         EUI.extendClass(BookMgr,EComponent,"BookMgr");
 
@@ -38,14 +38,14 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * 销毁所持有的资源
          */
         BookMgr.prototype.dispose = function (){
+            this.pageBarObj.dispose();
+            this.pageBarObj = null;
             this.bookdialog.dispose();
             this.bookdialog=null;
             this.coolbarObj.dispose();
             this.coolbarObj = null;
             this.listObj.dispose();
             this.listObj = null;
-            this.pageBarObj.dispose();
-            this.pageBarObj = null;
 
             // this.wnd = null;
             // this.doc = null;
@@ -58,7 +58,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         BookMgr.prototype._initUI = function (){
             this._initList();
             this._initCoolBar();
-
         }
 
         /**
@@ -156,7 +155,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 customSort:customSort,
                 onshowpage:function (pageIndex,pageSize){
                     self.pageIndex = pageIndex
-                    self._initData(self.bcaption,self.scaption,pageIndex);
+                    self._initData(self.bcaption,pageIndex);
                 }
             })
         }
@@ -177,8 +176,16 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 self.bookdialog = new dlg.BookDialog(options);
                 //设置点击确定的回调函数
                 self.bookdialog.setOnok(function (){
-                    self._initData(self.bcaption,self.scaption,self.pageIndex);
+                    self.pageIndex=0;
+                    self._initData(self.bcaption,self.pageIndex);
                 })
+            }else {
+                self.bookdialog.isnew = isnew;
+                if (isnew){
+                    self.bookdialog.setCaption("新建图书")
+                }else {
+                    self.bookdialog.setCaption("编辑图书")
+                }
             }
             self.bookdialog.showModal();
             //打开对话框
@@ -187,19 +194,17 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             if (!isnew){
                 self.bookdialog.setValue(datas);
             }
-
         }
         /**
          * 初始数据
          */
-        BookMgr.prototype._initData = function (bcaption,scaption,pageIndex){
+        BookMgr.prototype._initData = function (bcaption,pageIndex){
             var self = this;
             //初始化列表中数据
             EUI.post({
                 url:EUI.getContextPath()+"web/borrow/bookList.do",
                 data:{
                     bcaption:bcaption,
-                    scaption:scaption,
                     pageIndex:pageIndex
                 },
                 callback:function (queryObj){
@@ -215,18 +220,22 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             //初始化分页条数据
             EUI.post({
                 url:EUI.getContextPath()+"web/borrow/bookSize.do",
+                data:{
+                    bcaption:bcaption,
+                },
                 callback:function (queryObj){
                     var obj = queryObj.getResponseJSON();
                     if (!!obj){
                         self.totalCount = obj;
-                        self._initPageBar();
+                        if (self.pageBarObj==null){
+                            self._initPageBar();
+                        }else{
+                            self.pageBarObj.resetDom(obj,0);
+                        }
                     }
                 }
             })
         }
-
-
-
         return{
             BookMgr :BookMgr
         };

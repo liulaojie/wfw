@@ -33,6 +33,16 @@ public class BookViewRepository extends AbstractRepository<BookViewEntity> {
 	private ConnectFactoryManager connFactoryManager;
 
 	/**
+	 * 这个类型的所有借阅记录数
+	 * @param bcaption 小类名
+	 * @return
+	 */
+	public int getTotalCountByBcaption(String bcaption){
+		Query<BookViewEntity> query = getCurrentSession().createQuery(getEntityInfo().getBean(),getEntityName());
+		return query.query(new Expression("bcaption = ?"),null,bcaption).calcTotalCount();
+	}
+
+	/**
 	 * 生成视图
 	 * {@inheritDoc}
 	 */

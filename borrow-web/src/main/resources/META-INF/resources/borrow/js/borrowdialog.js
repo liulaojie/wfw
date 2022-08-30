@@ -7,7 +7,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         BorrowDialog.prototype.cid = null;
         BorrowDialog.prototype.tid = null;
         BorrowDialog.prototype.bid = null;
-        BorrowDialog.prototype.bcaption = null;
         BorrowDialog.prototype.scaption = null;
         BorrowDialog.prototype.pageIndexnow = null;//现在所在的页数
         BorrowDialog.prototype.pageIndexnext = null;//将要得到的页数
@@ -40,6 +39,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
          */
         BorrowDialog.prototype._init=function (options){
             var self = this;
+            self.scaption = options.scaption;
             self._options = options||{};
             self._options["caption"] = self._options["caption"]||"新建借阅记录";
             self._options["width"] = self._options["width"]||380;
@@ -88,7 +88,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('</div>');
             content.innerHTML = strhtml.join(" ");
             self.addBottomButtom();//添加按钮
-            self._initBookList();//初始化书名列表
+            self._initBookList();//初始化书本下拉框
             self._initFromDate();//初始化借阅时间日期搜索框
         }
         /**
@@ -150,6 +150,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             EUI.post({
                 url:EUI.getContextPath()+"web/borrow/bookList.do",
                 data:{
+                    scaption:self.scaption,
                     pageIndex:self.pageIndexnow,
                 },
                 callback:function (queryObj){
@@ -173,7 +174,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     self.getValue()
                     if (self.check()){//数据正确
                         self.save();//新建图书信息
-                        self.onok;
                         self.close();
                     }
                 }
@@ -205,6 +205,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     if(obj){
                         EUI.hideWaitDialogWithComplete(1000, I18N.getString("ES.COMMON.SAVESUCCESS", "添加成功"));
                         self.clear();
+                        self.onok();
                     }
                 }
             })
@@ -256,6 +257,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             dom.html(msg);//载入提示信息
             var p = dom.parent()[0];//得到父节点
             EUI.addClassName(p,"eui-show");
+
             EUI.removeClassName(p,"eui-hide");
         }
         /**

@@ -52,14 +52,6 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 	protected BookHistoryRepository bookHistoryRepository;
 
 	//------------------------------------------------借阅功能----------------------------------------------------------------
-	/**
-	 * person的所有借阅记录数
-	 * @param person 借阅人的姓名
-	 * @return 借阅的总数
-	 */
-	public int getTotalCountByPerson(String person) {
-		return borrowViewRepository.getTotalCountByPerson(person);
-	}
 
 	/**
 	 * 获取借阅列表
@@ -67,18 +59,27 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 	 * @return
 	 * @throws
 	 */
-	public List<BorrowViewEntity> borrowList(PageRequest page) {
-		PageResult<BorrowViewEntity> result = borrowViewRepository.findAll(page);
+	public List<BorrowViewEntity> borrowList(PageRequest page,String scaption) {
+		PageResult<BorrowViewEntity> result = null;
+		if (scaption != "" && scaption != null) {
+			result = borrowViewRepository.findAll(page, new Expression("scaption=?"), new Object[] { scaption });
+		}else{
+			result = borrowViewRepository.findAll(page);
+		}
 		return result.list();
 	}
 	/**
-	 * 获取借阅列表大小
-	 * @param
+	 * 获取借阅列表大小，或获取对应小类的借阅列表大小
+	 * @param scaption 小类名(可为空)
 	 * @return
 	 * @throws
 	 */
-	public int borrowSize() {
-		return bookHistoryRepository.getTotalCount();
+	public int borrowSize(String scaption) {
+		if (scaption != "" && scaption != null) {
+			return borrowViewRepository.getTotalCountByScaption(scaption);
+		}else{
+			return bookHistoryRepository.getTotalCount();
+		}
 	}
 
 	/**
@@ -94,6 +95,8 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 		bookHistoryEntity.setPerson(person);
 		bookHistoryEntity.setFromdate(str2time(fromdate));
 		bookHistoryRepository.add(bookHistoryEntity);
+		bookHistoryRepository.cleanCache();
+		borrowViewRepository.cleanCache();
 	}
 
 	/**
@@ -120,6 +123,7 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 		bookHistoryEntity.setId(id);
 		bookHistoryEntity.setTodate(str2time(todate));
 		bookHistoryRepository.save(bookHistoryEntity, "todate");
+		bookHistoryRepository.cleanCache();
 		borrowViewRepository.cleanCache();
 	}
 	//------------------------------------------------图书功能----------------------------------------------------------------
@@ -150,24 +154,31 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 	 * @return
 	 */
 	public List<BookViewEntity> bookList(PageRequest page, String bcaption, String scaption) {
-		PageResult<BookViewEntity> result = bookViewRepository.findAll(page);
+		PageResult<BookViewEntity> result = null;
 		if (bcaption != "" && bcaption != null) {
 			result = bookViewRepository.findAll(page, new Expression("bcaption=?"), new Object[] { bcaption });
-		}
-		if (scaption != "" && scaption != null) {
-			result = bookViewRepository.findAll(page, new Expression("scaption=?"), new Object[] { scaption });
+		}else{
+			if (scaption != "" && scaption != null){
+				result = bookViewRepository.findAll(page, new Expression("scaption=?"), new Object[] { scaption });
+			}else{
+				result = bookViewRepository.findAll(page);
+			}
 		}
 		return result.list();
 	}
 
 	/**
-	 * 获取图书列表大小
-	 * @param
+	 * 获取图书列表大小，或获取对应大类的借阅列表大小
+	 * @param bcaption 大类名(可为空)
 	 * @return
 	 * @throws
 	 */
-	public int bookSize() {
-		return bookInfoRepository.getTotalCount();
+	public int bookSize(String bcaption) {
+		if (bcaption != "" && bcaption != null) {
+			return bookViewRepository.getTotalCountByBcaption(bcaption);
+		}else{
+			return bookInfoRepository.getTotalCount();
+		}
 	}
 
 	/**
@@ -197,6 +208,8 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 		bookInfoEntity.setCaption(name);
 		bookInfoEntity.setDesc(desc);
 		bookInfoRepository.add(bookInfoEntity);
+		bookInfoRepository.cleanCache();
+		bookViewRepository.cleanCache();
 	}
 
 	/**
@@ -215,6 +228,7 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 		} else {
 			bookInfoRepository.save(bookInfoEntity);
 		}
+		bookInfoRepository.cleanCache();
 		bookViewRepository.cleanCache();
 	}
 

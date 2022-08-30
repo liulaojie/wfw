@@ -1,12 +1,12 @@
 define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/modules/epagebar"],
     function (uibase, ecoolbar,elist,epagebar) {
-
         var EComponent = uibase.EComponent;
         var ECoolBar = ecoolbar.ECoolBar;
         var EList= elist.EList;
         var EPageBar = epagebar.EPageBar;
         BorrowMgr.prototype.pageIndex =0;
         BorrowMgr.prototype.totalCount=0;
+        BorrowMgr.prototype.scaption = null;
         /**
          * 自定义分页条
          */
@@ -27,6 +27,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             // var options = options||{};
             // this.wnd = options["wnd"]||window;
             // this.doc = this.wnd.document;
+            self.scaption=options.scaption
             this._initUI();
             this._initData(self.pageIndex);
         }
@@ -70,11 +71,13 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 baseCss:"eui-coolbar-btn"
             });
             var band = this.coolbarObj.addBand("band_name1",true,true);
-            var createAdom= band.addButton(null,"生成分析表");
-            createAdom.setName("createAnalyze");
-            createAdom.setOnAfterClick(function (){//生成分析表
-                self.createAnalyze();
-            })
+            if (self.scaption==''){
+                var createAdom= band.addButton(null,"生成分析表");
+                createAdom.setName("createAnalyze");
+                createAdom.setOnAfterClick(function (){//生成分析表
+                    self.createAnalyze();
+                })
+            }
             var addBdom= band.addButton(null,"新建借阅记录");
             addBdom.setName("addBorrow");
             addBdom.setOnAfterClick(function (){
@@ -96,62 +99,72 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 ctrlMultSelect: true,   //列表是否支持Ctrl多选
                 shiftMultSelect: true,  //列表是否支持Shift多选
                 showblank: true,        //当表格无数据时，列表是否支持显示空白，为false是空白，为true是默认dom样式
-                columns:[{
+                columns:self._initColumns()
+            })
+        }
+        /**
+         * 初始化列表项
+         */
+        BorrowMgr.prototype._initColumns = function (){
+            var self = this;
+            var columns = new Array();
+            if (self.scaption==''){
+                columns.push({
                     checkbox:true,
-                },{
+                });
+                columns.push({
                     caption:"大类",
                     id:"bcaption",
-                    sort:false,
-
-                },{
+                });
+                columns.push({
                     caption:"小类",
                     id:"scaption",
-                    indexConlum:true,
-                    start:10,//序号列的起始值
-                    hint:true,      //该列是否开启提示
+                });
+            }
+            columns.push({
+                caption:"书名",
+                id:"book",
+                hint:true,      //该列是否开启提示
+            });
+            columns.push({
+                caption:"借阅人",
+                id:"person",
 
-                },{
-                    caption:"书名",
-                    id:"book",
-                    hint:true,      //该列是否开启提示
-                },{
-                    caption:"借阅人",
-                    id:"person",
-
-                    hint:true,      //该列是否开启提示
-                },{
-                    caption:"借阅日期",
-                    id:"fromdate",
-                    // width: 300,
-                    hint:true,      //该列是否开启提示
-                },{
-                    caption:"归还日期",
-                    id:"todate",
-                    // width: 300,
-                    hint:true,      //该列是否开启提示
-                },{
-                    caption:"操作",
-                    // width:"200px",
-                    dataRender:function (cell){
-                        var strhtml = ' <a id="delete" class="eui-btn eui-btn-m">删除</a> '
-                        strhtml +=' <a id="return" class = "eui-btn eui-btn-m">还书</a>'
-                        cell.innerHTML = strhtml;
-                    },
-                    onCellClick: function (rowdata,td,evt){
-                        var target = evt.target;
-                        if (target.tagName==="A"){
-                            if (target.id=="delete"){
-                                self.delBorrow(rowdata);
-                            }
-                            else{
-                                self.returnBook(rowdata);
-                            }
+                hint:true,      //该列是否开启提示
+            });
+            columns.push({
+                caption:"借阅日期",
+                id:"fromdate",
+                // width: 300,
+                hint:true,      //该列是否开启提示
+            });
+            columns.push({
+                caption:"归还日期",
+                id:"todate",
+                // width: 300,
+                hint:true,      //该列是否开启提示
+            });
+            columns.push({
+                caption:"操作",
+                // width:"200px",
+                dataRender:function (cell){
+                    var strhtml = ' <a id="delete" class="eui-btn eui-btn-m">删除</a> '
+                    strhtml +=' <a id="return" class = "eui-btn eui-btn-m">还书</a>'
+                    cell.innerHTML = strhtml;
+                },
+                onCellClick: function (rowdata,td,evt){
+                    var target = evt.target;
+                    if (target.tagName==="A"){
+                        if (target.id=="delete"){
+                            self.delBorrow(rowdata);
+                        }
+                        else{
+                            self.returnBook(rowdata);
                         }
                     }
                 }
-                ],
-
-            })
+            });
+            return columns
         }
         /**
          * 初始化分页条
@@ -188,11 +201,16 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
              */
             var self = this;
             if(!self.borrowdialog) {
-                var options = {wnd:EUI.getRootWindow(),};
+                var options = {
+                    wnd:EUI.getRootWindow(),
+                    scaption : self.scaption
+                };
+
                 var dlg = require("borrow/js/borrowdialog");
                 self.borrowdialog = new dlg.BorrowDialog(options);
                 //设置点击确定的回调函数
                 self.borrowdialog.setOnok(function (){
+                    self.pageIndex=0;
                     self._initData(self.pageIndex);
                 })
             }
@@ -209,6 +227,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             EUI.post({
                 url:EUI.getContextPath()+"web/borrow/borrowList.do",
                 data:{
+                    scaption:self.scaption,
                     pageIndex:pageIndex
                 },
                 callback:function (queryObj){
@@ -230,12 +249,22 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             //初始化分页条数据
             EUI.post({
                 url:EUI.getContextPath()+"web/borrow/borrowSize.do",
+                data:{
+                    scaption:self.scaption,
+                },
                 callback:function (queryObj){
                     var obj = queryObj.getResponseJSON();
-                    if (!!obj){
                         self.totalCount = obj;
-                        self._initPageBar();
-                    }
+                        if (self.pageBarObj==null){
+                            self._initPageBar();
+                        }else {
+                            self.pageBarObj.resetDom(obj,0);
+                            if (obj==0){
+                                self.pageBarObj.setVisible(false)
+                            }else{
+                                self.pageBarObj.setVisible(true)
+                            }
+                        }
                 }
             })
         }
@@ -243,6 +272,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * 点击删除事件
          */
         BorrowMgr.prototype.delBorrow = function (data){
+            var self = this;
             EUI.confirmDialog("确认", '是否确认删除“'+data.person+'”于'+data.fromdate+'借阅《'+data.book+'》的记录', false,
                 function(){
                 },
@@ -259,8 +289,13 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                             }else{
                                 alert("删除失败")
                             }
+                            //刷新数据
+                            self.pageIndex = 0;
+                            self._initData(self.pageIndex);
+                            this.close();
                         }
                     })
+
                 },
                 function(){
 
@@ -271,29 +306,35 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * 点击还书事件
          */
         BorrowMgr.prototype.returnBook = function (data){
+            var self = this;
             EUI.confirmDialog("确认", '是否确定“'+data.person+'”于'+data.fromdate+'借阅《'+data.book+'》的书籍已归还', false,
                 function(){
                 },
                 function(){
-                    data.todate= EUI.date2String(new Date(), "yyyymmdd")
-                    EUI.post({
-                        url:EUI.getContextPath()+"web/borrow/saveBorrow.do",
-                        data:{
-                            id:data.id,
-                            person: data.person,
-                            bid:data.bid,
-                            fromdate:data.fromdate,
-                            todate:data.todate,
-                        },
-                        callback:function (queryObj){
-                            var obj = queryObj.getResponseJSON();
-                            if (obj){
-                                alert("删除成功")
-                            }else{
-                                alert("删除失败")
+                    if (data.todate!="尚未归还"){
+                        EUI.showMessage("该书本已归还", "消息");
+                    }else{
+                        data.todate= EUI.date2String(new Date(), "yyyymmdd")
+                        EUI.post({
+                            url:EUI.getContextPath()+"web/borrow/saveBorrow.do",
+                            data:{
+                                id:data.id,
+                                todate:data.todate,
+                            },
+                            callback:function (queryObj){
+                                var obj = queryObj.getResponseJSON();
+                                if (obj){
+                                    alert("还书成功")
+                                }else{
+                                    alert("还书失败")
+                                }
+                                //刷新数据
+                                self.pageIndex = 0;
+                                self._initData(self.pageIndex);
+                                this.close();
                             }
-                        }
-                    })
+                        })
+                    }
                 },
                 function(){
 
@@ -322,18 +363,19 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
              * (3)对话框的引用记录在Object01对象上 this.exportdlg
              */
             var self = this;
-            if(!self.borrowdialog) {
+            if(!self.analyzedialog) {
                 var options = {wnd:EUI.getRootWindow(),};
                 var dlg = require("borrow/js/analyzedialog");
-                self.borrowdialog = new dlg.BorrowDialog(options);
+                self.analyzedialog = new dlg.AnalyzeDialog(options);
                 //设置点击确定的回调函数
-                self.borrowdialog.setOnok(function (){
+                self.analyzedialog.setOnok(function (){
+                    self.pageIndex=0;
                     self._initData(self.pageIndex);
                 })
             }
-            self.borrowdialog.showModal();
+            self.analyzedialog.showModal();
             //打开对话框
-            self.borrowdialog.open();
+            self.analyzedialog.open();
         }
         return{
             BorrowMgr :BorrowMgr
