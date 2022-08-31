@@ -7,7 +7,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         var EPageBar = epagebar.EPageBar;
         BookMgr.prototype.pageIndex =0;
         BookMgr.prototype.totalCount=0;
-        BookMgr.prototype.bcaption = null;
+        BookMgr.prototype.bcaption;
         /**
          * 自定义分页条
          */

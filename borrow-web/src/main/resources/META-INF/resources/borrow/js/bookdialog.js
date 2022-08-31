@@ -4,12 +4,12 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         var eform = eform.eform;
         var EListCombobox = ecombobox.EListCombobox;
         BookDialog.prototype.userdata = {};
-        BookDialog.prototype.cid = null;
-        BookDialog.prototype.tid = null;
-        BookDialog.prototype.bid = null;
-        BookDialog.prototype.bcaption = null;
-        BookDialog.prototype.scaption = null;
-        BookDialog.prototype.isnew = null;
+        BookDialog.prototype.cid ;
+        BookDialog.prototype.tid ;
+        BookDialog.prototype.bid ;
+        BookDialog.prototype.bcaption ;
+        BookDialog.prototype.scaption ;
+        BookDialog.prototype.isnew ;
         /**
          * BookDialog的构造函数,继承EDialog
          */
@@ -121,7 +121,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 data$key: "id",
                 onclickitem:function (rowdata, td, evt, isCheck){
                     self.cid = rowdata.id;
-                    self.refresh(self.cid);
+                    self.refresh(self.cid,null);
                 }
             });
             self.getCategoryList();
@@ -166,17 +166,20 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         /**
          * 获取大类对应的小类列表
          */
-        BookDialog.prototype.refresh = function (cid){
+        BookDialog.prototype.refresh = function (cid,bcaption){
             var self = this;
             var datas = new Array();
             EUI.post({
                 url: EUI.getContextPath() + "web/borrow/typeList.do",
-                data:{cid:cid},
+                data:{
+                    cid:cid,
+                    bcaption:bcaption
+                },
                 callback: function (queryObj) {
                     var obj = queryObj.getResponseJSON();
                     self.sComboboxObj.setDatas(obj);
                     if (!isNull(self.scaption)){
-                        self.bComboboxObj.setCaption(self.scaption,false);
+                        self.sComboboxObj.setCaption(self.scaption,false);
                     }
                 }
             })
@@ -354,15 +357,15 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             //设置书名
             EUI.getChildDomByAttrib(self.getBaseDom(),"id","name",true).value=datas.name;
             //设置大类
-            self.bcaption = datas.bcaption;
-            self.bComboboxObj.setCaption(datas.bcaption,false);
-            //设置小类
-            self.scaption = datas.scaption;
-            self.sComboboxObj.setCaption(datas.scaption,false);
-            //设置描述
-            EUI.getChildDomByAttrib(this.getBaseDom(),"id","desc",true).value=datas.desc;
             self.cid=0;
             self.tid=0;
+            self.bcaption = datas.bcaption;
+            self.bComboboxObj.setCaption(datas.bcaption,false);
+            self.scaption = datas.scaption;
+            self.refresh(self.cid,self.bcaption);
+            //设置描述
+            EUI.getChildDomByAttrib(this.getBaseDom(),"id","desc",true).value=datas.desc;
+
         }
         /**
          * 判断是否为空

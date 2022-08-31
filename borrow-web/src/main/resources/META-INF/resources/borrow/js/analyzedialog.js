@@ -56,7 +56,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('          <div  class="eui-input-block"><input id="name" type="text" class="eui-form-input"');
             strhtml.push('           placeholder="请填写分析表名称不能时纯数字！">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
-            strhtml.push('                  <div class="eui-tips-container eui-error" id="nametips" ></div>');
+            strhtml.push('                  <div class="eui-tips-container eui-error tips" id="nametips" ></div>');
             strhtml.push('              </div>');
             strhtml.push('          </div>');
             strhtml.push('      </div>');
@@ -64,7 +64,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('          <label class="eui-form-label eui-form-required"> 统计图类型：</label>');
             strhtml.push('          <div class="eui-input-block" id="graphcombobox">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
-            strhtml.push('                  <div class="eui-tips-container eui-error" id="graphcomboboxtips" ></div>');
+            strhtml.push('                  <div class="eui-tips-container eui-error tips" id="graphcomboboxtips" ></div>');
             strhtml.push('              </div>');
             strhtml.push('          </div>');
             strhtml.push('      </div>');
@@ -85,11 +85,10 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 parentElement: content.find("#graphcombobox"),
                 width:200,
                 height:"100%",
-                datas:[{caption: "第一项", value: "0"},
-                    {caption: "第二项", value: "1"},
-                    {caption: "第三项", value: "2"},
-                    {caption: "第四项", value: "3"},
-                    {caption: "第五项", value: "4"}],
+                datas:[
+                    {caption: "条形图", value: "0"},
+                    {caption: "柱状图", value: "1"},
+                    ],
                 showFilter:false,
                 showCheckAll:false,
                 placeholder:"请选择统计图类型！",

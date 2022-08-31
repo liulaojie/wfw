@@ -76,7 +76,7 @@ public class ActionWebBorrowMgr {
 	 *  @param person 借阅人 bid 书籍ID fromdate 借书时间
 	 * 	@return 添加结果
 	 */
-	@RequestMapping(value = "/addBorrow", method = RequestMethod.POST)
+	@RequestMapping(value = "/addBorrow")
 	@ResponseBody
 	public boolean addBorrow(String person, String bid, String fromdate) {
 		borrowService.addBorrow(person, bid, fromdate);
@@ -103,10 +103,10 @@ public class ActionWebBorrowMgr {
 	 * @param cid 大类ID
 	 * @return
 	 */
-	@RequestMapping(value = "/typeList",method = RequestMethod.POST )
+	@RequestMapping(value = "/typeList" )
 	@ResponseBody
-	public List<BookTypeEntity> typeList(String cid) {
-		return borrowService.typeList(cid);
+	public List<BookTypeEntity> typeList(String cid,String bcaption) {
+		return borrowService.typeList(cid,bcaption);
 
 	}
 	/**
@@ -115,7 +115,7 @@ public class ActionWebBorrowMgr {
 	 * @return
 	 * @throws
 	 */
-	@RequestMapping(value = "/categoryList",method = RequestMethod.POST)
+	@RequestMapping(value = "/categoryList")
 	@ResponseBody
 	public List<BookCategoryEntity> categoryList() {
 		return borrowService.categoryList();
@@ -126,7 +126,7 @@ public class ActionWebBorrowMgr {
 	 * @param bcaption bcaption(可为空) 图书大类 scaption(可为空)图书小类 pageIndex 页面索引
 	 * @return
 	 */
-	@RequestMapping(value = "/bookList",method = RequestMethod.POST)
+	@RequestMapping(value = "/bookList")
 	@ResponseBody
 	public List<BookViewEntity> bookList
 	(HttpServletRequest req, String bcaption,String scaption,String pageIndex) {
@@ -148,7 +148,7 @@ public class ActionWebBorrowMgr {
 	 *  @param name 书籍名 scaptionn 小类名称 desc 书本描述
 	 * 	@return 添加结果
 	 */
-	@RequestMapping(value = "/addBook", method = RequestMethod.POST)
+	@RequestMapping(value = "/addBook")
 	@ResponseBody
 	public boolean addBook(HttpServletRequest req,String name, String tid, String desc) {
 
@@ -162,7 +162,7 @@ public class ActionWebBorrowMgr {
 	/**
 	 * 编辑书籍
 	 */
-	@RequestMapping(value = "/saveBook",method = RequestMethod.POST)
+	@RequestMapping(value = "/saveBook")
 	@ResponseBody
 	public boolean saveBook(String id,String name,String desc,String cid,String tid){
 		borrowService.saveBook(id,name,tid,desc);

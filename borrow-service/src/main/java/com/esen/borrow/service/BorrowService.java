@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import com.esen.ejdbc.jdbc.orm.EntityInfo;
 import com.esen.eutil.util.StrFunc;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -140,9 +141,12 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 	 * @param cid 大类ID
 	 * @return
 	 */
-	public List<BookTypeEntity> typeList(String cid) {
-		if (cid != null) {
+	public List<BookTypeEntity> typeList(String cid,String bcaption) {
+		if (cid.length()>1) {
 			return (List<BookTypeEntity>) bookTypeRepository.findAll(new Expression("cid=?"), new Object[] { cid });
+		}
+		if (bcaption!="null"&&bcaption!=null){
+			return bookTypeRepository.getTypeListByBcaption(bcaption);
 		}
 		return (List<BookTypeEntity>) bookTypeRepository.findAll();
 

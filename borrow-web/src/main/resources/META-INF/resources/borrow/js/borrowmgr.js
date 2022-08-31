@@ -108,10 +108,14 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         BorrowMgr.prototype._initColumns = function (){
             var self = this;
             var columns = new Array();
+            columns.push({
+                checkbox:self.scaption=='',
+            });
+            columns.push({
+                indexColumn: true,
+                start: 1           //序号列的起始值
+            });
             if (self.scaption==''){
-                columns.push({
-                    checkbox:true,
-                });
                 columns.push({
                     caption:"大类",
                     id:"bcaption",
@@ -354,7 +358,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             }
         }
         /**
-         * 显示新添借阅对话框
+         * 显示生成分析表对话框
          */
         BorrowMgr.prototype._analyzeDialog = function (){
             /**
@@ -369,8 +373,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 self.analyzedialog = new dlg.AnalyzeDialog(options);
                 //设置点击确定的回调函数
                 self.analyzedialog.setOnok(function (){
-                    self.pageIndex=0;
-                    self._initData(self.pageIndex);
+
                 })
             }
             self.analyzedialog.showModal();
