@@ -4,9 +4,10 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         var ECoolBar = ecoolbar.ECoolBar;
         var EList= elist.EList;
         var EPageBar = epagebar.EPageBar;
-        BorrowMgr.prototype.pageIndex =0;
-        BorrowMgr.prototype.totalCount=0;
-        BorrowMgr.prototype.scaption = null;
+        var chedata = new Array() ;//记录列表中被选择的数据的ID
+        BorrowMgr.prototype.pageIndex ;//记录页面偏移
+        BorrowMgr.prototype.totalCount;//记录总数
+        BorrowMgr.prototype.scaption ;//记录大类名
         /**
          * 自定义分页条
          */
@@ -110,6 +111,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             var columns = new Array();
             columns.push({
                 checkbox:self.scaption=='',
+                start: 1
             });
             columns.push({
                 indexColumn: true,
@@ -237,6 +239,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 callback:function (queryObj){
                     var obj = queryObj.getResponseJSON();
                     if (!!obj){
+                        self.getCheck();
                         self.listObj.clear(true);
                         for (var i=0;i<obj.length;i++){
                             obj[i].fromdate = EUI.date2String(new Date(obj[i].fromdate), "yyyy年mm月dd日 hh:ii:ss");
@@ -247,6 +250,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                             }
                            self.listObj.addRow(obj[i]);
                         }
+                        self.setCheck();
                     }
                 }
             })
@@ -262,7 +266,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                         if (self.pageBarObj==null){
                             self._initPageBar();
                         }else {
-                            self.pageBarObj.resetDom(obj,0);
+                            self.pageBarObj.resetDom(obj,self.pageIndex);
                             if (obj==0){
                                 self.pageBarObj.setVisible(false)
                             }else{
@@ -354,6 +358,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             if (datas==null){//
                 EUI.showMessage("没有勾选任何数据", "消息");
             }else{
+                self.getCheck();
                 self._analyzeDialog();
             }
         }
@@ -372,13 +377,85 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 var dlg = require("borrow/js/analyzedialog");
                 self.analyzedialog = new dlg.AnalyzeDialog(options);
                 //设置点击确定的回调函数
-                self.analyzedialog.setOnok(function (){
-
+                self.analyzedialog.setOnok(function (title,type){
+                    var wnd= self.wnd;
+                    var tree= EUI.getLeftTree(wnd);
+                    var rootitem = tree.getRootItem();
                 })
             }
             self.analyzedialog.showModal();
             //打开对话框
             self.analyzedialog.open();
+        }
+        /**
+         * 获取当前列表中被选取的数据
+         */
+        BorrowMgr.prototype.getCheck = function (){
+            var self = this;
+            ;
+            var k = 0;
+            var chedatanow = self.listObj.getCheckDatas();
+            var datas = self.listObj.getDatas();
+            if (chedatanow!=null){
+                for (var i =0;i<datas.length;i++){
+                    if (self.listObj.isCheckRow(i)){//被选中的行
+                        var isnew = true;
+                        for (var j =0;j<chedata.length;j++){
+                            if (datas[i].id==chedata[j].id){
+                                isnew = false;
+                                break;
+                            }
+                        }
+                        if (isnew){
+                            chedata.push(datas[i]);
+                            var person = datas[i].person;
+                        }
+                    }else{//未被选中的行
+                        for (var j =0;j<chedata.length;j++){
+                            if (datas[i].id==chedata[j].id){
+                                chedata.splice(j,1);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /**
+         * 列表中被选择过的数据标识选中
+         */
+        BorrowMgr.prototype.setCheck = function (){
+            var self = this;
+            var targets = self.listObj.getDatas();
+            var i=0
+            var flag = false;
+            if (targets!=null){
+                for (var j=0;j<targets.length;j++){
+                    if (i==chedata.length){
+                        i=0;//重置
+                        flag=true;
+                    }
+                    if (i!=0){
+                        flag = true
+                    }
+                    for (;i<chedata.length;i++){
+                        if (targets[j].id==chedata[i].id){
+                            self.listObj.setCheckRow(j,true);
+                            flag = true;
+                            i++;
+                            break;
+                        }
+                        if (flag){
+                            if (i==chedata.length-1){
+                                i=-1;//重置
+                                flag=false;
+                            }
+                        }
+                    }
+                }
+            }
+
         }
         return{
             BorrowMgr :BorrowMgr

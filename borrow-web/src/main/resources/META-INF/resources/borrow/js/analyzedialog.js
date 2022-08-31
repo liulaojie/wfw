@@ -107,7 +107,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     self.getValue()
                     if (self.check()){//数据正确
                         alert("生成"+self.data.name+"的分析表，统计图类型为"+self.data.id);
-                        self.onok();
+                        self.onok(self.data.name,self.data.id);
                         self.close();
                     }
 

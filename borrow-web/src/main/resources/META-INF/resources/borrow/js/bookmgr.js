@@ -230,7 +230,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                         if (self.pageBarObj==null){
                             self._initPageBar();
                         }else{
-                            self.pageBarObj.resetDom(obj,0);
+                            self.pageBarObj.resetDom(obj,self.pageIndex);
                         }
                     }
                 }

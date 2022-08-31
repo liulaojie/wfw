@@ -16,7 +16,6 @@
 			var bookmgr = new bookmgr.BookMgr({
 				wnd:window,
 				bcaption:bcaption,
-
 			});
 			EUI.addDispose(bookmgr,window);
 		});
