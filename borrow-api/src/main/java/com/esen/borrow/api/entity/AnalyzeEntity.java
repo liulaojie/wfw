@@ -1,10 +1,10 @@
 package com.esen.borrow.api.entity;
 
 
-import com.esen.eorm.entity.RootEntity;
-
 import java.io.Serializable;
 import java.sql.Timestamp;
+
+import com.esen.eorm.entity.RootEntity;
 
 /**
  * 借阅信息的实体类
@@ -12,11 +12,7 @@ import java.sql.Timestamp;
  * @author liuaj
  * @since 20220824
  */
-public class BorrowViewEntity extends RootEntity  implements Serializable {
-		/**
-		 * 序列号
-		 */
-		private static final long serialVersionUID = -935089358231842005L;
+public class AnalyzeEntity  {
 		/**
 		 * 主键借阅记录ID
 		 */
@@ -46,17 +42,11 @@ public class BorrowViewEntity extends RootEntity  implements Serializable {
 		 */
 		private String bcaption;
 
-	/**
-	 * @return the serialVersionUID
-	 */
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
 
 	/**
 	 * @return the id
 	 */
-	@Override
+
 	public String getId() {
 		return id;
 	}
@@ -64,7 +54,7 @@ public class BorrowViewEntity extends RootEntity  implements Serializable {
 	/**
 	 * @param id to set
 	 */
-	@Override
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -153,4 +143,16 @@ public class BorrowViewEntity extends RootEntity  implements Serializable {
 		this.bcaption = bcaption;
 	}
 
+	public AnalyzeEntity() {
+	}
+
+	public AnalyzeEntity(String id, String person, String book, Timestamp fromdate, Timestamp todate, String scaption, String bcaption) {
+		this.id = id;
+		this.person = person;
+		this.book = book;
+		this.fromdate = fromdate;
+		this.todate = todate;
+		this.scaption = scaption;
+		this.bcaption = bcaption;
+	}
 }

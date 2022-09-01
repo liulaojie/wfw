@@ -11,12 +11,20 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
          * 主页构造函数
          */
         function Index(options){
+            var self = this;
             EComponent.call(this,options);
             // var options = options||{};
             // this.wnd = options["wnd"]||window;
             // this.doc = this.wnd.document;
             this._initUI();
             this._initData();
+            options.wnd.getTreeRootItem = function (){
+                return self.treeObj.getRootItem();
+            }
+            options.wnd.getTabData = function (){
+                var index = self.tabctrlObj.getActiveIndex();
+                return self.tabctrlObj.getData(index,"datas")
+            }
         }
         EUI.extendClass(Index,EComponent,"Index");
 
@@ -76,24 +84,27 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             this.treeObj.setOnClick(function(item){
                 var userobj = item.userObj;
                 var add = true;
-                var index;
-                for (var i = 0;i<self.tabctrlObj.getCount();i++){//遍历确定是否存在对应标签页
-                    if (self.tabctrlObj.getData(i,"level")==userobj.level){
-                        if (self.tabctrlObj.getData(i,"id")==userobj.id){
-                            add=false;
-                            index = i;
-                            break;
+                if (userobj.img0=="&#xe1ab;"||userobj.img0=="&#xe23d;"){
+                    add=false;
+                }else{
+                    var index;
+                    for (var i = 0;i<self.tabctrlObj.getCount();i++){//遍历确定是否存在对应标签页
+                        if (self.tabctrlObj.getData(i,"level")==userobj.level){
+                            if (self.tabctrlObj.getData(i,"id")==userobj.id){
+                                add=false;
+                                index = i;
+                                break;
+                            }
                         }
                     }
+                    if (add){
+                        //第一次打开新建标签页，并加载对应子项
+                        self.addtab(item,userobj);
+                    }else{
+                        //存在对应标签页，跳转
+                        self.tabctrlObj.setActive(index);
+                    }
                 }
-                if (add){
-                    //第一次打开新建标签页，并加载对应子项
-                    self.addtab(item,userobj);
-                }else{
-                    //存在对应标签页，跳转
-                    self.tabctrlObj.setActive(index);
-                }
-
             });
             this.treeObj.setOnExpand(function (item){//展开事件
                 var userobj = item.userObj
@@ -112,7 +123,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                     }
                 }
 
-            })
+            });
         }
 
         /**
@@ -238,40 +249,50 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
 
         Index.prototype.addtab = function (item,userobj){
             var self = this;
-            if (userobj.level!=1){
                 var tabobj= self.tabctrlObj;
                 tabobj.add(userobj.caption,null,{
                     data:{
                         id:userobj.id,
-                        level:userobj.level
+                        level:userobj.level,
+                        datas:userobj.datas
                     }
                 });
                 var i = tabobj.getCount();
                 var dom = tabobj.getBodyDom(i-1);
                 EUI.addClassName(dom,"body");
-                if (userobj.level==2&&userobj.caption=="图书管理"){
-                    var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
-                    strhtml +='" width="100%" height="100%"></iframe>';
-                    dom.innerHTML=strhtml;
+
+                switch (userobj.img0){
+                    case "&#xee5a;"://图书管理
+                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
+                        strhtml +='" width="100%" height="100%"></iframe>';
+                        dom.innerHTML=strhtml;
+                        break;
+                    case "&#xe266;"://借阅管理
+                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/borrowmgr.do";
+                        strhtml +='" width="100%" height="100%"></iframe>';
+                        dom.innerHTML=strhtml;
+                        break;
+                    case "&#xe1da;"://大类
+                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
+                        strhtml +="?bcaption="+userobj.caption;
+                        strhtml +='" width="100%" height="100%"></iframe>';
+                        dom.innerHTML=strhtml;
+                        break;
+                    case "&#xe1cf;"://小类
+                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/borrowmgr.do";
+                        strhtml +="?scaption="+userobj.caption;
+                        strhtml +='" width="100%" height="100%"></iframe>';
+                        dom.innerHTML=strhtml;
+                        break;
+                    case "&#xe881;"://分析表
+                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/analyze.do";
+                        strhtml +='" width="100%" height="100%"></iframe>';
+                        dom.innerHTML=strhtml;
+                        break;
+                    default:
+                        break;
                 }
-                if (userobj.level==2&&userobj.caption=="记录查询"){
-                    var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/borrowmgr.do";
-                    strhtml +='" width="100%" height="100%"></iframe>';
-                    dom.innerHTML=strhtml;
-                }
-                if (userobj.level==3){
-                    var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
-                    strhtml +="?bcaption="+userobj.caption;
-                    strhtml +='" width="100%" height="100%"></iframe>';
-                    dom.innerHTML=strhtml;
-                }
-                if (userobj.level==4){
-                    var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/borrowmgr.do";
-                    strhtml +="?scaption="+userobj.caption;
-                    strhtml +='" width="100%" height="100%"></iframe>';
-                    dom.innerHTML=strhtml;
-                }
-            }
+
         }
 
         /**

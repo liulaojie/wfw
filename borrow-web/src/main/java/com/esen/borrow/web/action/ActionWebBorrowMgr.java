@@ -3,6 +3,7 @@ package com.esen.borrow.web.action;
 import com.esen.book.api.entity.BookCategoryEntity;
 import com.esen.book.api.entity.BookTypeEntity;
 import com.esen.book.api.entity.BookViewEntity;
+import com.esen.borrow.api.entity.AnalyzeEntity;
 import com.esen.borrow.api.entity.BorrowViewEntity;
 import com.esen.borrow.service.BorrowService;
 import com.esen.ejdbc.params.PageRequest;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Array;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,6 +32,8 @@ import java.util.List;
 @RequestMapping("/web/borrow")
 public class ActionWebBorrowMgr {
 	private static final String REPEAT = "书名重复";
+
+
 
 	/**
 	 * 对于这个变量的描述
@@ -51,7 +56,10 @@ public class ActionWebBorrowMgr {
 		req.setAttribute("scaption",scaption);
 		return "borrow/borrowmgr";
 	}
-
+	@RequestMapping("analyze")
+	public String analyze(){
+		return "borrow/analyze";
+	}
 
 	//------------------------------------------------借阅功能----------------------------------------------------------------
 	/**

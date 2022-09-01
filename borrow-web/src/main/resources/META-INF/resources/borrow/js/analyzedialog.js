@@ -106,8 +106,10 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 if(EUI.isFunction(self.onok)){
                     self.getValue()
                     if (self.check()){//数据正确
-                        alert("生成"+self.data.name+"的分析表，统计图类型为"+self.data.id);
-                        self.onok(self.data.name,self.data.id);
+                        var flag= self.onok(self.data.name,self.data.id);
+                        if (!flag){
+                            EUI.showMessage("已存在表名为《"+self.data.name+"》的分析表", "提示");
+                        }
                         self.close();
                     }
 

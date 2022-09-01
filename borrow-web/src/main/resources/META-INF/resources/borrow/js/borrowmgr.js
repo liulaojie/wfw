@@ -26,7 +26,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             var self = this;
             EComponent.call(this,options);
             // var options = options||{};
-            // this.wnd = options["wnd"]||window;
+            this.wnd = options["wnd"]||window;
             // this.doc = this.wnd.document;
             self.scaption=options.scaption
             this._initUI();
@@ -378,9 +378,40 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 self.analyzedialog = new dlg.AnalyzeDialog(options);
                 //设置点击确定的回调函数
                 self.analyzedialog.setOnok(function (title,type){
-                    var wnd= self.wnd;
-                    var tree= EUI.getLeftTree(wnd);
-                    var rootitem = tree.getRootItem();
+                    var wnd= self.wnd.parent;
+                    var rootItem= wnd.getTreeRootItem();
+                    var item = rootItem.getChildItem(0);
+                    item = item.getChildItem(2);
+                    var child = item.getAllChildrenItems(null,true);
+                    var isnew = true;
+                    for (var i=0;i<child.length;i++){
+                        if (child[i].userObj.id==title){
+                            isnew=false;
+                        }
+                    }
+                    if (isnew){
+                        var data = [{
+                            id:title,
+                            caption:title,
+                            level:3,
+                            img0:"&#xe881;",
+                            datas:{
+                                type:type,
+                                data:chedata
+                            }
+                        }]
+                        item.loadFromArray(data,function (item){
+                            item.selectSelf();
+                            item.doClick();
+                        });
+                        chedata = new Array();
+                        var indexs = self.listObj.getCheckRows();
+                        self.listObj.setCheckRows(indexs,false);
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
                 })
             }
             self.analyzedialog.showModal();
@@ -407,6 +438,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                             }
                         }
                         if (isnew){
+
                             chedata.push(datas[i]);
                             var person = datas[i].person;
                         }
