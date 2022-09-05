@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/borrow-service/borrow-service.iml" filepath="$PROJECT_DIR$/borrow-service/borrow-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/borrow-web/borrow-web.iml" filepath="$PROJECT_DIR$/borrow-web/borrow-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/eplatform/eplatform.iml" filepath="$PROJECT_DIR$/eplatform/eplatform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../i18nauto/i18nauto.iml" filepath="$PROJECT_DIR$/../i18nauto/i18nauto.iml" />
     </modules>
   </component>
 </project>

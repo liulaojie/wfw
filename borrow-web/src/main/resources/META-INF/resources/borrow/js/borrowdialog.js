@@ -41,7 +41,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             var self = this;
             self.scaption = options.scaption;
             self._options = options||{};
-            self._options["caption"] = self._options["caption"]||"新建借阅记录";
+            self._options["caption"] = self._options["caption"]||I18N.getString("borrow.js.borrowmgr.js.addBorrow", "新建借阅记录");
             self._options["width"] = self._options["width"]||380;
             self._options["height"] = self._options["height"]||400;
             EDialog.call(self,self._options);
@@ -57,19 +57,18 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             var content = self.getContent();
             var strhtml = [];
             strhtml.push('<div class="eui-layout-container eui-padding-top-10 eui-padding-bottom-10 eui-scroll-auto">');
-            strhtml.push('<link  rel="stylesheet" type="text/css" href="../../borrow/css/borrowdialog.css">');
             strhtml.push('  <div id = "borrowdialog-info-content">');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> 借阅人：</label>');
+            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.jsperson", "借阅人")+'：</label>');
             strhtml.push('          <div  class="eui-input-block"><input id="person" type="text" class="eui-form-input"');
-            strhtml.push('           placeholder="请填写借阅人姓名！">');
+            strhtml.push('           placeholder="'+I18N.getString("borrow.js.borrowdialog.js.addperson", "请填写借阅人姓名！")+'">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error" id="persontips" ></div>');
             strhtml.push('              </div>');
             strhtml.push('          </div>');
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> 书名：</label>');
+            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.js.book", "书名")+'：</label>');
             strhtml.push('          <div class="eui-input-block" id="bookcombobox">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error" id="bookcomboboxtips" ></div>');
@@ -77,7 +76,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('          </div>');
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> 借阅时间：</label>');
+            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.js.fromdate", "借阅日期")+'：</label>');
             strhtml.push('          <div class="eui-input-block" id="fromdate">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error" id="fromdatetips" ></div>');
@@ -104,7 +103,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 height:"100%",
                 showFilter:false,
                 showCheckAll:false,
-                placeholder:"请选择图书",
+                placeholder:I18N.getString("borrow.js.borrowmgr.js.choosebook", "请选择图书"),
                 data$key: "id",
                 caption$key:"name",
                 onclickitem:function (rowdata, td, evt, isCheck){//点击事件
@@ -155,8 +154,8 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 },
                 callback:function (queryObj){
                     var obj = queryObj.getResponseJSON();
-                    if (!!obj){
-                        self.bookComboboxObj.addOptions(obj);
+                    if (obj){
+                        self.bookComboboxObj.addOptions(obj.list);
                         self.pageIndexnext++;
                     }
                 }
@@ -169,7 +168,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
          */
         BorrowDialog.prototype.addBottomButtom = function (){
             var self = this;
-            this.addButton("确定","",false,true,function (){
+            this.addButton(I18N.getString("ES.COMMON.CONFIRM", "确定"),"",false,true,function (){
                 if(EUI.isFunction(self.onok)){
                     self.getValue()
                     if (self.check()){//数据正确
@@ -178,7 +177,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     }
                 }
             })
-            var cancel =this.addButton("取消","",false,true,function (){
+            var cancel =this.addButton(I18N.getString("ES.COMMON.CANCEL", "取消"),"",false,true,function (){
                 self.clear();
                 self.close();
 
@@ -196,18 +195,18 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
          */
         BorrowDialog.prototype.save = function (){
             var self = this
-            EUI.showWaitDialog(I18N.getString("ES.COMMON.SAVING", "正在保存..."));
             EUI.post({
                 url: EUI.getContextPath() + "web/borrow/addBorrow.do",
                 data:self.userdata,
                 callback: function (queryObj) {
                     var obj = queryObj.getResponseJSON();
                     if(obj){
-                        EUI.hideWaitDialogWithComplete(1000, I18N.getString("ES.COMMON.SAVESUCCESS", "添加成功"));
                         self.clear();
                         self.onok();
                     }
-                }
+                },
+                waitMessage: {message: I18N.getString("ES.COMMON.LOADING", "正在添加..."),
+                    finish: I18N.getString("ES.COMMON.SUCCEED", "成功")}
             })
         }
 
@@ -226,21 +225,21 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             var flag = true;
             //检查借阅人信息
             if (isNull(self.userdata.person)){
-               self.showErrMsg("persontips","借阅人不能为空");
+               self.showErrMsg("persontips",I18N.getString("borrow.js.borrowdialog.js.noperson", "借阅人不能为空"));
                 flag= false;
             }else {
                 self.hideErrMsg("persontips");
             }
             //检查书本信息
             if (self.userdata.bid==null){
-                self.showErrMsg("bookcomboboxtips","书名不能为空");
+                self.showErrMsg("bookcomboboxtips",I18N.getString("borrow.js.borrowdialog.js.nobook", "书名不能为空"));
                 flag=  false;
             } else{
                 self.hideErrMsg("bookcomboboxtips");
             }
             //检查借书时间信息
             if (self.userdata.fromdate==null){
-                self.showErrMsg("fromdatetips","借阅时间不能为空");
+                self.showErrMsg("fromdatetips",I18N.getString("borrow.js.borrowdialog.js.nofromtime", "借阅时间不能为空"));
                 flag= false;
             }else{
                 self.hideErrMsg("fromdatetips");
@@ -257,7 +256,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             dom.html(msg);//载入提示信息
             var p = dom.parent()[0];//得到父节点
             EUI.addClassName(p,"eui-show");
-
             EUI.removeClassName(p,"eui-hide");
         }
         /**
@@ -305,11 +303,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
          * 判断是否为空
          */
         var isNull = function (str){
-            if (str==null||str.match(/^\s*$/)){
-                return true;
-            }else{
-                return false;
-            }
+                return str==null||str.match(/^\s*$/)
         }
 
         return{

@@ -18,12 +18,14 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             // this.doc = this.wnd.document;
             this._initUI();
             this._initData();
+            //在window上绑定得到左树根节点的方法
             options.wnd.getTreeRootItem = function (){
                 return self.treeObj.getRootItem();
             }
+            //在window上绑定得到标签页中数据的方法
             options.wnd.getTabData = function (){
                 var index = self.tabctrlObj.getActiveIndex();
-                return self.tabctrlObj.getData(index,"datas")
+                return self.tabctrlObj.getData(index,"datas");
             }
         }
         EUI.extendClass(Index,EComponent,"Index");
@@ -74,7 +76,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 parentElement:this.leftcontainer,//添加到分割面板的左边部分
                 width: "100%",
                 height: "100%",
-                baseCss: "eui-etree-btn eui-inline-block eui-float-left eui-icon eui-tree-container etree" ,
+                baseCss: "eui-etree-btn eui-inline-block eui-float-left eui-icon eui-tree-container eui-padding-3n" ,
                 oncontextmenu:function (){
                     //屏蔽系统右键
                     return false;
@@ -87,15 +89,9 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 if (userobj.img0=="&#xe1ab;"||userobj.img0=="&#xe23d;"){
                     add=false;
                 }else{
-                    var index;
-                    for (var i = 0;i<self.tabctrlObj.getCount();i++){//遍历确定是否存在对应标签页
-                        if (self.tabctrlObj.getData(i,"level")==userobj.level){
-                            if (self.tabctrlObj.getData(i,"id")==userobj.id){
-                                add=false;
-                                index = i;
-                                break;
-                            }
-                        }
+                    var index = self.tabctrlObj.getIndex(userobj.caption);
+                    if (index>=0){
+                        add = false;
                     }
                     if (add){
                         //第一次打开新建标签页，并加载对应子项
@@ -108,18 +104,14 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             });
             this.treeObj.setOnExpand(function (item){//展开事件
                 var userobj = item.userObj
-                if (userobj.level==2&&userobj.caption=="图书管理"){
+                if (userobj.img0="&#xee5a;"){
                     if (!item.hasVisibleChildren()){//没导入过才会导入
-                        EUI.showWaitDialog(I18N.getString("ES.COMMON.SAVING", "正在加载..."));
                         getCategoryList(item,userobj);
-                        EUI.hideWaitDialogWithComplete(1000, I18N.getString("ES.COMMON.SAVESUCCESS", "加载成功！"));
                     }
                 }
-                if (userobj.level==3){
+                if (userobj.img0="&#xe1da;"){
                     if (!item.hasVisibleChildren()){//没导入过才会导入
-                        EUI.showWaitDialog(I18N.getString("ES.COMMON.SAVING", "正在加载..."));
                         getTypeList(item,userobj);
-                        EUI.hideWaitDialogWithComplete(1000, I18N.getString("ES.COMMON.SAVESUCCESS", "加载成功！"));
                     }
                 }
 
@@ -134,7 +126,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             var rootitem = self.treeObj.getRootItem();
             var data1 = [{
                 id:"fwq",
-                caption:"服务器",
+                caption:I18N.getString("borrow.js.index.js.server", "服务器"),
                 level:1,
                 img0:"&#xe1ab;"
             }];
@@ -142,18 +134,18 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 var data2 = [{
                     id: "booklist",
                     haschild:true,
-                    caption: "图书管理",
+                    caption: I18N.getString("borrow.js.index.js.bookmgr", "图书管理"),
                     level: 2,
                     img0:"&#xee5a;"
                 },{
                     id: "borrowlist",
-                    caption: "记录查询",
+                    caption: I18N.getString("borrow.js.index.js.borrowmgr", "图书管理"),
                     level: 2,
                     img0:"&#xe266;"
                 },{
 
                     id:"analysetable",
-                    caption: "分析表管理",
+                    caption: I18N.getString("borrow.js.index.js.analyzemgr", "图书管理"),
                     level: 2,
                     img0:"&#xe23d;"
                 }
@@ -173,22 +165,17 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             EUI.post({
                 url:EUI.getContextPath()+"web/borrow/categoryList.do",
                 callback:function (queryObj){
-                    var obj1 = queryObj.getResponseJSON();
-                    if (!!obj1){
-                        var data = new Array();
-                        for (var i=0;i<obj1.length;i++){
-                            data[i]={
-                                id : obj1[i].id,
-                                caption:obj1[i].caption,
-                                img0:"&#xe1da;",
-                                haschild:true,
-                                level:3,
-                                type:"bcaption"
-                            }
-                        }
-                        item.loadFromArray(data);
+                    var obj = queryObj.getResponseJSON();
+                    if (!!obj){
+                        item.loadFromArray(obj,function (item) {
+                            item.setHasChildren(true);
+                            item.setItemImage("&#xe1da;")
+                            EUI.extendObj(item.userObj,{img0:"&#xe1da;"});
+                        });
                     }
-                }
+                },
+                waitMessage: {message: I18N.getString("ES.COMMON.LOADING", "正在加载..."),
+                    finish: I18N.getString("ES.COMMON.SUCCEED", "成功")}
             })
         }
         /**
@@ -200,21 +187,16 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 url: EUI.getContextPath() + "web/borrow/typeList.do",
                 data:{cid:userObj.id},
                 callback: function (queryObj) {
-                    var obj2 = queryObj.getResponseJSON();
-                    if (!!obj2) {
-                        var data = new Array();
-                        for (var i = 0; i < obj2.length; i++) {
-                            data[i] = {
-                                id: obj2[i].id,
-                                caption: obj2[i].caption,
-                                img0: "&#xe1cf;",
-                                level: 4,
-                                type:"scaption"
-                            }
-                        }
+                    var obj = queryObj.getResponseJSON();
+                    if (!!obj){
+                        item.loadFromArray(obj,function (item) {
+                            item.setItemImage("&#xe1cf;")
+                            EUI.extendObj(item.userObj,{img0:"&#xe1cf;"});
+                        });
                     }
-                    item.loadFromArray(data);
-                }
+                },
+                waitMessage: {message: I18N.getString("ES.COMMON.LOADING", "正在加载..."),
+                    finish: I18N.getString("ES.COMMON.SUCCEED", "成功")}
             })
         }
         /**
@@ -233,16 +215,13 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                     var id = self.tabctrlObj.getData(index,"id");
                     var level = self.tabctrlObj.getData(index,"level");
                     var item = self.treeObj.getRootItem();
-                    var child = item.getAllChildrenItems(null,true);
-                    for (var i=0;i<child.length;i++){
-                        if (child[i].userObj.level==level){//确定层级
-                            if (child[i].userObj.id==id){//确定目标
-                                self.treeObj.clearSelectedItems();
-                                child[i].selectSelf();
-                                break;
-                            }
+                    item.browseAllChildrenItems(function (item){
+                        var userObj = item.userObj;
+                        if (userObj.id==id){
+                            self.treeObj.clearSelectedItems();
+                            item.selectSelf();
                         }
-                    }
+                    },null,true)
                 }
             })
         }

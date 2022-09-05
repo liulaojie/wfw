@@ -1,6 +1,6 @@
 <@module.page>
     <@module.head title="${title1}">
-        <link  rel="stylesheet" type="text/css" href="../../borrow/css/index.css">
+        <link  rel="stylesheet" type="text/css" href="http://localhost:8080/abistudy/borrow/css/index.css">
     </@module.head>
     <@module.body>
         <div id="body" class="eui-layout-container">

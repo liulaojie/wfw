@@ -23,6 +23,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.esen</groupId>
+			<artifactId>eutil</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
 			<artifactId>emicroservice</artifactId>
 			<scope>provided</scope>
 		</dependency>

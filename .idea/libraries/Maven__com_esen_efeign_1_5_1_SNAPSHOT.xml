@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:efeign:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/efeign/1.5.1-SNAPSHOT/efeign-1.5.1-20220823.115641-39.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/efeign/1.5.1-SNAPSHOT/efeign-1.5.1-20220824.084430-40.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/efeign/1.5.1-SNAPSHOT/efeign-1.5.1-20220823.115641-39-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/efeign/1.5.1-SNAPSHOT/efeign-1.5.1-20220824.084430-40-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/efeign/1.5.1-SNAPSHOT/efeign-1.5.1-20220823.115641-39-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/efeign/1.5.1-SNAPSHOT/efeign-1.5.1-20220824.084430-40-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

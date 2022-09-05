@@ -45,6 +45,10 @@
 			<groupId>com.esen</groupId>
 			<artifactId>eweb</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>elog-api</artifactId>
+		</dependency>
 	</dependencies>
 
 	<repositories>

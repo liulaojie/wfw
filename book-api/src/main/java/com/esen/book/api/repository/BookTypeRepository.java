@@ -10,6 +10,7 @@ import com.esen.ejdbc.params.PageResult;
 import com.esen.eorm.annotation.ApplicationRepository;
 import com.esen.eorm.repository.AbstractRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +22,8 @@ import java.util.List;
  * @author liuaj
  * @since 20220824
  */
-@ApplicationRepository
+@ApplicationRepository(value = "BookTypeRepository")
+@Primary
 public class BookTypeRepository extends AbstractRepository<BookTypeEntity> {
 	@Autowired
 	private BookCategoryRepository bcrep;

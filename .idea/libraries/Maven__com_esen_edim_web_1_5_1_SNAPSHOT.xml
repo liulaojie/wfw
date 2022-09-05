@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:edim-web:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edim-web/1.5.1-SNAPSHOT/edim-web-1.5.1-20220822.070732-100.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edim-web/1.5.1-SNAPSHOT/edim-web-1.5.1-20220901.093732-103.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edim-web/1.5.1-SNAPSHOT/edim-web-1.5.1-20220822.070732-100-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edim-web/1.5.1-SNAPSHOT/edim-web-1.5.1-20220901.093732-103-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edim-web/1.5.1-SNAPSHOT/edim-web-1.5.1-20220822.070732-100-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edim-web/1.5.1-SNAPSHOT/edim-web-1.5.1-20220901.093732-103-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

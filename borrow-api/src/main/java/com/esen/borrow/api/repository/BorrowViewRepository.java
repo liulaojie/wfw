@@ -1,4 +1,4 @@
-package com.esen.borrow.api.Repository;
+package com.esen.borrow.api.repository;
 
 import com.esen.book.api.entity.*;
 import com.esen.book.api.repository.*;

@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:manjusaka-service:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/manjusaka-service/1.5.1-SNAPSHOT/manjusaka-service-1.5.1-20220810.033937-119.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/manjusaka-service/1.5.1-SNAPSHOT/manjusaka-service-1.5.1-20220831.022022-121.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/manjusaka-service/1.5.1-SNAPSHOT/manjusaka-service-1.5.1-20220810.033937-119-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/manjusaka-service/1.5.1-SNAPSHOT/manjusaka-service-1.5.1-20220831.022022-121-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/manjusaka-service/1.5.1-SNAPSHOT/manjusaka-service-1.5.1-20220810.033937-119-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/manjusaka-service/1.5.1-SNAPSHOT/manjusaka-service-1.5.1-20220831.022022-121-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -1,6 +1,5 @@
 <@module.page>
 <@module.head title="${title2}">
-	<link  rel="stylesheet" type="text/css" href="../../borrow/css/borrowmgr.css">
 </@module.head>
 <@module.body>
 <div class="eui-layout-container">

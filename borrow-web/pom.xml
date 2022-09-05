@@ -29,14 +29,6 @@
 			<artifactId>emicroservice</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<!--
-
-		<dependency>
-			<groupId>com.esen</groupId>
-			<artifactId>book-web</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-		-->
 		<!-- 资源管理器 -->
 		<dependency>
 			<groupId>com.esen</groupId>

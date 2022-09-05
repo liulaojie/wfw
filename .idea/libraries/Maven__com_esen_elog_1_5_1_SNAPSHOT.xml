@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:elog:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/elog/1.5.1-SNAPSHOT/elog-1.5.1-20220810.085932-39.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/elog/1.5.1-SNAPSHOT/elog-1.5.1-20220901.085728-43.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/elog/1.5.1-SNAPSHOT/elog-1.5.1-20220810.085932-39-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/elog/1.5.1-SNAPSHOT/elog-1.5.1-20220901.085728-43-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/elog/1.5.1-SNAPSHOT/elog-1.5.1-20220810.085932-39-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/elog/1.5.1-SNAPSHOT/elog-1.5.1-20220901.085728-43-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

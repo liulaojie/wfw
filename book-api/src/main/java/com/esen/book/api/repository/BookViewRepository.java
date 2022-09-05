@@ -10,6 +10,8 @@ import com.esen.eorm.repository.AbstractRepository;
 import com.esen.eutil.util.ExceptionHandler;
 import com.esen.eutil.util.exp.Expression;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 
 import java.sql.Connection;
 /**
@@ -19,15 +21,18 @@ import java.sql.Connection;
  * @since 20220824
  */
 @ApplicationRepository
+@Primary
 public class BookViewRepository extends AbstractRepository<BookViewEntity> {
 
+
 	@Autowired
-	private BookHistoryRepository bhrep;
-	@Autowired
+	@Qualifier("BookInfoRepository")
 	private BookInfoRepository birep;
 	@Autowired
+	@Qualifier("BookTypeRepository")
 	private BookTypeRepository btrep;
 	@Autowired
+	@Qualifier("BookCategoryRepository")
 	private BookCategoryRepository bcrep;
 	@Autowired
 	private ConnectFactoryManager connFactoryManager;

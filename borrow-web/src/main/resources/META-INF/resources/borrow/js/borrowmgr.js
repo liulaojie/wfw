@@ -4,20 +4,17 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         var ECoolBar = ecoolbar.ECoolBar;
         var EList= elist.EList;
         var EPageBar = epagebar.EPageBar;
-        var chedata = new Array() ;//记录列表中被选择的数据的ID
-        BorrowMgr.prototype.pageIndex ;//记录页面偏移
-        BorrowMgr.prototype.totalCount;//记录总数
-        BorrowMgr.prototype.scaption ;//记录大类名
+        var chedata = new Map() ;//记录列表中被选择的数据的ID
         /**
          * 自定义分页条
          */
         var customSort = [
-            {id:"first",text:"首页",cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"previous",text:"上一页",cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"main",text:"第,页  共{0}页",cssText:";color:#000000;font-weight: bold;"},
-            {id:"next",text:"下一页",cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"last",text:"末页",cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"total",text:"每页三十条共{1}条",cssText:";color:#000000;font-weight: bold;"}
+            {id:"first",text:I18N.getString("borrow.js.first", "首页"),cssText:";color:#87CEEB;font-weight: bold;"},
+            {id:"previous",text:I18N.getString("borrow.js.Previous", "上一页"),cssText:";color:#87CEEB;font-weight: bold;"},
+            {id:"main",text:I18N.getString("borrow.js.main", "第,页  共{0}页"),cssText:";color:#000000;font-weight: bold;"},
+            {id:"next",text:I18N.getString("borrow.js.next", "下一页"),cssText:";color:#87CEEB;font-weight: bold;"},
+            {id:"last",text:I18N.getString("borrow.js.last", "下一页"),cssText:";color:#87CEEB;font-weight: bold;"},
+            {id:"total",text:I18N.getString("borrow.js.total", "每页三十条共{1}条"),cssText:";color:#000000;font-weight: bold;"}
             ]
         /**
          * BorrowMgr的构造函数
@@ -30,7 +27,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             // this.doc = this.wnd.document;
             self.scaption=options.scaption
             this._initUI();
-            this._initData(self.pageIndex);
+            this._initData(0);
         }
         EUI.extendClass(BorrowMgr,EComponent,"BorrowMgr");
 
@@ -73,13 +70,13 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             });
             var band = this.coolbarObj.addBand("band_name1",true,true);
             if (self.scaption==''){
-                var createAdom= band.addButton(null,"生成分析表");
+                var createAdom= band.addButton(null,I18N.getString("borrow.js.createanalyze", "生成分析表"));
                 createAdom.setName("createAnalyze");
                 createAdom.setOnAfterClick(function (){//生成分析表
                     self.createAnalyze();
                 })
             }
-            var addBdom= band.addButton(null,"新建借阅记录");
+            var addBdom= band.addButton(null,I18N.getString("borrow.js.borrowmgr.js.addBorrow", "新建借阅记录"));
             addBdom.setName("addBorrow");
             addBdom.setOnAfterClick(function (){
                 self._borrowDialog();
@@ -119,43 +116,56 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             });
             if (self.scaption==''){
                 columns.push({
-                    caption:"大类",
+                    caption:I18N.getString("borrow.js.bcaption", "大类"),
                     id:"bcaption",
                 });
                 columns.push({
-                    caption:"小类",
+                    caption:I18N.getString("borrow.js.scaption", "小类"),
                     id:"scaption",
                 });
             }
             columns.push({
-                caption:"书名",
+                caption:I18N.getString("borrow.js.book", "书名"),
                 id:"book",
                 hint:true,      //该列是否开启提示
             });
             columns.push({
-                caption:"借阅人",
+                caption:I18N.getString("borrow.js.person", "借阅人"),
                 id:"person",
 
                 hint:true,      //该列是否开启提示
             });
             columns.push({
-                caption:"借阅日期",
+                caption:I18N.getString("borrow.js.fromdate", "借阅日期"),
                 id:"fromdate",
                 // width: 300,
                 hint:true,      //该列是否开启提示
+                dataRender:function (span, data, rowIndex, elist) {
+                    span.innerHTML = EUI.date2String(new Date(data), "yyyy年mm月dd日 hh:ii:ss");
+                }
             });
             columns.push({
-                caption:"归还日期",
+                caption:I18N.getString("borrow.js.todate", "归还日期"),
                 id:"todate",
                 // width: 300,
                 hint:true,      //该列是否开启提示
+                dataRender:function (span, data, rowIndex, elist) {
+                    if (data==null){
+                        span.innerHTML = I18N.getString("borrow.js.borrowmgr.js.noreturn", "尚未归还")
+                    }else{
+                        span.innerHTML = EUI.date2String(new Date(data), "yyyy年mm月dd日 hh:ii:ss");
+                    }
+
+                }
             });
             columns.push({
-                caption:"操作",
+                caption:I18N.getString("borrow.js.borrowmgr.js.operation", "操作"),
                 // width:"200px",
                 dataRender:function (cell){
-                    var strhtml = ' <a id="delete" class="eui-btn eui-btn-m">删除</a> '
-                    strhtml +=' <a id="return" class = "eui-btn eui-btn-m">还书</a>'
+                    var strhtml = ' <a id="delete" class="eui-btn eui-btn-m">'
+                        +I18N.getString("borrow.js.borrowmgr.js.delete", "删除")+'</a> '
+                    strhtml +=' <a id="return" class = "eui-btn eui-btn-m">'
+                        +I18N.getString("borrow.js.borrowmgr.js.return", "还书")+'</a>'
                     cell.innerHTML = strhtml;
                 },
                 onCellClick: function (rowdata,td,evt){
@@ -220,9 +230,8 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                     self._initData(self.pageIndex);
                 })
             }
-            self.borrowdialog.showModal();
             //打开对话框
-            self.borrowdialog.open();
+            self.borrowdialog.open(true);
         }
         /**
          * 初始化数据
@@ -236,44 +245,22 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                     scaption:self.scaption,
                     pageIndex:pageIndex
                 },
-                callback:function (queryObj){
-                    var obj = queryObj.getResponseJSON();
-                    if (!!obj){
+                callback:function (queryobj){
+                    var obj = queryobj.getResponseJSON();
+                    if (obj){
                         self.getCheck();
                         self.listObj.clear(true);
-                        for (var i=0;i<obj.length;i++){
-                            obj[i].fromdate = EUI.date2String(new Date(obj[i].fromdate), "yyyy年mm月dd日 hh:ii:ss");
-                            if (obj[i].todate==null){
-                                obj[i].todate="尚未归还";
-                            }else{
-                                obj[i].todate = EUI.date2String(new Date(obj[i].todate), "yyyy年mm月dd日 hh:ii:ss");
-                            }
-                           self.listObj.addRow(obj[i]);
-                        }
-                        self.setCheck();
-                    }
-                }
-            })
-            //初始化分页条数据
-            EUI.post({
-                url:EUI.getContextPath()+"web/borrow/borrowSize.do",
-                data:{
-                    scaption:self.scaption,
-                },
-                callback:function (queryObj){
-                    var obj = queryObj.getResponseJSON();
-                        self.totalCount = obj;
+                        self.listObj.refreshData(obj.list);
+                        self.totalCount = obj.totalCount;
                         if (self.pageBarObj==null){
                             self._initPageBar();
-                        }else {
-                            self.pageBarObj.resetDom(obj,self.pageIndex);
-                            if (obj==0){
-                                self.pageBarObj.setVisible(false)
-                            }else{
-                                self.pageBarObj.setVisible(true)
-                            }
+                        }else{
+                            self.pageBarObj.resetDom(obj.totalCount,pageIndex);
                         }
-                }
+                    }
+                },
+                waitMessage: {message: I18N.getString("ES.COMMON.LOADING", "正在加载..."),
+                    finish: I18N.getString("ES.COMMON.SUCCEED", "成功")}
             })
         }
         /**
@@ -281,7 +268,9 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          */
         BorrowMgr.prototype.delBorrow = function (data){
             var self = this;
-            EUI.confirmDialog("确认", '是否确认删除“'+data.person+'”于'+data.fromdate+'借阅《'+data.book+'》的记录', false,
+            EUI.confirmDialog(I18N.getString("borrow.js.borrowmgr.js.deleteevn", "确认"),
+                I18N.getString("ES.COMMON.AFFIRM", '是否确认删除“{0}”于{1}借阅《{2}》的记录',
+                    [data.person,data.fromdate,data.book]), false,
                 function(){
                 },
                 function(){
@@ -292,16 +281,12 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                         },
                         callback:function (queryObj){
                             var obj = queryObj.getResponseJSON();
-                            if (obj){
-                               alert("删除成功")
-                            }else{
-                                alert("删除失败")
-                            }
                             //刷新数据
-                            self.pageIndex = 0;
-                            self._initData(self.pageIndex);
+                            self._initData(0);
                             this.close();
-                        }
+                        },
+                        waitMessage: {message: I18N.getString("ES.COMMON.DELETING", "正在删除..."),
+                            finish: I18N.getString("ES.COMMON.DELETESUCCESS", "删除成功")}
                     })
 
                 },
@@ -315,12 +300,15 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          */
         BorrowMgr.prototype.returnBook = function (data){
             var self = this;
-            EUI.confirmDialog("确认", '是否确定“'+data.person+'”于'+data.fromdate+'借阅《'+data.book+'》的书籍已归还', false,
+            EUI.confirmDialog(I18N.getString("borrow.js.borrowmgr.js.returnevn", "确认"),
+                I18N.getString("ES.COMMON.AFFIRM", '是否确定“{0}”于{1}借阅《{2}》的借阅的数据已归还',
+                    [data.person,data.fromdate,data.book]), false,
                 function(){
                 },
                 function(){
-                    if (data.todate!="尚未归还"){
-                        EUI.showMessage("该书本已归还", "消息");
+                    if (data.todate!=I18N.getString("borrow.js.borrowmgr.js.noreturn", "尚未归还")){
+                        EUI.showMessage(I18N.getString("borrow.js.borrowmgr.js.returned", "该书本已归还"),
+                            I18N.getString("borrow.js.borrowmgr.js.message", "消息"));
                     }else{
                         data.todate= EUI.date2String(new Date(), "yyyymmdd")
                         EUI.post({
@@ -331,16 +319,13 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                             },
                             callback:function (queryObj){
                                 var obj = queryObj.getResponseJSON();
-                                if (obj){
-                                    alert("还书成功")
-                                }else{
-                                    alert("还书失败")
-                                }
                                 //刷新数据
                                 self.pageIndex = 0;
                                 self._initData(self.pageIndex);
                                 this.close();
-                            }
+                            },
+                            waitMessage: {message: I18N.getString("borrow.js.borrowmgr.js.returning", "正在还书..."),
+                                finish: I18N.getString("ES.COMMON.SUCCEED", "成功")}
                         })
                     }
                 },
@@ -356,7 +341,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             var self = this;
             var datas=self.listObj.getCheckDatas();
             if (datas==null){//
-                EUI.showMessage("没有勾选任何数据", "消息");
+                EUI.showMessage(I18N.getString("borrow.js.borrowmgr.js.nocheck", "没有勾选任何数据"), I18N.getString("borrow.js.borrowmgr.js.message", "消息"));
             }else{
                 self.getCheck();
                 self._analyzeDialog();
@@ -378,8 +363,8 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 self.analyzedialog = new dlg.AnalyzeDialog(options);
                 //设置点击确定的回调函数
                 self.analyzedialog.setOnok(function (title,type){
-                    var wnd= self.wnd.parent;
-                    var rootItem= wnd.getTreeRootItem();
+                    var pwnd= self.wnd.parent;
+                    var rootItem= pwnd.getTreeRootItem();
                     var item = rootItem.getChildItem(0);
                     item = item.getChildItem(2);
                     var child = item.getAllChildrenItems(null,true);
@@ -404,7 +389,8 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                             item.selectSelf();
                             item.doClick();
                         });
-                        chedata = new Array();
+                        //清空历史选择的数据
+                        chedata = new Map();
                         var indexs = self.listObj.getCheckRows();
                         self.listObj.setCheckRows(indexs,false);
                         return true;
@@ -414,44 +400,22 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                     }
                 })
             }
-            self.analyzedialog.showModal();
             //打开对话框
-            self.analyzedialog.open();
+            self.analyzedialog.open(true);
         }
         /**
          * 获取当前列表中被选取的数据
          */
         BorrowMgr.prototype.getCheck = function (){
             var self = this;
-            ;
             var k = 0;
             var chedatanow = self.listObj.getCheckDatas();
-            var datas = self.listObj.getDatas();
             if (chedatanow!=null){
-                for (var i =0;i<datas.length;i++){
-                    if (self.listObj.isCheckRow(i)){//被选中的行
-                        var isnew = true;
-                        for (var j =0;j<chedata.length;j++){
-                            if (datas[i].id==chedata[j].id){
-                                isnew = false;
-                                break;
-                            }
-                        }
-                        if (isnew){
-
-                            chedata.push(datas[i]);
-                            var person = datas[i].person;
-                        }
-                    }else{//未被选中的行
-                        for (var j =0;j<chedata.length;j++){
-                            if (datas[i].id==chedata[j].id){
-                                chedata.splice(j,1);
-                                break;
-                            }
-                        }
-                    }
+                for (var i=0;i<chedatanow.length;i++){
+                    chedata.set(chedatanow[i].id,chedatanow[i]);
                 }
             }
+
         }
 
         /**
@@ -460,33 +424,13 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         BorrowMgr.prototype.setCheck = function (){
             var self = this;
             var targets = self.listObj.getDatas();
-            var i=0
-            var flag = false;
-            if (targets!=null){
-                for (var j=0;j<targets.length;j++){
-                    if (i==chedata.length){
-                        i=0;//重置
-                        flag=true;
-                    }
-                    if (i!=0){
-                        flag = true
-                    }
-                    for (;i<chedata.length;i++){
-                        if (targets[j].id==chedata[i].id){
-                            self.listObj.setCheckRow(j,true);
-                            flag = true;
-                            i++;
-                            break;
-                        }
-                        if (flag){
-                            if (i==chedata.length-1){
-                                i=-1;//重置
-                                flag=false;
-                            }
-                        }
-                    }
+            for (var i=0;i<targets.length;i++){
+                if (chedata.has(targets[i].id)){
+                    self.listObj.setCheckRow(i,true);
+                    chedata.delete(targets[i].id);
                 }
             }
+
 
         }
         return{

@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:ethreadpool:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ethreadpool/1.5.1-SNAPSHOT/ethreadpool-1.5.1-20220818.113924-28.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ethreadpool/1.5.1-SNAPSHOT/ethreadpool-1.5.1-20220831.092327-29.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ethreadpool/1.5.1-SNAPSHOT/ethreadpool-1.5.1-20220818.113924-28-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ethreadpool/1.5.1-SNAPSHOT/ethreadpool-1.5.1-20220831.092327-29-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ethreadpool/1.5.1-SNAPSHOT/ethreadpool-1.5.1-20220818.113924-28-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ethreadpool/1.5.1-SNAPSHOT/ethreadpool-1.5.1-20220831.092327-29-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

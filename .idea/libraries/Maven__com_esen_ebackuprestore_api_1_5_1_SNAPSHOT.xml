@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:ebackuprestore-api:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebackuprestore-api/1.5.1-SNAPSHOT/ebackuprestore-api-1.5.1-20220802.075729-68.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebackuprestore-api/1.5.1-SNAPSHOT/ebackuprestore-api-1.5.1-20220826.062026-69.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebackuprestore-api/1.5.1-SNAPSHOT/ebackuprestore-api-1.5.1-20220802.075729-68-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebackuprestore-api/1.5.1-SNAPSHOT/ebackuprestore-api-1.5.1-20220826.062026-69-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebackuprestore-api/1.5.1-SNAPSHOT/ebackuprestore-api-1.5.1-20220802.075729-68-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/ebackuprestore-api/1.5.1-SNAPSHOT/ebackuprestore-api-1.5.1-20220826.062026-69-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

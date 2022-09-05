@@ -6,15 +6,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import com.esen.ejdbc.jdbc.orm.EntityInfo;
-import com.esen.eutil.util.StrFunc;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.esen.book.api.entity.*;
 import com.esen.book.api.repository.*;
-import com.esen.borrow.api.Repository.BorrowViewRepository;
+import com.esen.borrow.api.repository.BorrowViewRepository;
 import com.esen.borrow.api.entity.BorrowViewEntity;
-import com.esen.ejdbc.jdbc.ConnectFactoryManager;
 import com.esen.ejdbc.params.PageRequest;
 import com.esen.ejdbc.params.PageResult;
 import com.esen.eorm.annotation.ApplicationService;
@@ -23,7 +20,7 @@ import com.esen.eutil.util.UNID;
 import com.esen.eutil.util.exp.Expression;
 
 /**
- * 图书管理的SERVICE层
+ * 借阅管理的SERVICE层
  *
  * @author liuaj
  * @since 20220816
@@ -31,8 +28,6 @@ import com.esen.eutil.util.exp.Expression;
 @ApplicationService
 public class BorrowService extends AbstractService<BorrowViewEntity> {
 
-	@Autowired
-	protected ConnectFactoryManager connectFactoryManager;
 
 	@Autowired
 	protected BorrowViewRepository borrowViewRepository;
@@ -60,14 +55,14 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 	 * @return
 	 * @throws
 	 */
-	public List<BorrowViewEntity> borrowList(PageRequest page,String scaption) {
+	public PageResult<BorrowViewEntity> borrowList(PageRequest page,String scaption) {
 		PageResult<BorrowViewEntity> result = null;
 		if (scaption != "" && scaption != null) {
 			result = borrowViewRepository.findAll(page, new Expression("scaption=?"), new Object[] { scaption });
 		}else{
 			result = borrowViewRepository.findAll(page);
 		}
-		return result.list();
+		return result;
 	}
 	/**
 	 * 获取借阅列表大小，或获取对应小类的借阅列表大小
@@ -85,16 +80,10 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 
 	/**
 	 * 添加借书记录
-	 * @param person 借阅人 bid 书籍ID fromdate 借书时间
+	 * @param bookHistoryEntity 借阅记录实体
 	 * @return
 	 */
-	public void addBorrow(String person, String bid, String fromdate) {
-		String id = UNID.randomID();
-		BookHistoryEntity bookHistoryEntity = new BookHistoryEntity();
-		bookHistoryEntity.setId(id);
-		bookHistoryEntity.setBid(bid);
-		bookHistoryEntity.setPerson(person);
-		bookHistoryEntity.setFromdate(str2time(fromdate));
+	public void addBorrow(BookHistoryEntity bookHistoryEntity) {
 		bookHistoryRepository.add(bookHistoryEntity);
 		bookHistoryRepository.cleanCache();
 		borrowViewRepository.cleanCache();
@@ -117,12 +106,7 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 	 * @return
 	 * @throws
 	 */
-	public void returnBook(String id, String todate) {
-//		BookHistoryEntity bookHistoryEntity = (BookHistoryEntity) bookHistoryRepository.findOneQuietly(
-//				new Expression("id=?"), new Object[] {id});
-		BookHistoryEntity bookHistoryEntity = new BookHistoryEntity();
-		bookHistoryEntity.setId(id);
-		bookHistoryEntity.setTodate(str2time(todate));
+	public void returnBook(BookHistoryEntity bookHistoryEntity) {
 		bookHistoryRepository.save(bookHistoryEntity, "todate");
 		bookHistoryRepository.cleanCache();
 		borrowViewRepository.cleanCache();
@@ -157,7 +141,7 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 	 * @param page 页面信息 bcaption(可为空) 图书大类
 	 * @return
 	 */
-	public List<BookViewEntity> bookList(PageRequest page, String bcaption, String scaption) {
+	public PageResult<BookViewEntity> bookList(PageRequest page, String bcaption, String scaption) {
 		PageResult<BookViewEntity> result = null;
 		if (bcaption != "" && bcaption != null) {
 			result = bookViewRepository.findAll(page, new Expression("bcaption=?"), new Object[] { bcaption });
@@ -168,7 +152,7 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 				result = bookViewRepository.findAll(page);
 			}
 		}
-		return result.list();
+		return result;
 	}
 
 	/**
@@ -190,27 +174,21 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 	 * @param name 书本名
 	 * @return
 	 */
-	public String bookIsExists(String name) {
+	public boolean bookIsExists(String name) throws RuntimeException {
 		BookInfoEntity bookInfoEntity = bookInfoRepository.findOneQuietly(new Expression("caption=?"),
 				new Object[] { name });
 		if (bookInfoEntity != null) {
-			return "书名重复";
+			return true;
 		}
-		return null;
+		return false;
 	}
 
 	/**
 	 * 添加书籍
-	 * @param name 书籍名 scaptionn 小类名称 desc 书本描述
+	 * @param bookInfoEntity 图书实体
 	 * @return
 	 */
-	public void addBook(String name, String tid, String desc) {
-		String id = UNID.randomID();
-		BookInfoEntity bookInfoEntity = new BookInfoEntity();
-		bookInfoEntity.setId(id);
-		bookInfoEntity.setTid(tid);
-		bookInfoEntity.setCaption(name);
-		bookInfoEntity.setDesc(desc);
+	public void addBook(BookInfoEntity bookInfoEntity) {
 		bookInfoRepository.add(bookInfoEntity);
 		bookInfoRepository.cleanCache();
 		bookViewRepository.cleanCache();
@@ -218,16 +196,11 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 
 	/**
 	 * 修改书籍
-	 * @param name 书籍名 scaptionn 小类名称 desc 书本描述
+	 * @param bookInfoEntity 书籍名 图书实体
 	 * @return
 	 */
-	public void saveBook(String id, String name, String tid, String desc) {
-		BookInfoEntity bookInfoEntity = new BookInfoEntity();
-		bookInfoEntity.setId(id);
-		bookInfoEntity.setTid(tid);
-		bookInfoEntity.setCaption(name);
-		bookInfoEntity.setDesc(desc);
-		if (tid.length() == 1) {
+	public void saveBook(BookInfoEntity bookInfoEntity) {
+		if (bookInfoEntity.getTid().length() == 1) {
 			bookInfoRepository.save(bookInfoEntity, "caption", "desc");
 		} else {
 			bookInfoRepository.save(bookInfoEntity);
@@ -236,17 +209,4 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 		bookViewRepository.cleanCache();
 	}
 
-	public Timestamp str2time (String sdate){
-		Timestamp timestamp = null;
-		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-			Date date = sdf.parse(sdate);
-			 timestamp =new Timestamp(date.getTime());
-			return timestamp;
-		} catch (ParseException e) {
-			System.out.println(e.getMessage());
-		}finally {
-			return timestamp;
-		}
-	}
 }

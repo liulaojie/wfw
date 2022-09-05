@@ -9,6 +9,7 @@
         <module name="borrow-api" />
         <module name="book-service" />
         <module name="eplatform" />
+        <module name="i18nauto" />
         <module name="borrow-service" />
         <module name="book-web" />
         <module name="abi-web" />
@@ -26,6 +27,7 @@
       <module name="borrow-service" target="1.8" />
       <module name="borrow-web" target="1.8" />
       <module name="eplatform" target="1.8" />
+      <module name="i18nauto" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
