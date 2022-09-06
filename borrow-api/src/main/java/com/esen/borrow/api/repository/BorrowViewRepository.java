@@ -109,7 +109,10 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 				return str.toString();
 		}
 
-
+		/**
+		 * 得到视图名
+		 * @return
+	 	*/
 		public String getViewName() {
 				return this.getEntityInfo().getTable();
 		}

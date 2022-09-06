@@ -49,6 +49,15 @@
 			<groupId>com.esen</groupId>
 			<artifactId>elog-api</artifactId>
 		</dependency>
+		<!-- 资源管理器 -->
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>esetup-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
 	</dependencies>
 
 	<repositories>

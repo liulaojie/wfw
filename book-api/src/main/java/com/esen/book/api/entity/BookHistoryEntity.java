@@ -114,4 +114,15 @@ public class BookHistoryEntity extends RootEntity implements Serializable {
 	public void setTodate(Timestamp todate) {
 		this.todate = todate;
 	}
+
+	@Override
+	public String toString() {
+		return "BookHistoryEntity{" +
+				"id='" + id + '\'' +
+				", person='" + person + '\'' +
+				", bid='" + bid + '\'' +
+				", fromdate=" + fromdate +
+				", todate=" + todate +
+				'}';
+	}
 }

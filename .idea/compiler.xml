@@ -27,7 +27,7 @@
       <module name="borrow-service" target="1.8" />
       <module name="borrow-web" target="1.8" />
       <module name="eplatform" target="1.8" />
-      <module name="i18nauto" target="1.5" />
+      <module name="i18nauto" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -41,6 +41,7 @@
       <module name="borrow-service" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
       <module name="borrow-web" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
       <module name="eplatform" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
+      <module name="i18nauto" options="" />
     </option>
   </component>
 </project>

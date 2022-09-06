@@ -18,15 +18,6 @@ import org.springframework.context.annotation.Primary;
 @Primary
 public class BookHistoryRepository extends AbstractRepository {
 
-		/**
-		 * 所有借阅记录数
-		 * @param
-		 * @return
-		 */
-		public int getTotalCount(){
-				Query<BookHistoryEntity> query = getCurrentSession().createQuery(getEntityInfo().getBean(),getEntityName());
-				return query.query(null,null,null).calcTotalCount();
-		}
 
 		@Override
 		protected String getCurrentLoginId() {

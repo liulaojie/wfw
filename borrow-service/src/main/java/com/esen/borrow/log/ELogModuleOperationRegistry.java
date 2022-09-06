@@ -44,21 +44,21 @@ public class ELogModuleOperationRegistry extends SystemModuleOperationRegistry {
 	 */
 	public enum ELogOperation implements Operation {
 
-		LOG_VIEW("ELOG0100VE", "查看日志", "com.esen.elog.impl.logModuleOperRegistry.viewlog"),
-		LOG_SEARCH("ELOG10100SE", "搜索日志", "com.esen.elog.impl.logModuleOperRegistry.searchlog"),
-		LOG_EXPORT("ELOG0100EX", "导出日志", "com.esen.elog.impl.logModuleOperRegistry.exportlog"),
-		LOG_VIEWCONFIG("ELOG0200VE", "日志配置查看", "com.esen.elog.impl.logModuleOperRegistry.viewlogconf"),
-		LOG_EDITCONFIG("ELOG0200MD", "日志配置编辑", "com.esen.elog.impl.logModuleOperRegistry.editlogconf"),
-		LOG_ARCHIVE("ELOG0100ZZ", "日志归档", "com.esen.elog.impl.logModuleOperRegistry.archivelog"),
-		LOG_CLEAN("ELOG0100CR", "日志清理", "com.esen.elog.impl.logModuleOperRegistry.cleanlog"),
-		Borrow_VIEW("EDSO0100VE","查看借阅列表","com.esen.borrow.web.log.ELogModuleOperationRegistry.viewborrow"),
-		Borrow_ADD("EDSO0101NE","添加借阅记录","com.esen.borrow.web.log.ELogModuleOperationRegistry.addborrow"),
-		Borrow_REFRESH("EDSO0102MD","修改借阅记录","com.esen.borrow.web.log.ELogModuleOperationRegistry.editborrow"),
-		Borrow_DELETE("EDSO0103DE","删除借阅记录","com.esen.borrow.web.log.ELogModuleOperationRegistry.deleteborrow"),
-		LOG_SLF4J_SAVE("ELOG0300MD", "保存slf4j日志设置", "com.esen.elog.impl.logModuleOperRegistry.saveslf4j"),
-		LOG_SLF4J_VIEW("ELOG0300VE", "查看slf4j日志设置", "com.esen.elog.impl.logModuleOperRegistry.viewslf4j");
+		LOG_VIEW("ELOG0100VE", "查看日志", "com.esen.borrow.log.elogmoduleoperationregistry.viewlog"),
+		LOG_SEARCH("ELOG10100SE", "搜索日志", "com.esen.borrow.log.elogmoduleoperationregistry.searchlog"),
+		LOG_EXPORT("ELOG0100EX", "导出日志", "com.esen.borrow.log.elogmoduleoperationregistry.exportlog"),
+		LOG_VIEWCONFIG("ELOG0200VE", "日志配置查看", "com.esen.borrow.log.elogmoduleoperationregistry.viewlogconf"),
+		LOG_EDITCONFIG("ELOG0200MD", "日志配置编辑", "com.esen.borrow.log.elogmoduleoperationregistry.editlogconf"),
+		LOG_ARCHIVE("ELOG0100ZZ", "日志归档", "com.esen.borrow.log.elogmoduleoperationregistry.archivelog"),
+		LOG_CLEAN("ELOG0100CR", "日志清理", "com.esen.borrow.log.elogmoduleoperationregistry.cleanlog"),
+		BORROW_VIEW("EDSO0100VE","查看借阅列表","com.esen.borrow.log.elogmoduleoperationregistry.viewborrow"),
+		BORROW_ADD("EDSO0101NE","添加借阅记录","com.esen.borrow.log.elogmoduleoperationregistry.addborrow"),
+		BORROW_REFRESH("EDSO0102MD","修改借阅记录","com.esen.borrow.log.elogmoduleoperationregistry.editborrow"),
+		BORROW_DELETE("EDSO0103DE","删除借阅记录","com.esen.borrow.log.elogmoduleoperationregistry.deleteborrow"),
+		LOG_SLF4J_SAVE("ELOG0300MD", "保存slf4j日志设置", "com.esen.borrow.log.elogmoduleoperationregistry.saveslf4j"),
+		LOG_SLF4J_VIEW("ELOG0300VE", "查看slf4j日志设置", "com.esen.borrow.log.elogmoduleoperationregistry.viewslf4j");
 
-		private static final OperationModule module = new OperationModule("ELOG000000", "日志管理", "com.esen.elog.impl.logmoduleoperregistry.elogmanager");
+		private static final OperationModule module = new OperationModule("ELOG000000", "日志管理", "com.esen.borrow.log.elogmoduleoperationregistry.elogmanager");
 
 		private String operId;
 		private String defaultCaption;

@@ -70,6 +70,10 @@ public class BookViewRepository extends AbstractRepository<BookViewEntity> {
 		}
 	}
 
+	/**
+	 * 获取视图名
+	 * @return
+	 */
 	public String getViewName() {
 		return this.getEntityInfo().getTable();
 	}

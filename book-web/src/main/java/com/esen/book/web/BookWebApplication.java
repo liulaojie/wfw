@@ -3,6 +3,7 @@ package com.esen.book.web;
 import com.esen.eservice.EsenApplication;
 import com.esen.eservice.start.RunTimeConfig;
 import org.springframework.boot.SpringApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
@@ -10,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author liuaj
  * @since 2022年8月11日
  */
-
+@EnableDiscoveryClient
 @EnableFeignClients
 public class BookWebApplication {
 

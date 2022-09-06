@@ -97,4 +97,14 @@ public class BookInfoEntity extends RootEntity implements Serializable {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+
+	@Override
+	public String toString() {
+		return "BookInfoEntity{" +
+				"id='" + id + '\'' +
+				", tid='" + tid + '\'' +
+				", caption='" + caption + '\'' +
+				", desc='" + desc + '\'' +
+				'}';
+	}
 }

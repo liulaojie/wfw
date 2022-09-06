@@ -17,15 +17,6 @@ import org.springframework.context.annotation.Primary;
 @Primary
 public class BookInfoRepository extends AbstractRepository<BookInfoEntity> {
 
-	/**
-	 * 所有书籍数
-	 * @param
-	 * @return
-	 */
-	public int getTotalCount(){
-		Query<BookInfoEntity> query = getCurrentSession().createQuery(getEntityInfo().getBean(),getEntityName());
-		return query.query(null,null,null).calcTotalCount();
-	}
 
 		@Override
 		protected String getCurrentLoginId() {

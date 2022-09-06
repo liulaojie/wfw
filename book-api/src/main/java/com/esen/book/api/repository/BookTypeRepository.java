@@ -28,6 +28,11 @@ public class BookTypeRepository extends AbstractRepository<BookTypeEntity> {
 	@Autowired
 	private BookCategoryRepository bcrep;
 
+	/**
+	 * 通过大类数据得到小类列表
+	 * @param bcaption
+	 * @return
+	 */
 	public List<BookTypeEntity> getTypeListByBcaption(String bcaption){
 		EntityInfo<BookTypeEntity>btEntityInfo = this.getEntityInfo();
 		EntityInfo<BookCategoryEntity>bcEntityInfo = bcrep.getEntityInfo();

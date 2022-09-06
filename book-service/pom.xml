@@ -30,6 +30,18 @@
 			<artifactId>emicroservice</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>elog-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>esysconfig</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.esen</groupId>
+			<artifactId>eservice</artifactId>
+		</dependency>
 		<!-- 资源管理器 -->
 		<dependency>
 			<groupId>com.esen</groupId>

@@ -39,6 +39,7 @@ public class BookService  extends AbstractService<BookViewEntity> {
 	protected BookHistoryRepository bookHistoryRepository;
 
 
+
 	/**
 	 * 获取大类列表
 	 */
@@ -49,9 +50,10 @@ public class BookService  extends AbstractService<BookViewEntity> {
 	/**
 	 * 获取小类列表，可得到全部列表或根据大类获取对应的小类列表
 	 * @param cid 大类ID
+	 * @param bcaption 大类数据
 	 * @return
 	 */
-	public List<BookTypeEntity> typeList(String cid, String bcaption) {
+	public List<BookTypeEntity> typeList(String cid,String bcaption) {
 		if (cid.length()>1) {
 			return (List<BookTypeEntity>) bookTypeRepository.findAll(new Expression("cid=?"), new Object[] { cid });
 		}
@@ -81,19 +83,6 @@ public class BookService  extends AbstractService<BookViewEntity> {
 		return result;
 	}
 
-	/**
-	 * 获取图书列表大小，或获取对应大类的借阅列表大小
-	 * @param bcaption 大类名(可为空)
-	 * @return
-	 * @throws
-	 */
-	public int bookSize(String bcaption) {
-		if (bcaption != "" && bcaption != null) {
-			return bookViewRepository.getTotalCountByBcaption(bcaption);
-		}else{
-			return bookInfoRepository.getTotalCount();
-		}
-	}
 
 	/**
 	 * 检查书本是否存在
@@ -104,9 +93,9 @@ public class BookService  extends AbstractService<BookViewEntity> {
 		BookInfoEntity bookInfoEntity = bookInfoRepository.findOneQuietly(new Expression("caption=?"),
 				new Object[] { name });
 		if (bookInfoEntity != null) {
-			throw new RuntimeException("书名重复");
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	/**
@@ -122,7 +111,7 @@ public class BookService  extends AbstractService<BookViewEntity> {
 
 	/**
 	 * 修改书籍
-	 * @param bookInfoEntity 书籍名 图书实体
+	 * @param bookInfoEntity  图书实体
 	 * @return
 	 */
 	public void saveBook(BookInfoEntity bookInfoEntity) {
