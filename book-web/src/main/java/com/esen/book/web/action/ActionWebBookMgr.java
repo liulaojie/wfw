@@ -14,7 +14,7 @@ public class ActionWebBookMgr  {
 	 */
 	@RequestMapping("/index")
 	public String index() {
-		return "book/web/index";
+		return "book/index";
 	}
 	/**
 	 * 跳转到图书管理界面
@@ -23,7 +23,7 @@ public class ActionWebBookMgr  {
 	@RequestMapping("bookmgr")
 	public String bookMgr(HttpServletRequest req, String cid) {
 		req.setAttribute("cid", cid);
-		return "book/web/bookmgr";
+		return "book/bookmgr";
 	}
 
 }

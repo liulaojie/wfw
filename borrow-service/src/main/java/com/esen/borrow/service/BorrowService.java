@@ -50,10 +50,10 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 	 */
 	public PageResult<BorrowViewEntity> borrowList(PageRequest page,String tid) {
 		PageResult<BorrowViewEntity> result = null;
-		if (!StrFunc.isNull(tid)){
-			result = borrowViewRepository.findAllByTid(page, tid);
-		}else{
+		if (StrFunc.isNull(tid)){
 			result = borrowViewRepository.findAll(page);
+		}else{
+			result = borrowViewRepository.findAllByTid(page, tid);
 		}
 		return result;
 	}

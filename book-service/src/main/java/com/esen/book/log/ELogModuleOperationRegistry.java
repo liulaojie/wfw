@@ -35,7 +35,6 @@ public class ELogModuleOperationRegistry extends SystemModuleOperationRegistry {
 	@Override
 	public Set<String> getFilterOperIds() {
 		Set<String> set = new HashSet<String>();
-		set.add(ELogOperation.LOG_VIEW.getOperId());
 		return set;
 	}
 
@@ -44,22 +43,13 @@ public class ELogModuleOperationRegistry extends SystemModuleOperationRegistry {
 	 */
 	public enum ELogOperation implements Operation {
 
-		LOG_VIEW("ELOG0100VE", "查看日志", "com.esen.book.log.elogmoduleoperationregistry.viewlog"),
-		LOG_SEARCH("ELOG10100SE", "搜索日志", "com.esen.book.log.elogmoduleoperationregistry.searchlog"),
-		LOG_EXPORT("ELOG0100EX", "导出日志", "com.esen.book.log.elogmoduleoperationregistry.exportlog"),
-		LOG_VIEWCONFIG("ELOG0200VE", "日志配置查看", "com.esen.book.log.elogmoduleoperationregistry.viewlogconf"),
-		LOG_EDITCONFIG("ELOG0200MD", "日志配置编辑", "com.esen.book.log.elogmoduleoperationregistry.editlogconf"),
-		LOG_ARCHIVE("ELOG0100ZZ", "日志归档", "com.esen.book.log.elogmoduleoperationregistry.archivelog"),
-		LOG_CLEAN("ELOG0100CR", "日志清理", "com.esen.book.log.elogmoduleoperationregistry.cleanlog"),
-		TYPE_VIEW("EDSO0200VE","查看小类列表","com.esen.book.log.elogmoduleoperationregistry.viewtype"),
-		CATEGORY_VIEW("EDSO0201VE","查看大类列表","com.esen.book.log.elogmoduleoperationregistry.viewcategory"),
-		BOOK_VIEW("EDSO0202VE","查看图书列表","com.esen.book.log.elogmoduleoperationregistry.viewbook"),
-		BOOK_ADD("EDSO0203NE","添加书籍","com.esen.book.log.elogmoduleoperationregistry.addbook"),
-		BOOK_EDIT("EDSO0104MD","编辑书籍","com.esen.book.log.elogmoduleoperationregistry.editbook"),
-		LOG_SLF4J_SAVE("ELOG0300MD", "保存slf4j日志设置", "com.esen.book.log.elogmoduleoperationregistry.saveslf4j"),
-		LOG_SLF4J_VIEW("ELOG0300VE", "查看slf4j日志设置", "com.esen.book.log.elogmoduleoperationregistry.viewslf4j");
+		TYPE_VIEW("EBOK0000VE","查看小类列表","com.esen.book.log.elogmoduleoperationregistry.viewtype"),
+		CATEGORY_VIEW("EBOK0100VE","查看大类列表","com.esen.book.log.elogmoduleoperationregistry.viewcategory"),
+		BOOK_VIEW("EBOK0200VE","查看图书列表","com.esen.book.log.elogmoduleoperationregistry.viewbook"),
+		BOOK_ADD("EBOK0201NE","添加书籍","com.esen.book.log.elogmoduleoperationregistry.addbook"),
+		BOOK_EDIT("EBOK0202MD","编辑书籍","com.esen.book.log.elogmoduleoperationregistry.editbook");
 
-		private static final OperationModule module = new OperationModule("ELOG000000", "日志管理", "com.esen.book.log.elogmoduleoperationregistry.elogmanager");
+		private static final OperationModule module = new OperationModule("EBOK000000", "书籍管理", "com.esen.book.log.elogmoduleoperationregistry.ebokmanager");
 
 		private String operId;
 		private String defaultCaption;

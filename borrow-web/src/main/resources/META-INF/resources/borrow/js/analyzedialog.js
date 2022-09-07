@@ -44,7 +44,7 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
             var content = self.getContent();
             var strhtml = [];
             strhtml.push('<div class="eui-layout-container eui-padding-top-10 eui-padding-bottom-10 eui-scroll-auto">');
-            strhtml.push('<link  rel="stylesheet" type="text/css" href="'+EUI.getContextPath()+'borrow/web/css/analyzedialog.css">');
+            strhtml.push('<link  rel="stylesheet" type="text/css" href="'+EUI.getContextPath()+'borrow/css/analyzedialog.css">');
             strhtml.push('  <div id = "AnalyzeDialog-info-content">');
             strhtml.push('      <div class="eui-form-item">');
             strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.web.js.analyzedialog.js.analyzename", "分析表名称")+'：</label>');
@@ -112,7 +112,6 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
                 }
             })
             var cancel =this.addButton(I18N.getString("ES.COMMON.CANCEL", "取消"),"",false,true,function (){
-                self.clear();
                 self.close();
 
             })
@@ -120,6 +119,8 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
             //关闭对话框，清空对话框数据
             this.setOnClose(function (){
                 self.clear();
+                self.hideErrMsg("nametips");
+                self.hideErrMsg("graphcomboboxtips");
             })
 
         }

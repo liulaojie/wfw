@@ -153,12 +153,15 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             });
             columns.push({
                 caption:I18N.getString("borrow.web.js.borrowmgr.js.operation", "操作"),
-                dataRender:function (cell){
+                dataRender:function (span, data, rowIndex, elist){
+                    data = elist.getRowData(rowIndex);
                     var strhtml = ' <a id="delete" class="eui-btn eui-btn-m">'
                         +I18N.getString("borrow.web.js.borrowmgr.js.delete", "删除")+'</a> '
-                    strhtml +=' <a id="return" class = "eui-btn eui-btn-m">'
-                        +I18N.getString("borrow.web.js.borrowmgr.js.return", "还书")+'</a>'
-                    cell.innerHTML = strhtml;
+                    if (data.todate==null){
+                        strhtml +=' <a id="return" class = "eui-btn eui-btn-m">'
+                            +I18N.getString("borrow.web.js.borrowmgr.js.return", "还书")+'</a>'
+                    }
+                    span.innerHTML = strhtml;
                 },
                 onCellClick: function (rowdata,td,evt){
                     var target = evt.target;
@@ -208,7 +211,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                     wnd:EUI.getRootWindow(),
                     tid : self.tid
                 };
-                var dlg = require("borrow/web/js/borrowdialog");
+                var dlg = require("borrow/js/borrowdialog");
                 self.borrowdialog = new dlg.BorrowDialog(options);
                 //设置点击确定的回调函数
                 self.borrowdialog.setOnok(function (){
@@ -344,7 +347,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             var self = this;
             if(!self.analyzedialog) {
                 var options = {wnd:EUI.getRootWindow(),};
-                var dlg = require("borrow/web/js/analyzedialog");
+                var dlg = require("borrow/js/analyzedialog");
                 self.analyzedialog = new dlg.AnalyzeDialog(options);
                 //设置点击确定的回调函数
                 self.analyzedialog.setOnok(function (title,type){

@@ -5,6 +5,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         var ECoolBar = ecoolbar.ECoolBar;
         var EList= elist.EList;
         var EPageBar = epagebar.EPageBar;
+        var cid
         /**
          * 自定义分页条
          */
@@ -22,10 +23,10 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         function BookMgr(options){
             var self = this;
             EComponent.call(this,options);
-            self.cid=options.cid;
+            cid=options.cid;
             this._initUI();
             self.pageIndex=0;
-            this._initData(self.cid,self.pageIndex);
+            this._initData(cid,self.pageIndex);
         }
         EUI.extendClass(BookMgr,EComponent,"BookMgr");
 
@@ -67,8 +68,8 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             dom.setName("newBook");
             dom.setOnAfterClick(function (){
                 self._showDialog(true,null);
-
             })
+            EUI.addClassName("eui-padding-top-4n eui-padding-bottom-4n eui-padding-left-6n eui-padding-right-6n")
         }
 
         /**
@@ -145,7 +146,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 customSort:customSort,
                 onshowpage:function (pageIndex){
                     self.pageIndex = pageIndex
-                    self._initData(self.bcaption,pageIndex);
+                    self._initData(cid,pageIndex);
                 }
             })
         }
@@ -159,12 +160,12 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                     wnd:EUI.getRootWindow(),
                     isnew:isnew
                 };
-                var dlg = require("borrow/web/js/bookdialog");
+                var dlg = require("book/js/bookdialog");
                 self.bookdialog = new dlg.BookDialog(options);
                 //设置点击确定的回调函数
                 self.bookdialog.setOnok(function (){
                     self.pageIndex=0;
-                    self._initData(self.bcaption,self.pageIndex);
+                    self._initData(cid,self.pageIndex);
                 })
             }else {
                 self.bookdialog.isnew = isnew;

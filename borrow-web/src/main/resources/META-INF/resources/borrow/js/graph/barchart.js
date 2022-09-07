@@ -1,4 +1,4 @@
-define(["borrow/web/js/graph/graph"],
+define(["borrow/js/graph/graph"],
     function (graph){
         "use strict";
 
@@ -56,7 +56,8 @@ define(["borrow/web/js/graph/graph"],
             var doc = self.doc;
             var dom = doc.getElementById("body");
             var unit = 80/self.max;
-            dom.innerHTML = '<link  rel="stylesheet" type="text/css" href="'+EUI.getContextPath()+'borrow/web/css/analyze.css">'
+            dom.innerHTML = '<link  rel="stylesheet" type="text/css" href="'+EUI.getContextPath()+'borrow/css/analyze.css">'
+            EUI.addClassName(dom,"barchar");
             self.datas.forEach(function (value,key){
                 //整体div
                 var div= doc.createElement("div");

@@ -52,7 +52,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             var self = this;
             var content = self.getContent();
             var strhtml = [];
-            strhtml.push('<div class="eui-layout-container eui-padding-top-10 eui-padding-bottom-10 eui-scroll-auto">');
+            strhtml.push('<div class="eui-layout-container  eui-scroll-auto ">');
             strhtml.push('  <div id = "bookdialog-info-content">');
             strhtml.push('      <div class="eui-form-item">');
             strhtml.push('          <label class="eui-form-label eui-form-required"> '+
@@ -92,6 +92,8 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('  </div>');
             strhtml.push('</div>');
             content.innerHTML = strhtml.join(" ");
+            var dom= EUI.getChildDomByAttrib(this.getBaseDom(),"class","eui-dialog-body",true)
+            EUI.addClassName(dom,"eui-padding-top-4n eui-padding-bottom-4n eui-padding-right-6n")
             self.addBottomButtom();
             self._initBList();
             self._initSList();
@@ -205,6 +207,9 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             //关闭对话框，清空对话框数据
             this.setOnClose(function (){
                 self.clear();
+                self.hideErrMsg("nametips");
+                self.hideErrMsg("bcomboboxtips");
+                self.hideErrMsg("scomboboxtips");
             })
         }
 
@@ -231,7 +236,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                    data:self.userdata,
                    callback:function (queryObj){
                        var obj = queryObj.getResponseJSON();
-                           self.onok();
+                       self.onok();
                    },
                    waitMessage: {message: I18N.getString("ES.COMMON.SAVEING", "正在保存..."),
                        finish: I18N.getString("ES.COMMON.SAVESUCCESS", "保存成功")}
@@ -345,10 +350,9 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             //设置大类和小类
             self.bcaption = datas.bcaption;
             self.scaption = datas.scaption;
-            self._setBScaption()
             //设置描述
             EUI.getChildDomByAttrib(this.getBaseDom(),"id","desc",true).value=datas.desc;
-
+            self._setBScaption()
         }
         /**
          * 设置大小类数据
@@ -357,9 +361,11 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             var self = this;
             self.bComboboxObj.setSelectValue(self.bcaption,false);
             var elist = self.bComboboxObj.getEList();
-            var data = elist.getSelectDatas();
-            cid = data[0].id;
-            self.refresh(cid);
+            if (elist!=null){
+                var data = elist.getSelectDatas();
+                cid = data[0].id;
+                self.refresh(cid);
+            }
         }
         /**
          * 判断是否为空

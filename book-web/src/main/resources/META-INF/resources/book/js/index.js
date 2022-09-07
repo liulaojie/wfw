@@ -34,7 +34,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             //引入css文件
             var dom=this.doc.getElementById("body");
             var div=this.doc.createElement("div");
-            div.innerHTML = '<link  rel="stylesheet" type="text/css" href="'+EUI.getContextPath()+'borrow/web/css/index.css">'
+            div.innerHTML = '<link  rel="stylesheet" type="text/css" href="'+EUI.getContextPath()+'book/css/index.css">'
             dom.appendChild(div);
             //初始化分割面板
             this._initBody();
@@ -78,7 +78,8 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 parentElement:this.leftcontainer,//添加到分割面板的左边部分
                 width: "100%",
                 height: "100%",
-                baseCss: "eui-etree-btn eui-inline-block eui-float-left eui-icon eui-tree-container eui-padding-3n" ,
+                baseCss: "eui-etree-btn eui-inline-block eui-float-left eui-icon eui-tree-container eui-padding-3n" +
+                    "eui-padding-top-4n eui-padding-bottom-4n eui-padding-left-6n eui-padding-right-6n" ,
                 oncontextmenu:function (){
                     //屏蔽系统右键
                     return false;
@@ -215,7 +216,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 parentElement:this.rightcontainer,
                 enableclosed:true,
                 style:"level1-mini ",
-                baseCss:"eui-layout-row-1 eui-layout-row-first body",
+                baseCss:"eui-layout-row-1 eui-layout-row-first indexbody",
                 onswitched:function (index){//切换标签页，对应左树高亮
                     var id = self.tabctrlObj.getData(index,"id");
                     var item = self.treeObj.getRootItem();
@@ -249,30 +250,35 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 EUI.addClassName(dom,"body");
                 switch (userobj.img0){
                     case "&#xee5a;"://图书管理
-                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
-                        strhtml +='" width="100%" height="100%"></iframe>';
+                        var strhtml = '<iframe style="width: 100% ;height: 100%;border: none"';
+                        strhtml +='src="'+EUI.getContextPath()+'web/borrow/bookmgr.do" ></iframe>';
                         dom.innerHTML=strhtml;
                         break;
                     case "&#xe266;"://借阅管理
                         var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/borrowmgr.do";
-                        strhtml +='" width="100%" height="100%"></iframe>';
+                        strhtml +='" style="width: 100% ;height: 100%;border: 0px"></iframe>';
                         dom.innerHTML=strhtml;
                         break;
                     case "&#xe1da;"://大类
                         var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
                         strhtml +="?cid="+userobj.id;
-                        strhtml +='" width="100%" height="100%"></iframe>';
+                        strhtml +='" style="width: 100% ;height: 100%;border: 0px"></iframe>';
                         dom.innerHTML=strhtml;
                         break;
                     case "&#xe1cf;"://小类
                         var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/borrowmgr.do";
                         strhtml +="?tid="+userobj.id;
-                        strhtml +='" width="100%" height="100%"></iframe>';
+                        strhtml +='" style="width: 100% ;height: 100%;border: 0px"></iframe>';
                         dom.innerHTML=strhtml;
                         break;
                     case "&#xe881;"://分析表
                         var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/analyze.do";
-                        strhtml +='" width="100%" height="100%"></iframe>';
+                        if (userobj.datas.type=="barchart"){
+                            strhtml +='" style="width: 100% ;height: 100%;border: 0px;"></iframe>';
+                        }else {
+                            strhtml +='" style="width: 100% ;height: 100%;border: 0px;"></iframe>';
+                        }
+
                         dom.innerHTML=strhtml;
                         break;
                     default:

@@ -8,7 +8,7 @@
         </div>
     </@module.body>
     <script type="text/javascript">
-        require(["borrow/web/js/index"],function (index){
+        require(["book/js/index"],function (index){
             var index = new index.Index({
                 wnd:window
             });

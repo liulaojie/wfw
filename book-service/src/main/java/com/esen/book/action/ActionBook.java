@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,25 +46,25 @@ public class ActionBook {
 	 */
 	@RequestMapping(value = "/typeList" )
 	@ResponseBody
-	public List<BookTypeEntity> typeList(@RequestParam("cid")String cid) {
+	public List<BookTypeEntity> typeList(HttpServletRequest req, @RequestParam("cid")String cid) {
 		Log log = logService.create().start();
 		try {
-			SecurityFunc.checkSQLParam(cid);
+			SecurityFunc.checkIdentifier(req,cid);
 			List list = bookService.typeList(cid);
 			log.info().desc(I18N.getString("com.esen.book.action.actionbook.typelistdesc",
 					"查看小类列表", I18N.getDefaultLocale(), null))
-					.op(ELogModuleOperationRegistry.ELogOperation.TYPE_VIEW).rid("rid")
+					.op(ELogModuleOperationRegistry.ELogOperation.TYPE_VIEW)
 					.detail(I18N.getString("com.esen.book.action.actionbook.typelistdetail",
 							"查看大类ID为{0}的小类列表", I18N.getDefaultLocale(), new Object[]{cid}))
-					.rname("rname").end().add();
+					.end().add();
 			return list;
 		}catch (Exception e){
-			log.info().desc(I18N.getString("com.esen.book.action.actionbook.typelistdesc",
+			log.error().desc(I18N.getString("com.esen.book.action.actionbook.typelistdesc",
 					"查看小类列表", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.book.action.actionbook.typelistdetail",
 							"查看大类ID为{0}的小类列表", I18N.getDefaultLocale(), new Object[]{cid}))
 					.op(ELogModuleOperationRegistry.ELogOperation.TYPE_VIEW)
-					.rid("rid").rname("ranme").exception(e).end().add();
+					.exception(e).end().add();
 			throw e;
 		}
 	}
@@ -82,16 +83,15 @@ public class ActionBook {
 					"查看大类列表", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.book.action.actionbook.categorylist",
 							"查看大类列表", I18N.getDefaultLocale(),null))
-					.op(ELogModuleOperationRegistry.ELogOperation.CATEGORY_VIEW).rid("rid")
-					.rname("rname").end().add();
+					.op(ELogModuleOperationRegistry.ELogOperation.CATEGORY_VIEW).end().add();
 			return list;
 		}catch (Exception e){
-			log.info().desc(I18N.getString("com.esen.book.action.actionbook.categorylist",
+			log.error().desc(I18N.getString("com.esen.book.action.actionbook.categorylist",
 					"查看大类列表", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.book.action.actionbook.categorylist",
 							"查看大类列表", I18N.getDefaultLocale(),null))
 					.op(ELogModuleOperationRegistry.ELogOperation.CATEGORY_VIEW)
-					.rid("rid").rname("ranme").exception(e).end().add();
+					.exception(e).end().add();
 			throw e;
 		}
 	}
@@ -106,11 +106,11 @@ public class ActionBook {
 	@RequestMapping(value = "/bookList")
 	@ResponseBody
 	public Map bookList
-	(@RequestParam("cid") String cid,@RequestParam("tid")String tid,@RequestParam("pageIndex")String pageIndex) {
+	( HttpServletRequest req,@RequestParam("cid") String cid,@RequestParam("tid")String tid,@RequestParam("pageIndex")String pageIndex) {
 		Log log = logService.create().start();
 		try{
-			SecurityFunc.checkSQLParam(cid);
-			SecurityFunc.checkSQLParam(tid);
+			SecurityFunc.checkIdentifier(req,cid);
+			SecurityFunc.checkIdentifier(req,tid);
 			PageRequest page = new PageRequest(StrFunc.str2int(pageIndex,0), 30);
 			PageResult<BookViewEntity> result = bookService.bookList(page, cid,tid);
 			Map map = new HashMap();
@@ -120,16 +120,15 @@ public class ActionBook {
 					"查看图书列表", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.book.action.actionbook.booklistdetail",
 							"查看大类ID为{0}或小类ID为{1}的书籍列表", I18N.getDefaultLocale(), new Object[]{cid,tid}))
-					.op(ELogModuleOperationRegistry.ELogOperation.BOOK_VIEW).rid("rid")
-					.rname("rname").end().add();
+					.op(ELogModuleOperationRegistry.ELogOperation.BOOK_VIEW).end().add();
 			return map;
 		}catch (Exception e){
-			log.info().desc(I18N.getString("com.esen.book.action.actionbook.booklist",
+			log.error().desc(I18N.getString("com.esen.book.action.actionbook.booklist",
 					"查看图书列表", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.book.action.actionbook.booklistdetail",
 							"查看大类ID为{0}或小类ID为{1}的书籍列表", I18N.getDefaultLocale(), new Object[]{cid,tid}))
 					.op(ELogModuleOperationRegistry.ELogOperation.BOOK_VIEW)
-					.rid("rid").rname("ranme").exception(e).end().add();
+					.exception(e).end().add();
 			throw e;
 		}
 	}
@@ -147,8 +146,8 @@ public class ActionBook {
 		Log log = logService.create().start();
 		BookInfoEntity bookInfoEntity = new BookInfoEntity();
 		try{
-			SecurityFunc.checkXSSParam(name);
-			SecurityFunc.checkXSSParam(desc);
+			SecurityFunc.checkResID(name);
+			SecurityFunc.checkResID(desc);
 			if (bookService.bookIsExists(name)) {
 				throw new RuntimeException(I18N.getString("com.esen.book.action.actionbook.repeat", "书名重复"));
 			}else{
@@ -161,16 +160,15 @@ public class ActionBook {
 					"添加书籍", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.book.action.actionbook.addbookdetail",
 							"添加一本书籍{0}", I18N.getDefaultLocale(), new Object[]{bookInfoEntity.toString()}))
-					.op(ELogModuleOperationRegistry.ELogOperation.BOOK_ADD).rid("rid")
-					.rname("rname").end().add();
+					.op(ELogModuleOperationRegistry.ELogOperation.BOOK_ADD).end().add();
 			return true;
 		}catch (Exception e){
-			log.info().desc(I18N.getString("com.esen.book.action.actionbook.addbook",
+			log.error().desc(I18N.getString("com.esen.book.action.actionbook.addbook",
 					"添加书籍", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.book.action.actionbook.addbookdetail",
 							"添加一本书籍{0}", I18N.getDefaultLocale(), new Object[]{bookInfoEntity.toString()}))
 					.op(ELogModuleOperationRegistry.ELogOperation.BOOK_ADD)
-					.rid("rid").rname("ranme").exception(e).end().add();
+					.exception(e).end().add();
 			throw e;
 		}
 
@@ -191,8 +189,8 @@ public class ActionBook {
 		Log log = logService.create().start();
 		BookInfoEntity bookInfoEntity = new BookInfoEntity();
 		try{
-			SecurityFunc.checkXSSParam(name);
-			SecurityFunc.checkXSSParam(desc);
+			SecurityFunc.checkResID(name);
+			SecurityFunc.checkResID(desc);
 			bookInfoEntity.setId(id);
 			bookInfoEntity.setCaption(name);
 			bookInfoEntity.setTid(tid);
@@ -203,17 +201,15 @@ public class ActionBook {
 					.detail(I18N.getString("com.esen.book.action.actionbook.savebookdetail",
 							"修改书籍信息为{0}", I18N.getDefaultLocale(),
 							new Object[]{bookInfoEntity.toString()}))
-					.op(ELogModuleOperationRegistry.ELogOperation.BOOK_EDIT).rid("rid")
-					.rname("rname").end().add();
+					.op(ELogModuleOperationRegistry.ELogOperation.BOOK_EDIT).end().add();
 			return true;
 		}catch (Exception e){
-			log.info().desc(I18N.getString("com.esen.book.action.actionbook.savebook",
+			log.error().desc(I18N.getString("com.esen.book.action.actionbook.savebook",
 					"编辑图书", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.book.action.actionbook.savebookdetail",
 							"修改书籍信息为{0}", I18N.getDefaultLocale(),
 							new Object[]{bookInfoEntity.toString()}))
-					.op(ELogModuleOperationRegistry.ELogOperation.BOOK_EDIT)
-					.rid("rid").rname("ranme").exception(e).end().add();
+					.op(ELogModuleOperationRegistry.ELogOperation.BOOK_EDIT).end().add();
 			throw e;
 		}
 	}

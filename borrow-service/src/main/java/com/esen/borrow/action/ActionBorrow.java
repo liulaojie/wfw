@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -44,10 +45,11 @@ public class ActionBorrow {
 	 */
 	@RequestMapping(value = "/borrowList")
 	@ResponseBody
-	public Map borrowList(@RequestParam("pageIndex") String pageIndex, @RequestParam("tid") String tid) {
+	public Map borrowList(HttpServletRequest req,
+						  @RequestParam("pageIndex") String pageIndex, @RequestParam("tid") String tid) {
 		Log log = logService.create().start();
 		try{
-			SecurityFunc.checkSQLParam(tid);
+			SecurityFunc.checkIdentifier(req,tid);
 			PageRequest page = new PageRequest(StrFunc.str2int(pageIndex,0), 30);
 			PageResult<BorrowViewEntity> result= borrowService.borrowList(page,tid);
 			Map map = new HashMap();
@@ -57,16 +59,14 @@ public class ActionBorrow {
 					"查看借阅列表", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.borrow.action.actionborrow.borrowlistdetail",
 							"查看小类id为{0}的借阅列表", I18N.getDefaultLocale(), new Object[]{tid}))
-					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_VIEW).rid("rid")
-					.rname("rname").end().add();
+					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_VIEW).end().add();
 			return map;
 		}catch (Exception e){
 			log.error().desc(I18N.getString("com.esen.borrow.action.actionborrow.borrowlistdesc",
 					"查看借阅列表", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.borrow.action.actionborrow.borrowlistdetail",
 							"查看小类id为{0}的借阅列表", I18N.getDefaultLocale(), new Object[]{tid}))
-					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_VIEW).rid("rid")
-					.rname("rname").exception(e).end().add();
+					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_VIEW).exception(e).end().add();
 			throw e;
 		}
 
@@ -85,7 +85,7 @@ public class ActionBorrow {
 		Log log = logService.create().start();
 		BookHistoryEntity bookHistoryEntity = new BookHistoryEntity();
 		try{
-			SecurityFunc.checkXSSParam(person);
+			SecurityFunc.checkResID(person);
 			bookHistoryEntity.setPerson(person);
 			bookHistoryEntity.setBid(bid);
 			Calendar c= StrFunc.str2date(fromdate,"YYYYmmDD");
@@ -96,16 +96,14 @@ public class ActionBorrow {
 					"添加一条借阅记录", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.borrow.action.actionborrow.addborrowdetail",
 							"添加一条借阅记录{0}", I18N.getDefaultLocale(), new Object[]{bookHistoryEntity.toString()}))
-					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_ADD).rid("rid")
-					.rname("rname").end().add();
+					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_ADD).end().add();
 			return true;
 		}catch (Exception e){
 			log.error().desc(I18N.getString("com.esen.borrow.action.actionborrow.addborrowdesc",
 					"添加一条借阅记录", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.borrow.action.actionborrow.addborrowdetail",
 							"添加一条借阅记录{0}", I18N.getDefaultLocale(), new Object[]{bookHistoryEntity.toString()}))
-					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_ADD).rid("rid")
-					.rname("rname").exception(e).end().add();
+					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_ADD).exception(e).end().add();
 			throw e;
 		}
 	}
@@ -118,10 +116,10 @@ public class ActionBorrow {
 	 */
 	@RequestMapping(value = "/saveBorrow"  )
 	@ResponseBody
-	public boolean saveBorrow(@RequestParam("id") String id, @RequestParam("todate") String todate){
+	public boolean saveBorrow(HttpServletRequest req,@RequestParam("id") String id, @RequestParam("todate") String todate){
 		Log log = logService.create().start();
 		try{
-			SecurityFunc.checkSQLParam(id);
+			SecurityFunc.checkIdentifier(req,id);
 			BookHistoryEntity bookHistoryEntity = new BookHistoryEntity();
 			bookHistoryEntity.setId(id);
 			Calendar c= StrFunc.str2date(todate,"YYYYmmDD");
@@ -133,7 +131,7 @@ public class ActionBorrow {
 					.detail(I18N.getString("com.esen.borrow.action.actionborrow.returnborrowdetail",
 							"于{0}归还ID为{1}的书籍", I18N.getDefaultLocale(), new Object[]{todate,id}))
 					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_REFRESH)
-					.rid("rid").rname("rname").end().add();
+					.end().add();
 			return true;
 		}catch (Exception e){
 			log.error().desc(I18N.getString("com.esen.borrow.action.actionborrow.returnborrowdesc",
@@ -141,7 +139,7 @@ public class ActionBorrow {
 					.detail(I18N.getString("com.esen.borrow.action.actionborrow.returnborrowdetail",
 							"于{0}归还ID为{1}的书籍", I18N.getDefaultLocale(), new Object[]{todate,id}))
 					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_REFRESH)
-					.rid("rid").rname("rname").exception(e).end().add();
+					.exception(e).end().add();
 			throw e;
 		}
 
@@ -154,25 +152,25 @@ public class ActionBorrow {
 	 */
 	@RequestMapping(value = "deleteBorrow")
 	@ResponseBody
-	public boolean deleteBorrow(@RequestParam("id")String id) {
+	public boolean deleteBorrow(HttpServletRequest req,@RequestParam("id")String id) {
 		Log log = logService.create().start();
 		try{
-			SecurityFunc.checkSQLParam(id);
+			SecurityFunc.checkIdentifier(req,id);
 			boolean flag = borrowService.deleteBorrow(id);
 			log.info().desc(I18N.getString("com.esen.borrow.action.actionborrow.deleteborrowdesc",
 					"删除借书记录", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.borrow.action.actionborrow.deleteborrowdetail",
 							"删除ID为{0}的书籍", I18N.getDefaultLocale(), new Object[]{id}))
 					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_DELETE)
-					.rid("rid").rname("ranme").end().add();
+					.end().add();
 			return flag;
 		}catch (Exception e){
-			log.info().desc(I18N.getString("com.esen.borrow.action.actionborrow.deleteborrowdesc",
+			log.error().desc(I18N.getString("com.esen.borrow.action.actionborrow.deleteborrowdesc",
 					"删除借书记录", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.borrow.action.actionborrow.deleteborrowdetail",
 							"删除ID为{0}的书籍", I18N.getDefaultLocale(), new Object[]{id}))
 					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_DELETE)
-					.rid("rid").rname("ranme").exception(e).end().add();
+					.exception(e).end().add();
 			throw e;
 		}
 	}

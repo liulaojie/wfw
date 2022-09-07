@@ -48,7 +48,7 @@ public class ActionWebBorrowMgr {
 	@RequestMapping("/borrowmgr")
 	public String borrowmgr(HttpServletRequest req, String tid) {
 		req.setAttribute("tid", tid);
-		return "borrow/web/borrowmgr";
+		return "borrow/borrowmgr";
 	}
 	/**
 	 * 跳转到分析表界面
@@ -56,7 +56,7 @@ public class ActionWebBorrowMgr {
 	 */
 	@RequestMapping("/analyze")
 	public String analyze() {
-		return "borrow/web/analyze";
+		return "borrow/analyze";
 	}
 
 

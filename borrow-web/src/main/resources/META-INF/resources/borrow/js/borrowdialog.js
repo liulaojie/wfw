@@ -175,6 +175,9 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             //关闭对话框，清空对话框数据
             this.setOnClose(function (){
                 self.clear();
+                self.hideErrMsg("persontips");
+                self.hideErrMsg("bookcomboboxtips");
+                self.hideErrMsg("fromdatetips");
             })
 
         }
