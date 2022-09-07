@@ -11,23 +11,27 @@ import com.esen.eorm.entity.RootEntity;
  * @since 20220824
  */
 public class BookInfoEntity extends RootEntity implements Serializable {
-		private static final long serialVersionUID = 1891369344854226667L;
-		/**
-		 * 唯一字段
-		 */
-		private String id;
-		/**
-		 * 小类唯一字段
-		 */
-		private String tid;
-		/**
-		 * 书籍名称
-		 */
-		private String caption;
-		/**
-		 * 描述
-		 */
-		private String desc;
+	private static final long serialVersionUID = 1891369344854226667L;
+
+	/**
+	 * 唯一字段
+	 */
+	private String id;
+
+	/**
+	 * 小类唯一字段
+	 */
+	private String tid;
+
+	/**
+	 * 书籍名称
+	 */
+	private String caption;
+
+	/**
+	 * 描述
+	 */
+	private String desc;
 
 	/**
 	 * @return the serialVersionUID
@@ -98,13 +102,13 @@ public class BookInfoEntity extends RootEntity implements Serializable {
 		this.desc = desc;
 	}
 
+	/**
+	 * 重写toString用于记录到日志中
+	 * @return
+	 */
 	@Override
 	public String toString() {
-		return "BookInfoEntity{" +
-				"id='" + id + '\'' +
-				", tid='" + tid + '\'' +
-				", caption='" + caption + '\'' +
-				", desc='" + desc + '\'' +
-				'}';
+		return "BookInfoEntity{" + "id='" + id + '\'' + ", tid='" + tid + '\'' + ", caption='" + caption + '\'' + ", desc='"
+				+ desc + '\'' + '}';
 	}
 }

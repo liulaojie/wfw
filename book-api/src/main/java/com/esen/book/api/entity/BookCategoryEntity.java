@@ -10,16 +10,18 @@ import java.io.Serializable;
  * @author liuaj
  * @since 20220824
  */
-public class BookCategoryEntity  extends RootEntity implements Serializable {
-		private static final long serialVersionUID = -1828049103087540393L;
-		/**
-		 * 唯一字段
-		 */
-		private String id;
-		/**
-		 * 大类名称
-		 */
-		private String caption;
+public class BookCategoryEntity extends RootEntity implements Serializable {
+	private static final long serialVersionUID = -1828049103087540393L;
+
+	/**
+	 * 唯一字段
+	 */
+	private String id;
+
+	/**
+	 * 大类名称
+	 */
+	private String caption;
 
 	/**
 	 * @return the serialVersionUID

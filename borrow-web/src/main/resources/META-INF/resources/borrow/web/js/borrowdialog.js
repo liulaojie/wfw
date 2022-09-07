@@ -3,23 +3,13 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         var EDialog = edialog.EDialog;
         var eform = eform.eform;
         var EListCombobox = ecombobox.EListCombobox;
-        BorrowDialog.prototype.userdata = {};
-        BorrowDialog.prototype.cid = null;
-        BorrowDialog.prototype.tid = null;
-        BorrowDialog.prototype.bid = null;
-        BorrowDialog.prototype.scaption = null;
-        BorrowDialog.prototype.pageIndexnow = null;//现在所在的页数
-        BorrowDialog.prototype.pageIndexnext = null;//将要得到的页数
+        var tid;//小类ID
         /**
          * BorrowDialog的构造函数,继承EDialog
          */
         function BorrowDialog(options){
             EDialog.call(this,options);
-            // var options = options||{};
-            // this.wnd = options["wnd"]||window;
-            // this.doc = this.wnd.document;
             this._init(options);
-
         }
         EUI.extendClass(BorrowDialog,EDialog,"BorrowDialog");
 
@@ -39,9 +29,10 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
          */
         BorrowDialog.prototype._init=function (options){
             var self = this;
-            self.scaption = options.scaption;
+            tid = options.tid;
             self._options = options||{};
-            self._options["caption"] = self._options["caption"]||I18N.getString("borrow.web.js.borrowdialog.js.addborrow", "新建借阅记录");
+            self._options["caption"] = self._options["caption"]||
+                I18N.getString("borrow.web.js.borrowdialog.js.addborrow", "新建借阅记录");
             self._options["width"] = self._options["width"]||380;
             self._options["height"] = self._options["height"]||400;
             EDialog.call(self,self._options);
@@ -86,7 +77,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('  </div>');
             strhtml.push('</div>');
             content.innerHTML = strhtml.join(" ");
-            self.addBottomButtom();//添加按钮
+            self.addBottomButton();//添加按钮
             self._initBookList();//初始化书本下拉框
             self._initFromDate();//初始化借阅时间日期搜索框
         }
@@ -117,7 +108,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     }else{//回溯
                         self.pageIndexnow--;
                     }
-
                 },
             });
             self.pageIndexnow=0;
@@ -145,11 +135,11 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
          */
         BorrowDialog.prototype.getBookList = function (){
             var self = this;
-            var index = self.pageIndex;
             EUI.post({
-                url:EUI.getContextPath()+"borrow/bookList.do",
+                url:EUI.getContextPath()+"book/bookList.do",
                 data:{
-                    scaption:self.scaption,
+                    cid:"",
+                    tid:tid,
                     pageIndex:self.pageIndexnow,
                 },
                 callback:function (queryObj){
@@ -164,9 +154,9 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         }
 
         /**
-         * 绑定按钮事件
+         * 添加按钮并绑定对应的点击事件
          */
-        BorrowDialog.prototype.addBottomButtom = function (){
+        BorrowDialog.prototype.addBottomButton = function (){
             var self = this;
             this.addButton(I18N.getString("ES.COMMON.CONFIRM", "确定"),"",false,true,function (){
                 if(EUI.isFunction(self.onok)){
@@ -178,7 +168,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 }
             })
             var cancel =this.addButton(I18N.getString("ES.COMMON.CANCEL", "取消"),"",false,true,function (){
-                self.clear();
                 self.close();
 
             })
@@ -201,7 +190,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 callback: function (queryObj) {
                     var obj = queryObj.getResponseJSON();
                     if(obj){
-                        self.clear();
                         self.onok();
                     }
                 },
@@ -248,6 +236,8 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         }
         /**
          * 显示错误提示信息
+         * @param id 需要显示错误提示信息的dom的ID
+         * @param msg 错误提示信息
          */
         BorrowDialog.prototype.showErrMsg = function (id,msg){
             var self = this;
@@ -260,6 +250,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         }
         /**
          * 隐藏错误提示信息
+         * @param id 需要隐藏错误提示信息的dom的ID
          */
         BorrowDialog.prototype.hideErrMsg = function (id){
             var self = this;
@@ -288,7 +279,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         }
         /**
          * 得到弹框中的值
-         * @returns {{name: *, tid: string, cid: string, desc: *}}
          */
         BorrowDialog.prototype.getValue = function (){
             var self = this;
@@ -301,6 +291,8 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         }
         /**
          * 判断是否为空
+         * @param str 需要判断的字符串
+         * @returns {boolean|*}
          */
         var isNull = function (str){
                 return str==null||str.match(/^\s*$/)

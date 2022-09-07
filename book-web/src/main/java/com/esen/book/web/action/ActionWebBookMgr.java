@@ -1,9 +1,7 @@
 package com.esen.book.web.action;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,8 +21,8 @@ public class ActionWebBookMgr  {
 	 * @return
 	 */
 	@RequestMapping("bookmgr")
-	public String bookMgr(HttpServletRequest req, String bcaption) {
-		req.setAttribute("bcaption", bcaption);
+	public String bookMgr(HttpServletRequest req, String cid) {
+		req.setAttribute("cid", cid);
 		return "book/web/bookmgr";
 	}
 

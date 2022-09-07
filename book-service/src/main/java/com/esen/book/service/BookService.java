@@ -9,6 +9,7 @@ import com.esen.ejdbc.params.PageRequest;
 import com.esen.ejdbc.params.PageResult;
 import com.esen.eorm.annotation.ApplicationService;
 import com.esen.eorm.service.AbstractService;
+import com.esen.eutil.util.StrFunc;
 import com.esen.eutil.util.exp.Expression;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -50,32 +51,26 @@ public class BookService  extends AbstractService<BookViewEntity> {
 	/**
 	 * 获取小类列表，可得到全部列表或根据大类获取对应的小类列表
 	 * @param cid 大类ID
-	 * @param bcaption 大类数据
 	 * @return
 	 */
-	public List<BookTypeEntity> typeList(String cid,String bcaption) {
-		if (cid.length()>1) {
+	public List<BookTypeEntity> typeList(String cid) {
 			return (List<BookTypeEntity>) bookTypeRepository.findAll(new Expression("cid=?"), new Object[] { cid });
-		}
-		if (bcaption!="null"&&bcaption!=null){
-			return bookTypeRepository.getTypeListByBcaption(bcaption);
-		}
-		return (List<BookTypeEntity>) bookTypeRepository.findAll();
-
 	}
 
 	/**
 	 * 获取图书列表，可得到全部列表或根据大类获取对应的图书列表
-	 * @param page 页面信息 bcaption(可为空) 图书大类
+	 * @param page 页面信息
+	 * @param cid 大类ID
+	 * @param tid 小类ID
 	 * @return
 	 */
-	public PageResult<BookViewEntity> bookList(PageRequest page, String bcaption, String scaption) {
+	public PageResult<BookViewEntity> bookList(PageRequest page, String cid, String tid) {
 		PageResult<BookViewEntity> result = null;
-		if (bcaption != "" && bcaption != null) {
-			result = bookViewRepository.findAll(page, new Expression("bcaption=?"), new Object[] { bcaption });
+		if (!StrFunc.isNull(cid)) {
+			result = bookViewRepository.findAllByCid(page,cid);
 		}else{
-			if (scaption != "" && scaption != null){
-				result = bookViewRepository.findAll(page, new Expression("scaption=?"), new Object[] { scaption });
+			if (!StrFunc.isNull(tid)){
+				result = bookViewRepository.findAllByTid(page, tid);
 			}else{
 				result = bookViewRepository.findAll(page);
 			}
@@ -89,13 +84,11 @@ public class BookService  extends AbstractService<BookViewEntity> {
 	 * @param name 书本名
 	 * @return
 	 */
-	public boolean bookIsExists(String name) throws RuntimeException {
-		BookInfoEntity bookInfoEntity = bookInfoRepository.findOneQuietly(new Expression("caption=?"),
-				new Object[] { name });
-		if (bookInfoEntity != null) {
-			return true;
-		}
-		return false;
+	public boolean bookIsExists(String name) {
+		BookInfoEntity bookInfoEntity =
+				bookInfoRepository.findOneQuietly(new Expression("caption=?"), new Object[] { name });
+		return bookInfoEntity != null;
+
 	}
 
 	/**
@@ -110,16 +103,12 @@ public class BookService  extends AbstractService<BookViewEntity> {
 	}
 
 	/**
-	 * 修改书籍
+	 * 保存书籍修改的数据
 	 * @param bookInfoEntity  图书实体
 	 * @return
 	 */
 	public void saveBook(BookInfoEntity bookInfoEntity) {
-		if (bookInfoEntity.getTid().length() == 1) {
-			bookInfoRepository.save(bookInfoEntity, "caption", "desc");
-		} else {
-			bookInfoRepository.save(bookInfoEntity);
-		}
+		bookInfoRepository.save(bookInfoEntity);
 		bookInfoRepository.cleanCache();
 		bookViewRepository.cleanCache();
 	}

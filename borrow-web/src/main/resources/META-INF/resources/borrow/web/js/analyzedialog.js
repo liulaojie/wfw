@@ -1,18 +1,12 @@
-define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
-    function (edialog,eform,ecombobox) {
+define([ "eui/modules/edialog","eui/modules/ecombobox"],
+    function (edialog,ecombobox) {
         var EDialog = edialog.EDialog;
-        var eform = eform.eform;
         var EListCombobox = ecombobox.EListCombobox;
-        AnalyzeDialog.prototype.id = null;
-        AnalyzeDialog.prototype.data = null;
         /**
-         * AnalyzeDialog的构造函数,继承EDialog
+         * AnalyzeDialog的构造函数
          */
         function AnalyzeDialog(options){
             EDialog.call(this,options);
-            // var options = options||{};
-            // this.wnd = options["wnd"]||window;
-            // this.doc = this.wnd.document;
             this._init(options);
 
         }
@@ -33,7 +27,8 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         AnalyzeDialog.prototype._init=function (options){
             var self = this;
             self._options = options||{};
-            self._options["caption"] = self._options["caption"]||I18N.getString("borrow.web.js.analyzedialog.js.createanalyze", "生成分析表");
+            self._options["caption"] = self._options["caption"]||
+                I18N.getString("borrow.web.js.analyzedialog.js.createanalyze", "生成分析表");
             self._options["width"] = self._options["width"]||380;
             self._options["height"] = self._options["height"]||200;
             EDialog.call(self,self._options);
@@ -71,7 +66,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('  </div>');
             strhtml.push('</div>');
             content.innerHTML = strhtml.join(" ");
-            self.addBottomButtom();//添加按钮
+            self.addBottomButton();//添加按钮
             self._initGraphList();//初始化书名列表
         }
         /**
@@ -98,9 +93,9 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             });
         }
         /**
-         * 绑定按钮事件
+         * 添加按钮并绑定对应按钮的点击事件
          */
-        AnalyzeDialog.prototype.addBottomButtom = function (){
+        AnalyzeDialog.prototype.addBottomButton = function (){
             var self = this;
             this.addButton(I18N.getString("ES.COMMON.CONFIRM", "确定"),"",false,true,function (){
                 if(EUI.isFunction(self.onok)){
@@ -165,6 +160,8 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         }
         /**
          * 显示错误提示信息
+         * @param id 需要显示错误提示信息的dom的ID
+         * @param msg 错误提示信息
          */
         AnalyzeDialog.prototype.showErrMsg = function (id,msg){
             var self = this;
@@ -177,6 +174,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         }
         /**
          * 隐藏错误提示信息
+         * @param id 需要隐藏错误提示信息的dom的ID
          */
         AnalyzeDialog.prototype.hideErrMsg = function (id){
             var self = this;
@@ -200,7 +198,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         }
         /**
          * 得到弹框中的值
-         * @returns {{name: *, tid: string, cid: string, desc: *}}
          */
         AnalyzeDialog.prototype.getValue = function (){
             var self = this;
@@ -229,7 +226,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 return false;
             }
         }
-
         return{
             AnalyzeDialog :AnalyzeDialog,
         };

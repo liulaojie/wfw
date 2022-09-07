@@ -13,10 +13,10 @@ import com.esen.elog.api.LogService;
 import com.esen.eutil.util.security.SecurityFunc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -36,29 +36,27 @@ public class ActionBorrow {
 	@Autowired
 	LogService logService;
 
-	@RequestMapping(value = "/test")
-	@ResponseBody
-	public String test() {
-		return "test hello world";
-	}
 	/**
-	 * 获取借阅列表
+	 * 获取对应小类的借阅列表或全部借阅列表
+	 * @param pageIndex 页面索引
+	 * @param tid 小类ID
+	 * @return
 	 */
 	@RequestMapping(value = "/borrowList")
 	@ResponseBody
-	public Map borrowList(HttpServletRequest req,String pageIndex,String scaption) {
+	public Map borrowList(@RequestParam("pageIndex") String pageIndex, @RequestParam("tid") String tid) {
 		Log log = logService.create().start();
 		try{
-			SecurityFunc.checkSQLParam(scaption);
+			SecurityFunc.checkSQLParam(tid);
 			PageRequest page = new PageRequest(StrFunc.str2int(pageIndex,0), 30);
-			PageResult<BorrowViewEntity> result= borrowService.borrowList(page,scaption);
+			PageResult<BorrowViewEntity> result= borrowService.borrowList(page,tid);
 			Map map = new HashMap();
 			map.put("totalCount",result.getTotalCount());
 			map.put("list",result.list());
 			log.info().desc(I18N.getString("com.esen.borrow.action.actionborrow.borrowlistdesc",
 					"查看借阅列表", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.borrow.action.actionborrow.borrowlistdetail",
-							"查看小类类型为{0}的借阅列表", I18N.getDefaultLocale(), new Object[]{scaption}))
+							"查看小类id为{0}的借阅列表", I18N.getDefaultLocale(), new Object[]{tid}))
 					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_VIEW).rid("rid")
 					.rname("rname").end().add();
 			return map;
@@ -66,7 +64,7 @@ public class ActionBorrow {
 			log.error().desc(I18N.getString("com.esen.borrow.action.actionborrow.borrowlistdesc",
 					"查看借阅列表", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.borrow.action.actionborrow.borrowlistdetail",
-							"查看小类类型为{0}的借阅列表", I18N.getDefaultLocale(), new Object[]{scaption}))
+							"查看小类id为{0}的借阅列表", I18N.getDefaultLocale(), new Object[]{tid}))
 					.op(ELogModuleOperationRegistry.ELogOperation.BORROW_VIEW).rid("rid")
 					.rname("rname").exception(e).end().add();
 			throw e;
@@ -74,13 +72,16 @@ public class ActionBorrow {
 
 	}
 	/**
-	 *  添加借书记录
-	 *  @param person 借阅人 bid 书籍ID fromdate 借书时间
-	 * 	@return 添加结果
+	 * 添加一条借书记录
+	 * @param person 借阅人
+	 * @param bid 书籍ID
+	 * @param fromdate 借书时间
+	 * @return
 	 */
 	@RequestMapping(value = "/addBorrow")
 	@ResponseBody
-	public boolean addBorrow(String person, String bid, String fromdate) {
+	public boolean addBorrow(@RequestParam("person") String person, @RequestParam("bid")String bid,
+							 @RequestParam("fromdate")String fromdate) {
 		Log log = logService.create().start();
 		BookHistoryEntity bookHistoryEntity = new BookHistoryEntity();
 		try{
@@ -108,14 +109,19 @@ public class ActionBorrow {
 			throw e;
 		}
 	}
+
 	/**
-	 * 更新借书记录，还书
+	 * 还书，保存借阅记录的还书时间
+	 * @param id
+	 * @param todate
+	 * @return
 	 */
 	@RequestMapping(value = "/saveBorrow"  )
 	@ResponseBody
-	public boolean saveBorrow(String id, String todate){
+	public boolean saveBorrow(@RequestParam("id") String id, @RequestParam("todate") String todate){
 		Log log = logService.create().start();
 		try{
+			SecurityFunc.checkSQLParam(id);
 			BookHistoryEntity bookHistoryEntity = new BookHistoryEntity();
 			bookHistoryEntity.setId(id);
 			Calendar c= StrFunc.str2date(todate,"YYYYmmDD");
@@ -140,11 +146,18 @@ public class ActionBorrow {
 		}
 
 	}
+
+	/**
+	 * 删除ID对应的借阅记录
+	 * @param id 借阅记录ID
+	 * @return
+	 */
 	@RequestMapping(value = "deleteBorrow")
 	@ResponseBody
-	public boolean deleteBorrow(String id) {
+	public boolean deleteBorrow(@RequestParam("id")String id) {
 		Log log = logService.create().start();
 		try{
+			SecurityFunc.checkSQLParam(id);
 			boolean flag = borrowService.deleteBorrow(id);
 			log.info().desc(I18N.getString("com.esen.borrow.action.actionborrow.deleteborrowdesc",
 					"删除借书记录", I18N.getDefaultLocale(), null))

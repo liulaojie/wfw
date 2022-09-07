@@ -10,11 +10,11 @@
 
 </@module.body>
 	<script type="text/javascript">
-		var scaption = '${scaption}';
+		var tid = '${tid}';
 		require(["borrow/web/js/borrowmgr"],function (borrowmgr){
 			var borrowmgr = new borrowmgr.BorrowMgr({
 				wnd:window,
-				scaption:scaption
+				tid:tid
 			});
 			EUI.addDispose(borrowmgr,window);
 		});

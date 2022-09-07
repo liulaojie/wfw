@@ -22,17 +22,15 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         function BorrowMgr(options){
             var self = this;
             EComponent.call(this,options);
-            // var options = options||{};
             this.wnd = options["wnd"]||window;
-            // this.doc = this.wnd.document;
-            self.scaption=options.scaption
+            self.tid=options.tid
             this._initUI();
             this._initData(0);
         }
         EUI.extendClass(BorrowMgr,EComponent,"BorrowMgr");
 
         /**
-         * 销毁所持有的资源
+         * 销毁BorrowMgr所持有的资源
          */
         BorrowMgr.prototype.dispose = function (){
             this.borrowdialog.dispose();
@@ -43,9 +41,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             this.listObj = null;
             this.pageBarObj.dispose();
             this.pageBarObj = null;
-            // this.wnd = null;
-            // this.doc = null;
-            // this.parentElement = null;
             EComponent.prototype.dispose.call(this);
         }
         /**
@@ -69,7 +64,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 baseCss:"eui-coolbar-btn"
             });
             var band = this.coolbarObj.addBand("band_name1",true,true);
-            if (self.scaption==''){
+            if (self.tid==''){
                 var createAdom= band.addButton(null,I18N.getString("borrow.web.js.borrowmgr.js.createanalyze", "生成分析表"));
                 createAdom.setName("createAnalyze");
                 createAdom.setOnAfterClick(function (){//生成分析表
@@ -107,14 +102,14 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             var self = this;
             var columns = new Array();
             columns.push({
-                checkbox:self.scaption=='',
+                checkbox:self.tid=='',
                 start: 1
             });
             columns.push({
                 indexColumn: true,
                 start: 1           //序号列的起始值
             });
-            if (self.scaption==''){
+            if (self.tid==''){
                 columns.push({
                     caption:I18N.getString("borrow.web.js.borrowmgr.js.bcaption", "大类"),
                     id:"bcaption",
@@ -138,7 +133,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             columns.push({
                 caption:I18N.getString("borrow.web.js.borrowmgr.js.fromdate", "借阅日期"),
                 id:"fromdate",
-                // width: 300,
                 hint:true,      //该列是否开启提示
                 dataRender:function (span, data, rowIndex, elist) {
                     span.innerHTML = EUI.date2String(new Date(data), "yyyy年mm月dd日 hh:ii:ss");
@@ -147,7 +141,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             columns.push({
                 caption:I18N.getString("borrow.web.js.borrowmgr.js.todate", "归还日期"),
                 id:"todate",
-                // width: 300,
                 hint:true,      //该列是否开启提示
                 dataRender:function (span, data, rowIndex, elist) {
                     if (data==null){
@@ -160,7 +153,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             });
             columns.push({
                 caption:I18N.getString("borrow.web.js.borrowmgr.js.operation", "操作"),
-                // width:"200px",
                 dataRender:function (cell){
                     var strhtml = ' <a id="delete" class="eui-btn eui-btn-m">'
                         +I18N.getString("borrow.web.js.borrowmgr.js.delete", "删除")+'</a> '
@@ -210,18 +202,12 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * 显示新添借阅对话框
          */
         BorrowMgr.prototype._borrowDialog = function (){
-            /**
-             * (1)对话框公用，不存在才创建对话框
-             * (2)对话框创建在rootwindow上， EUI.getRootWindow()
-             * (3)对话框的引用记录在Object01对象上 this.exportdlg
-             */
             var self = this;
             if(!self.borrowdialog) {
                 var options = {
                     wnd:EUI.getRootWindow(),
-                    scaption : self.scaption
+                    tid : self.tid
                 };
-
                 var dlg = require("borrow/web/js/borrowdialog");
                 self.borrowdialog = new dlg.BorrowDialog(options);
                 //设置点击确定的回调函数
@@ -243,7 +229,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 url:
                     EUI.getContextPath()+"borrow/borrowList.do",
                 data:{
-                    scaption:self.scaption,
+                    tid:self.tid,
                     pageIndex:pageIndex
                 },
                 callback:function (queryobj){
@@ -252,6 +238,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                         self.getCheck();
                         self.listObj.clear(true);
                         self.listObj.refreshData(obj.list);
+                        self.setCheck();
                         self.totalCount = obj.totalCount;
                         if (self.pageBarObj==null){
                             self._initPageBar();
@@ -266,6 +253,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         }
         /**
          * 点击删除事件
+         * @param data 被点击删除的那一行的全部数据
          */
         BorrowMgr.prototype.delBorrow = function (data){
             var self = this;
@@ -298,6 +286,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         }
         /**
          * 点击还书事件
+         * @param data 被点击删除的那一行的全部数据
          */
         BorrowMgr.prototype.returnBook = function (data){
             var self = this;
@@ -352,11 +341,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * 显示生成分析表对话框
          */
         BorrowMgr.prototype._analyzeDialog = function (){
-            /**
-             * (1)对话框公用，不存在才创建对话框
-             * (2)对话框创建在rootwindow上， EUI.getRootWindow()
-             * (3)对话框的引用记录在Object01对象上 this.exportdlg
-             */
             var self = this;
             if(!self.analyzedialog) {
                 var options = {wnd:EUI.getRootWindow(),};
@@ -418,7 +402,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             }
 
         }
-
         /**
          * 列表中被选择过的数据标识选中
          */

@@ -11,49 +11,52 @@ import com.esen.eorm.entity.RootEntity;
  * @since 20220824
  */
 public class BookTypeEntity extends RootEntity implements Serializable {
-		private static final long serialVersionUID = 3705905178278362500L;
-		/**
-		 * 大类唯一字段
-		 */
-		private String cid;
-		/**
-		 * 唯一字段
-		 */
-		private String id;
-		/**
-		 * 小类名称
-		 */
-		private String caption;
+	private static final long serialVersionUID = 3705905178278362500L;
 
-		public static long getSerialVersionUID() {
-				return serialVersionUID;
-		}
+	/**
+	 * 大类唯一字段
+	 */
+	private String cid;
 
-		public String getCid() {
-				return cid;
-		}
+	/**
+	 * 唯一字段
+	 */
+	private String id;
 
-		public void setCid(String cid) {
-				this.cid = cid;
-		}
+	/**
+	 * 小类名称
+	 */
+	private String caption;
 
-		@Override
-		public String getId() {
-				return id;
-		}
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
 
-		@Override
-		public void setId(String id) {
-				this.id = id;
-		}
+	public String getCid() {
+		return cid;
+	}
 
-		@Override
-		public String getCaption() {
-				return caption;
-		}
+	public void setCid(String cid) {
+		this.cid = cid;
+	}
 
-		@Override
-		public void setCaption(String caption) {
-				this.caption = caption;
-		}
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public String getCaption() {
+		return caption;
+	}
+
+	@Override
+	public void setCaption(String caption) {
+		this.caption = caption;
+	}
 }

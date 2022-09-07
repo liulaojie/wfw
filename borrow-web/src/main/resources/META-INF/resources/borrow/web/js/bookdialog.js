@@ -3,21 +3,13 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         var EDialog = edialog.EDialog;
         var eform = eform.eform;
         var EListCombobox = ecombobox.EListCombobox;
-        BookDialog.prototype.userdata = {};
-        BookDialog.prototype.cid ;
-        BookDialog.prototype.tid ;
-        BookDialog.prototype.bid ;
-        BookDialog.prototype.bcaption ;
-        BookDialog.prototype.scaption ;
-        BookDialog.prototype.isnew ;
+        var tid;//小类ID
+        var cid;//大类ID
         /**
          * BookDialog的构造函数,继承EDialog
          */
         function BookDialog(options){
             EDialog.call(this,options);
-            // var options = options||{};
-            // this.wnd = options["wnd"]||window;
-            // this.doc = this.wnd.document;
             this._init(options);
 
         }
@@ -100,11 +92,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('  </div>');
             strhtml.push('</div>');
             content.innerHTML = strhtml.join(" ");
-            //绑定输入事件
-           //  var dom = $(self.getContent()).find("#name");
-           // dom.oninput = function (){
-           //     self.hideErrMsg("nametips")
-           // }
             self.addBottomButtom();
             self._initBList();
             self._initSList();
@@ -125,8 +112,9 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 placeholder:I18N.getString("borrow.web.js.bookdialog.js.choosebcaption", "请选择大类"),
                 data$key: "caption",
                 onclickitem:function (rowdata, td, evt, isCheck){
-                    self.cid = rowdata.id;
-                    self.refresh(self.cid,null);
+                    cid = rowdata.id;
+                    self.scaption = null;
+                    self.refresh(cid);
                 }
             });
             self.getCategoryList();
@@ -147,7 +135,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 showFilter:false,
                 showCheckAll:false,
                 onclickitem:function (rowdata, td, evt, isCheck){
-                    self.tid = rowdata.id;
+                    tid = rowdata.id;
                 }
             })
         }
@@ -162,7 +150,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     var obj = queryObj.getResponseJSON();
                     self.bComboboxObj.setDatas(obj);
                     if (!isNull(self.bcaption)){
-                        var a= self.bComboboxObj.setSelectValue(self.bcaption,false);
+                        self._setBScaption();
                     }
                 },
                 waitMessage: {message: I18N.getString("ES.COMMON.LOADING", "正在加载..."),
@@ -173,13 +161,12 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         /**
          * 获取大类对应的小类列表
          */
-        BookDialog.prototype.refresh = function (cid,bcaption){
+        BookDialog.prototype.refresh = function (cid){
             var self = this;
             EUI.post({
                 url: EUI.getContextPath() + "book/typeList.do",
                 data:{
-                    cid:cid,
-                    bcaption:bcaption
+                    cid:cid
                 },
                 callback: function (queryObj) {
                     var obj = queryObj.getResponseJSON();
@@ -187,6 +174,9 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     if (isNull(self.scaption)){
                     }else{
                         self.sComboboxObj.setSelectValue(self.scaption,false);
+                        var elist = self.sComboboxObj.getEList();
+                        var data = elist.getSelectDatas();
+                        tid = data[0].id;
                     }
                 },
                 waitMessage: {message: I18N.getString("ES.COMMON.LOADING", "正在加载..."),
@@ -208,15 +198,14 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 }
             })
             var cancel =this.addButton(I18N.getString("ES.COMMON.CANCEL", "取消"),"",false,true,function (){
-                self.clear();
                 self.close();
 
             })
             EUI.removeClassName(cancel,"eui-btn-primary");
             //关闭对话框，清空对话框数据
             this.setOnClose(function (){
+                self.clear();
             })
-
         }
 
         /**
@@ -230,7 +219,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     data:self.userdata,
                     callback: function (queryObj) {
                         var obj = queryObj.getResponseJSON();
-                        self.clear();
                         self.onok();
 
                     },
@@ -243,9 +231,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                    data:self.userdata,
                    callback:function (queryObj){
                        var obj = queryObj.getResponseJSON();
-                           self.clear();
                            self.onok();
-
                    },
                    waitMessage: {message: I18N.getString("ES.COMMON.SAVEING", "正在保存..."),
                        finish: I18N.getString("ES.COMMON.SAVESUCCESS", "保存成功")}
@@ -291,6 +277,8 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         }
         /**
          * 显示错误提示信息
+         * @param id 需要显示错误提示信息的dom的ID
+         * @param msg 错误提示信息
          */
         BookDialog.prototype.showErrMsg = function (id,msg){
             var self = this;
@@ -303,6 +291,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
         }
         /**
          * 隐藏错误提示信息
+         * @param id 需要隐藏错误提示信息的dom的ID
          */
         BookDialog.prototype.hideErrMsg = function (id){
             var self = this;
@@ -321,29 +310,27 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             //清除书名
             EUI.getChildDomByAttrib(self.getBaseDom(),"id","name",true).value="";
             //清除大类
-            self.bComboboxObj.setCaption("",false);
-            self.cid=null;
+            self.bComboboxObj.setSelectValue("",false);
+            cid=null;
             //清除小类
-            self.sComboboxObj.setCaption("",false);
-            self.tid =null;
+            self.sComboboxObj.setSelectValue("",false);
+            tid =null;
             //清除描述
             EUI.getChildDomByAttrib(this.getBaseDom(),"id","desc",true).value="";
 
         }
         /**
          * 得到弹框中的值
-         * @returns {{name: *, tid: string, cid: string, desc: *}}
          */
         BookDialog.prototype.getValue = function (){
             var self = this;
             self.userdata = {
                 id:self.bid,
                 name:EUI.getChildDomByAttrib(this.getBaseDom(),"id","name",true).value,
-                cid:self.cid,
-                tid:self.tid,
+                cid:cid,
+                tid:tid,
                 desc:EUI.getChildDomByAttrib(this.getBaseDom(),"id","desc",true).value,
                 isnew:self.isnew,
-                 // EUI.getChildDomByAttrib(EUI.getChildDomByAttrib(this.getBaseDom(),"id","desc",true),"id","desc",true).value
             }
         }
         /**
@@ -355,26 +342,30 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             self.bid = datas.id;
             //设置书名
             EUI.getChildDomByAttrib(self.getBaseDom(),"id","name",true).value=datas.name;
-            //设置大类
-            self.cid=0;
-            self.tid=0;
+            //设置大类和小类
             self.bcaption = datas.bcaption;
-             var a= self.bComboboxObj.setSelectValue(datas.bcaption,false);
             self.scaption = datas.scaption;
-            self.refresh(0,self.bcaption);
+            self._setBScaption()
             //设置描述
             EUI.getChildDomByAttrib(this.getBaseDom(),"id","desc",true).value=datas.desc;
 
         }
         /**
+         * 设置大小类数据
+         */
+        BookDialog.prototype._setBScaption = function (){
+            var self = this;
+            self.bComboboxObj.setSelectValue(self.bcaption,false);
+            var elist = self.bComboboxObj.getEList();
+            var data = elist.getSelectDatas();
+            cid = data[0].id;
+            self.refresh(cid);
+        }
+        /**
          * 判断是否为空
          */
         var isNull = function (str){
-            if (str==null||str.match(/^\s*$/)){
-                return true;
-            }else{
-                return false;
-            }
+                return str==null||str.match(/^\s*$/);
         }
 
         return{

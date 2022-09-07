@@ -5,9 +5,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         var ECoolBar = ecoolbar.ECoolBar;
         var EList= elist.EList;
         var EPageBar = epagebar.EPageBar;
-        BookMgr.prototype.pageIndex =0;
-        BookMgr.prototype.totalCount=0;
-        BookMgr.prototype.bcaption;
         /**
          * 自定义分页条
          */
@@ -25,13 +22,10 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         function BookMgr(options){
             var self = this;
             EComponent.call(this,options);
-            // var options = options||{};
-            // this.wnd = options["wnd"]||window;
-            // this.doc = this.wnd.document;
-            self.bcaption=options.bcaption;
+            self.cid=options.cid;
             this._initUI();
             self.pageIndex=0;
-            this._initData(self.bcaption,self.pageIndex);
+            this._initData(self.cid,self.pageIndex);
         }
         EUI.extendClass(BookMgr,EComponent,"BookMgr");
 
@@ -47,10 +41,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             this.coolbarObj = null;
             this.listObj.dispose();
             this.listObj = null;
-
-            // this.wnd = null;
-            // this.doc = null;
-            // this.parentElement = null;
             EComponent.prototype.dispose.call(this);
         }
         /**
@@ -133,7 +123,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                     }
                 }
                 ],
-
             })
         }
         /**
@@ -154,7 +143,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 baseCss: "eui-pagebar-list",
                 showNumberClick:false,//是否显示数字点击项，默认显示
                 customSort:customSort,
-                onshowpage:function (pageIndex,pageSize){
+                onshowpage:function (pageIndex){
                     self.pageIndex = pageIndex
                     self._initData(self.bcaption,pageIndex);
                 }
@@ -164,18 +153,12 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * 显示对话框
          */
         BookMgr.prototype._showDialog = function (isnew,datas){
-            /**
-             * (1)对话框公用，不存在才创建对话框
-             * (2)对话框创建在rootwindow上， EUI.getRootWindow()
-             * (3)对话框的引用记录在Object01对象上 this.exportdlg
-             */
             var self = this;
             if(!self.bookdialog) {
                 var options = {
                     wnd:EUI.getRootWindow(),
                     isnew:isnew
                 };
-
                 var dlg = require("borrow/web/js/bookdialog");
                 self.bookdialog = new dlg.BookDialog(options);
                 //设置点击确定的回调函数
@@ -201,13 +184,14 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         /**
          * 初始数据
          */
-        BookMgr.prototype._initData = function (bcaption,pageIndex){
+        BookMgr.prototype._initData = function (cid,pageIndex){
             var self = this;
             //初始化列表中数据
             EUI.post({
                 url: EUI.getContextPath()+ "book/bookList.do",
                 data:{
-                    bcaption:bcaption,
+                    cid:cid,
+                    tid:"",
                     pageIndex:pageIndex
                 },
                 callback:function (queryObj){

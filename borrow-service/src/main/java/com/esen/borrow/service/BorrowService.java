@@ -44,14 +44,14 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 
 	/**
 	 * 获取借阅列表大小，或获取对应小类的借阅列表大小
-	 * @param scaption 小类名(可为空)
+	 * @param tid 小类id(可为空)
 	 * @return
 	 * @throws
 	 */
-	public PageResult<BorrowViewEntity> borrowList(PageRequest page,String scaption) {
+	public PageResult<BorrowViewEntity> borrowList(PageRequest page,String tid) {
 		PageResult<BorrowViewEntity> result = null;
-		if (!StrFunc.isNull(scaption)){
-			result = borrowViewRepository.findAll(page, new Expression("scaption=?"), new Object[] { scaption });
+		if (!StrFunc.isNull(tid)){
+			result = borrowViewRepository.findAllByTid(page, tid);
 		}else{
 			result = borrowViewRepository.findAll(page);
 		}

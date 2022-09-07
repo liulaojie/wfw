@@ -10,7 +10,7 @@ define(["borrow/web/js/graph/graph"],
 
         var Graph = graph.Graph;
         /**
-         * 条形图构造函数
+         * 构造函数——柱状图
          */
         function Analyze(options){
             var self = this;

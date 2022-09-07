@@ -1,6 +1,5 @@
 <@module.page>
     <@module.head title="${title1}">
-
     </@module.head>
     <@module.body>
         <div id="body" class="eui-layout-container body">

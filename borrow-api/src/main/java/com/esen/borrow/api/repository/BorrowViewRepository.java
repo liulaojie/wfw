@@ -10,15 +10,18 @@ import com.esen.ejdbc.jdbc.ConnectFactoryManager;
 import com.esen.ejdbc.jdbc.dialect.DbDefiner;
 
 import com.esen.ejdbc.jdbc.orm.EntityInfo;
-import com.esen.ejdbc.jdbc.orm.Query;
+import com.esen.ejdbc.jdbc.util.RowHandler;
+import com.esen.ejdbc.params.PageRequest;
+import com.esen.ejdbc.params.PageResult;
 import com.esen.eorm.annotation.ApplicationRepository;
 import com.esen.eorm.repository.AbstractRepository;
 import com.esen.eutil.util.ExceptionHandler;
-import com.esen.eutil.util.exp.Expression;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 /**
@@ -43,15 +46,38 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 		@Autowired
 		private ConnectFactoryManager connFactoryManager;
 
-		/**
-		 * 这个类型的所有借阅记录数
-		 * @param scaption 小类名
-		 * @return
-		 */
-		public int getTotalCountByScaption(String scaption){
-				Query<BorrowViewEntity> query = getCurrentSession().createQuery(getEntityInfo().getBean(),getEntityName());
-				return query.query(new Expression("scaption = ?"),null,scaption).calcTotalCount();
-		}
+	/**
+	 * 通过小类id得到借阅列表
+	 * @param tid 小类ID
+	 * @return
+	 */
+	public PageResult<BorrowViewEntity> findAllByTid(PageRequest page, String tid){
+		EntityInfo<BorrowViewEntity>bvEntityInfo = this.getEntityInfo();
+		EntityInfo<BookTypeEntity>btEntityInfo = btrep.getEntityInfo();
+		StringBuilder sql = new StringBuilder();
+		//select * from esc55_V_borrow where scaption_ = (select caption_ from esc55_book_type where id_=tid)
+		sql.append("select * from ").append(bvEntityInfo.getTable()).append(" where ");
+		sql.append(bvEntityInfo.getProperty("scaption").getFieldName()).append(" = (select ");
+		sql.append(btEntityInfo.getProperty("caption").getFieldName()).append(" from ");
+		sql.append(btEntityInfo.getTable()).append(" where ").append(btEntityInfo.getProperty("id").getFieldName());
+		sql.append(" = '").append(tid).append("' )");
+
+		PageResult<BorrowViewEntity> result = this.query(sql.toString(), page, new RowHandler<BorrowViewEntity>() {
+			@Override
+			public BorrowViewEntity processRow(ResultSet resultSet) throws SQLException {
+				BorrowViewEntity borrowViewEntity = new BorrowViewEntity();
+				borrowViewEntity.setId(resultSet.getString("id_"));
+				borrowViewEntity.setBook(resultSet.getString("book_"));
+				borrowViewEntity.setPerson(resultSet.getString("person_"));
+				borrowViewEntity.setScaption(resultSet.getString("scaption_"));
+				borrowViewEntity.setBcaption(resultSet.getString("bcaption_"));
+				borrowViewEntity.setFromdate(resultSet.getTimestamp("fromdate_"));
+				borrowViewEntity.setTodate(resultSet.getTimestamp("todate_"));
+				return borrowViewEntity;
+			}
+		});
+		return result;
+	}
 
 		/**
 		 * 生成视图

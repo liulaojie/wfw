@@ -13,28 +13,32 @@ import java.sql.Timestamp;
  */
 public class BookHistoryEntity extends RootEntity implements Serializable {
 
-		private static final long serialVersionUID = -3764378326887998646L;
+	private static final long serialVersionUID = -3764378326887998646L;
 
-		/**
-		 * 主键借阅记录ID
-		 */
-		private String id;
-		/**
-		 * 借阅者
-		 */
-		private String person;
-		/**
-		 * 书籍名
-		 */
-		private String bid;
-		/**
-		 * 借阅时间
-		 */
-		private Timestamp fromdate;
-		/**
-		 * 归还时间（空表示暂未归还）
-		 */
-		private Timestamp todate;
+	/**
+	 * 主键借阅记录ID
+	 */
+	private String id;
+
+	/**
+	 * 借阅者
+	 */
+	private String person;
+
+	/**
+	 * 书籍名
+	 */
+	private String bid;
+
+	/**
+	 * 借阅时间
+	 */
+	private Timestamp fromdate;
+
+	/**
+	 * 归还时间（空表示暂未归还）
+	 */
+	private Timestamp todate;
 
 	/**
 	 * @return the serialVersionUID
@@ -115,14 +119,13 @@ public class BookHistoryEntity extends RootEntity implements Serializable {
 		this.todate = todate;
 	}
 
+	/**
+	 * 重写toString用于记录到日志中
+	 * @return
+	 */
 	@Override
 	public String toString() {
-		return "BookHistoryEntity{" +
-				"id='" + id + '\'' +
-				", person='" + person + '\'' +
-				", bid='" + bid + '\'' +
-				", fromdate=" + fromdate +
-				", todate=" + todate +
-				'}';
+		return "BookHistoryEntity{" + "id='" + id + '\'' + ", person='" + person + '\'' + ", bid='" + bid + '\''
+				+ ", fromdate=" + fromdate + ", todate=" + todate + '}';
 	}
 }

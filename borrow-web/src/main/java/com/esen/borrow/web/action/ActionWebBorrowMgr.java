@@ -2,7 +2,6 @@ package com.esen.borrow.web.action;
 
 
 import com.esen.book.web.action.ActionWebBookMgr;
-import com.esen.borrow.web.client.BorrowClient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,16 +38,16 @@ public class ActionWebBorrowMgr {
 	 * @return
 	 */
 	@RequestMapping("/bookmgr")
-	public String bookMgr(HttpServletRequest req, String bcaption) {
-		return actionWebBookMgr.bookMgr(req, bcaption);
+	public String bookMgr(HttpServletRequest req, String cid) {
+		return actionWebBookMgr.bookMgr(req, cid);
 	}
 	/**
 	 * 跳转到借阅管理界面
 	 * @return
 	 */
 	@RequestMapping("/borrowmgr")
-	public String borrowmgr(HttpServletRequest req, String scaption) {
-		req.setAttribute("scaption", scaption);
+	public String borrowmgr(HttpServletRequest req, String tid) {
+		req.setAttribute("tid", tid);
 		return "borrow/web/borrowmgr";
 	}
 	/**

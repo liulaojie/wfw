@@ -1,21 +1,17 @@
-define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "eui/modules/etabctrl","eui/modules/edialog"],
-    function (etree, uibase,epanelsplitter,etabctrl,edialog) {
+define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "eui/modules/etabctrl"],
+    function (etree, uibase,epanelsplitter,etabctrl) {
         "use strict";
 
         var EComponent = uibase.EComponent;
         var ETree = etree.ETree;
         var EPanelSplitter = epanelsplitter.EPanelSplitter;
         var ETabCtrl = etabctrl.ETabCtrl;
-        var EDialog = edialog.EDialog;
         /**
-         * 主页构造函数
+         * Index的构造函数
          */
         function Index(options){
             var self = this;
             EComponent.call(this,options);
-            // var options = options||{};
-            // this.wnd = options["wnd"]||window;
-            // this.doc = this.wnd.document;
             this._initUI();
             this._initData();
             //在window上绑定得到左树根节点的方法
@@ -110,12 +106,12 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             });
             this.treeObj.setOnExpand(function (item){//展开事件
                 var userobj = item.userObj
-                if (userobj.img0="&#xee5a;"){
+                if (userobj.img0=="&#xee5a;"){
                     if (!item.hasVisibleChildren()){//没导入过才会导入
                         getCategoryList(item,userobj);
                     }
                 }
-                if (userobj.img0="&#xe1da;"){
+                if (userobj.img0=="&#xe1da;"){
                     if (!item.hasVisibleChildren()){//没导入过才会导入
                         getTypeList(item,userobj);
                     }
@@ -164,6 +160,8 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
         }
         /**
          * 获取大类列表
+         * @param item 触发获取大类列表的ETreeItem
+         * @param userObj 这个item中的用户数据
          */
         var getCategoryList = function (item,userObj){
             if (userObj.id!="booklist"){return;}
@@ -185,7 +183,9 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             })
         }
         /**
-         * 获取大类对应的小类列表
+         * 获取对应大类的小类列表
+         * @param item 触发获取小类列表的大类的ETreeItem
+         * @param userObj 这个item中的用户数据
          */
         var getTypeList = function (item,userObj){
             var self = this;
@@ -217,9 +217,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 style:"level1-mini ",
                 baseCss:"eui-layout-row-1 eui-layout-row-first body",
                 onswitched:function (index){//切换标签页，对应左树高亮
-                    var a=self.tabctrlObj.getCaption(index);
                     var id = self.tabctrlObj.getData(index,"id");
-                    var level = self.tabctrlObj.getData(index,"level");
                     var item = self.treeObj.getRootItem();
                     item.browseAllChildrenItems(function (item){
                         var userObj = item.userObj;
@@ -231,7 +229,11 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 }
             })
         }
-
+        /**
+         * 新建标签页
+         * @param item 触发新建标签页的ETreeItem
+         * @param userobj 这个item中的用户数据
+         */
         Index.prototype.addtab = function (item,userobj){
             var self = this;
                 var tabobj= self.tabctrlObj;
@@ -245,7 +247,6 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 var i = tabobj.getCount();
                 var dom = tabobj.getBodyDom(i-1);
                 EUI.addClassName(dom,"body");
-
                 switch (userobj.img0){
                     case "&#xee5a;"://图书管理
                         var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
@@ -259,13 +260,13 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                         break;
                     case "&#xe1da;"://大类
                         var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
-                        strhtml +="?bcaption="+userobj.caption;
+                        strhtml +="?cid="+userobj.id;
                         strhtml +='" width="100%" height="100%"></iframe>';
                         dom.innerHTML=strhtml;
                         break;
                     case "&#xe1cf;"://小类
                         var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/borrowmgr.do";
-                        strhtml +="?scaption="+userobj.caption;
+                        strhtml +="?tid="+userobj.id;
                         strhtml +='" width="100%" height="100%"></iframe>';
                         dom.innerHTML=strhtml;
                         break;
@@ -277,11 +278,9 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                     default:
                         break;
                 }
-
         }
-
         /**
-         * 销毁所持有的资源
+         * 销毁Index所持有的资源
          */
         Index.prototype.dispose = function (){
             this.tabctrlObj.dispose();
@@ -290,13 +289,8 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             this.treeObj = null;
             this.splitpaneobj.dispose();
             this.splitpaneobj = null;
-
-            // this.wnd = null;
-            // this.doc = null;
-            // this.parentElement = null;
             EComponent.prototype.dispose.call(this);
         }
-
         return{
             Index :Index
         };

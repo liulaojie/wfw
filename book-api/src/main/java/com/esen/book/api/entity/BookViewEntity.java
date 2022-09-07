@@ -11,30 +11,35 @@ import java.io.Serializable;
  * @since 20220824
  */
 public class BookViewEntity extends RootEntity implements Serializable {
-		/**
-		 * 序列号
-		 */
-		private static final long serialVersionUID = 8500921607578266851L;
-		/**
-		 * 书籍ID
-		 */
-		private String id;
-		/**
-		 * 书籍名
-		 */
-		private String name;
-		/**
-		 * 书籍描述
-		 */
-		private String desc;
-		/**
-		 * 书籍小类
-		 */
-		private String scaption;
-		/**
-		 * 书籍大类
-		 */
-		private String bcaption;
+	/**
+	 * 序列号
+	 */
+	private static final long serialVersionUID = 8500921607578266851L;
+
+	/**
+	 * 书籍ID
+	 */
+	private String id;
+
+	/**
+	 * 书籍名
+	 */
+	private String name;
+
+	/**
+	 * 书籍描述
+	 */
+	private String desc;
+
+	/**
+	 * 书籍小类
+	 */
+	private String scaption;
+
+	/**
+	 * 书籍大类
+	 */
+	private String bcaption;
 
 	/**
 	 * @return the serialVersionUID
