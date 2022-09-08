@@ -2,6 +2,7 @@ package com.esen.book.api.entity;
 
 import java.io.Serializable;
 
+import com.esen.eorm.entity.IdEntityImpl;
 import com.esen.eorm.entity.RootEntity;
 
 /**
@@ -10,7 +11,7 @@ import com.esen.eorm.entity.RootEntity;
  * @author liuaj
  * @since 20220824
  */
-public class BookTypeEntity extends RootEntity implements Serializable {
+public class BookTypeEntity extends IdEntityImpl implements Serializable {
 	private static final long serialVersionUID = 3705905178278362500L;
 
 	/**

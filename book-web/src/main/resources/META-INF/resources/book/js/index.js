@@ -129,7 +129,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             var rootitem = self.treeObj.getRootItem();
             var data1 = [{
                 id:"fwq",
-                caption:I18N.getString("borrow.web.js.index.js.server", "服务器"),
+                caption:I18N.getString("book.js.index.js.server", "服务器"),
                 level:1,
                 img0:"&#xe1ab;"
             }];
@@ -137,18 +137,18 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 var data2 = [{
                     id: "booklist",
                     haschild:true,
-                    caption: I18N.getString("borrow.web.js.index.js.bookmgr", "图书管理"),
+                    caption: I18N.getString("book.js.index.js.bookmgr", "图书管理"),
                     level: 2,
                     img0:"&#xee5a;"
                 },{
                     id: "borrowlist",
-                    caption: I18N.getString("borrow.web.js.index.js.borrowmgr", "借阅管理"),
+                    caption: I18N.getString("book.js.index.js.borrowmgr", "借阅管理"),
                     level: 2,
                     img0:"&#xe266;"
                 },{
 
                     id:"analysetable",
-                    caption: I18N.getString("borrow.web.js.index.js.analyzemgr", "分析表管理"),
+                    caption: I18N.getString("book.js.index.js.analyzemgr", "分析表管理"),
                     level: 2,
                     img0:"&#xe23d;"
                 }

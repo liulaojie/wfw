@@ -9,12 +9,12 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * 自定义分页条
          */
         var customSort = [
-            {id:"first",text:I18N.getString("borrow.web.js.borrowmgr.js.borrowmgr.js.first", "首页"),cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"previous",text:I18N.getString("borrow.web.js.borrowmgr.js.previous", "上一页"),cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"main",text:I18N.getString("borrow.web.js.borrowmgr.js.main", "第,页  共{0}页"),cssText:";color:#000000;font-weight: bold;"},
-            {id:"next",text:I18N.getString("borrow.web.js.borrowmgr.js.next", "下一页"),cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"last",text:I18N.getString("borrow.web.js.borrowmgr.js.last", "尾页"),cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"total",text:I18N.getString("borrow.web.js.borrowmgr.js.total", "每页三十条共{1}条"),cssText:";color:#000000;font-weight: bold;"}
+            {id:"first",text:I18N.getString("borrow.js.borrowmgr.js.borrowmgr.js.first", "首页"),cssText:";color:#87CEEB;font-weight: bold;"},
+            {id:"previous",text:I18N.getString("borrow.js.borrowmgr.js.previous", "上一页"),cssText:";color:#87CEEB;font-weight: bold;"},
+            {id:"main",text:I18N.getString("borrow.js.borrowmgr.js.main", "第,页  共{0}页"),cssText:";color:#000000;font-weight: bold;"},
+            {id:"next",text:I18N.getString("borrow.js.borrowmgr.js.next", "下一页"),cssText:";color:#87CEEB;font-weight: bold;"},
+            {id:"last",text:I18N.getString("borrow.js.borrowmgr.js.last", "尾页"),cssText:";color:#87CEEB;font-weight: bold;"},
+            {id:"total",text:I18N.getString("borrow.js.borrowmgr.js.total", "每页三十条共{1}条"),cssText:";color:#000000;font-weight: bold;"}
             ]
         /**
          * BorrowMgr的构造函数
@@ -65,13 +65,13 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             });
             var band = this.coolbarObj.addBand("band_name1",true,true);
             if (self.tid==''){
-                var createAdom= band.addButton(null,I18N.getString("borrow.web.js.borrowmgr.js.createanalyze", "生成分析表"));
+                var createAdom= band.addButton(null,I18N.getString("borrow.js.borrowmgr.js.createanalyze", "生成分析表"));
                 createAdom.setName("createAnalyze");
                 createAdom.setOnAfterClick(function (){//生成分析表
                     self.createAnalyze();
                 })
             }
-            var addBdom= band.addButton(null,I18N.getString("borrow.web.js.borrowmgr.js.addborrow", "新建借阅记录"));
+            var addBdom= band.addButton(null,I18N.getString("borrow.js.borrowmgr.js.addborrow", "新建借阅记录"));
             addBdom.setName("addBorrow");
             addBdom.setOnAfterClick(function (){
                 self._borrowDialog();
@@ -111,27 +111,27 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             });
             if (self.tid==''){
                 columns.push({
-                    caption:I18N.getString("borrow.web.js.borrowmgr.js.bcaption", "大类"),
+                    caption:I18N.getString("borrow.js.borrowmgr.js.bcaption", "大类"),
                     id:"bcaption",
                 });
                 columns.push({
-                    caption:I18N.getString("borrow.web.js.borrowmgr.js.scaption", "小类"),
+                    caption:I18N.getString("borrow.js.borrowmgr.js.scaption", "小类"),
                     id:"scaption",
                 });
             }
             columns.push({
-                caption:I18N.getString("borrow.web.js.borrowmgr.js.book", "书名"),
+                caption:I18N.getString("borrow.js.borrowmgr.js.book", "书名"),
                 id:"book",
                 hint:true,      //该列是否开启提示
             });
             columns.push({
-                caption:I18N.getString("borrow.web.js.borrowmgr.js.person", "借阅人"),
+                caption:I18N.getString("borrow.js.borrowmgr.js.person", "借阅人"),
                 id:"person",
 
                 hint:true,      //该列是否开启提示
             });
             columns.push({
-                caption:I18N.getString("borrow.web.js.borrowmgr.js.fromdate", "借阅日期"),
+                caption:I18N.getString("borrow.js.borrowmgr.js.fromdate", "借阅日期"),
                 id:"fromdate",
                 hint:true,      //该列是否开启提示
                 dataRender:function (span, data, rowIndex, elist) {
@@ -139,12 +139,12 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 }
             });
             columns.push({
-                caption:I18N.getString("borrow.web.js.borrowmgr.js.todate", "归还日期"),
+                caption:I18N.getString("borrow.js.borrowmgr.js.todate", "归还日期"),
                 id:"todate",
                 hint:true,      //该列是否开启提示
                 dataRender:function (span, data, rowIndex, elist) {
                     if (data==null){
-                        span.innerHTML = I18N.getString("borrow.web.js.borrowmgr.js.noreturn", "尚未归还")
+                        span.innerHTML = I18N.getString("borrow.js.borrowmgr.js.noreturn", "尚未归还")
                     }else{
                         span.innerHTML = EUI.date2String(new Date(data), "yyyy年mm月dd日 hh:ii:ss");
                     }
@@ -152,14 +152,14 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 }
             });
             columns.push({
-                caption:I18N.getString("borrow.web.js.borrowmgr.js.operation", "操作"),
+                caption:I18N.getString("borrow.js.borrowmgr.js.operation", "操作"),
                 dataRender:function (span, data, rowIndex, elist){
                     data = elist.getRowData(rowIndex);
                     var strhtml = ' <a id="delete" class="eui-btn eui-btn-m">'
-                        +I18N.getString("borrow.web.js.borrowmgr.js.delete", "删除")+'</a> '
+                        +I18N.getString("borrow.js.borrowmgr.js.delete", "删除")+'</a> '
                     if (data.todate==null){
                         strhtml +=' <a id="return" class = "eui-btn eui-btn-m">'
-                            +I18N.getString("borrow.web.js.borrowmgr.js.return", "还书")+'</a>'
+                            +I18N.getString("borrow.js.borrowmgr.js.return", "还书")+'</a>'
                     }
                     span.innerHTML = strhtml;
                 },
@@ -261,7 +261,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         BorrowMgr.prototype.delBorrow = function (data){
             var self = this;
             EUI.confirmDialog(I18N.getString("ES.COMMON.AFFIRM", "确认"),
-                I18N.getString("borrow.web.js.borrowmgr.js.deleteevn",'是否确认删除“{0}”于{1}借阅《{2}》的记录',
+                I18N.getString("borrow.js.borrowmgr.js.deleteevn",'是否确认删除“{0}”于{1}借阅《{2}》的记录',
                     [data.person,data.fromdate,data.book]), false,
                 function(){
                 },
@@ -294,14 +294,14 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         BorrowMgr.prototype.returnBook = function (data){
             var self = this;
             EUI.confirmDialog(I18N.getString("ES.COMMON.AFFIRM", "确认"),
-                I18N.getString("borrow.web.js.borrowmgr.js.returnevn", '是否确定“{0}”于{1}借阅《{2}》的借阅的数据已归还',
+                I18N.getString("borrow.js.borrowmgr.js.returnevn", '是否确定“{0}”于{1}借阅《{2}》的借阅的数据已归还',
                     [data.person,data.fromdate,data.book]), false,
                 function(){
                 },
                 function(){
                     if (data.todate!=null){
-                        EUI.showMessage(I18N.getString("borrow.web.js.borrowmgr.js.returned", "该书本已归还"),
-                            I18N.getString("borrow.web.js.borrowmgr.js.message", "消息"));
+                        EUI.showMessage(I18N.getString("borrow.js.borrowmgr.js.returned", "该书本已归还"),
+                            I18N.getString("borrow.js.borrowmgr.js.message", "消息"));
                     }else{
                         data.todate= EUI.date2String(new Date(), "yyyymmdd")
                         EUI.post({
@@ -317,7 +317,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                                 self._initData(self.pageIndex);
                                 this.close();
                             },
-                            waitMessage: {message: I18N.getString("borrow.web.js.borrowmgr.js.returning", "正在还书..."),
+                            waitMessage: {message: I18N.getString("borrow.js.borrowmgr.js.returning", "正在还书..."),
                                 finish: I18N.getString("ES.COMMON.SUCCEED", "成功")}
                         })
                     }
@@ -334,7 +334,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             var self = this;
             var datas=self.listObj.getCheckDatas();
             if (datas==null){//
-                EUI.showMessage(I18N.getString("borrow.web.js.borrowmgr.js.nocheck", "没有勾选任何数据"), I18N.getString("borrow.web.js.borrowmgr.js.message", "消息"));
+                EUI.showMessage(I18N.getString("borrow.js.borrowmgr.js.nocheck", "没有勾选任何数据"), I18N.getString("borrow.js.borrowmgr.js.message", "消息"));
             }else{
                 self.getCheck();
                 self._analyzeDialog();
@@ -403,7 +403,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                     chedata.set(chedatanow[i].id,chedatanow[i]);
                 }
             }
-
         }
         /**
          * 列表中被选择过的数据标识选中
@@ -411,14 +410,14 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         BorrowMgr.prototype.setCheck = function (){
             var self = this;
             var targets = self.listObj.getDatas();
-            for (var i=0;i<targets.length;i++){
-                if (chedata.has(targets[i].id)){
-                    self.listObj.setCheckRow(i,true);
-                    chedata.delete(targets[i].id);
+            if (targets!=null){
+                for (var i=0;i<targets.length;i++){
+                    if (chedata.has(targets[i].id)){
+                        self.listObj.setCheckRow(i,true);
+                        chedata.delete(targets[i].id);
+                    }
                 }
             }
-
-
         }
         return{
             BorrowMgr :BorrowMgr

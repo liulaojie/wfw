@@ -1,5 +1,6 @@
-package com.esen.book.api.entity;
+package com.esen.borrow.api.entity;
 
+import com.esen.eorm.entity.IdEntityImpl;
 import com.esen.eorm.entity.RootEntity;
 
 import java.io.Serializable;
@@ -11,7 +12,7 @@ import java.sql.Timestamp;
  * @author liuaj
  * @since 20220824
  */
-public class BookHistoryEntity extends RootEntity implements Serializable {
+public class BookHistoryEntity extends IdEntityImpl implements Serializable {
 
 	private static final long serialVersionUID = -3764378326887998646L;
 

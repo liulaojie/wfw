@@ -33,9 +33,9 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             self._options = options||{};
             self.isnew = self._options["isnew"];
             if (self.isnew){//弹窗标题
-                self._options["caption"] = self._options["caption"]||I18N.getString("borrow.web.js.bookdialog.js.addbook", "新建图书");
+                self._options["caption"] = self._options["caption"]||I18N.getString("book.js.bookdialog.js.addbook", "新建图书");
             }else{
-                self._options["caption"] = self._options["caption"]||I18N.getString("borrow.web.js.bookdialog.js.editbook", "编辑图书");
+                self._options["caption"] = self._options["caption"]||I18N.getString("book.js.bookdialog.js.editbook", "编辑图书");
             }
             self._options["width"] = self._options["width"]||380;
             self._options["height"] = self._options["height"]||400;
@@ -56,16 +56,16 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('  <div id = "bookdialog-info-content">');
             strhtml.push('      <div class="eui-form-item">');
             strhtml.push('          <label class="eui-form-label eui-form-required"> '+
-                                        I18N.getString("borrow.web.js.bookdialog.js.name", "书名")+'：</label>');
+                                        I18N.getString("book.js.bookdialog.js.name", "书名")+'：</label>');
             strhtml.push('          <div  class="eui-input-block"><input id="name" type="text" class="eui-form-input" ' +
-                '                       placeholder="'+I18N.getString("borrow.web.js.bookdialog.js.planame", "请填写书名")+'">');
+                '                       placeholder="'+I18N.getString("book.js.bookdialog.js.planame", "请填写书名")+'">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error" id="nametips" ></div>');
             strhtml.push('              </div>');
             strhtml.push('          </div>');
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required">'+I18N.getString("borrow.web.js.bookdialog.js.bcaption", "大类")+'：</label>');
+            strhtml.push('          <label class="eui-form-label eui-form-required">'+I18N.getString("book.js.bookdialog.js.bcaption", "大类")+'：</label>');
             strhtml.push('          <div class="eui-input-block" id="bcombobox">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error" id="bcomboboxtips" ></div>');
@@ -74,7 +74,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
             strhtml.push('          <label class="eui-form-label eui-form-required"> '
-                                        +I18N.getString("borrow.web.js.bookdialog.js.scaption", "小类")+'：</label>');
+                                        +I18N.getString("book.js.bookdialog.js.scaption", "小类")+'：</label>');
             strhtml.push('          <div class="eui-input-block" id="scombobox">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error" id="scomboboxtips" ></div>');
@@ -83,9 +83,9 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
             strhtml.push('          <label  class="eui-form-label "> '
-                                    +I18N.getString("borrow.web.js.bookdialog.js.desc", "图书简介")+'：</label>');
+                                    +I18N.getString("book.js.bookdialog.js.desc", "图书简介")+'：</label>');
             strhtml.push('          <div  class="eui-input-block"><textarea id="desc" style="width: 200px" class="eui-form-textarea" ' +
-                '                       placeholder='+I18N.getString("borrow.web.js.bookdialog.js.nodesc", "请填写图书的简介信息没有可以不填，")
+                '                       placeholder='+I18N.getString("book.js.bookdialog.js.nodesc", "请填写图书的简介信息没有可以不填，")
                                         +' ></textarea></div>');
             strhtml.push('           ');
             strhtml.push('      </div>');
@@ -111,7 +111,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 height:"100%",
                 showFilter:false,
                 showCheckAll:false,
-                placeholder:I18N.getString("borrow.web.js.bookdialog.js.choosebcaption", "请选择大类"),
+                placeholder:I18N.getString("book.js.bookdialog.js.choosebcaption", "请选择大类"),
                 data$key: "caption",
                 onclickitem:function (rowdata, td, evt, isCheck){
                     cid = rowdata.id;
@@ -131,8 +131,8 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 parentElement: EUI.getChildDomByAttrib(this.getBaseDom(),"id","scombobox",true),
                 width:200,
                 height:"100%",
-                columns:[{caption: I18N.getString("borrow.web.js.bookdialog.js.title", "标题"), id:"caption", width: "100%"}],
-                placeholder:I18N.getString("borrow.web.js.bookdialog.js.choosescaption", "请选择小类"),
+                columns:[{caption: I18N.getString("book.js.bookdialog.js.title", "标题"), id:"caption", width: "100%"}],
+                placeholder:I18N.getString("book.js.bookdialog.js.choosescaption", "请选择小类"),
                 data$key: "caption",
                 showFilter:false,
                 showCheckAll:false,
@@ -152,7 +152,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     var obj = queryObj.getResponseJSON();
                     self.bComboboxObj.setDatas(obj);
                     if (!isNull(self.bcaption)){
-                        self._setBScaption();
+                        self.bComboboxObj.setSelectValue(self.bcaption,false);
                     }
                 },
                 waitMessage: {message: I18N.getString("ES.COMMON.LOADING", "正在加载..."),
@@ -176,9 +176,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     if (isNull(self.scaption)){
                     }else{
                         self.sComboboxObj.setSelectValue(self.scaption,false);
-                        var elist = self.sComboboxObj.getEList();
-                        var data = elist.getSelectDatas();
-                        tid = data[0].id;
                     }
                 },
                 waitMessage: {message: I18N.getString("ES.COMMON.LOADING", "正在加载..."),
@@ -259,21 +256,21 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             var flag = true;
             //检查书名
             if (isNull(self.userdata.name)){
-               self.showErrMsg("nametips",I18N.getString("borrow.web.js.bookdialog.js.nobook", "书名不能为空"));
+               self.showErrMsg("nametips",I18N.getString("book.js.bookdialog.js.nobook", "书名不能为空"));
                 flag= false;
             }else {
                 self.hideErrMsg("nametips");
             }
             //检查大类
             if (self.userdata.cid==null){
-                self.showErrMsg("bcomboboxtips",I18N.getString("borrow.web.js.bookdialog.js.nobcaption", "大类不能为空"));
+                self.showErrMsg("bcomboboxtips",I18N.getString("book.js.bookdialog.js.nobcaption", "大类不能为空"));
                 flag=  false;
             } else{
                 self.hideErrMsg("bcomboboxtips");
             }
             //检查小类
             if (self.userdata.tid==null){
-                self.showErrMsg("scomboboxtips",I18N.getString("borrow.web.js.bookdialog.js.noscaption", "小类不能为空"));
+                self.showErrMsg("scomboboxtips",I18N.getString("book.js.bookdialog.js.noscaption", "小类不能为空"));
                 flag= false;
             }else{
                 self.hideErrMsg("scomboboxtips");
@@ -347,26 +344,18 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             self.bid = datas.id;
             //设置书名
             EUI.getChildDomByAttrib(self.getBaseDom(),"id","name",true).value=datas.name;
-            //设置大类和小类
+            //设置大类
             self.bcaption = datas.bcaption;
+            cid = datas.cid;
+            self.bComboboxObj.setSelectValue(self.bcaption,false);
+            //设置小类
             self.scaption = datas.scaption;
+            tid = datas.tid;
+            self.refresh(cid);
             //设置描述
             EUI.getChildDomByAttrib(this.getBaseDom(),"id","desc",true).value=datas.desc;
-            self._setBScaption()
         }
-        /**
-         * 设置大小类数据
-         */
-        BookDialog.prototype._setBScaption = function (){
-            var self = this;
-            self.bComboboxObj.setSelectValue(self.bcaption,false);
-            var elist = self.bComboboxObj.getEList();
-            if (elist!=null){
-                var data = elist.getSelectDatas();
-                cid = data[0].id;
-                self.refresh(cid);
-            }
-        }
+
         /**
          * 判断是否为空
          */

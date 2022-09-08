@@ -6,7 +6,7 @@ import com.esen.eorm.repository.AbstractRepository;
 import org.springframework.context.annotation.Primary;
 
 /**
- *图书分类的Repository仓库
+ *图书分类的Repository仓库类
  *
  * @author liuaj
  * @since 20220824

@@ -10,12 +10,12 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * 自定义分页条
          */
         var customSort = [
-            {id:"first",text:I18N.getString("borrow.web.js.bookmgr.js.first", "首页"),cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"previous",text:I18N.getString("borrow.web.js.bookmgr.js.previous", "上一页"),cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"main",text:I18N.getString("borrow.web.js.bookmgr.js.main", "第,页  共{0}页"),cssText:";color:#000000;font-weight: bold;"},
-            {id:"next",text:I18N.getString("borrow.web.js.bookmgr.js.next", "下一页"),cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"last",text:I18N.getString("borrow.web.js.bookmgr.js.last", "尾页"),cssText:";color:#87CEEB;font-weight: bold;"},
-            {id:"total",text:I18N.getString("borrow.web.js.bookmgr.js.total", "每页三十条共{1}条"),cssText:";color:#000000;font-weight: bold;"}
+            {id:"first",text:I18N.getString("book.js.bookmgr.js.first", "首页"),cssText:";color:#87CEEB;font-weight: bold;"},
+            {id:"previous",text:I18N.getString("book.js.bookmgr.js.previous", "上一页"),cssText:";color:#87CEEB;font-weight: bold;"},
+            {id:"main",text:I18N.getString("book.js.bookmgr.js.main", "第,页  共{0}页"),cssText:";color:#000000;font-weight: bold;"},
+            {id:"next",text:I18N.getString("book.js.bookmgr.js.next", "下一页"),cssText:";color:#87CEEB;font-weight: bold;"},
+            {id:"last",text:I18N.getString("book.js.bookmgr.js.last", "尾页"),cssText:";color:#87CEEB;font-weight: bold;"},
+            {id:"total",text:I18N.getString("book.js.bookmgr.js.total", "每页三十条共{1}条"),cssText:";color:#000000;font-weight: bold;"}
         ]
         /**
          * BookMgr的构造函数
@@ -64,7 +64,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 baseCss:"eui-coolbar-btn"
             });
             var band = this.coolbarObj.addBand("band_name1",true,true);
-            var dom= band.addButton(null,I18N.getString("borrow.web.js.bookmgr.js.addbook", "新建图书"));
+            var dom= band.addButton(null,I18N.getString("book.js.bookmgr.js.addbook", "新建图书"));
             dom.setName("newBook");
             dom.setOnAfterClick(function (){
                 self._showDialog(true,null);
@@ -89,28 +89,28 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 columns:[{
                     checkbox:true,
                 },{
-                    caption:I18N.getString("borrow.web.js.bookmgr.js.bcaption", "大类"),
+                    caption:I18N.getString("book.js.bookmgr.js.bcaption", "大类"),
                     id:"bcaption",
                     sort:false,
 
                 },{
-                    caption:I18N.getString("borrow.web.js.bookmgr.js.scaption", "小类"),
+                    caption:I18N.getString("book.js.bookmgr.js.scaption", "小类"),
                     id:"scaption",
                     indexConlum:true,
                     start:10,//序号列的起始值
                     hint:true,      //该列是否开启提示
 
                 },{
-                    caption:I18N.getString("borrow.web.js.bookmgr.js.name", "书名"),
+                    caption:I18N.getString("book.js.bookmgr.js.name", "书名"),
                     id:"name",
                     hint:true,      //该列是否开启提示
                 },{
-                    caption:I18N.getString("borrow.web.js.bookmgr.js.desc", "描述"),
+                    caption:I18N.getString("book.js.bookmgr.js.desc", "描述"),
                     id:"desc",
                     width: 500,
                     hint:true,      //该列是否开启提示
                 },{
-                    caption:I18N.getString("borrow.web.js.bookmgr.js.operation", "操作"),
+                    caption:I18N.getString("book.js.bookmgr.js.operation", "操作"),
                     width:"200px",
                     dataRender:function (cell){
                         var strhtml = '<a class="eui-btn eui-btn-m">'+I18N.getString("ES.COMMON.EDIT", "编辑")+'</a>'
@@ -170,9 +170,9 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             }else {
                 self.bookdialog.isnew = isnew;
                 if (isnew){
-                    self.bookdialog.setCaption(I18N.getString("borrow.web.js.bookmgr.js.addbook", "新建图书"))
+                    self.bookdialog.setCaption(I18N.getString("book.js.bookmgr.js.addbook", "新建图书"))
                 }else {
-                    self.bookdialog.setCaption(I18N.getString("borrow.web.js.bookmgr.js.editbook", "编辑图书"))
+                    self.bookdialog.setCaption(I18N.getString("book.js.bookmgr.js.editbook", "编辑图书"))
                 }
             }
             //打开对话框

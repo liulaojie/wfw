@@ -1,21 +1,21 @@
 package com.esen.borrow.service;
 
+import com.esen.borrow.api.entity.BookHistoryEntity;
+import com.esen.borrow.api.repository.BookHistoryRepository;
 import com.esen.eutil.util.StrFunc;
+import com.esen.eutil.util.exp.Expression;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.esen.book.api.entity.*;
-import com.esen.book.api.repository.*;
 import com.esen.borrow.api.repository.BorrowViewRepository;
 import com.esen.borrow.api.entity.BorrowViewEntity;
 import com.esen.ejdbc.params.PageRequest;
 import com.esen.ejdbc.params.PageResult;
 import com.esen.eorm.annotation.ApplicationService;
 import com.esen.eorm.service.AbstractService;
-import com.esen.eutil.util.exp.Expression;
 
 /**
- * 借阅管理的SERVICE层
- *
+ * 借阅管理的service类
+ *实现了获取借阅列表，添加借阅信息，删除借阅信息，修改借阅信息（还书）的功能
  * @author liuaj
  * @since 20220816
  */
@@ -25,18 +25,6 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 
 	@Autowired
 	protected BorrowViewRepository borrowViewRepository;
-
-	@Autowired
-	protected BookViewRepository bookViewRepository;
-
-	@Autowired
-	protected BookInfoRepository bookInfoRepository;
-
-	@Autowired
-	protected BookTypeRepository bookTypeRepository;
-
-	@Autowired
-	protected BookCategoryRepository bookCategoryRepository;
 
 	@Autowired
 	protected BookHistoryRepository bookHistoryRepository;
@@ -53,7 +41,7 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 		if (StrFunc.isNull(tid)){
 			result = borrowViewRepository.findAll(page);
 		}else{
-			result = borrowViewRepository.findAllByTid(page, tid);
+			result = borrowViewRepository.findAll(page,new Expression("tid=?"),new Object[]{tid});
 		}
 		return result;
 	}

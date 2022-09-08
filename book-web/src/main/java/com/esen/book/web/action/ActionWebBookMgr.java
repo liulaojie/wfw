@@ -5,6 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 书籍service的action接口，负责借阅界面的页面跳转
+ *包含跳转到主页和跳转到图书管理界面
+ * @author liuaj
+ * @since 20220905
+ */
 @Controller
 @RequestMapping("/web/book")
 public class ActionWebBookMgr  {

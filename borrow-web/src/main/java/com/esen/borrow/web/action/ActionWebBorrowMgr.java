@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 
 
 /**
- * 借阅web，负责借阅界面的页面跳转
- *
+ * 借阅web的action接口，负责借阅界面的页面跳转
+ *包含跳转到主页，跳转到图书管理界面，跳转到借阅管理界面，跳转到分析表界面的功能
  * @author liuaj
  * @since 20220816
  */

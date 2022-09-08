@@ -16,8 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 /**
- * 对于这个类的描述.
- *
+ * 书籍的service类.
+ *实现了获得大类列表，小类列表，书籍列表，添加书籍，修改书籍的功能
  * @author liuaj
  * @since 2022/9/5
  */
@@ -35,9 +35,6 @@ public class BookService  extends AbstractService<BookViewEntity> {
 
 	@Autowired
 	protected BookCategoryRepository bookCategoryRepository;
-
-	@Autowired
-	protected BookHistoryRepository bookHistoryRepository;
 
 
 
@@ -67,10 +64,10 @@ public class BookService  extends AbstractService<BookViewEntity> {
 	public PageResult<BookViewEntity> bookList(PageRequest page, String cid, String tid) {
 		PageResult<BookViewEntity> result = null;
 		if (!StrFunc.isNull(cid)) {
-			result = bookViewRepository.findAllByCid(page,cid);
+			result = bookViewRepository.findAll(page,new Expression("cid=?"),new Object[]{cid});
 		}else{
 			if (!StrFunc.isNull(tid)){
-				result = bookViewRepository.findAllByTid(page, tid);
+				result = bookViewRepository.findAll(page,new Expression("tid=?"),new Object[]{tid});
 			}else{
 				result = bookViewRepository.findAll(page);
 			}

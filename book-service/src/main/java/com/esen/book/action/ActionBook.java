@@ -25,8 +25,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 对于这个类的描述.
- *
+ * 书籍service的action接口.
+ *包含获得大类列表，小类列表，书籍列表，添加书籍，修改书籍的功能
  * @author liuaj
  * @since 2022/9/5
  */
@@ -171,9 +171,7 @@ public class ActionBook {
 					.exception(e).end().add();
 			throw e;
 		}
-
 	}
-
 	/**
 	 * 保存书籍修改的数据
 	 * @param id 书本ID

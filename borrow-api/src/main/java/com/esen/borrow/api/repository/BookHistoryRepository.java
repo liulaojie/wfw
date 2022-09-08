@@ -1,7 +1,7 @@
-package com.esen.book.api.repository;
+package com.esen.borrow.api.repository;
 
 
-import com.esen.book.api.entity.BookHistoryEntity;
+import com.esen.borrow.api.entity.BookHistoryEntity;
 import com.esen.eorm.annotation.ApplicationRepository;
 import com.esen.eorm.repository.AbstractRepository;
 import org.springframework.context.annotation.Primary;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Primary;
  * @author liuaj
  * @since 20220824
  */
-@ApplicationRepository(path = "/config/mapping/bookhistoryentity-mapping.xml" ,value = "BookHistoryRepository")
+@ApplicationRepository(path = "/config/mapping/bookhistoryentity-mapping.xml",value = "BookHistoryRepository")
 @Primary
 public class BookHistoryRepository extends AbstractRepository<BookHistoryEntity> {
 

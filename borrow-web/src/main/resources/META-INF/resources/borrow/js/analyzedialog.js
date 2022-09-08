@@ -28,7 +28,7 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
             var self = this;
             self._options = options||{};
             self._options["caption"] = self._options["caption"]||
-                I18N.getString("borrow.web.js.analyzedialog.js.createanalyze", "生成分析表");
+                I18N.getString("borrow.js.analyzedialog.js.createanalyze", "生成分析表");
             self._options["width"] = self._options["width"]||380;
             self._options["height"] = self._options["height"]||200;
             EDialog.call(self,self._options);
@@ -47,16 +47,16 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
             strhtml.push('<link  rel="stylesheet" type="text/css" href="'+EUI.getContextPath()+'borrow/css/analyzedialog.css">');
             strhtml.push('  <div id = "AnalyzeDialog-info-content">');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.web.js.analyzedialog.js.analyzename", "分析表名称")+'：</label>');
+            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.js.analyzedialog.js.analyzename", "分析表名称")+'：</label>');
             strhtml.push('          <div  class="eui-input-block"><input id="name" type="text" class="eui-form-input"');
-            strhtml.push('           placeholder="'+I18N.getString("borrow.web.js.analyzedialog.js.plaanalyzename", "请填写分析表名称不能是纯数字！")+'">');
+            strhtml.push('           placeholder="'+I18N.getString("borrow.js.analyzedialog.js.plaanalyzename", "请填写分析表名称不能是纯数字！")+'">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error tips" id="nametips" ></div>');
             strhtml.push('              </div>');
             strhtml.push('          </div>');
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.web.js.analyzedialog.js.analyzetype", "统计图类型")+'：</label>');
+            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.js.analyzedialog.js.analyzetype", "统计图类型")+'：</label>');
             strhtml.push('          <div class="eui-input-block" id="graphcombobox">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error tips" id="graphcomboboxtips" ></div>');
@@ -81,12 +81,12 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
                 width:200,
                 height:"100%",
                 datas:[
-                    {caption: I18N.getString("borrow.web.js.analyzedialog.js.barchart", "条形图"), value: "barchart"},
-                    {caption: I18N.getString("borrow.web.js.analyzedialog.js.histogram", "柱状图"), value: "histogram"},
+                    {caption: I18N.getString("borrow.js.analyzedialog.js.barchart", "条形图"), value: "barchart"},
+                    {caption: I18N.getString("borrow.js.analyzedialog.js.histogram", "柱状图"), value: "histogram"},
                     ],
                 showFilter:false,
                 showCheckAll:false,
-                placeholder:I18N.getString("borrow.web.js.analyzedialog.js.chooseanalyzetype", "请选择统计图类型！"),
+                placeholder:I18N.getString("borrow.js.analyzedialog.js.chooseanalyzetype", "请选择统计图类型！"),
                 onclickitem:function (rowdata, td, evt, isCheck){//点击事件
                     self.id = rowdata.value;
                 },
@@ -103,7 +103,7 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
                     if (self.check()){//数据正确
                         var flag= self.onok(self.data.name,self.data.id);
                         if (!flag){
-                            EUI.showMessage(I18N.getString("borrow.web.js.analyzedialog.js.exitanalyze", "已存在表名为《{0}》的分析表",[self.data.name])
+                            EUI.showMessage(I18N.getString("borrow.js.analyzedialog.js.exitanalyze", "已存在表名为《{0}》的分析表",[self.data.name])
                                 , I18N.getString("ES.COMMON.PROMPT", "提示"));
                         }
                         self.close();
@@ -140,11 +140,11 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
             var flag = true;
             //检查借阅人信息
             if (isNull(self.data.name)){
-                self.showErrMsg("nametips",I18N.getString("borrow.web.js.analyzedialog.js.noanalyzename", "分析表名称不能为空"));
+                self.showErrMsg("nametips",I18N.getString("borrow.js.analyzedialog.js.noanalyzename", "分析表名称不能为空"));
                 flag = false;
             }else {
                 if (isNum(self.data.name)){
-                    self.showErrMsg("nametips",I18N.getString("borrow.web.js.analyzedialog.js.allnumber", "分析表名称不能全为数字"));
+                    self.showErrMsg("nametips",I18N.getString("borrow.js.analyzedialog.js.allnumber", "分析表名称不能全为数字"));
                     flag = false;
                 }else{
                     self.hideErrMsg("nametips");
@@ -152,7 +152,7 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
             }
             //检查统计图类型
             if (self.data.id==null){
-                self.showErrMsg("graphcomboboxtips",I18N.getString("borrow.web.js.analyzedialog.js.notype", "统计图类型不能为空"));
+                self.showErrMsg("graphcomboboxtips",I18N.getString("borrow.js.analyzedialog.js.notype", "统计图类型不能为空"));
                 flag=  false;
             } else{
                 self.hideErrMsg("graphcomboboxtips");

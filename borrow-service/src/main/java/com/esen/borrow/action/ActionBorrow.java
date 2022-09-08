@@ -1,6 +1,6 @@
 package com.esen.borrow.action;
 
-import com.esen.book.api.entity.BookHistoryEntity;
+import com.esen.borrow.api.entity.BookHistoryEntity;
 import com.esen.borrow.api.entity.BorrowViewEntity;
 import com.esen.borrow.log.ELogModuleOperationRegistry;
 import com.esen.borrow.service.BorrowService;
@@ -24,8 +24,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 对借阅管理中的Ajax请求进行处理
- *
+ * 借阅service的action接口
+ *包含了获取借阅列表，添加借阅信息，删除借阅信息，修改借阅信息（还书）的功能
  * @author liuaj
  * @since 2022/9/2
  */

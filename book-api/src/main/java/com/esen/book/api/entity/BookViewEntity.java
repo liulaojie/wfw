@@ -1,5 +1,6 @@
 package com.esen.book.api.entity;
 
+import com.esen.eorm.entity.IdEntityImpl;
 import com.esen.eorm.entity.RootEntity;
 
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import java.io.Serializable;
  * @author liuaj
  * @since 20220824
  */
-public class BookViewEntity extends RootEntity implements Serializable {
+public class BookViewEntity extends IdEntityImpl implements Serializable {
 	/**
 	 * 序列号
 	 */
@@ -40,6 +41,14 @@ public class BookViewEntity extends RootEntity implements Serializable {
 	 * 书籍大类
 	 */
 	private String bcaption;
+	/**
+	 * 小类ID
+	 */
+	private String tid;
+	/**
+	 * 大类ID
+	 */
+	private String cid;
 
 	/**
 	 * @return the serialVersionUID
@@ -120,5 +129,33 @@ public class BookViewEntity extends RootEntity implements Serializable {
 	 */
 	public void setBcaption(String bcaption) {
 		this.bcaption = bcaption;
+	}
+
+	/**
+	 * @return the tid
+	 */
+	public String getTid() {
+		return tid;
+	}
+
+	/**
+	 * @param tid to set
+	 */
+	public void setTid(String tid) {
+		this.tid = tid;
+	}
+
+	/**
+	 * @return the cid
+	 */
+	public String getCid() {
+		return cid;
+	}
+
+	/**
+	 * @param cid to set
+	 */
+	public void setCid(String cid) {
+		this.cid = cid;
 	}
 }

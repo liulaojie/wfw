@@ -3,6 +3,7 @@ package com.esen.borrow.api.repository;
 import com.esen.book.api.entity.*;
 import com.esen.book.api.repository.*;
 
+import com.esen.borrow.api.entity.BookHistoryEntity;
 import com.esen.borrow.api.entity.BorrowViewEntity;
 
 
@@ -25,8 +26,8 @@ import java.sql.SQLException;
 
 
 /**
- * 借阅的Repository仓库
- * 负责数据库的增删改查。
+ * 借阅视图的Repository仓库
+ * 包含了生成视图的方法和对应的sql语句
  *
  * @author liuaj
  * @since 20220816
@@ -46,45 +47,11 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 		@Autowired
 		private ConnectFactoryManager connFactoryManager;
 
-	/**
-	 * 通过小类id得到借阅列表
-	 * @param tid 小类ID
-	 * @return
-	 */
-	public PageResult<BorrowViewEntity> findAllByTid(PageRequest page, String tid){
-		EntityInfo<BorrowViewEntity>bvEntityInfo = this.getEntityInfo();
-		EntityInfo<BookTypeEntity>btEntityInfo = btrep.getEntityInfo();
-		StringBuilder sql = new StringBuilder();
-		//select * from esc55_V_borrow where scaption_ = (select caption_ from esc55_book_type where id_=tid)
-		sql.append("select * from ").append(bvEntityInfo.getTable()).append(" where ");
-		sql.append(bvEntityInfo.getProperty("scaption").getFieldName()).append(" = (select ");
-		sql.append(btEntityInfo.getProperty("caption").getFieldName()).append(" from ");
-		sql.append(btEntityInfo.getTable()).append(" where ").append(btEntityInfo.getProperty("id").getFieldName());
-		sql.append(" = '").append(tid).append("' )");
-
-		PageResult<BorrowViewEntity> result = this.query(sql.toString(), page, new RowHandler<BorrowViewEntity>() {
-			@Override
-			public BorrowViewEntity processRow(ResultSet resultSet) throws SQLException {
-				BorrowViewEntity borrowViewEntity = new BorrowViewEntity();
-				borrowViewEntity.setId(resultSet.getString("id_"));
-				borrowViewEntity.setBook(resultSet.getString("book_"));
-				borrowViewEntity.setPerson(resultSet.getString("person_"));
-				borrowViewEntity.setScaption(resultSet.getString("scaption_"));
-				borrowViewEntity.setBcaption(resultSet.getString("bcaption_"));
-				borrowViewEntity.setFromdate(resultSet.getTimestamp("fromdate_"));
-				borrowViewEntity.setTodate(resultSet.getTimestamp("todate_"));
-				return borrowViewEntity;
-			}
-		});
-		return result;
-	}
-
 		/**
 		 * 生成视图
 		 * {@inheritDoc}
 		 */
 		public void repairTable() {
-
 				DbDefiner dbf = connFactoryManager.getDefaultConnectionFactory().getDbDefiner();
 				String viewName = getViewName();
 				try {
@@ -116,7 +83,9 @@ public class BorrowViewRepository extends AbstractRepository<BorrowViewEntity> {
 				str.append("bh.").append(bhEntity.getProperty("id").getFieldName()).append(" , ");
 				str.append("bh.").append(bhEntity.getProperty("person").getFieldName()).append(" , ");
 				str.append("bi.").append(biEntity.getProperty("caption").getFieldName()).append(" AS book_, ");
+				str.append("bt.").append(btEntity.getProperty("id").getFieldName()).append(" AS tid_, ");
 				str.append("bt.").append(btEntity.getProperty("caption").getFieldName()).append(" AS scaption_, ");
+				str.append("bc.").append(bcEntity.getProperty("id").getFieldName()).append(" AS cid_, ");
 				str.append("bc.").append(bcEntity.getProperty("caption").getFieldName()).append(" AS bcaption_, ");
 				str.append("bh.").append(bhEntity.getProperty("fromdate").getFieldName()).append("  , ");
 				str.append("bh.").append(bhEntity.getProperty("todate").getFieldName()).append(" ");

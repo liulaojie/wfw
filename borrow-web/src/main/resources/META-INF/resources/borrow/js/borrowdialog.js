@@ -32,7 +32,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             tid = options.tid;
             self._options = options||{};
             self._options["caption"] = self._options["caption"]||
-                I18N.getString("borrow.web.js.borrowdialog.js.addborrow", "新建借阅记录");
+                I18N.getString("borrow.js.borrowdialog.js.addborrow", "新建借阅记录");
             self._options["width"] = self._options["width"]||380;
             self._options["height"] = self._options["height"]||400;
             EDialog.call(self,self._options);
@@ -50,16 +50,16 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('<div class="eui-layout-container eui-padding-top-10 eui-padding-bottom-10 eui-scroll-auto">');
             strhtml.push('  <div id = "borrowdialog-info-content">');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.web.js.borrowdialog.js.person", "借阅人")+'：</label>');
+            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.js.borrowdialog.js.person", "借阅人")+'：</label>');
             strhtml.push('          <div  class="eui-input-block"><input id="person" type="text" class="eui-form-input"');
-            strhtml.push('           placeholder="'+I18N.getString("borrow.web.js.borrowdialog.js.addperson", "请填写借阅人姓名！")+'">');
+            strhtml.push('           placeholder="'+I18N.getString("borrow.js.borrowdialog.js.addperson", "请填写借阅人姓名！")+'">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error" id="persontips" ></div>');
             strhtml.push('              </div>');
             strhtml.push('          </div>');
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.web.js.borrowdialog.js.book", "书名")+'：</label>');
+            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.js.borrowdialog.js.book", "书名")+'：</label>');
             strhtml.push('          <div class="eui-input-block" id="bookcombobox">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error" id="bookcomboboxtips" ></div>');
@@ -67,7 +67,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('          </div>');
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.web.js.borrowdialog.js.fromdate", "借阅日期")+'：</label>');
+            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.js.borrowdialog.js.fromdate", "借阅日期")+'：</label>');
             strhtml.push('          <div class="eui-input-block" id="fromdate">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error" id="fromdatetips" ></div>');
@@ -94,7 +94,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 height:"100%",
                 showFilter:false,
                 showCheckAll:false,
-                placeholder:I18N.getString("borrow.web.js.borrowdialog.js.choosebook", "请选择图书"),
+                placeholder:I18N.getString("borrow.js.borrowdialog.js.choosebook", "请选择图书"),
                 data$key: "id",
                 caption$key:"name",
                 onclickitem:function (rowdata, td, evt, isCheck){//点击事件
@@ -123,7 +123,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             this.fromDateObj = eform.date({
                 parentElement: EUI.getChildDomByAttrib(this.getBaseDom(),"id","fromdate",true),
                 wnd: this.wnd,
-                value:EUI.date2String(new Date(), I18N.getString("borrow.web.js.borrowdialog.js.date", "yyyy年mm月dd日")),
+                value:EUI.date2String(new Date(), I18N.getString("borrow.js.borrowdialog.js.date", "yyyy年mm月dd日")),
                 width:'200',
                 onclickitem:function (data, td, evt, isCheck){
                     console.log(data);
@@ -216,21 +216,21 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             var flag = true;
             //检查借阅人信息
             if (isNull(self.userdata.person)){
-               self.showErrMsg("persontips",I18N.getString("borrow.web.js.borrowdialog.js.noperson", "借阅人不能为空"));
+               self.showErrMsg("persontips",I18N.getString("borrow.js.borrowdialog.js.noperson", "借阅人不能为空"));
                 flag= false;
             }else {
                 self.hideErrMsg("persontips");
             }
             //检查书本信息
             if (self.userdata.bid==null){
-                self.showErrMsg("bookcomboboxtips",I18N.getString("borrow.web.js.borrowdialog.js.nobook", "书名不能为空"));
+                self.showErrMsg("bookcomboboxtips",I18N.getString("borrow.js.borrowdialog.js.nobook", "书名不能为空"));
                 flag=  false;
             } else{
                 self.hideErrMsg("bookcomboboxtips");
             }
             //检查借书时间信息
             if (self.userdata.fromdate==null){
-                self.showErrMsg("fromdatetips",I18N.getString("borrow.web.js.borrowdialog.js.nofromtime", "借阅时间不能为空"));
+                self.showErrMsg("fromdatetips",I18N.getString("borrow.js.borrowdialog.js.nofromtime", "借阅时间不能为空"));
                 flag= false;
             }else{
                 self.hideErrMsg("fromdatetips");
@@ -276,7 +276,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             self.bid=null;
             //还原日期
             EUI.getChildDomByAttrib(self.fromDateObj,"type","text",true).value=
-                EUI.date2String(new Date(), I18N.getString("borrow.web.js.borrowdialog.js.date", "yyyy年mm月dd日"));
+                EUI.date2String(new Date(), I18N.getString("borrow.js.borrowdialog.js.date", "yyyy年mm月dd日"));
             EUI.getChildDomByAttrib(self.fromDateObj,"type","hidden",true).value=
                 EUI.date2String(new Date(), "yyyymmdd");
         }

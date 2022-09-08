@@ -5,6 +5,8 @@
             <property name="id" field="id_" caption="唯一字段" unique="true" length="32" pk="true" />
             <property name="person" field="person_" caption="借阅者姓名"  nullable="true" length="32" />
             <property name="book" field="book_" caption="书籍名" nullable="true" length="200" />
+            <property name="tid" field="tid_" caption="小类ID" nullable="true" length="200" />
+            <property name="cid" field="cid_" caption="大类ID" nullable="true" length="200" />
             <property name="scaption" field="scaption_" caption="书籍小类" nullable="true" length="200"  />
             <property name="bcaption" field="bcaption_" caption="书籍大类"  nullable="true" length="200" />
             <property name="fromdate" field="fromdate_" caption="借阅时间" nullable="true"  />
