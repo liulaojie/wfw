@@ -1,19 +1,20 @@
-package com.esen.book.api.repository;
+package com.esen.book.repository;
 
-import com.esen.book.api.entity.BookCategoryEntity;
+import com.esen.book.api.entity.BookTypeEntity;
 import com.esen.eorm.annotation.ApplicationRepository;
 import com.esen.eorm.repository.AbstractRepository;
 import org.springframework.context.annotation.Primary;
 
+
 /**
- *图书分类的Repository仓库类
+ * 图书种类的Repository仓库类
  *
  * @author liuaj
  * @since 20220824
  */
-@ApplicationRepository(value = "BookCategoryRepository")
+@ApplicationRepository(value = "BookTypeRepository")
 @Primary
-public class BookCategoryRepository extends AbstractRepository<BookCategoryEntity> {
+public class BookTypeRepository extends AbstractRepository<BookTypeEntity> {
 
 		@Override
 		protected String getCurrentLoginId() {

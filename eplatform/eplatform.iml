@@ -446,5 +446,23 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.20" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.27" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eweb:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eacl:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eschedule:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:esysmgr:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edatasubject:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:wdb-engine:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:wdb-common:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edi-core:4.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:ejdbc:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eanalysemgr-api:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eutil:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:ecache:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:esysconfig:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eacl:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edataprocess:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:edatafileparser:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:emessage-service:1.5.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.esen:eservice:1.5.1-SNAPSHOT" level="project" />
   </component>
 </module>

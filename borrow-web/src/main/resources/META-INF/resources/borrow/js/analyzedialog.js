@@ -1,5 +1,6 @@
 define([ "eui/modules/edialog","eui/modules/ecombobox"],
     function (edialog,ecombobox) {
+        "use strict";
         var EDialog = edialog.EDialog;
         var EListCombobox = ecombobox.EListCombobox;
         /**
@@ -16,9 +17,10 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
          * 销毁AnalyzeDialog所持有的资源
          */
         AnalyzeDialog.prototype.dispose = function (){
-            var self = this;
-            self.graphComboboxObj.dispose();
-            self.graphComboboxObj = null;
+            if(this.graphComboboxObj != null){
+                this.graphComboboxObj.dispose();
+                this.graphComboboxObj = null;
+            }
             EDialog.prototype.dispose.call(this);
         }
         /**
@@ -43,11 +45,11 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
             var self = this;
             var content = self.getContent();
             var strhtml = [];
-            strhtml.push('<div class="eui-layout-container eui-padding-top-10 eui-padding-bottom-10 eui-scroll-auto">');
+            strhtml.push('<div class="eui-layout-container eui-scroll-auto">');
             strhtml.push('<link  rel="stylesheet" type="text/css" href="'+EUI.getContextPath()+'borrow/css/analyzedialog.css">');
             strhtml.push('  <div id = "AnalyzeDialog-info-content">');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.js.analyzedialog.js.analyzename", "分析表名称")+'：</label>');
+            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.js.analyzedialog.js.analyzename", "分析表名称：")+'</label>');
             strhtml.push('          <div  class="eui-input-block"><input id="name" type="text" class="eui-form-input"');
             strhtml.push('           placeholder="'+I18N.getString("borrow.js.analyzedialog.js.plaanalyzename", "请填写分析表名称不能是纯数字！")+'">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
@@ -56,7 +58,7 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
             strhtml.push('          </div>');
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.js.analyzedialog.js.analyzetype", "统计图类型")+'：</label>');
+            strhtml.push('          <label class="eui-form-label eui-form-required"> '+I18N.getString("borrow.js.analyzedialog.js.analyzetype", "统计图类型：")+'</label>');
             strhtml.push('          <div class="eui-input-block" id="graphcombobox">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error tips" id="graphcomboboxtips" ></div>');
@@ -66,6 +68,8 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
             strhtml.push('  </div>');
             strhtml.push('</div>');
             content.innerHTML = strhtml.join(" ");
+            var dom= EUI.getChildDomByAttrib(this.getBaseDom(),"class","eui-dialog-body",true)
+            EUI.addClassName(dom,"eui-padding-top-4n eui-padding-bottom-4n eui-padding-right-6n")
             self.addBottomButton();//添加按钮
             self._initGraphList();//初始化书名列表
         }
@@ -82,14 +86,14 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
                 height:"100%",
                 datas:[
                     {caption: I18N.getString("borrow.js.analyzedialog.js.barchart", "条形图"), value: "barchart"},
-                    {caption: I18N.getString("borrow.js.analyzedialog.js.histogram", "柱状图"), value: "histogram"},
+                    {caption: I18N.getString("borrow.js.analyzedialog.js.histogram", "柱状图"), value: "histogram"}
                     ],
                 showFilter:false,
                 showCheckAll:false,
                 placeholder:I18N.getString("borrow.js.analyzedialog.js.chooseanalyzetype", "请选择统计图类型！"),
                 onclickitem:function (rowdata, td, evt, isCheck){//点击事件
                     self.id = rowdata.value;
-                },
+                }
             });
         }
         /**
@@ -204,28 +208,20 @@ define([ "eui/modules/edialog","eui/modules/ecombobox"],
             var self = this;
             self.data = {
                 name:EUI.getChildDomByAttrib(this.getBaseDom(),"id","name",true).value,
-                id:self.id,
+                id:self.id
             }
         }
         /**
          * 判断是否为空
          */
         var isNull = function (str){
-            if (str==null||str.match(/^\s*$/)){
-                return true;
-            }else{
-                return false;
-            }
+            return str==null||str.match(/^\s*$/);
         }
         /**
          * 判断是否为数字
          */
         var isNum = function (str){
-            if (str.match(/^\d+$/)){
-                return true;
-            }else{
-                return false;
-            }
+            return str.match(/^\d+$/);
         }
         return{
             AnalyzeDialog :AnalyzeDialog,

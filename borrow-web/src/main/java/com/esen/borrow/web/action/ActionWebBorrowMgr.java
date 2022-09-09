@@ -3,6 +3,7 @@ package com.esen.borrow.web.action;
 
 import com.esen.book.web.action.ActionWebBookMgr;
 
+import com.esen.eutil.util.security.SecurityFunc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,15 +32,7 @@ public class ActionWebBorrowMgr {
 	 */
 	@RequestMapping("/index")
 	public String index() {
-		return actionWebBookMgr.index();
-	}
-	/**
-	 * 跳转到图书管理界面
-	 * @return
-	 */
-	@RequestMapping("/bookmgr")
-	public String bookMgr(HttpServletRequest req, String cid) {
-		return actionWebBookMgr.bookMgr(req, cid);
+		return "borrow/index";
 	}
 	/**
 	 * 跳转到借阅管理界面
@@ -47,6 +40,7 @@ public class ActionWebBorrowMgr {
 	 */
 	@RequestMapping("/borrowmgr")
 	public String borrowmgr(HttpServletRequest req, String tid) {
+		SecurityFunc.checkIdentifier(req,tid);
 		req.setAttribute("tid", tid);
 		return "borrow/borrowmgr";
 	}

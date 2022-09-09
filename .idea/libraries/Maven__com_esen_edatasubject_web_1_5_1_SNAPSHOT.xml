@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:edatasubject-web:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasubject-web/1.5.1-SNAPSHOT/edatasubject-web-1.5.1-20220906.054329-147.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasubject-web/1.5.1-SNAPSHOT/edatasubject-web-1.5.1-20220906.120123-148.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasubject-web/1.5.1-SNAPSHOT/edatasubject-web-1.5.1-20220906.054329-147-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasubject-web/1.5.1-SNAPSHOT/edatasubject-web-1.5.1-20220906.120123-148-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasubject-web/1.5.1-SNAPSHOT/edatasubject-web-1.5.1-20220906.054329-147-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatasubject-web/1.5.1-SNAPSHOT/edatasubject-web-1.5.1-20220906.120123-148-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

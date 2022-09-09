@@ -142,20 +142,17 @@ public class ActionBook {
 	 */
 	@RequestMapping(value = "/addBook")
 	@ResponseBody
-	public boolean addBook(@RequestParam("name")String name, @RequestParam("tid")String tid, @RequestParam("desc")String desc) {
+	public boolean addBook(HttpServletRequest req,@RequestParam("name")String name, @RequestParam("tid")String tid, String desc) {
 		Log log = logService.create().start();
 		BookInfoEntity bookInfoEntity = new BookInfoEntity();
 		try{
 			SecurityFunc.checkResID(name);
 			SecurityFunc.checkResID(desc);
-			if (bookService.bookIsExists(name)) {
-				throw new RuntimeException(I18N.getString("com.esen.book.action.actionbook.repeat", "书名重复"));
-			}else{
-				bookInfoEntity.setDesc(desc);
-				bookInfoEntity.setTid(tid);
-				bookInfoEntity.setCaption(name);
-				bookService.addBook(bookInfoEntity);
-			}
+			SecurityFunc.checkIdentifier(req,tid);
+			bookInfoEntity.setDesc(desc);
+			bookInfoEntity.setTid(tid);
+			bookInfoEntity.setCaption(name);
+			bookService.addBook(bookInfoEntity);
 			log.info().desc(I18N.getString("com.esen.book.action.actionbook.addbookdesc",
 					"添加书籍", I18N.getDefaultLocale(), null))
 					.detail(I18N.getString("com.esen.book.action.actionbook.addbookdetail",
@@ -182,13 +179,14 @@ public class ActionBook {
 	 */
 	@RequestMapping(value = "/saveBook")
 	@ResponseBody
-	public boolean saveBook(@RequestParam("id")String id,@RequestParam("name")String name,
-							@RequestParam("desc")String desc,@RequestParam("tid")String tid){
+	public boolean saveBook(HttpServletRequest req,@RequestParam("id")String id,@RequestParam("name")String name,
+							String desc,@RequestParam("tid")String tid){
 		Log log = logService.create().start();
 		BookInfoEntity bookInfoEntity = new BookInfoEntity();
 		try{
 			SecurityFunc.checkResID(name);
 			SecurityFunc.checkResID(desc);
+			SecurityFunc.checkIdentifier(req,tid);
 			bookInfoEntity.setId(id);
 			bookInfoEntity.setCaption(name);
 			bookInfoEntity.setTid(tid);

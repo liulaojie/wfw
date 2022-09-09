@@ -1,5 +1,6 @@
 define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/modules/epagebar"],
     function (uibase, ecoolbar,elist,epagebar) {
+        "use strict";
         var EComponent = uibase.EComponent;
         var ECoolBar = ecoolbar.ECoolBar;
         var EList= elist.EList;
@@ -33,14 +34,22 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * 销毁BorrowMgr所持有的资源
          */
         BorrowMgr.prototype.dispose = function (){
-            this.borrowdialog.dispose();
-            this.borrowdialog=null;
-            this.coolbarObj.dispose();
-            this.coolbarObj = null;
-            this.listObj.dispose();
-            this.listObj = null;
-            this.pageBarObj.dispose();
-            this.pageBarObj = null;
+            if(this.borrowdialog != null){
+                this.borrowdialog.dispose();
+                this.borrowdialog = null;
+            }
+            if(this.coolbarObj != null){
+                this.coolbarObj.dispose();
+                this.coolbarObj = null;
+            }
+            if(this.listObj != null){
+                this.listObj.dispose();
+                this.listObj = null;
+            }
+            if(this.pageBarObj != null){
+                this.pageBarObj.dispose();
+                this.pageBarObj = null;
+            }
             EComponent.prototype.dispose.call(this);
         }
         /**
@@ -58,7 +67,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         BorrowMgr.prototype._initCoolBar = function (){
             var self = this;
             this.coolbarObj = new ECoolBar({
-                parentElement: document.getElementById("toolbardom"),
+                parentElement: this.doc.getElementById("toolbardom"),
                 width:"100%",
                 height: "100%",
                 baseCss:"eui-coolbar-btn"
@@ -84,7 +93,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         BorrowMgr.prototype._initList = function (){
             var  self = this;
             this.listObj = new EList({
-                parentElement:document.getElementById("listdom"),
+                parentElement:this.doc.getElementById("listdom"),
                 width:"100%",
                 height:"100%",
                 columnResize: true,     //是否拖动列宽
@@ -112,23 +121,22 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             if (self.tid==''){
                 columns.push({
                     caption:I18N.getString("borrow.js.borrowmgr.js.bcaption", "大类"),
-                    id:"bcaption",
+                    id:"bcaption"
                 });
                 columns.push({
                     caption:I18N.getString("borrow.js.borrowmgr.js.scaption", "小类"),
-                    id:"scaption",
+                    id:"scaption"
                 });
             }
             columns.push({
                 caption:I18N.getString("borrow.js.borrowmgr.js.book", "书名"),
                 id:"book",
-                hint:true,      //该列是否开启提示
+                hint:true     //该列是否开启提示
             });
             columns.push({
                 caption:I18N.getString("borrow.js.borrowmgr.js.person", "借阅人"),
                 id:"person",
-
-                hint:true,      //该列是否开启提示
+                hint:true      //该列是否开启提示
             });
             columns.push({
                 caption:I18N.getString("borrow.js.borrowmgr.js.fromdate", "借阅日期"),
@@ -148,7 +156,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                     }else{
                         span.innerHTML = EUI.date2String(new Date(data), "yyyy年mm月dd日 hh:ii:ss");
                     }
-
                 }
             });
             columns.push({
@@ -183,7 +190,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         BorrowMgr.prototype._initPageBar = function (){
             var self = this;
             this.pageBarObj = new EPageBar({
-                parentElement:document.getElementById("pagebardom"),
+                parentElement:this.doc.getElementById("pagebardom"),
                 paramobj :{
                     style:"text",
                     pageSize:30,
@@ -275,16 +282,11 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                             var obj = queryObj.getResponseJSON();
                             //刷新数据
                             self._initData(0);
-                            this.close();
                         },
                         waitMessage: {message: I18N.getString("ES.COMMON.DELETING", "正在删除..."),
                             finish: I18N.getString("ES.COMMON.DELETESUCCESS", "删除成功")}
                     })
-
                 },
-                function(){
-
-                }
             );
         }
         /**
@@ -308,22 +310,18 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                             url:EUI.getContextPath()+"borrow/saveBorrow.do",
                             data:{
                                 id:data.id,
-                                todate:data.todate,
+                                todate:data.todate
                             },
                             callback:function (queryObj){
                                 var obj = queryObj.getResponseJSON();
                                 //刷新数据
                                 self.pageIndex = 0;
                                 self._initData(self.pageIndex);
-                                this.close();
                             },
                             waitMessage: {message: I18N.getString("borrow.js.borrowmgr.js.returning", "正在还书..."),
                                 finish: I18N.getString("ES.COMMON.SUCCEED", "成功")}
                         })
                     }
-                },
-                function(){
-
                 }
             );
         }
@@ -333,7 +331,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         BorrowMgr.prototype.createAnalyze = function (){
             var self = this;
             var datas=self.listObj.getCheckDatas();
-            if (datas==null){//
+            if (datas==null){
                 EUI.showMessage(I18N.getString("borrow.js.borrowmgr.js.nocheck", "没有勾选任何数据"), I18N.getString("borrow.js.borrowmgr.js.message", "消息"));
             }else{
                 self.getCheck();
@@ -396,7 +394,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          */
         BorrowMgr.prototype.getCheck = function (){
             var self = this;
-            var k = 0;
             var chedatanow = self.listObj.getCheckDatas();
             if (chedatanow!=null){
                 for (var i=0;i<chedatanow.length;i++){

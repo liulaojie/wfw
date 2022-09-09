@@ -1,12 +1,13 @@
 package com.esen.borrow.service;
 
 import com.esen.borrow.api.entity.BookHistoryEntity;
-import com.esen.borrow.api.repository.BookHistoryRepository;
+import com.esen.borrow.repository.BookHistoryRepository;
 import com.esen.eutil.util.StrFunc;
 import com.esen.eutil.util.exp.Expression;
+import com.esen.eutil.util.i18n.I18N;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.esen.borrow.api.repository.BorrowViewRepository;
+import com.esen.borrow.repository.BorrowViewRepository;
 import com.esen.borrow.api.entity.BorrowViewEntity;
 import com.esen.ejdbc.params.PageRequest;
 import com.esen.ejdbc.params.PageResult;
@@ -76,9 +77,16 @@ public class BorrowService extends AbstractService<BorrowViewEntity> {
 	 * @throws
 	 */
 	public void returnBook(BookHistoryEntity bookHistoryEntity) {
-		bookHistoryRepository.save(bookHistoryEntity, "todate");
-		bookHistoryRepository.cleanCache();
-		borrowViewRepository.cleanCache();
+		BookHistoryEntity pre = bookHistoryRepository.findOneQuietly(new Expression("id=?"), new Object[] { bookHistoryEntity.getId() });
+		if (pre!=null){
+			bookHistoryRepository.save(bookHistoryEntity, "todate");
+			bookHistoryRepository.cleanCache();
+			borrowViewRepository.cleanCache();
+		}
+		else{
+			throw new RuntimeException(I18N.getString("com.esen.borrow.action.actionbook.exist",
+					"ID为{0}的借阅记录不存在",new Object[]{bookHistoryEntity.getId()}));
+		}
 	}
 
 

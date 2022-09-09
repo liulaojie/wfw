@@ -1,9 +1,10 @@
-package com.esen.book.api.repository;
+package com.esen.borrow.repository;
+
+import org.springframework.context.annotation.Primary;
 
 import com.esen.book.api.entity.BookTypeEntity;
 import com.esen.eorm.annotation.ApplicationRepository;
 import com.esen.eorm.repository.AbstractRepository;
-import org.springframework.context.annotation.Primary;
 
 
 /**

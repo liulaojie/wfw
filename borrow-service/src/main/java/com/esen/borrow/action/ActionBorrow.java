@@ -80,12 +80,13 @@ public class ActionBorrow {
 	 */
 	@RequestMapping(value = "/addBorrow")
 	@ResponseBody
-	public boolean addBorrow(@RequestParam("person") String person, @RequestParam("bid")String bid,
+	public boolean addBorrow(HttpServletRequest req,@RequestParam("person") String person, @RequestParam("bid")String bid,
 							 @RequestParam("fromdate")String fromdate) {
 		Log log = logService.create().start();
 		BookHistoryEntity bookHistoryEntity = new BookHistoryEntity();
 		try{
 			SecurityFunc.checkResID(person);
+			SecurityFunc.checkIdentifier(req,fromdate);
 			bookHistoryEntity.setPerson(person);
 			bookHistoryEntity.setBid(bid);
 			Calendar c= StrFunc.str2date(fromdate,"YYYYmmDD");
@@ -119,7 +120,7 @@ public class ActionBorrow {
 	public boolean saveBorrow(HttpServletRequest req,@RequestParam("id") String id, @RequestParam("todate") String todate){
 		Log log = logService.create().start();
 		try{
-			SecurityFunc.checkIdentifier(req,id);
+			SecurityFunc.checkIdentifier(req,todate);
 			BookHistoryEntity bookHistoryEntity = new BookHistoryEntity();
 			bookHistoryEntity.setId(id);
 			Calendar c= StrFunc.str2date(todate,"YYYYmmDD");
@@ -155,7 +156,6 @@ public class ActionBorrow {
 	public boolean deleteBorrow(HttpServletRequest req,@RequestParam("id")String id) {
 		Log log = logService.create().start();
 		try{
-			SecurityFunc.checkIdentifier(req,id);
 			boolean flag = borrowService.deleteBorrow(id);
 			log.info().desc(I18N.getString("com.esen.borrow.action.actionborrow.deleteborrowdesc",
 					"删除借书记录", I18N.getDefaultLocale(), null))

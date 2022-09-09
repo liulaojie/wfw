@@ -1,11 +1,10 @@
 define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/modules/epagebar"],
     function (uibase, ecoolbar,elist,epagebar) {
-
+        "use strict";
         var EComponent = uibase.EComponent;
         var ECoolBar = ecoolbar.ECoolBar;
         var EList= elist.EList;
         var EPageBar = epagebar.EPageBar;
-        var cid
         /**
          * 自定义分页条
          */
@@ -23,10 +22,10 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
         function BookMgr(options){
             var self = this;
             EComponent.call(this,options);
-            cid=options.cid;
+            self.cid=options.cid;
             this._initUI();
             self.pageIndex=0;
-            this._initData(cid,self.pageIndex);
+            this._initData(self.cid,self.pageIndex);
         }
         EUI.extendClass(BookMgr,EComponent,"BookMgr");
 
@@ -34,14 +33,22 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
          * 销毁所持有的资源
          */
         BookMgr.prototype.dispose = function (){
-            this.pageBarObj.dispose();
-            this.pageBarObj = null;
-            this.bookdialog.dispose();
-            this.bookdialog=null;
-            this.coolbarObj.dispose();
-            this.coolbarObj = null;
-            this.listObj.dispose();
-            this.listObj = null;
+            if(this.pageBarObj != null){
+                this.pageBarObj.dispose();
+                this.pageBarObj = null;
+            }
+            if(this.bookdialog != null){
+                this.bookdialog.dispose();
+                this.bookdialog = null;
+            }
+            if(this.coolbarObj != null){
+                this.coolbarObj.dispose();
+                this.coolbarObj = null;
+            }
+            if(this.listObj != null){
+                this.listObj.dispose();
+                this.listObj = null;
+            }
             EComponent.prototype.dispose.call(this);
         }
         /**
@@ -51,7 +58,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             this._initList();
             this._initCoolBar();
         }
-
         /**
          * 初始化工具栏
          */
@@ -69,7 +75,6 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
             dom.setOnAfterClick(function (){
                 self._showDialog(true,null);
             })
-            EUI.addClassName("eui-padding-top-4n eui-padding-bottom-4n eui-padding-left-6n eui-padding-right-6n")
         }
 
         /**
@@ -87,31 +92,29 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 shiftMultSelect: true,  //列表是否支持Shift多选
                 showblank: true,        //当表格无数据时，列表是否支持显示空白，为false是空白，为true是默认dom样式
                 columns:[{
-                    checkbox:true,
+                    checkbox:true
                 },{
                     caption:I18N.getString("book.js.bookmgr.js.bcaption", "大类"),
                     id:"bcaption",
-                    sort:false,
+                    sort:false
 
                 },{
                     caption:I18N.getString("book.js.bookmgr.js.scaption", "小类"),
                     id:"scaption",
-                    indexConlum:true,
-                    start:10,//序号列的起始值
-                    hint:true,      //该列是否开启提示
+                    hint:true      //该列是否开启提示
 
                 },{
                     caption:I18N.getString("book.js.bookmgr.js.name", "书名"),
                     id:"name",
-                    hint:true,      //该列是否开启提示
+                    hint:true      //该列是否开启提示
                 },{
                     caption:I18N.getString("book.js.bookmgr.js.desc", "描述"),
                     id:"desc",
                     width: 500,
-                    hint:true,      //该列是否开启提示
+                    hint:true      //该列是否开启提示
                 },{
                     caption:I18N.getString("book.js.bookmgr.js.operation", "操作"),
-                    width:"200px",
+                    width:200,
                     dataRender:function (cell){
                         var strhtml = '<a class="eui-btn eui-btn-m">'+I18N.getString("ES.COMMON.EDIT", "编辑")+'</a>'
                         cell.innerHTML = strhtml;
@@ -123,7 +126,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                         }
                     }
                 }
-                ],
+                ]
             })
         }
         /**
@@ -146,7 +149,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 customSort:customSort,
                 onshowpage:function (pageIndex){
                     self.pageIndex = pageIndex
-                    self._initData(cid,pageIndex);
+                    self._initData(self.cid,pageIndex);
                 }
             })
         }
@@ -165,7 +168,7 @@ define(["eui/modules/uibase", "eui/modules/ecoolbar", "eui/modules/elist", "eui/
                 //设置点击确定的回调函数
                 self.bookdialog.setOnok(function (){
                     self.pageIndex=0;
-                    self._initData(cid,self.pageIndex);
+                    self._initData(self.cid,self.pageIndex);
                 })
             }else {
                 self.bookdialog.isnew = isnew;

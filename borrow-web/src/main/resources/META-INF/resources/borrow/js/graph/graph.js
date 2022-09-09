@@ -12,6 +12,17 @@ define(["eui/modules/uibase"],
         }
         EUI.extendClass(Graph,EComponent,"Graph");
         /**
+         * 初始化
+         * @param datas
+         * @private
+         */
+        Graph.prototype._init = function (datas){
+            var self = this;
+            self.datas=self._initData(datas);
+            self._getMax();
+            self._initUI();
+        }
+        /**
          * 初始化数据，将传来的数据转成书籍名为key，数量为value的map
          * @param datas 需要转换的数据（用户选择的数据）
          * @returns {Map<String, int>}
@@ -28,6 +39,36 @@ define(["eui/modules/uibase"],
                 }
             })
             return  result;
+        }
+
+        /**
+         * 初始化数据
+         * @param datas
+         * @private
+         */
+        Graph.prototype._getMax = function (){
+            var self = this;
+            self.max =1;
+            self.datas.forEach(function (value) {
+                if (value>self.max){
+                    self.max = value;
+                }
+            })
+        }
+        /**
+         * 获取颜色
+         * @returns {string}
+         * @private
+         */
+        Graph.prototype._getColor=function (){
+            var self = this;
+            self.red+=16
+            self.green+=32
+            self.blue+=64
+            self.red = self.red%255;
+            self.green = self.green%255;
+            self.blue = self.blue%255;
+            return self.red.toString(16)+self.green.toString(16)+self.blue.toString(16);
         }
 
         /**

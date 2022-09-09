@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:eweb:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eweb/1.5.1-SNAPSHOT/eweb-1.5.1-20220906.045930-120.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eweb/1.5.1-SNAPSHOT/eweb-1.5.1-20220907.032231-121.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eweb/1.5.1-SNAPSHOT/eweb-1.5.1-20220906.045930-120-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eweb/1.5.1-SNAPSHOT/eweb-1.5.1-20220907.032231-121-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eweb/1.5.1-SNAPSHOT/eweb-1.5.1-20220906.045930-120-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/eweb/1.5.1-SNAPSHOT/eweb-1.5.1-20220907.032231-121-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

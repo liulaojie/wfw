@@ -1,10 +1,9 @@
 define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
     function (edialog,eform,ecombobox) {
+        "use strict";
         var EDialog = edialog.EDialog;
         var eform = eform.eform;
         var EListCombobox = ecombobox.EListCombobox;
-        var tid;//小类ID
-        var cid;//大类ID
         /**
          * BookDialog的构造函数,继承EDialog
          */
@@ -19,10 +18,14 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
          * 销毁BookDialog所持有的资源
          */
         BookDialog.prototype.dispose = function (){
-            this.bComboboxObj.dispose();
-            this.bComboboxObj = null;
-            this.sComboboxObj.dispose();
-            this.sComboboxObj = null;
+            if (this.bComboboxObj!=null){
+                this.bComboboxObj.dispose();
+                this.bComboboxObj = null;
+            };
+            if (this.sComboboxObj!=null){
+                this.sComboboxObj.dispose();
+                this.sComboboxObj = null;
+            };
             EDialog.prototype.dispose.call(this);
         }
         /**
@@ -56,7 +59,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('  <div id = "bookdialog-info-content">');
             strhtml.push('      <div class="eui-form-item">');
             strhtml.push('          <label class="eui-form-label eui-form-required"> '+
-                                        I18N.getString("book.js.bookdialog.js.name", "书名")+'：</label>');
+                                        I18N.getString("book.js.bookdialog.js.name", "书名：")+'</label>');
             strhtml.push('          <div  class="eui-input-block"><input id="name" type="text" class="eui-form-input" ' +
                 '                       placeholder="'+I18N.getString("book.js.bookdialog.js.planame", "请填写书名")+'">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
@@ -65,7 +68,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('          </div>');
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
-            strhtml.push('          <label class="eui-form-label eui-form-required">'+I18N.getString("book.js.bookdialog.js.bcaption", "大类")+'：</label>');
+            strhtml.push('          <label class="eui-form-label eui-form-required">'+I18N.getString("book.js.bookdialog.js.bcaption", "大类：")+'</label>');
             strhtml.push('          <div class="eui-input-block" id="bcombobox">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error" id="bcomboboxtips" ></div>');
@@ -74,7 +77,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
             strhtml.push('          <label class="eui-form-label eui-form-required"> '
-                                        +I18N.getString("book.js.bookdialog.js.scaption", "小类")+'：</label>');
+                                        +I18N.getString("book.js.bookdialog.js.scaption", "小类：")+'</label>');
             strhtml.push('          <div class="eui-input-block" id="scombobox">');
             strhtml.push('              <div class="eui-form-mid eui-input-block eui-clear eui-hide" >');
             strhtml.push('                  <div class="eui-tips-container eui-error" id="scomboboxtips" ></div>');
@@ -83,7 +86,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             strhtml.push('      </div>');
             strhtml.push('      <div class="eui-form-item">');
             strhtml.push('          <label  class="eui-form-label "> '
-                                    +I18N.getString("book.js.bookdialog.js.desc", "图书简介")+'：</label>');
+                                    +I18N.getString("book.js.bookdialog.js.desc", "图书简介：")+'</label>');
             strhtml.push('          <div  class="eui-input-block"><textarea id="desc" style="width: 200px" class="eui-form-textarea" ' +
                 '                       placeholder='+I18N.getString("book.js.bookdialog.js.nodesc", "请填写图书的简介信息没有可以不填，")
                                         +' ></textarea></div>');
@@ -114,9 +117,9 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 placeholder:I18N.getString("book.js.bookdialog.js.choosebcaption", "请选择大类"),
                 data$key: "caption",
                 onclickitem:function (rowdata, td, evt, isCheck){
-                    cid = rowdata.id;
+                    self.cid = rowdata.id;
                     self.scaption = null;
-                    self.refresh(cid);
+                    self.refresh(self.cid);
                 }
             });
             self.getCategoryList();
@@ -137,7 +140,7 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 showFilter:false,
                 showCheckAll:false,
                 onclickitem:function (rowdata, td, evt, isCheck){
-                    tid = rowdata.id;
+                    self.tid = rowdata.id;
                 }
             })
         }
@@ -198,7 +201,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             })
             var cancel =this.addButton(I18N.getString("ES.COMMON.CANCEL", "取消"),"",false,true,function (){
                 self.close();
-
             })
             EUI.removeClassName(cancel,"eui-btn-primary");
             //关闭对话框，清空对话框数据
@@ -209,7 +211,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                 self.hideErrMsg("scomboboxtips");
             })
         }
-
         /**
          * 保存或新建的图书
          */
@@ -222,7 +223,6 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
                     callback: function (queryObj) {
                         var obj = queryObj.getResponseJSON();
                         self.onok();
-
                     },
                     waitMessage: {message: I18N.getString("ES.COMMON.SAVEING", "正在保存..."),
                         finish: I18N.getString("ES.COMMON.SUCCEED", "成功")}
@@ -313,10 +313,10 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             EUI.getChildDomByAttrib(self.getBaseDom(),"id","name",true).value="";
             //清除大类
             self.bComboboxObj.setSelectValue("",false);
-            cid=null;
+            self.cid=null;
             //清除小类
             self.sComboboxObj.setSelectValue("",false);
-            tid =null;
+            self.tid =null;
             //清除描述
             EUI.getChildDomByAttrib(this.getBaseDom(),"id","desc",true).value="";
 
@@ -329,10 +329,10 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             self.userdata = {
                 id:self.bid,
                 name:EUI.getChildDomByAttrib(this.getBaseDom(),"id","name",true).value,
-                cid:cid,
-                tid:tid,
+                cid:self.cid,
+                tid:self.tid,
                 desc:EUI.getChildDomByAttrib(this.getBaseDom(),"id","desc",true).value,
-                isnew:self.isnew,
+                isnew:self.isnew
             }
         }
         /**
@@ -346,12 +346,12 @@ define([ "eui/modules/edialog","eui/modules/eform","eui/modules/ecombobox"],
             EUI.getChildDomByAttrib(self.getBaseDom(),"id","name",true).value=datas.name;
             //设置大类
             self.bcaption = datas.bcaption;
-            cid = datas.cid;
+            self.cid = datas.cid;
             self.bComboboxObj.setSelectValue(self.bcaption,false);
             //设置小类
             self.scaption = datas.scaption;
-            tid = datas.tid;
-            self.refresh(cid);
+            self.tid = datas.tid;
+            self.refresh(self.cid);
             //设置描述
             EUI.getChildDomByAttrib(this.getBaseDom(),"id","desc",true).value=datas.desc;
         }

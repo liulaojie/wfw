@@ -30,7 +30,6 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
          * 初始化
          */
         Index.prototype._initUI = function () {
-            var self = this;
             //引入css文件
             var dom=this.doc.getElementById("body");
             var div=this.doc.createElement("div");
@@ -51,14 +50,12 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
          * 初始化分割面板
          */
         Index.prototype._initBody = function (){
-            var self = this;
             this.splitpaneobj = new EPanelSplitter({
                 wnd: this.wnd,
                 ishorizontal: true,      //true-水平的，左右分隔；false-垂直的，上下分隔； 缺省的为true
                 fixedright: false,       //true-固定下或右边； 缺省的是false
-                parentElement: document.getElementById("epanelsplitter"),
+                parentElement: this.doc.getElementById("epanelsplitter"),
                 fixedSize: 270           //固定面板的宽度/高度
-                //candrag: false   //中间的拖拽按钮是否显示
             });
             this.splitpaneobj.setSplitbarWidth(8);  //中间拖拽容器的宽度，可用来作左右布局的间距；去掉时，默认为4px； 这里数字设置不是4/8的时候，请将中间的的拖拽按钮隐藏；
             //因为看不清，将2边都设置上背景色，方便查看
@@ -90,7 +87,6 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 var userobj = item.userObj;
                 var add = true;
                 if (userobj.img0=="&#xe1ab;"||userobj.img0=="&#xe23d;"){
-                    add=false;
                 }else{
                     var index = self.tabctrlObj.getIndex(userobj.caption);
                     if (index>=0){
@@ -117,7 +113,6 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                         getTypeList(item,userobj);
                     }
                 }
-
             });
         }
 
@@ -129,7 +124,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
             var rootitem = self.treeObj.getRootItem();
             var data1 = [{
                 id:"fwq",
-                caption:I18N.getString("book.js.index.js.server", "服务器"),
+                caption:I18N.getString("borrow.js.index.js.server", "服务器"),
                 level:1,
                 img0:"&#xe1ab;"
             }];
@@ -137,18 +132,18 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 var data2 = [{
                     id: "booklist",
                     haschild:true,
-                    caption: I18N.getString("book.js.index.js.bookmgr", "图书管理"),
+                    caption: I18N.getString("borrow.js.index.js.bookmgr", "图书管理"),
                     level: 2,
                     img0:"&#xee5a;"
                 },{
                     id: "borrowlist",
-                    caption: I18N.getString("book.js.index.js.borrowmgr", "借阅管理"),
+                    caption: I18N.getString("borrow.js.index.js.borrowmgr", "借阅管理"),
                     level: 2,
                     img0:"&#xe266;"
                 },{
 
                     id:"analysetable",
-                    caption: I18N.getString("book.js.index.js.analyzemgr", "分析表管理"),
+                    caption: I18N.getString("borrow.js.index.js.analyzemgr", "分析表管理"),
                     level: 2,
                     img0:"&#xe23d;"
                 }
@@ -166,7 +161,6 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
          */
         var getCategoryList = function (item,userObj){
             if (userObj.id!="booklist"){return;}
-            var self = this;
             EUI.post({
                 url:EUI.getContextPath()+"book/categoryList.do",
                 callback:function (queryObj){
@@ -189,7 +183,6 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
          * @param userObj 这个item中的用户数据
          */
         var getTypeList = function (item,userObj){
-            var self = this;
             EUI.post({
                 url: EUI.getContextPath() + "book/typeList.do",
                 data:{cid:userObj.id},
@@ -251,7 +244,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                 switch (userobj.img0){
                     case "&#xee5a;"://图书管理
                         var strhtml = '<iframe style="width: 100% ;height: 100%;border: none"';
-                        strhtml +='src="'+EUI.getContextPath()+'web/borrow/bookmgr.do" ></iframe>';
+                        strhtml +='src="'+EUI.getContextPath()+'web/book/bookmgr.do" ></iframe>';
                         dom.innerHTML=strhtml;
                         break;
                     case "&#xe266;"://借阅管理
@@ -260,7 +253,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                         dom.innerHTML=strhtml;
                         break;
                     case "&#xe1da;"://大类
-                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/bookmgr.do";
+                        var strhtml = '<iframe src="'+EUI.getContextPath()+"web/book/bookmgr.do";
                         strhtml +="?cid="+userobj.id;
                         strhtml +='" style="width: 100% ;height: 100%;border: 0px"></iframe>';
                         dom.innerHTML=strhtml;
@@ -273,12 +266,7 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
                         break;
                     case "&#xe881;"://分析表
                         var strhtml = '<iframe src="'+EUI.getContextPath()+"web/borrow/analyze.do";
-                        if (userobj.datas.type=="barchart"){
                             strhtml +='" style="width: 100% ;height: 100%;border: 0px;"></iframe>';
-                        }else {
-                            strhtml +='" style="width: 100% ;height: 100%;border: 0px;"></iframe>';
-                        }
-
                         dom.innerHTML=strhtml;
                         break;
                     default:
@@ -289,12 +277,18 @@ define(["eui/modules/etree","eui/modules/uibase","eui/modules/epanelsplitter", "
          * 销毁Index所持有的资源
          */
         Index.prototype.dispose = function (){
-            this.tabctrlObj.dispose();
-            this.tabctrlObj = null;
-            this.treeObj.dispose();
-            this.treeObj = null;
-            this.splitpaneobj.dispose();
-            this.splitpaneobj = null;
+            if(this.tabctrlObj != null){
+                this.tabctrlObj.dispose();
+                this.tabctrlObj = null;
+            }
+            if(this.treeObj != null){
+                this.treeObj.dispose();
+                this.treeObj = null;
+            }
+            if(this.splitpaneobj != null){
+                this.splitpaneobj.dispose();
+                this.splitpaneobj = null;
+            }
             EComponent.prototype.dispose.call(this);
         }
         return{

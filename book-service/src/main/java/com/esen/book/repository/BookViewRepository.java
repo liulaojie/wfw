@@ -1,12 +1,9 @@
-package com.esen.book.api.repository;
+package com.esen.book.repository;
 
 import com.esen.book.api.entity.*;
 import com.esen.ejdbc.jdbc.ConnectFactoryManager;
 import com.esen.ejdbc.jdbc.dialect.DbDefiner;
 import com.esen.ejdbc.jdbc.orm.EntityInfo;
-import com.esen.ejdbc.jdbc.util.RowHandler;
-import com.esen.ejdbc.params.PageRequest;
-import com.esen.ejdbc.params.PageResult;
 import com.esen.eorm.annotation.ApplicationRepository;
 import com.esen.eorm.repository.AbstractRepository;
 import com.esen.eutil.util.ExceptionHandler;
@@ -15,8 +12,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * 图书视图的Repository仓库类

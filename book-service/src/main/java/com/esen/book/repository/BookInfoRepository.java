@@ -1,20 +1,20 @@
-package com.esen.borrow.api.repository;
+package com.esen.book.repository;
 
-
-import com.esen.borrow.api.entity.BookHistoryEntity;
+import com.esen.book.api.entity.BookInfoEntity;
 import com.esen.eorm.annotation.ApplicationRepository;
 import com.esen.eorm.repository.AbstractRepository;
 import org.springframework.context.annotation.Primary;
 
 /**
- * 图书借阅记录的Repository仓库
+ * 图书信息的Repository仓库类
  *
  * @author liuaj
  * @since 20220824
  */
-@ApplicationRepository(path = "/config/mapping/bookhistoryentity-mapping.xml",value = "BookHistoryRepository")
+@ApplicationRepository(value = "BookInfoRepository")
 @Primary
-public class BookHistoryRepository extends AbstractRepository<BookHistoryEntity> {
+public class BookInfoRepository extends AbstractRepository<BookInfoEntity> {
+
 
 		@Override
 		protected String getCurrentLoginId() {

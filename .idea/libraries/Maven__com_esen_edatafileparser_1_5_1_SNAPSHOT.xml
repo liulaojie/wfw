@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.esen:edatafileparser:1.5.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatafileparser/1.5.1-SNAPSHOT/edatafileparser-1.5.1-20220818.072028-27.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatafileparser/1.5.1-SNAPSHOT/edatafileparser-1.5.1-20220908.094730-28.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatafileparser/1.5.1-SNAPSHOT/edatafileparser-1.5.1-20220818.072028-27-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatafileparser/1.5.1-SNAPSHOT/edatafileparser-1.5.1-20220908.094730-28-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatafileparser/1.5.1-SNAPSHOT/edatafileparser-1.5.1-20220818.072028-27-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esen/edatafileparser/1.5.1-SNAPSHOT/edatafileparser-1.5.1-20220908.094730-28-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

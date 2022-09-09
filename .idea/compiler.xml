@@ -12,12 +12,12 @@
         <module name="i18nauto" />
         <module name="borrow-service" />
         <module name="book-web" />
-        <module name="abi-web" />
         <module name="book-api" />
         <module name="borrow-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="abi-web" target="1.8" />
       <module name="abistudy" target="1.8" />
       <module name="book-api" target="1.8" />
       <module name="book-service" target="1.8" />
@@ -31,6 +31,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="abi-web" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
       <module name="abistudy" options="" />
       <module name="book-api" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />
       <module name="book-service" options="-parameters -verbose -bootclasspath $PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/rt.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jce.jar;$PROJECT_DIR$/../../../esendev/jdk1.8/jre/lib/jsse.jar -XDignore.symbol.file" />

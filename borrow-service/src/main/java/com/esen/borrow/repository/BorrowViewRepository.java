@@ -1,7 +1,6 @@
-package com.esen.borrow.api.repository;
+package com.esen.borrow.repository;
 
 import com.esen.book.api.entity.*;
-import com.esen.book.api.repository.*;
 
 import com.esen.borrow.api.entity.BookHistoryEntity;
 import com.esen.borrow.api.entity.BorrowViewEntity;
@@ -11,9 +10,6 @@ import com.esen.ejdbc.jdbc.ConnectFactoryManager;
 import com.esen.ejdbc.jdbc.dialect.DbDefiner;
 
 import com.esen.ejdbc.jdbc.orm.EntityInfo;
-import com.esen.ejdbc.jdbc.util.RowHandler;
-import com.esen.ejdbc.params.PageRequest;
-import com.esen.ejdbc.params.PageResult;
 import com.esen.eorm.annotation.ApplicationRepository;
 import com.esen.eorm.repository.AbstractRepository;
 import com.esen.eutil.util.ExceptionHandler;
@@ -21,8 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 
 /**
